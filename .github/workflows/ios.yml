@@ -1,0 +1,42 @@
+name: iOS Build
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+  pull_request:
+    branches:
+      - main
+      - dev
+
+jobs:
+  build:
+    name: Build iOS
+    runs-on: macos-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.4.0'
+          bundler-cache: true
+
+      - name: Install npm dependencies
+        run: npm ci
+
+      - name: Install Pods
+        working-directory: ios
+        run: pod install
+
+      - name: Run Fastlane
+        working-directory: ios
+        run: bundle exec fastlane build
