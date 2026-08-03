@@ -73,3 +73,23 @@ yarn-error.log
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+# Firebase secrets & logs
+android/app/google-services.json
+ios/TaskFlowAI/GoogleService-Info.plist
+firebase-debug.log
+firebase-debug.*.log
+
+# Generated Data Connect SDKs
+FirebaseDataConnectGenerated/
+ios/FirebaseDataConnectGenerated/
+
+# IDE & AI Agent configs
+.vscode/
+.claude/
+.agents/
+skills-lock.json
+
+# Accidental files
+all
+"all required files"

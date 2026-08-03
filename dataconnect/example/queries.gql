@@ -1,0 +1,154 @@
+mutation InsertUser @auth(level: USER) {
+  user_insert(data: {
+    id_expr: "auth.uid",
+    email_expr: "auth.token.email",
+    createdAt_expr: "request.time",
+    displayName: "New User",
+    isActive: true
+  })
+}
+
+mutation UpdateUser @auth(level: USER) {
+  user_update(key: {id_expr: "auth.uid"}, data: {displayName: "Updated Name"})
+}
+
+mutation DeleteUser @auth(level: USER) {
+  user_delete(key: {id_expr: "auth.uid"})
+}
+
+query GetUser @auth(level: USER) {
+  user(key: {id_expr: "auth.uid"}) {
+    email
+    displayName
+    isActive
+  }
+}
+
+query ListUsers @auth(level: USER, insecureReason: "Admin-level list functionality") {
+  users(limit: 10) {
+    id
+    email
+    displayName
+  }
+}
+
+mutation InsertProfile @auth(level: USER) {
+  profile_insert(data: {
+    userId_expr: "auth.uid",
+    bio: "Hello world",
+    timeZone: "UTC"
+  })
+}
+
+mutation UpdateProfile @auth(level: USER) {
+  profile_updateMany(where: {userId: {eq_expr: "auth.uid"}}, data: {bio: "Updated bio"})
+}
+
+mutation DeleteProfile @auth(level: USER) {
+  profile_deleteMany(where: {userId: {eq_expr: "auth.uid"}})
+}
+
+query GetProfile @auth(level: USER) {
+  profiles(where: {userId: {eq_expr: "auth.uid"}}, limit: 1) {
+    bio
+    timeZone
+    avatarUrl
+  }
+}
+
+query ListProfiles @auth(level: PUBLIC, insecureReason: "Publicly visible profiles") {
+  profiles(limit: 50) {
+    bio
+    timeZone
+  }
+}
+
+mutation InsertUserRole @auth(level: USER, insecureReason: "Roles usually set by system/admin, user can see own role") {
+  userRole_insert(data: {
+    userId_expr: "auth.uid",
+    roleName: "Member",
+    assignedAt_expr: "request.time"
+  })
+}
+
+mutation UpdateUserRole @auth(level: USER, insecureReason: "Admin-only update") {
+  userRole_updateMany(where: {userId: {eq_expr: "auth.uid"}}, data: {roleName: "Premium"})
+}
+
+mutation DeleteUserRole @auth(level: USER, insecureReason: "Admin-only delete") {
+  userRole_deleteMany(where: {userId: {eq_expr: "auth.uid"}})
+}
+
+query GetUserRole @auth(level: USER) {
+  userRoles(where: {userId: {eq_expr: "auth.uid"}}) {
+    roleName
+    assignedAt
+  }
+}
+
+query ListUserRoles @auth(level: USER, insecureReason: "Admin-only list") {
+  userRoles(limit: 100) {
+    roleName
+  }
+}
+
+mutation InsertUserLog @auth(level: USER) {
+  userLog_insert(data: {
+    userId_expr: "auth.uid",
+    actionType: "LOGIN",
+    timestamp_expr: "request.time"
+  })
+}
+
+mutation UpdateUserLog @auth(level: USER, insecureReason: "Logs should be immutable") {
+  userLog_updateMany(where: {userId: {eq_expr: "auth.uid"}}, data: {metadata: "Corrected"})
+}
+
+mutation DeleteUserLog @auth(level: USER, insecureReason: "Logs should be immutable") {
+  userLog_deleteMany(where: {userId: {eq_expr: "auth.uid"}})
+}
+
+query GetUserLogs @auth(level: USER) {
+  userLogs(where: {userId: {eq_expr: "auth.uid"}}, orderBy: [{timestamp: DESC}]) {
+    actionType
+    timestamp
+    metadata
+  }
+}
+
+query ListUserLogs @auth(level: USER, insecureReason: "Admin-only access") {
+  userLogs(limit: 50) {
+    actionType
+  }
+}
+
+mutation InsertSubscription @auth(level: USER) {
+  userSubscription_insert(data: {
+    userId_expr: "auth.uid",
+    planType: "BASIC",
+    status: "ACTIVE"
+  })
+}
+
+mutation UpdateSubscription @auth(level: USER) {
+  userSubscription_updateMany(where: {userId: {eq_expr: "auth.uid"}}, data: {status: "CANCELLED"})
+}
+
+mutation DeleteSubscription @auth(level: USER) {
+  userSubscription_deleteMany(where: {userId: {eq_expr: "auth.uid"}})
+}
+
+query GetSubscription @auth(level: USER) {
+  userSubscriptions(where: {userId: {eq_expr: "auth.uid"}}) {
+    planType
+    status
+    expiresAt
+  }
+}
+
+query ListSubscriptions @auth(level: USER, insecureReason: "Admin-only access") {
+  userSubscriptions(limit: 50) {
+    planType
+    status
+  }
+}
