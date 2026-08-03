@@ -21,10 +21,8 @@ export const AppNavigator = () => {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         {user ? (
-          // User is signed in
           <Stack.Screen name="Home" component={HomeScreen} />
         ) : (
-          // No user is signed in
           <>
             <Stack.Screen name="Login" component={LoginScreen} />
             <Stack.Screen name="Signup" component={SignupScreen} />

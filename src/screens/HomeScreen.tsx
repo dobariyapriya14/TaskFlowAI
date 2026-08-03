@@ -1,12 +1,27 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, SafeAreaView, Alert, Platform } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, StyleSheet, Alert, Platform } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { Button } from '../components/Button';
 import { authService } from '../services/authService';
 import { useAuth } from '../context/AuthContext';
+import { logMessage, logError, triggerCrash } from '../services/crashlytics';
 
 export const HomeScreen = () => {
   const { user } = useAuth();
   const [loadingApi, setLoadingApi] = useState(false);
+
+  useEffect(() => {
+    logMessage('User opened Home Screen');
+  }, []);
+
+  const testNonFatalError = () => {
+    try {
+      throw new Error('This is a test non-fatal error');
+    } catch (e) {
+      logError(e as Error);
+      Alert.alert('Error Logged', 'Non-fatal error sent to Crashlytics.');
+    }
+  };
 
   const handleLogout = async () => {
     try {
@@ -47,6 +62,14 @@ export const HomeScreen = () => {
             title="Test Health API" 
             onPress={testHealthAPI} 
             loading={loadingApi} 
+          />
+          <Button 
+            title="Test Non-Fatal Error" 
+            onPress={testNonFatalError} 
+          />
+          <Button 
+            title="Test Crash" 
+            onPress={() => triggerCrash()} 
           />
           <Button 
             title="Logout" 

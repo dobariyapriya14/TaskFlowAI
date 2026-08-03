@@ -8,6 +8,8 @@ import {
   UserCredential
 } from '@react-native-firebase/auth';
 import { getFirestore, doc, setDoc } from '@react-native-firebase/firestore';
+import { logLogin, logLogout } from './analytics';
+import { setUser } from './crashlytics';
 
 const auth = getAuth();
 const db = getFirestore();
@@ -38,6 +40,8 @@ export const authService = {
   async login(email: string, password: string): Promise<UserCredential> {
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      await logLogin('email');
+      setUser(userCredential.user.uid);
       return userCredential;
     } catch (error) {
       throw error;
@@ -47,6 +51,7 @@ export const authService = {
   async logout(): Promise<void> {
     try {
       await signOut(auth);
+      await logLogout();
     } catch (error) {
       throw error;
     }
