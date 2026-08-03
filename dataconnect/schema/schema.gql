@@ -1,0 +1,35 @@
+type User @table {
+  email: String!
+  createdAt: Timestamp!
+  displayName: String
+  phoneNumber: String
+  isActive: Boolean
+}
+
+type Profile @table {
+  user: User!
+  bio: String!
+  timeZone: String!
+  avatarUrl: String
+  socialLinks: String
+}
+
+type UserRole @table {
+  user: User!
+  roleName: String!
+  assignedAt: Timestamp
+}
+
+type UserLog @table {
+  user: User!
+  actionType: String!
+  timestamp: Timestamp!
+  metadata: String
+}
+
+type UserSubscription @table {
+  user: User!
+  planType: String!
+  status: String!
+  expiresAt: Timestamp
+}

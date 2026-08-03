@@ -1,0 +1,94 @@
+mutation SeedAllData @transaction {
+  user_insertMany(data: [
+    {
+      id_expr: "uuidV4()",
+      email: "alice@example.com",
+      createdAt_expr: "request.time",
+      displayName: "Alice",
+      isActive: true
+    },
+    {
+      id_expr: "uuidV4()",
+      email: "bob@example.com",
+      createdAt_expr: "request.time",
+      displayName: "Bob",
+      isActive: true
+    },
+    {
+      id_expr: "uuidV4()",
+      email: "charlie@example.com",
+      createdAt_expr: "request.time",
+      displayName: "Charlie",
+      isActive: false
+    }
+  ])
+  
+  profile_insertMany(data: [
+    {
+      userId_expr: "response.user_insertMany[0].id",
+      bio: "Software Engineer",
+      timeZone: "UTC"
+    },
+    {
+      userId_expr: "response.user_insertMany[1].id",
+      bio: "Product Manager",
+      timeZone: "PST"
+    },
+    {
+      userId_expr: "response.user_insertMany[2].id",
+      bio: "Designer",
+      timeZone: "EST"
+    }
+  ])
+  
+  userRole_insertMany(data: [
+    {
+      userId_expr: "response.user_insertMany[0].id",
+      roleName: "ADMIN"
+    },
+    {
+      userId_expr: "response.user_insertMany[1].id",
+      roleName: "USER"
+    },
+    {
+      userId_expr: "response.user_insertMany[2].id",
+      roleName: "GUEST"
+    }
+  ])
+  
+  userLog_insertMany(data: [
+    {
+      userId_expr: "response.user_insertMany[0].id",
+      actionType: "LOGIN",
+      timestamp_expr: "request.time"
+    },
+    {
+      userId_expr: "response.user_insertMany[1].id",
+      actionType: "UPDATE_PROFILE",
+      timestamp_expr: "request.time"
+    },
+    {
+      userId_expr: "response.user_insertMany[2].id",
+      actionType: "LOGOUT",
+      timestamp_expr: "request.time"
+    }
+  ])
+  
+  userSubscription_insertMany(data: [
+    {
+      userId_expr: "response.user_insertMany[0].id",
+      planType: "PREMIUM",
+      status: "ACTIVE"
+    },
+    {
+      userId_expr: "response.user_insertMany[1].id",
+      planType: "BASIC",
+      status: "ACTIVE"
+    },
+    {
+      userId_expr: "response.user_insertMany[2].id",
+      planType: "FREE",
+      status: "EXPIRED"
+    }
+  ])
+}
