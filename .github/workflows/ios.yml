@@ -1,0 +1,66 @@
+name: iOS Build
+
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+    branches:
+      - '**'
+
+jobs:
+  build:
+    name: Build iOS
+    runs-on: macos-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1'
+          bundler-cache: true
+          bundler: latest
+
+      - name: Install npm dependencies
+        run: npm ci
+
+      - name: Install Pods
+        working-directory: ios
+        run: pod install
+
+      - name: Generate mock GoogleService-Info.plist
+        run: |
+          cat <<EOF > ios/TaskFlowAI/GoogleService-Info.plist
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0">
+          <dict>
+            <key>CLIENT_ID</key><string>mock</string>
+            <key>REVERSED_CLIENT_ID</key><string>mock</string>
+            <key>API_KEY</key><string>mock</string>
+            <key>GCM_SENDER_ID</key><string>mock</string>
+            <key>PLIST_VERSION</key><string>1</string>
+            <key>BUNDLE_ID</key><string>org.reactjs.native.example.TaskFlowAI</string>
+            <key>PROJECT_ID</key><string>mock</string>
+            <key>STORAGE_BUCKET</key><string>mock</string>
+            <key>IS_ADS_ENABLED</key><false></false>
+            <key>IS_ANALYTICS_ENABLED</key><false></false>
+            <key>IS_APPINVITE_ENABLED</key><true></true>
+            <key>IS_GCM_ENABLED</key><true></true>
+            <key>IS_SIGNIN_ENABLED</key><true></true>
+            <key>GOOGLE_APP_ID</key><string>1:1:ios:1</string>
+          </dict>
+          </plist>
+          EOF
+
+      - name: Run Fastlane
+        working-directory: ios
+        run: bundle exec fastlane build

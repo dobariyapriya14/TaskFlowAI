@@ -1,0 +1,13 @@
+default_platform(:android)
+
+platform :android do
+  desc "Build the Android application in Debug mode"
+  lane :build do
+    gradle(task: "assembleDebug")
+  end
+
+  desc "Build the Android application in Release mode"
+  lane :release_build do
+    gradle(task: "assembleRelease")
+  end
+end
