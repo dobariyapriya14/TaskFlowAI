@@ -1,0 +1,1119 @@
+Build iOS	Set up job	﻿2026-08-03T09:18:56.5723990Z Current runner version: '2.336.0'
+Build iOS	Set up job	2026-08-03T09:18:56.5740070Z ##[group]Runner Image Provisioner
+Build iOS	Set up job	2026-08-03T09:18:56.5740610Z Hosted Compute Agent
+Build iOS	Set up job	2026-08-03T09:18:56.5740970Z Version: 20260707.563
+Build iOS	Set up job	2026-08-03T09:18:56.5741360Z Commit: 02667638d2b423fbc733a8e32a88b44996a3ba6e
+Build iOS	Set up job	2026-08-03T09:18:56.5741810Z Build Date: 2026-07-07T19:33:50Z
+Build iOS	Set up job	2026-08-03T09:18:56.5742240Z Worker ID: {a2c8c26a-036b-4ce6-88a8-c2327ffd16ee}
+Build iOS	Set up job	2026-08-03T09:18:56.5742690Z Azure Region: westus
+Build iOS	Set up job	2026-08-03T09:18:56.5743040Z ##[endgroup]
+Build iOS	Set up job	2026-08-03T09:18:56.5743890Z ##[group]Operating System
+Build iOS	Set up job	2026-08-03T09:18:56.5744260Z macOS
+Build iOS	Set up job	2026-08-03T09:18:56.5744570Z 26.5.2
+Build iOS	Set up job	2026-08-03T09:18:56.5744890Z 25F84
+Build iOS	Set up job	2026-08-03T09:18:56.5745210Z ##[endgroup]
+Build iOS	Set up job	2026-08-03T09:18:56.5745560Z ##[group]Runner Image
+Build iOS	Set up job	2026-08-03T09:18:56.5745920Z Image: macos-26-arm64
+Build iOS	Set up job	2026-08-03T09:18:56.5746280Z Version: 20260728.0273.1
+Build iOS	Set up job	2026-08-03T09:18:56.5747000Z Included Software: https://github.com/actions/runner-images/blob/macos-26-arm64/20260728.0273/images/macos/macos-26-arm64-Readme.md
+Build iOS	Set up job	2026-08-03T09:18:56.5748360Z Image Release: https://github.com/actions/runner-images/releases/tag/macos-26-arm64%2F20260728.0273
+Build iOS	Set up job	2026-08-03T09:18:56.5749160Z ##[endgroup]
+Build iOS	Set up job	2026-08-03T09:18:56.5749940Z ##[group]GITHUB_TOKEN Permissions
+Build iOS	Set up job	2026-08-03T09:18:56.5751160Z Contents: read
+Build iOS	Set up job	2026-08-03T09:18:56.5751520Z Metadata: read
+Build iOS	Set up job	2026-08-03T09:18:56.5751990Z Packages: read
+Build iOS	Set up job	2026-08-03T09:18:56.5752380Z ##[endgroup]
+Build iOS	Set up job	2026-08-03T09:18:56.5753950Z Secret source: Actions
+Build iOS	Set up job	2026-08-03T09:18:56.5754710Z Prepare workflow directory
+Build iOS	Set up job	2026-08-03T09:18:56.5988340Z Prepare all required actions
+Build iOS	Set up job	2026-08-03T09:18:56.6024910Z Getting action download info
+Build iOS	Set up job	2026-08-03T09:18:57.0011030Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+Build iOS	Set up job	2026-08-03T09:18:57.2559870Z Download action repository 'actions/setup-node@v4' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+Build iOS	Set up job	2026-08-03T09:18:57.3920220Z Download action repository 'ruby/setup-ruby@v1' (SHA:95ef2b042f9d7a56d8268cba8559e2842e2ad01b)
+Build iOS	Set up job	2026-08-03T09:18:57.9058830Z Complete job name: Build iOS
+Build iOS	Checkout Repository	﻿2026-08-03T09:18:57.9581110Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+Build iOS	Checkout Repository	2026-08-03T09:18:57.9588400Z ##[group]Run actions/checkout@v4
+Build iOS	Checkout Repository	2026-08-03T09:18:57.9588990Z with:
+Build iOS	Checkout Repository	2026-08-03T09:18:57.9589320Z   repository: dobariyapriya14/TaskFlowAI
+Build iOS	Checkout Repository	2026-08-03T09:18:57.9592470Z   token: ***
+Build iOS	Checkout Repository	2026-08-03T09:18:57.9592830Z   ssh-strict: true
+Build iOS	Checkout Repository	2026-08-03T09:18:57.9593180Z   ssh-user: git
+Build iOS	Checkout Repository	2026-08-03T09:18:57.9593500Z   persist-credentials: true
+Build iOS	Checkout Repository	2026-08-03T09:18:57.9593840Z   clean: true
+Build iOS	Checkout Repository	2026-08-03T09:18:57.9594160Z   sparse-checkout-cone-mode: true
+Build iOS	Checkout Repository	2026-08-03T09:18:57.9594520Z   fetch-depth: 1
+Build iOS	Checkout Repository	2026-08-03T09:18:57.9594820Z   fetch-tags: false
+Build iOS	Checkout Repository	2026-08-03T09:18:57.9595130Z   show-progress: true
+Build iOS	Checkout Repository	2026-08-03T09:18:57.9595570Z   lfs: false
+Build iOS	Checkout Repository	2026-08-03T09:18:57.9595880Z   submodules: false
+Build iOS	Checkout Repository	2026-08-03T09:18:57.9596230Z   set-safe-directory: true
+Build iOS	Checkout Repository	2026-08-03T09:18:57.9596650Z   allow-unsafe-pr-checkout: false
+Build iOS	Checkout Repository	2026-08-03T09:18:57.9597260Z ##[endgroup]
+Build iOS	Checkout Repository	2026-08-03T09:18:58.4213870Z Syncing repository: dobariyapriya14/TaskFlowAI
+Build iOS	Checkout Repository	2026-08-03T09:18:58.4215210Z ##[group]Getting Git version info
+Build iOS	Checkout Repository	2026-08-03T09:18:58.4215740Z Working directory is '/Users/runner/work/TaskFlowAI/TaskFlowAI'
+Build iOS	Checkout Repository	2026-08-03T09:18:58.4216640Z [command]/opt/homebrew/bin/git version
+Build iOS	Checkout Repository	2026-08-03T09:18:58.4492430Z git version 2.55.0
+Build iOS	Checkout Repository	2026-08-03T09:18:58.4507560Z ##[endgroup]
+Build iOS	Checkout Repository	2026-08-03T09:18:58.4514810Z Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/bd938db9-e923-4300-b910-d0eb92dcfa99/.gitconfig'
+Build iOS	Checkout Repository	2026-08-03T09:18:58.4522500Z Temporarily overriding HOME='/Users/runner/work/_temp/bd938db9-e923-4300-b910-d0eb92dcfa99' before making global git config changes
+Build iOS	Checkout Repository	2026-08-03T09:18:58.4523520Z Adding repository directory to the temporary git global config as a safe directory
+Build iOS	Checkout Repository	2026-08-03T09:18:58.4526150Z [command]/opt/homebrew/bin/git config --global --add safe.directory /Users/runner/work/TaskFlowAI/TaskFlowAI
+Build iOS	Checkout Repository	2026-08-03T09:18:58.4644720Z Deleting the contents of '/Users/runner/work/TaskFlowAI/TaskFlowAI'
+Build iOS	Checkout Repository	2026-08-03T09:18:58.4646880Z ##[group]Initializing the repository
+Build iOS	Checkout Repository	2026-08-03T09:18:58.4651660Z [command]/opt/homebrew/bin/git init /Users/runner/work/TaskFlowAI/TaskFlowAI
+Build iOS	Checkout Repository	2026-08-03T09:18:58.4897440Z hint: Using 'master' as the name for the initial branch. This default branch name
+Build iOS	Checkout Repository	2026-08-03T09:18:58.4898690Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+Build iOS	Checkout Repository	2026-08-03T09:18:58.4899760Z hint: to use in all of your new repositories, which will suppress this warning,
+Build iOS	Checkout Repository	2026-08-03T09:18:58.4900890Z hint: call:
+Build iOS	Checkout Repository	2026-08-03T09:18:58.4901440Z hint:
+Build iOS	Checkout Repository	2026-08-03T09:18:58.4901900Z hint: 	git config --global init.defaultBranch <name>
+Build iOS	Checkout Repository	2026-08-03T09:18:58.4902350Z hint:
+Build iOS	Checkout Repository	2026-08-03T09:18:58.4902780Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+Build iOS	Checkout Repository	2026-08-03T09:18:58.4903550Z hint: 'development'. The just-created branch can be renamed via this command:
+Build iOS	Checkout Repository	2026-08-03T09:18:58.4904130Z hint:
+Build iOS	Checkout Repository	2026-08-03T09:18:58.4904440Z hint: 	git branch -m <name>
+Build iOS	Checkout Repository	2026-08-03T09:18:58.4904800Z hint:
+Build iOS	Checkout Repository	2026-08-03T09:18:58.4905330Z hint: Disable this message with "git config set advice.defaultBranchName false"
+Build iOS	Checkout Repository	2026-08-03T09:18:58.4906160Z Initialized empty Git repository in /Users/runner/work/TaskFlowAI/TaskFlowAI/.git/
+Build iOS	Checkout Repository	2026-08-03T09:18:58.4907710Z [command]/opt/homebrew/bin/git remote add origin https://github.com/dobariyapriya14/TaskFlowAI
+Build iOS	Checkout Repository	2026-08-03T09:18:58.5013980Z ##[endgroup]
+Build iOS	Checkout Repository	2026-08-03T09:18:58.5014820Z ##[group]Disabling automatic garbage collection
+Build iOS	Checkout Repository	2026-08-03T09:18:58.5015600Z [command]/opt/homebrew/bin/git config --local gc.auto 0
+Build iOS	Checkout Repository	2026-08-03T09:18:58.5077680Z ##[endgroup]
+Build iOS	Checkout Repository	2026-08-03T09:18:58.5078400Z ##[group]Setting up auth
+Build iOS	Checkout Repository	2026-08-03T09:18:58.5082920Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp core\.sshCommand
+Build iOS	Checkout Repository	2026-08-03T09:18:58.5246930Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Build iOS	Checkout Repository	2026-08-03T09:18:58.6223420Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Build iOS	Checkout Repository	2026-08-03T09:18:58.6286720Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Build iOS	Checkout Repository	2026-08-03T09:18:58.7183650Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Build iOS	Checkout Repository	2026-08-03T09:18:58.7250460Z [command]/opt/homebrew/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Build iOS	Checkout Repository	2026-08-03T09:18:58.8346970Z [command]/opt/homebrew/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+Build iOS	Checkout Repository	2026-08-03T09:18:58.8423240Z ##[endgroup]
+Build iOS	Checkout Repository	2026-08-03T09:18:58.8424110Z ##[group]Fetching the repository
+Build iOS	Checkout Repository	2026-08-03T09:18:58.8429920Z [command]/opt/homebrew/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +4f9ade88f7cfe6d01165c8d1ce8d6b8998e30e13:refs/remotes/pull/2/merge
+Build iOS	Checkout Repository	2026-08-03T09:18:59.3761000Z From https://github.com/dobariyapriya14/TaskFlowAI
+Build iOS	Checkout Repository	2026-08-03T09:18:59.3761860Z  * [new ref]         4f9ade88f7cfe6d01165c8d1ce8d6b8998e30e13 -> pull/2/merge
+Build iOS	Checkout Repository	2026-08-03T09:18:59.3763420Z ##[endgroup]
+Build iOS	Checkout Repository	2026-08-03T09:18:59.3763960Z ##[group]Determining the checkout info
+Build iOS	Checkout Repository	2026-08-03T09:18:59.3764680Z ##[endgroup]
+Build iOS	Checkout Repository	2026-08-03T09:18:59.3768230Z [command]/opt/homebrew/bin/git sparse-checkout disable
+Build iOS	Checkout Repository	2026-08-03T09:18:59.3839810Z [command]/opt/homebrew/bin/git config --local --unset-all extensions.worktreeConfig
+Build iOS	Checkout Repository	2026-08-03T09:18:59.3901770Z ##[group]Checking out the ref
+Build iOS	Checkout Repository	2026-08-03T09:18:59.3908250Z [command]/opt/homebrew/bin/git checkout --progress --force refs/remotes/pull/2/merge
+Build iOS	Checkout Repository	2026-08-03T09:18:59.4142900Z HEAD is now at 4f9ade8 Merge 929c6b0e4b5fcbac7572d1e7ad4714c525b423a4 into 4c7e9c140fb7499126c7207e7ab29aa35a0545e0
+Build iOS	Checkout Repository	2026-08-03T09:18:59.4152270Z ##[endgroup]
+Build iOS	Checkout Repository	2026-08-03T09:18:59.4232550Z [command]/opt/homebrew/bin/git log -1 --format=%H
+Build iOS	Checkout Repository	2026-08-03T09:18:59.4297420Z 4f9ade88f7cfe6d01165c8d1ce8d6b8998e30e13
+Build iOS	Set up Node.js	﻿2026-08-03T09:18:59.4562730Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+Build iOS	Set up Node.js	2026-08-03T09:18:59.4564530Z ##[group]Run actions/setup-node@v4
+Build iOS	Set up Node.js	2026-08-03T09:18:59.4564930Z with:
+Build iOS	Set up Node.js	2026-08-03T09:18:59.4565290Z   node-version: 20
+Build iOS	Set up Node.js	2026-08-03T09:18:59.4565660Z   cache: npm
+Build iOS	Set up Node.js	2026-08-03T09:18:59.4566040Z   always-auth: false
+Build iOS	Set up Node.js	2026-08-03T09:18:59.4566370Z   check-latest: false
+Build iOS	Set up Node.js	2026-08-03T09:18:59.4569100Z   token: ***
+Build iOS	Set up Node.js	2026-08-03T09:18:59.4569470Z ##[endgroup]
+Build iOS	Set up Node.js	2026-08-03T09:18:59.5975860Z Attempting to download 20...
+Build iOS	Set up Node.js	2026-08-03T09:18:59.6221250Z (node:16928) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+Build iOS	Set up Node.js	2026-08-03T09:18:59.6370940Z (Use `node --trace-deprecation ...` to show where the warning was created)
+Build iOS	Set up Node.js	2026-08-03T09:19:00.2598440Z Acquiring 20.20.2 - arm64 from https://github.com/actions/node-versions/releases/download/20.20.2-23521894959/node-20.20.2-darwin-arm64.tar.gz
+Build iOS	Set up Node.js	2026-08-03T09:19:00.7863300Z Extracting ...
+Build iOS	Set up Node.js	2026-08-03T09:19:00.7998890Z [command]/usr/bin/tar xz --strip 1 -C /Users/runner/work/_temp/c1efc542-7777-4951-a48b-3292f1acd78f -f /Users/runner/work/_temp/42414559-1650-4289-a499-2186ebb11cbb
+Build iOS	Set up Node.js	2026-08-03T09:19:01.9468080Z Adding to the cache ...
+Build iOS	Set up Node.js	2026-08-03T09:19:03.6954580Z ##[group]Environment details
+Build iOS	Set up Node.js	2026-08-03T09:19:04.0525930Z node: v20.20.2
+Build iOS	Set up Node.js	2026-08-03T09:19:04.0526690Z npm: 10.8.2
+Build iOS	Set up Node.js	2026-08-03T09:19:04.0527000Z yarn: 1.22.22
+Build iOS	Set up Node.js	2026-08-03T09:19:04.0532790Z ##[endgroup]
+Build iOS	Set up Node.js	2026-08-03T09:19:04.0546280Z [command]/Users/runner/hostedtoolcache/node/20.20.2/arm64/bin/npm config get cache
+Build iOS	Set up Node.js	2026-08-03T09:19:04.1905190Z /Users/runner/.npm
+Build iOS	Set up Node.js	2026-08-03T09:19:04.4631900Z npm cache is not found
+Build iOS	Set up Ruby	﻿2026-08-03T09:19:04.4874540Z ##[group]Run ruby/setup-ruby@v1
+Build iOS	Set up Ruby	2026-08-03T09:19:04.4874880Z with:
+Build iOS	Set up Ruby	2026-08-03T09:19:04.4875100Z   ruby-version: 3.1
+Build iOS	Set up Ruby	2026-08-03T09:19:04.4875290Z   bundler-cache: true
+Build iOS	Set up Ruby	2026-08-03T09:19:04.4875440Z   bundler: latest
+Build iOS	Set up Ruby	2026-08-03T09:19:04.4877680Z   token: ***
+Build iOS	Set up Ruby	2026-08-03T09:19:04.4877850Z ##[endgroup]
+Build iOS	Set up Ruby	2026-08-03T09:19:04.6183330Z ##[group]Modifying PATH
+Build iOS	Set up Ruby	2026-08-03T09:19:04.6190270Z Entries removed from PATH to avoid conflicts with default Ruby:
+Build iOS	Set up Ruby	2026-08-03T09:19:04.6190710Z   /opt/homebrew/lib/ruby/gems/3.4.0/bin
+Build iOS	Set up Ruby	2026-08-03T09:19:04.6191050Z   /opt/homebrew/opt/ruby@3.4/bin
+Build iOS	Set up Ruby	2026-08-03T09:19:04.6193360Z Entries added to PATH to use selected Ruby:
+Build iOS	Set up Ruby	2026-08-03T09:19:04.6193920Z   /Users/runner/hostedtoolcache/Ruby/3.1.7/arm64/bin
+Build iOS	Set up Ruby	2026-08-03T09:19:04.6198140Z ##[endgroup]
+Build iOS	Set up Ruby	2026-08-03T09:19:04.6204260Z ##[group]Downloading Ruby
+Build iOS	Set up Ruby	2026-08-03T09:19:04.6205330Z https://github.com/ruby/ruby-builder/releases/download/ruby-3.1.7/ruby-3.1.7-darwin-arm64.tar.gz
+Build iOS	Set up Ruby	2026-08-03T09:19:04.9499700Z Took   0.33 seconds
+Build iOS	Set up Ruby	2026-08-03T09:19:04.9500610Z ##[endgroup]
+Build iOS	Set up Ruby	2026-08-03T09:19:04.9501270Z ##[group]Extracting  Ruby
+Build iOS	Set up Ruby	2026-08-03T09:19:04.9595800Z [command]/usr/bin/tar -xz -C /Users/runner/hostedtoolcache/Ruby/3.1.7 -f /Users/runner/work/_temp/6f680ff3-0588-4e83-8c8d-eb38927a25ad
+Build iOS	Set up Ruby	2026-08-03T09:19:05.3836310Z Took   0.43 seconds
+Build iOS	Set up Ruby	2026-08-03T09:19:05.3841570Z ##[endgroup]
+Build iOS	Set up Ruby	2026-08-03T09:19:05.3850100Z ##[group]Print Ruby version
+Build iOS	Set up Ruby	2026-08-03T09:19:05.3851690Z [command]/Users/runner/hostedtoolcache/Ruby/3.1.7/arm64/bin/ruby --version
+Build iOS	Set up Ruby	2026-08-03T09:19:05.3953770Z ruby 3.1.7p261 (2025-03-26 revision 0a3704f218) [arm64-darwin23]
+Build iOS	Set up Ruby	2026-08-03T09:19:05.3956630Z Took   0.01 seconds
+Build iOS	Set up Ruby	2026-08-03T09:19:05.3959470Z ##[endgroup]
+Build iOS	Set up Ruby	2026-08-03T09:19:05.3993650Z ##[group]Installing Bundler
+Build iOS	Set up Ruby	2026-08-03T09:19:05.3999010Z [command]/Users/runner/hostedtoolcache/Ruby/3.1.7/arm64/bin/gem install bundler -v ~> 2.0
+Build iOS	Set up Ruby	2026-08-03T09:19:05.7920610Z Successfully installed bundler-2.6.9
+Build iOS	Set up Ruby	2026-08-03T09:19:05.7922810Z 1 gem installed
+Build iOS	Set up Ruby	2026-08-03T09:19:05.7940120Z Took   0.40 seconds
+Build iOS	Set up Ruby	2026-08-03T09:19:05.7947330Z ##[endgroup]
+Build iOS	Set up Ruby	2026-08-03T09:19:05.7953360Z > bundle install
+Build iOS	Set up Ruby	2026-08-03T09:19:05.7958430Z Setting BUNDLER_VERSION=2 for "bundle config|lock" commands below to ensure Bundler 2 is used
+Build iOS	Set up Ruby	2026-08-03T09:19:05.7972730Z [command]/Users/runner/hostedtoolcache/Ruby/3.1.7/arm64/bin/bundle config set --local path /Users/runner/work/TaskFlowAI/TaskFlowAI/vendor/bundle
+Build iOS	Set up Ruby	2026-08-03T09:19:05.9080610Z You are replacing the current local value of path, which is currently "vendor/bundle"
+Build iOS	Set up Ruby	2026-08-03T09:19:05.9118720Z [command]/Users/runner/hostedtoolcache/Ruby/3.1.7/arm64/bin/bundle config set --local deployment true
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0211880Z ##[group]Print lockfile
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0225240Z [command]/bin/cat Gemfile.lock
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0252040Z GEM
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0255030Z   remote: https://rubygems.org/
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0269830Z   specs:
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0270280Z     CFPropertyList (3.0.9)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0270830Z     abbrev (0.1.2)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0283630Z     activesupport (6.1.7.10)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0288370Z       concurrent-ruby (~> 1.0, >= 1.0.2)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0291040Z       i18n (>= 1.6, < 2)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0305010Z       minitest (>= 5.1)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0321120Z       tzinfo (~> 2.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0322490Z       zeitwerk (~> 2.3)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0323070Z     addressable (2.9.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0323650Z       public_suffix (>= 2.0.2, < 8.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0324040Z     algoliasearch (1.27.5)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0324380Z       httpclient (~> 2.8, >= 2.8.3)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0324740Z       json (>= 1.5.1)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0325020Z     artifactory (3.0.17)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0325330Z     atomos (0.1.3)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0325650Z     aws-eventstream (1.3.2)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0325940Z     aws-partitions (1.1109.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0326170Z     aws-sdk-core (3.224.1)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0326410Z       aws-eventstream (~> 1, >= 1.3.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0326800Z       aws-partitions (~> 1, >= 1.992.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0327130Z       aws-sigv4 (~> 1.9)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0328090Z       base64
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0328390Z       jmespath (~> 1, >= 1.6.1)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0328690Z       logger
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0329040Z     aws-sdk-kms (1.101.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0330920Z       aws-sdk-core (~> 3, >= 3.216.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0331330Z       aws-sigv4 (~> 1.5)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0331630Z     aws-sdk-s3 (1.188.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0331970Z       aws-sdk-core (~> 3, >= 3.224.1)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0332280Z       aws-sdk-kms (~> 1)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0332640Z       aws-sigv4 (~> 1.5)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0332950Z     aws-sigv4 (1.11.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0333300Z       aws-eventstream (~> 1, >= 1.0.2)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0333620Z     babosa (1.0.4)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0333930Z     base64 (0.3.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0334220Z     benchmark (0.5.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0334500Z     bigdecimal (4.1.2)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0334870Z     claide (1.1.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0335130Z     cocoapods (1.15.2)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0335530Z       addressable (~> 2.8)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0335930Z       claide (>= 1.0.2, < 2.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0336270Z       cocoapods-core (= 1.15.2)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0336630Z       cocoapods-deintegrate (>= 1.0.3, < 2.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0337020Z       cocoapods-downloader (>= 2.1, < 3.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0337400Z       cocoapods-plugins (>= 1.0.0, < 2.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0337750Z       cocoapods-search (>= 1.0.0, < 2.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0338120Z       cocoapods-trunk (>= 1.6.0, < 2.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0338490Z       cocoapods-try (>= 1.1.0, < 2.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0345220Z       colored2 (~> 3.1)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0345530Z       escape (~> 0.0.4)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0346170Z       fourflusher (>= 2.3.0, < 3.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0349660Z       gh_inspector (~> 1.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0350230Z       molinillo (~> 0.8.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0350810Z       nap (~> 1.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0352380Z       ruby-macho (>= 2.3.0, < 3.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0353390Z       xcodeproj (>= 1.23.0, < 2.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0353780Z     cocoapods-core (1.15.2)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0354060Z       activesupport (>= 5.0, < 8)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0354280Z       addressable (~> 2.8)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0354500Z       algoliasearch (~> 1.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0354740Z       concurrent-ruby (~> 1.1)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0354950Z       fuzzy_match (~> 2.0.4)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0355140Z       nap (~> 1.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0355300Z       netrc (~> 0.11)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0355620Z       public_suffix (~> 4.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0355880Z       typhoeus (~> 1.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0356120Z     cocoapods-deintegrate (1.0.5)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0356360Z     cocoapods-downloader (2.1)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0356590Z     cocoapods-plugins (1.0.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0356800Z       nap
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0357000Z     cocoapods-search (1.0.1)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0357200Z     cocoapods-trunk (1.6.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0357400Z       nap (>= 0.8, < 2.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0357650Z       netrc (~> 0.11)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0357880Z     cocoapods-try (1.2.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0358100Z     colored (1.2)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0358310Z     colored2 (3.1.2)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0358530Z     commander (4.6.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0358710Z       highline (~> 2.0.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0358920Z     concurrent-ruby (1.3.3)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0359100Z     csv (3.3.6)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0359280Z     declarative (0.0.20)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0359460Z     digest-crc (0.7.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0359720Z       rake (>= 12.0.0, < 14.0.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0360000Z     domain_name (0.5.20190701)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0360210Z       unf (>= 0.0.5, < 1.0.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0360410Z     dotenv (2.8.1)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0360590Z     emoji_regex (3.2.3)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0360800Z     escape (0.0.4)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0361000Z     ethon (0.18.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0361170Z       ffi (>= 1.15.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0361320Z       logger
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0361500Z     excon (0.109.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0361690Z     faraday (1.10.6)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0362350Z       faraday-em_http (~> 1.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0362640Z       faraday-em_synchrony (~> 1.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0362910Z       faraday-excon (~> 1.1)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0363170Z       faraday-httpclient (~> 1.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0363430Z       faraday-multipart (~> 1.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0363750Z       faraday-net_http (~> 1.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0364050Z       faraday-net_http_persistent (~> 1.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0364310Z       faraday-patron (~> 1.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0364510Z       faraday-rack (~> 1.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0364760Z       faraday-retry (~> 1.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0364990Z       ruby2_keywords (>= 0.0.4)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0365230Z     faraday-cookie_jar (0.0.8)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0365520Z       faraday (>= 0.8.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0365770Z       http-cookie (>= 1.0.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0376190Z     faraday-em_http (1.0.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0376530Z     faraday-em_synchrony (1.0.1)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0376720Z     faraday-excon (1.1.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0376970Z     faraday-httpclient (1.0.1)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0377160Z     faraday-multipart (1.2.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0377360Z       multipart-post (~> 2.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0377570Z     faraday-net_http (1.0.2)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0377890Z     faraday-net_http_persistent (1.2.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0378210Z     faraday-patron (1.0.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0378410Z     faraday-rack (1.0.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0378610Z     faraday-retry (1.0.4)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0378820Z     faraday_middleware (1.2.1)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0379010Z       faraday (~> 1.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0379180Z     fastimage (2.4.1)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0379340Z     fastlane (2.229.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0379570Z       CFPropertyList (>= 2.3, < 4.0.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0380190Z       abbrev (~> 0.1.2)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0380410Z       addressable (>= 2.8, < 3.0.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0380640Z       artifactory (~> 3.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0380820Z       aws-sdk-s3 (~> 1.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0381020Z       babosa (>= 1.0.3, < 2.0.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0381260Z       bundler (>= 1.12.0, < 3.0.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0381480Z       colored (~> 1.2)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0381720Z       commander (~> 4.6)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0381930Z       csv (~> 3.3)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0382130Z       dotenv (>= 2.1.1, < 3.0.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0382340Z       emoji_regex (>= 0.1, < 4.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0382560Z       excon (>= 0.71.0, < 1.0.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0382770Z       faraday (~> 1.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0383010Z       faraday-cookie_jar (~> 0.0.6)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0383260Z       faraday_middleware (~> 1.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0383580Z       fastimage (>= 2.1.0, < 3.0.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0383850Z       fastlane-sirp (>= 1.0.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0384120Z       gh_inspector (>= 1.1.2, < 2.0.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0384380Z       google-apis-androidpublisher_v3 (~> 0.3)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0384660Z       google-apis-playcustomapp_v1 (~> 0.1)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0384950Z       google-cloud-env (>= 1.6.0, < 2.0.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0385290Z       google-cloud-storage (~> 1.31)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0385510Z       highline (~> 2.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0385700Z       http-cookie (~> 1.0.5)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0385930Z       json (< 3.0.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0386140Z       jwt (>= 2.1.0, < 3)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0386380Z       mini_magick (>= 4.9.4, < 5.0.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0386680Z       multipart-post (>= 2.0.0, < 3.0.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0386920Z       mutex_m (~> 0.3.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0387090Z       naturally (~> 2.2)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0387290Z       optparse (>= 0.1.1, < 1.0.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0387510Z       plist (>= 3.1.0, < 4.0.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0387720Z       rubyzip (>= 2.0.0, < 3.0.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0387920Z       security (= 0.1.5)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0388110Z       simctl (~> 1.6.3)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0388350Z       terminal-notifier (>= 2.0.0, < 3.0.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0388590Z       terminal-table (~> 3)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0388880Z       tty-screen (>= 0.6.3, < 1.0.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0389420Z       tty-spinner (>= 0.8.0, < 1.0.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0389650Z       word_wrap (~> 1.0.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0389880Z       xcodeproj (>= 1.13.0, < 2.0.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0390100Z       xcpretty (~> 0.4.1)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0390350Z       xcpretty-travis-formatter (>= 0.0.3, < 2.0.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0390600Z     fastlane-sirp (1.1.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0390790Z     ffi (1.17.4)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0390980Z     fourflusher (2.3.1)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0391190Z     fuzzy_match (2.0.4)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0391390Z     gh_inspector (1.1.3)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0391690Z     google-apis-androidpublisher_v3 (0.54.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0391950Z       google-apis-core (>= 0.11.0, < 2.a)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0392170Z     google-apis-core (0.11.3)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0392400Z       addressable (~> 2.5, >= 2.5.1)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0392620Z       googleauth (>= 0.16.2, < 2.a)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0392860Z       httpclient (>= 2.8.1, < 3.a)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0393090Z       mini_mime (~> 1.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0393330Z       representable (~> 3.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0393550Z       retriable (>= 2.0, < 4.a)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0393730Z       rexml
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0393920Z     google-apis-iamcredentials_v1 (0.17.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0394180Z       google-apis-core (>= 0.11.0, < 2.a)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0394430Z     google-apis-playcustomapp_v1 (0.13.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0394680Z       google-apis-core (>= 0.11.0, < 2.a)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0394960Z     google-apis-storage_v1 (0.29.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0395250Z       google-apis-core (>= 0.11.0, < 2.a)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0395460Z     google-cloud-core (1.6.1)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0395690Z       google-cloud-env (>= 1.0, < 3.a)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0395940Z       google-cloud-errors (~> 1.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0396360Z     google-cloud-env (1.6.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0396580Z       faraday (>= 0.17.3, < 3.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0396840Z     google-cloud-errors (1.3.1)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0397120Z     google-cloud-storage (1.45.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0397330Z       addressable (~> 2.8)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0397520Z       digest-crc (~> 0.4)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0397750Z       google-apis-iamcredentials_v1 (~> 0.1)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0398050Z       google-apis-storage_v1 (~> 0.29.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0398360Z       google-cloud-core (~> 1.6)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0398600Z       googleauth (>= 0.16.2, < 2.a)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0398840Z       mini_mime (~> 1.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0399100Z     googleauth (1.8.1)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0399340Z       faraday (>= 0.17.3, < 3.a)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0399570Z       jwt (>= 1.4, < 3.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0399760Z       multi_json (~> 1.11)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0399950Z       os (>= 0.9, < 2.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0400120Z       signet (>= 0.16, < 2.a)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0400300Z     highline (2.0.3)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0400460Z     http-cookie (1.0.8)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0400640Z       domain_name (~> 0.5)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0400810Z     httpclient (2.9.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0401000Z       mutex_m
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0401180Z     i18n (1.14.8)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0401360Z       concurrent-ruby (~> 1.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0401550Z     jmespath (1.6.2)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0401710Z     json (2.7.6)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0401850Z     jwt (2.10.3)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0401980Z       base64
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0402120Z     logger (1.7.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0402270Z     mini_magick (4.13.2)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0402440Z     mini_mime (1.1.5)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0402600Z     minitest (5.25.4)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0402770Z     molinillo (0.8.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0402970Z     multi_json (1.15.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0403180Z     multipart-post (2.4.1)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0403350Z     mutex_m (0.3.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0403500Z     nanaimo (0.3.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0403660Z     nap (1.1.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0403800Z     naturally (2.3.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0403950Z     netrc (0.11.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0404130Z     nkf (0.3.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0404270Z     optparse (0.8.1)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0404420Z     os (1.1.4)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0404790Z     plist (3.7.2)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0404980Z     public_suffix (4.0.7)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0405160Z     rake (13.4.2)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0405310Z     representable (3.2.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0405490Z       declarative (< 0.1.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0405720Z       trailblazer-option (>= 0.1.1, < 0.2.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0405920Z       uber (< 0.2.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0406080Z     retriable (3.8.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0406240Z     rexml (3.4.4)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0406380Z     rouge (3.28.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0406560Z     ruby-macho (2.5.1)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0406760Z     ruby2_keywords (0.0.5)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0406970Z     rubyzip (2.4.1)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0407120Z     security (0.1.5)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0407270Z     signet (0.18.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0407430Z       addressable (~> 2.8)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0407620Z       faraday (>= 0.17.5, < 3.a)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0407800Z       jwt (>= 1.5, < 3.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0407970Z       multi_json (~> 1.10)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0408140Z     simctl (1.6.10)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0408300Z       CFPropertyList
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0408480Z       naturally
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0408670Z     terminal-notifier (2.0.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0408900Z     terminal-table (3.0.2)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0409120Z       unicode-display_width (>= 1.1.1, < 3)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0409360Z     trailblazer-option (0.1.2)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0409550Z     tty-cursor (0.7.1)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0409700Z     tty-screen (0.8.2)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0409870Z     tty-spinner (0.9.3)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0410030Z       tty-cursor (~> 0.7)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0410200Z     typhoeus (1.6.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0410390Z       ethon (>= 0.18.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0410580Z     tzinfo (2.0.6)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0410960Z       concurrent-ruby (~> 1.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0411140Z     uber (0.1.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0411280Z     unf (0.2.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0411470Z     unicode-display_width (2.6.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0411660Z     word_wrap (1.0.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0411830Z     xcodeproj (1.25.1)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0412030Z       CFPropertyList (>= 2.3.3, < 4.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0412260Z       atomos (~> 0.1.3)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0412490Z       claide (>= 1.0.2, < 2.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0412710Z       colored2 (~> 3.1)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0412870Z       nanaimo (~> 0.3.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0413030Z       rexml (>= 3.3.6, < 4.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0413310Z     xcpretty (0.4.1)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0413520Z       rouge (~> 3.28.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0413750Z     xcpretty-travis-formatter (1.0.1)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0413980Z       xcpretty (~> 0.2, >= 0.0.7)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0414200Z     zeitwerk (2.6.18)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0414330Z 
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0414410Z PLATFORMS
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0414550Z   ruby
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0414630Z 
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0414680Z DEPENDENCIES
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0414870Z   activesupport (>= 6.1.7.5, != 7.1.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0415050Z   benchmark
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0415180Z   bigdecimal
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0415370Z   cocoapods (>= 1.13, != 1.15.1, != 1.15.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0415580Z   concurrent-ruby (< 1.3.4)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0415740Z   fastlane
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0415870Z   logger
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0415990Z   mutex_m
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0416110Z   nkf
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0416240Z   xcodeproj (< 1.26.0)
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0416350Z 
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0416400Z RUBY VERSION
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0416540Z    ruby 2.6.10p210
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0416640Z 
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0416920Z ##[endgroup]
+Build iOS	Set up Ruby	2026-08-03T09:19:06.0418120Z Cache key: setup-ruby-bundler-cache-v6-macos-16-arm64-ruby-3.1.7-wd-/Users/runner/work/TaskFlowAI/TaskFlowAI-with--without--only--Gemfile.lock-a0909da01179a0005d393fa3d5e1eb4f0defaef42d94d15e9dfee17ddfe767b8
+Build iOS	Set up Ruby	2026-08-03T09:19:06.2746070Z Cache hit for: setup-ruby-bundler-cache-v6-macos-16-arm64-ruby-3.1.7-wd-/Users/runner/work/TaskFlowAI/TaskFlowAI-with--without--only--Gemfile.lock-a0909da01179a0005d393fa3d5e1eb4f0defaef42d94d15e9dfee17ddfe767b8
+Build iOS	Set up Ruby	2026-08-03T09:19:07.5731370Z Received 0 of 20758593 (0.0%), 0.0 MBs/sec
+Build iOS	Set up Ruby	2026-08-03T09:19:07.9417640Z Received 20758593 of 20758593 (100.0%), 14.5 MBs/sec
+Build iOS	Set up Ruby	2026-08-03T09:19:07.9429460Z Cache Size: ~20 MB (20758593 B)
+Build iOS	Set up Ruby	2026-08-03T09:19:07.9463090Z [command]/opt/homebrew/bin/gtar -xf /Users/runner/work/_temp/7ce3052b-a2f0-420c-be92-a7a353e0a46c/cache.tzst -P -C /Users/runner/work/TaskFlowAI/TaskFlowAI --delay-directory-restore --use-compress-program unzstd
+Build iOS	Set up Ruby	2026-08-03T09:19:09.0924120Z Cache restored successfully
+Build iOS	Set up Ruby	2026-08-03T09:19:09.0931970Z Found cache for key: setup-ruby-bundler-cache-v6-macos-16-arm64-ruby-3.1.7-wd-/Users/runner/work/TaskFlowAI/TaskFlowAI-with--without--only--Gemfile.lock-a0909da01179a0005d393fa3d5e1eb4f0defaef42d94d15e9dfee17ddfe767b8
+Build iOS	Set up Ruby	2026-08-03T09:19:09.0945910Z [command]/Users/runner/hostedtoolcache/Ruby/3.1.7/arm64/bin/bundle install --jobs 3
+Build iOS	Set up Ruby	2026-08-03T09:19:09.4690930Z Bundle complete! 10 Gemfile dependencies, 121 gems now installed.
+Build iOS	Set up Ruby	2026-08-03T09:19:09.4756450Z Bundled gems are installed into `./vendor/bundle`
+Build iOS	Set up Ruby	2026-08-03T09:19:09.4954840Z Took   3.70 seconds
+Build iOS	Install npm dependencies	﻿2026-08-03T09:19:09.5056040Z ##[group]Run npm ci
+Build iOS	Install npm dependencies	2026-08-03T09:19:09.5056440Z ^[[36;1mnpm ci^[[0m
+Build iOS	Install npm dependencies	2026-08-03T09:19:09.5108290Z shell: /bin/bash -e {0}
+Build iOS	Install npm dependencies	2026-08-03T09:19:09.5108530Z env:
+Build iOS	Install npm dependencies	2026-08-03T09:19:09.5110050Z   PATH: /Users/runner/hostedtoolcache/node/20.20.2/arm64/bin:/Users/runner/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/runner/.cargo/bin:/usr/local/opt/curl/bin:/usr/local/bin:/usr/local/sbin:/Users/runner/bin:/Users/runner/.yarn/bin:/Users/runner/Library/Android/sdk/tools:/Users/runner/Library/Android/sdk/platform-tools:/Library/Frameworks/Python.framework/Versions/Current/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/usr/bin:/bin:/usr/sbin:/sbin:/Users/runner/.dotnet/tools
+Build iOS	Install npm dependencies	2026-08-03T09:19:09.5112010Z ##[endgroup]
+Build iOS	Install npm dependencies	2026-08-03T09:19:10.0383180Z npm warn EBADENGINE Unsupported engine {
+Build iOS	Install npm dependencies	2026-08-03T09:19:10.0383670Z npm warn EBADENGINE   package: 'TaskFlowAI@0.0.1',
+Build iOS	Install npm dependencies	2026-08-03T09:19:10.0384070Z npm warn EBADENGINE   required: { node: '>= 22.11.0' },
+Build iOS	Install npm dependencies	2026-08-03T09:19:10.0384520Z npm warn EBADENGINE   current: { node: 'v20.20.2', npm: '10.8.2' }
+Build iOS	Install npm dependencies	2026-08-03T09:19:10.0384920Z npm warn EBADENGINE }
+Build iOS	Install npm dependencies	2026-08-03T09:19:11.8271800Z npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+Build iOS	Install npm dependencies	2026-08-03T09:19:12.5468500Z npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+Build iOS	Install npm dependencies	2026-08-03T09:19:12.7228550Z npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+Build iOS	Install npm dependencies	2026-08-03T09:19:13.7438750Z npm warn deprecated @humanwhocodes/config-array@0.13.0: Use @eslint/config-array instead
+Build iOS	Install npm dependencies	2026-08-03T09:19:13.7441950Z npm warn deprecated @humanwhocodes/object-schema@2.0.3: Use @eslint/object-schema instead
+Build iOS	Install npm dependencies	2026-08-03T09:19:17.3549080Z npm warn deprecated eslint@8.57.1: This version is no longer supported. Please see https://eslint.org/version-support for other options.
+Build iOS	Install npm dependencies	2026-08-03T09:19:24.5408250Z 
+Build iOS	Install npm dependencies	2026-08-03T09:19:24.5408770Z added 970 packages, and audited 972 packages in 15s
+Build iOS	Install npm dependencies	2026-08-03T09:19:24.5409020Z 
+Build iOS	Install npm dependencies	2026-08-03T09:19:24.5409170Z 174 packages are looking for funding
+Build iOS	Install npm dependencies	2026-08-03T09:19:24.5409400Z   run `npm fund` for details
+Build iOS	Install npm dependencies	2026-08-03T09:19:24.5478880Z 
+Build iOS	Install npm dependencies	2026-08-03T09:19:24.5479330Z 7 moderate severity vulnerabilities
+Build iOS	Install npm dependencies	2026-08-03T09:19:24.5479590Z 
+Build iOS	Install npm dependencies	2026-08-03T09:19:24.5479680Z To address all issues, run:
+Build iOS	Install npm dependencies	2026-08-03T09:19:24.5479970Z   npm audit fix --force
+Build iOS	Install npm dependencies	2026-08-03T09:19:24.5480170Z 
+Build iOS	Install npm dependencies	2026-08-03T09:19:24.5480300Z Run `npm audit` for details.
+Build iOS	Install Pods	﻿2026-08-03T09:19:24.5657840Z ##[group]Run pod install
+Build iOS	Install Pods	2026-08-03T09:19:24.5658110Z ^[[36;1mpod install^[[0m
+Build iOS	Install Pods	2026-08-03T09:19:24.5862390Z shell: /bin/bash -e {0}
+Build iOS	Install Pods	2026-08-03T09:19:24.5862650Z env:
+Build iOS	Install Pods	2026-08-03T09:19:24.5864110Z   PATH: /Users/runner/hostedtoolcache/node/20.20.2/arm64/bin:/Users/runner/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/runner/.cargo/bin:/usr/local/opt/curl/bin:/usr/local/bin:/usr/local/sbin:/Users/runner/bin:/Users/runner/.yarn/bin:/Users/runner/Library/Android/sdk/tools:/Users/runner/Library/Android/sdk/platform-tools:/Library/Frameworks/Python.framework/Versions/Current/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/usr/bin:/bin:/usr/sbin:/sbin:/Users/runner/.dotnet/tools
+Build iOS	Install Pods	2026-08-03T09:19:24.5865630Z ##[endgroup]
+Build iOS	Install Pods	2026-08-03T09:19:27.6689950Z Configuring Pod with statically linked Frameworks
+Build iOS	Install Pods	2026-08-03T09:19:28.4375400Z Using firebase.json from '/Users/runner/work/TaskFlowAI/TaskFlowAI/firebase.json'
+Build iOS	Install Pods	2026-08-03T09:19:28.4376330Z RNFBApp: Using overridden static_framework value of 'true'
+Build iOS	Install Pods	2026-08-03T09:19:28.4384010Z RNFBAuth: Using overridden static_framework value of 'true'
+Build iOS	Install Pods	2026-08-03T09:19:28.4386050Z RNFBFirestore: Using overridden static_framework value of 'true'
+Build iOS	Install Pods	2026-08-03T09:19:28.4386610Z Found 5 modules for target `TaskFlowAI`
+Build iOS	Install Pods	2026-08-03T09:19:28.4395580Z link_native_modules! {ios_packages: [{configurations: [], name: "@react-native-firebase/app", root: "/Users/runner/work/TaskFlowAI/TaskFlowAI/node_modules/@react-native-firebase/app", path: "../node_modules/@react-native-firebase/app", podspec_path: "/Users/runner/work/TaskFlowAI/TaskFlowAI/node_modules/@react-native-firebase/app/RNFBApp.podspec", script_phases: [{"name" => "[RNFB] Core Configuration", "path" => "./ios_config.sh", "execution_position" => "after_compile", "input_files" => ["$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)"]}]}, {configurations: [], name: "@react-native-firebase/auth", root: "/Users/runner/work/TaskFlowAI/TaskFlowAI/node_modules/@react-native-firebase/auth", path: "../node_modules/@react-native-firebase/auth", podspec_path: "/Users/runner/work/TaskFlowAI/TaskFlowAI/node_modules/@react-native-firebase/auth/RNFBAuth.podspec", script_phases: []}, {configurations: [], name: "@react-native-firebase/firestore", root: "/Users/runner/work/TaskFlowAI/TaskFlowAI/node_modules/@react-native-firebase/firestore", path: "../node_modules/@react-native-firebase/firestore", podspec_path: "/Users/runner/work/TaskFlowAI/TaskFlowAI/node_modules/@react-native-firebase/firestore/RNFBFirestore.podspec", script_phases: []}, {configurations: [], name: "react-native-safe-area-context", root: "/Users/runner/work/TaskFlowAI/TaskFlowAI/node_modules/react-native-safe-area-context", path: "../node_modules/react-native-safe-area-context", podspec_path: "/Users/runner/work/TaskFlowAI/TaskFlowAI/node_modules/react-native-safe-area-context/react-native-safe-area-context.podspec", script_phases: []}, {configurations: [], name: "react-native-screens", root: "/Users/runner/work/TaskFlowAI/TaskFlowAI/node_modules/react-native-screens", path: "../node_modules/react-native-screens", podspec_path: "/Users/runner/work/TaskFlowAI/TaskFlowAI/node_modules/react-native-screens/RNScreens.podspec", script_phases: []}], ios_project_root_path: "/Users/runner/work/TaskFlowAI/TaskFlowAI/ios", react_native_path: "../node_modules/react-native"}
+Build iOS	Install Pods	2026-08-03T09:19:28.4402540Z RNFBApp: Using overridden static_framework value of 'true'
+Build iOS	Install Pods	2026-08-03T09:19:28.4403030Z Adding a custom script phase for Pod RNFBApp: [RNFB] Core Configuration
+Build iOS	Install Pods	2026-08-03T09:19:28.4403620Z RNFBAuth: Using overridden static_framework value of 'true'
+Build iOS	Install Pods	2026-08-03T09:19:28.4404130Z RNFBFirestore: Using overridden static_framework value of 'true'
+Build iOS	Install Pods	2026-08-03T09:19:28.4404990Z Auto-linking React Native modules for target `TaskFlowAI`: RNFBApp, RNFBAuth, RNFBFirestore, RNScreens, and react-native-safe-area-context
+Build iOS	Install Pods	2026-08-03T09:19:28.5114710Z Framework build type is static framework
+Build iOS	Install Pods	2026-08-03T09:19:28.5210440Z [ReactNativeDependencies] Setting up ReactNativeDependencies...
+Build iOS	Install Pods	2026-08-03T09:19:28.5942140Z [ReactNativeDependencies] Building from source: false
+Build iOS	Install Pods	2026-08-03T09:19:28.5944590Z [ReactNativeDependencies] Using tarball from URL: https://repo1.maven.org/maven2/com/facebook/react/react-native-artifacts/0.86.2/react-native-artifacts-0.86.2-reactnative-dependencies-debug.tar.gz
+Build iOS	Install Pods	2026-08-03T09:19:28.6042520Z [ReactNativeDependencies] Cache miss: downloading reactnative-dependencies-0.86.2-debug.tar.gz from https://repo1.maven.org/maven2/com/facebook/react/react-native-artifacts/0.86.2/react-native-artifacts-0.86.2-reactnative-dependencies-debug.tar.gz
+Build iOS	Install Pods	2026-08-03T09:19:28.6208720Z   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+Build iOS	Install Pods	2026-08-03T09:19:28.6209450Z                                  Dload  Upload   Total   Spent    Left  Speed
+Build iOS	Install Pods	2026-08-03T09:19:28.6209730Z 
+Build iOS	Install Pods	2026-08-03T09:19:28.7795380Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+Build iOS	Install Pods	2026-08-03T09:19:28.7897330Z 100 17.8M  100 17.8M    0     0   116M      0 --:--:-- --:--:-- --:--:--  116M
+Build iOS	Install Pods	2026-08-03T09:19:28.7898270Z [ReactNativeDependencies] Verifying checksum for downloaded reactnative-dependencies-0.86.2-debug.tar.gz...
+Build iOS	Install Pods	2026-08-03T09:19:28.8628530Z [Cache] SHA1 verified for reactnative-dependencies-0.86.2-debug.tar.gz
+Build iOS	Install Pods	2026-08-03T09:19:28.8882440Z [ReactNativeDependencies] Saved reactnative-dependencies-0.86.2-debug.tar.gz to shared cache (/Users/runner/Library/Caches/ReactNative)
+Build iOS	Install Pods	2026-08-03T09:19:28.9025810Z [ReactNativeDependencies] Cache miss: downloading reactnative-dependencies-0.86.2-release.tar.gz from https://repo1.maven.org/maven2/com/facebook/react/react-native-artifacts/0.86.2/react-native-artifacts-0.86.2-reactnative-dependencies-release.tar.gz
+Build iOS	Install Pods	2026-08-03T09:19:28.9219180Z   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+Build iOS	Install Pods	2026-08-03T09:19:28.9219790Z                                  Dload  Upload   Total   Spent    Left  Speed
+Build iOS	Install Pods	2026-08-03T09:19:28.9220000Z 
+Build iOS	Install Pods	2026-08-03T09:19:29.0196160Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+Build iOS	Install Pods	2026-08-03T09:19:29.0297960Z 100  9.9M  100  9.9M    0     0   101M      0 --:--:-- --:--:-- --:--:--  102M
+Build iOS	Install Pods	2026-08-03T09:19:29.0399890Z [ReactNativeDependencies] Verifying checksum for downloaded reactnative-dependencies-0.86.2-release.tar.gz...
+Build iOS	Install Pods	2026-08-03T09:19:29.0920540Z [Cache] SHA1 verified for reactnative-dependencies-0.86.2-release.tar.gz
+Build iOS	Install Pods	2026-08-03T09:19:29.1085870Z [ReactNativeDependencies] Saved reactnative-dependencies-0.86.2-release.tar.gz to shared cache (/Users/runner/Library/Caches/ReactNative)
+Build iOS	Install Pods	2026-08-03T09:19:29.1087320Z [ReactNativeDependencies] Source: {http: "https://repo1.maven.org/maven2/com/facebook/react/react-native-artifacts/0.86.2/react-native-artifacts-0.86.2-reactnative-dependencies-debug.tar.gz"}
+Build iOS	Install Pods	2026-08-03T09:19:29.1088180Z [ReactNativeCore] Setting up ReactNativeCore...
+Build iOS	Install Pods	2026-08-03T09:19:29.1527860Z [ReactNativeCore] Building from source: false
+Build iOS	Install Pods	2026-08-03T09:19:29.1528720Z Configuring the target with the New Architecture
+Build iOS	Install Pods	2026-08-03T09:19:29.1529470Z [ReactNativeCore] Using React Native Core and React Native Dependencies prebuilt versions.
+Build iOS	Install Pods	2026-08-03T09:19:29.6389330Z ^[[36m^[[1m[Codegen]^[[0m Analyzing /Users/runner/work/TaskFlowAI/TaskFlowAI/package.json^[[0m
+Build iOS	Install Pods	2026-08-03T09:19:29.6410210Z ^[[36m^[[1m[Codegen]^[[0m ^[[33mSearching for codegen-enabled libraries in the app.^[[0m
+Build iOS	Install Pods	2026-08-03T09:19:29.6411470Z ^[[36m^[[1m[Codegen]^[[0m ^[[33mThe "codegenConfig" field is not defined in package.json. Assuming there is nothing to generate at the app level.^[[0m
+Build iOS	Install Pods	2026-08-03T09:19:29.6413400Z ^[[36m^[[1m[Codegen]^[[0m ^[[33mSearching for codegen-enabled libraries in react-native.config.js^[[0m
+Build iOS	Install Pods	2026-08-03T09:19:29.6414360Z ^[[36m^[[1m[Codegen]^[[0m Found @react-native-firebase/app^[[0m
+Build iOS	Install Pods	2026-08-03T09:19:29.6415050Z ^[[36m^[[1m[Codegen]^[[0m Found @react-native-firebase/auth^[[0m
+Build iOS	Install Pods	2026-08-03T09:19:29.6415820Z ^[[36m^[[1m[Codegen]^[[0m Found @react-native-firebase/firestore^[[0m
+Build iOS	Install Pods	2026-08-03T09:19:29.6416500Z ^[[36m^[[1m[Codegen]^[[0m Found react-native-safe-area-context^[[0m
+Build iOS	Install Pods	2026-08-03T09:19:29.6417170Z ^[[36m^[[1m[Codegen]^[[0m Found react-native-screens^[[0m
+Build iOS	Install Pods	2026-08-03T09:19:29.6418070Z ^[[36m^[[1m[Codegen]^[[0m Processing RNFBAppTurboModules^[[0m
+Build iOS	Install Pods	2026-08-03T09:19:29.6418640Z ^[[36m^[[1m[Codegen]^[[0m ^[[33mSearching for podspec in the project dependencies.^[[0m
+Build iOS	Install Pods	2026-08-03T09:19:29.6419310Z ^[[36m^[[1m[Codegen]^[[0m Supported Apple platforms: ios, tvos for RNFBAppTurboModules^[[0m
+Build iOS	Install Pods	2026-08-03T09:19:29.6419930Z ^[[36m^[[1m[Codegen]^[[0m Processing RNFBAuthTurboModules^[[0m
+Build iOS	Install Pods	2026-08-03T09:19:29.6420550Z ^[[36m^[[1m[Codegen]^[[0m ^[[33mSearching for podspec in the project dependencies.^[[0m
+Build iOS	Install Pods	2026-08-03T09:19:29.6421210Z ^[[36m^[[1m[Codegen]^[[0m Supported Apple platforms: ios, tvos for RNFBAuthTurboModules^[[0m
+Build iOS	Install Pods	2026-08-03T09:19:29.6421850Z ^[[36m^[[1m[Codegen]^[[0m Processing RNFBFirestoreTurboModules^[[0m
+Build iOS	Install Pods	2026-08-03T09:19:29.6422730Z ^[[36m^[[1m[Codegen]^[[0m ^[[33mSearching for podspec in the project dependencies.^[[0m
+Build iOS	Install Pods	2026-08-03T09:19:29.6423470Z ^[[36m^[[1m[Codegen]^[[0m Supported Apple platforms: ios, tvos for RNFBFirestoreTurboModules^[[0m
+Build iOS	Install Pods	2026-08-03T09:19:29.6424090Z ^[[36m^[[1m[Codegen]^[[0m Processing safeareacontext^[[0m
+Build iOS	Install Pods	2026-08-03T09:19:29.6424600Z ^[[36m^[[1m[Codegen]^[[0m ^[[33mSearching for podspec in the project dependencies.^[[0m
+Build iOS	Install Pods	2026-08-03T09:19:29.6425240Z ^[[36m^[[1m[Codegen]^[[0m Supported Apple platforms: ios, macos, tvos, visionos for safeareacontext^[[0m
+Build iOS	Install Pods	2026-08-03T09:19:29.6425850Z ^[[36m^[[1m[Codegen]^[[0m Processing rnscreens^[[0m
+Build iOS	Install Pods	2026-08-03T09:19:29.6426410Z ^[[36m^[[1m[Codegen]^[[0m ^[[33mSearching for podspec in the project dependencies.^[[0m
+Build iOS	Install Pods	2026-08-03T09:19:29.6427110Z ^[[36m^[[1m[Codegen]^[[0m Supported Apple platforms: ios, tvos, visionos for rnscreens^[[0m
+Build iOS	Install Pods	2026-08-03T09:19:29.6427730Z ^[[36m^[[1m[Codegen]^[[0m Generating Native Code for safeareacontext - ios^[[0m
+Build iOS	Install Pods	2026-08-03T09:19:29.6428670Z ^[[36m^[[1m[Codegen]^[[0m Generated artifacts: /Users/runner/work/TaskFlowAI/TaskFlowAI/ios/build/generated/ios/ReactCodegen^[[0m
+Build iOS	Install Pods	2026-08-03T09:19:29.6429390Z ^[[36m^[[1m[Codegen]^[[0m Generating Native Code for rnscreens - ios^[[0m
+Build iOS	Install Pods	2026-08-03T09:19:29.6430390Z ^[[36m^[[1m[Codegen]^[[0m Generated artifacts: /Users/runner/work/TaskFlowAI/TaskFlowAI/ios/build/generated/ios/ReactCodegen^[[0m
+Build iOS	Install Pods	2026-08-03T09:19:29.6431260Z ^[[36m^[[1m[Codegen]^[[0m Generating RCTThirdPartyComponentsProvider.h^[[0m
+Build iOS	Install Pods	2026-08-03T09:19:29.6432390Z ^[[36m^[[1m[Codegen]^[[0m Generated artifact: /Users/runner/work/TaskFlowAI/TaskFlowAI/ios/build/generated/ios/ReactCodegen/RCTThirdPartyComponentsProvider.h^[[0m
+Build iOS	Install Pods	2026-08-03T09:19:29.6433170Z ^[[36m^[[1m[Codegen]^[[0m Generating RCTThirdPartyComponentsProvider.mm^[[0m
+Build iOS	Install Pods	2026-08-03T09:19:29.6434370Z ^[[36m^[[1m[Codegen]^[[0m Generated artifact: /Users/runner/work/TaskFlowAI/TaskFlowAI/ios/build/generated/ios/ReactCodegen/RCTThirdPartyComponentsProvider.mm^[[0m
+Build iOS	Install Pods	2026-08-03T09:19:29.6435140Z ^[[36m^[[1m[Codegen]^[[0m Generating RCTModulesProvider.h^[[0m
+Build iOS	Install Pods	2026-08-03T09:19:29.6436010Z ^[[36m^[[1m[Codegen]^[[0m Generated artifact: /Users/runner/work/TaskFlowAI/TaskFlowAI/ios/build/generated/ios/ReactCodegen/RCTModuleProviders.h^[[0m
+Build iOS	Install Pods	2026-08-03T09:19:29.6436740Z ^[[36m^[[1m[Codegen]^[[0m Generating RCTModuleProviders.mm^[[0m
+Build iOS	Install Pods	2026-08-03T09:19:29.6437630Z ^[[36m^[[1m[Codegen]^[[0m Generated artifact: /Users/runner/work/TaskFlowAI/TaskFlowAI/ios/build/generated/ios/ReactCodegen/RCTModuleProviders.mm^[[0m
+Build iOS	Install Pods	2026-08-03T09:19:29.6438450Z ^[[36m^[[1m[Codegen]^[[0m Generating RCTAppDependencyProvider^[[0m
+Build iOS	Install Pods	2026-08-03T09:19:29.6439660Z ^[[36m^[[1m[Codegen]^[[0m Generated artifact: /Users/runner/work/TaskFlowAI/TaskFlowAI/ios/build/generated/ios/ReactAppDependencyProvider/RCTAppDependencyProvider.h^[[0m
+Build iOS	Install Pods	2026-08-03T09:19:29.6440950Z ^[[36m^[[1m[Codegen]^[[0m Generated artifact: /Users/runner/work/TaskFlowAI/TaskFlowAI/ios/build/generated/ios/ReactAppDependencyProvider/RCTAppDependencyProvider.mm^[[0m
+Build iOS	Install Pods	2026-08-03T09:19:29.6442290Z ^[[36m^[[1m[Codegen]^[[0m Generated podspec: /Users/runner/work/TaskFlowAI/TaskFlowAI/ios/build/generated/ios/ReactAppDependencyProvider/ReactAppDependencyProvider.podspec^[[0m
+Build iOS	Install Pods	2026-08-03T09:19:29.6443490Z ^[[36m^[[1m[Codegen]^[[0m Generated podspec: /Users/runner/work/TaskFlowAI/TaskFlowAI/ios/build/generated/ios/ReactCodegen/ReactCodegen.podspec^[[0m
+Build iOS	Install Pods	2026-08-03T09:19:29.6444360Z ^[[36m^[[1m[Codegen]^[[0m Generating Package.swift^[[0m
+Build iOS	Install Pods	2026-08-03T09:19:29.6445050Z ^[[36m^[[1m[Codegen]^[[0m Generated artifact: /Users/runner/work/TaskFlowAI/TaskFlowAI/ios/build/generated/ios/Package.swift^[[0m
+Build iOS	Install Pods	2026-08-03T09:19:29.6445650Z ^[[36m^[[1m[Codegen]^[[0m ^[[33mDone.^[[0m
+Build iOS	Install Pods	2026-08-03T09:19:29.6445970Z Analyzing dependencies
+Build iOS	Install Pods	2026-08-03T09:19:29.6461130Z RNFBApp: Using overridden static_framework value of 'true'
+Build iOS	Install Pods	2026-08-03T09:19:29.6476700Z RNFBAuth: Using overridden static_framework value of 'true'
+Build iOS	Install Pods	2026-08-03T09:19:29.6492640Z RNFBFirestore: Using overridden static_framework value of 'true'
+Build iOS	Install Pods	2026-08-03T09:19:29.6617350Z Fetching podspec for `React-Core-prebuilt` from `../node_modules/react-native/React-Core-prebuilt.podspec`
+Build iOS	Install Pods	2026-08-03T09:19:29.6700680Z [ReactNativeCore] Cache miss: downloading reactnative-core-0.86.2-debug.tar.gz from https://repo1.maven.org/maven2/com/facebook/react/react-native-artifacts/0.86.2/react-native-artifacts-0.86.2-reactnative-core-debug.tar.gz
+Build iOS	Install Pods	2026-08-03T09:19:29.6848920Z   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+Build iOS	Install Pods	2026-08-03T09:19:29.6849620Z                                  Dload  Upload   Total   Spent    Left  Speed
+Build iOS	Install Pods	2026-08-03T09:19:29.6849960Z 
+Build iOS	Install Pods	2026-08-03T09:19:29.9107720Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+Build iOS	Install Pods	2026-08-03T09:19:30.3607930Z  31 94.2M   31 29.8M    0     0   132M      0 --:--:-- --:--:-- --:--:--  132M
+Build iOS	Install Pods	2026-08-03T09:19:30.3609010Z 100 94.2M  100 94.2M    0     0   139M      0 --:--:-- --:--:-- --:--:--  139M
+Build iOS	Install Pods	2026-08-03T09:19:30.3709650Z [ReactNativeCore] Verifying checksum for downloaded reactnative-core-0.86.2-debug.tar.gz...
+Build iOS	Install Pods	2026-08-03T09:19:30.4864570Z [Cache] SHA1 verified for reactnative-core-0.86.2-debug.tar.gz
+Build iOS	Install Pods	2026-08-03T09:19:30.5461280Z [ReactNativeCore] Saved reactnative-core-0.86.2-debug.tar.gz to shared cache (/Users/runner/Library/Caches/ReactNative)
+Build iOS	Install Pods	2026-08-03T09:19:30.5574570Z [ReactNativeCore] Cache miss: downloading reactnative-core-0.86.2-release.tar.gz from https://repo1.maven.org/maven2/com/facebook/react/react-native-artifacts/0.86.2/react-native-artifacts-0.86.2-reactnative-core-release.tar.gz
+Build iOS	Install Pods	2026-08-03T09:19:30.5734220Z   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+Build iOS	Install Pods	2026-08-03T09:19:30.5761940Z                                  Dload  Upload   Total   Spent    Left  Speed
+Build iOS	Install Pods	2026-08-03T09:19:30.5766790Z 
+Build iOS	Install Pods	2026-08-03T09:19:30.8000190Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+Build iOS	Install Pods	2026-08-03T09:19:30.8001230Z 100 29.5M  100 29.5M    0     0   130M      0 --:--:-- --:--:-- --:--:--  130M
+Build iOS	Install Pods	2026-08-03T09:19:30.8074930Z [ReactNativeCore] Verifying checksum for downloaded reactnative-core-0.86.2-release.tar.gz...
+Build iOS	Install Pods	2026-08-03T09:19:30.8747390Z [Cache] SHA1 verified for reactnative-core-0.86.2-release.tar.gz
+Build iOS	Install Pods	2026-08-03T09:19:30.8996000Z [ReactNativeCore] Saved reactnative-core-0.86.2-release.tar.gz to shared cache (/Users/runner/Library/Caches/ReactNative)
+Build iOS	Install Pods	2026-08-03T09:19:30.9025610Z [ReactNativeCore] Resolved stable ReactNativeCore-prebuilt version:
+Build iOS	Install Pods	2026-08-03T09:19:30.9030870Z [ReactNativeCore]   ../../ios/Pods/ReactNativeCore-artifacts/reactnative-core-0.86.2-debug.tar.gz
+Build iOS	Install Pods	2026-08-03T09:19:30.9132360Z [ReactNativeCore]   ../../ios/Pods/ReactNativeCore-artifacts/reactnative-core-0.86.2-release.tar.gz
+Build iOS	Install Pods	2026-08-03T09:19:31.0173330Z Fetching podspec for `ReactNativeDependencies` from `../node_modules/react-native/third-party-podspecs/ReactNativeDependencies.podspec`
+Build iOS	Install Pods	2026-08-03T09:19:31.1189410Z [ReactNativeDependencies] Using tarball from URL: https://repo1.maven.org/maven2/com/facebook/react/react-native-artifacts/0.86.2/react-native-artifacts-0.86.2-reactnative-dependencies-debug.tar.gz
+Build iOS	Install Pods	2026-08-03T09:19:31.1289480Z [ReactNativeDependencies] Tarball reactnative-dependencies-0.86.2-debug.tar.gz already exists in Pods. Skipping download.
+Build iOS	Install Pods	2026-08-03T09:19:31.1391420Z [ReactNativeDependencies] Tarball reactnative-dependencies-0.86.2-release.tar.gz already exists in Pods. Skipping download.
+Build iOS	Install Pods	2026-08-03T09:19:31.1494020Z Fetching podspec for `hermes-engine` from `../node_modules/react-native/sdks/hermes-engine/hermes-engine.podspec`
+Build iOS	Install Pods	2026-08-03T09:19:31.2334490Z [Hermes] Using release tarball from URL: https://repo1.maven.org/maven2/com/facebook/hermes/hermes-ios/250829098.0.16/hermes-ios-250829098.0.16-hermes-ios-debug.tar.gz
+Build iOS	Install Pods	2026-08-03T09:19:31.2536670Z [Hermes] Cache miss: downloading hermes-ios-250829098.0.16-debug.tar.gz from https://repo1.maven.org/maven2/com/facebook/hermes/hermes-ios/250829098.0.16/hermes-ios-250829098.0.16-hermes-ios-debug.tar.gz
+Build iOS	Install Pods	2026-08-03T09:19:31.2739400Z   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+Build iOS	Install Pods	2026-08-03T09:19:31.2839410Z                                  Dload  Upload   Total   Spent    Left  Speed
+Build iOS	Install Pods	2026-08-03T09:19:31.2940540Z 
+Build iOS	Install Pods	2026-08-03T09:19:31.5061510Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+Build iOS	Install Pods	2026-08-03T09:19:31.5162310Z 100 31.1M  100 31.1M    0     0   132M      0 --:--:-- --:--:-- --:--:--  132M
+Build iOS	Install Pods	2026-08-03T09:19:31.5163140Z [Hermes] Verifying checksum for downloaded hermes-ios-250829098.0.16-debug.tar.gz...
+Build iOS	Install Pods	2026-08-03T09:19:31.5772350Z [Hermes] SHA1 verified for hermes-ios-250829098.0.16-debug.tar.gz
+Build iOS	Install Pods	2026-08-03T09:19:31.5931330Z [Hermes] Saved hermes-ios-250829098.0.16-debug.tar.gz to shared cache (/Users/runner/Library/Caches/ReactNative)
+Build iOS	Install Pods	2026-08-03T09:19:31.6026410Z [Hermes] Cache miss: downloading hermes-ios-250829098.0.16-release.tar.gz from https://repo1.maven.org/maven2/com/facebook/hermes/hermes-ios/250829098.0.16/hermes-ios-250829098.0.16-hermes-ios-release.tar.gz
+Build iOS	Install Pods	2026-08-03T09:19:31.6159590Z   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+Build iOS	Install Pods	2026-08-03T09:19:31.6160950Z                                  Dload  Upload   Total   Spent    Left  Speed
+Build iOS	Install Pods	2026-08-03T09:19:31.6161500Z 
+Build iOS	Install Pods	2026-08-03T09:19:31.8235220Z   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+Build iOS	Install Pods	2026-08-03T09:19:31.8336130Z 100 24.3M  100 24.3M    0     0   117M      0 --:--:-- --:--:-- --:--:--  117M
+Build iOS	Install Pods	2026-08-03T09:19:31.8337060Z [Hermes] Verifying checksum for downloaded hermes-ios-250829098.0.16-release.tar.gz...
+Build iOS	Install Pods	2026-08-03T09:19:31.8889500Z [Hermes] SHA1 verified for hermes-ios-250829098.0.16-release.tar.gz
+Build iOS	Install Pods	2026-08-03T09:19:31.9110550Z [Hermes] Saved hermes-ios-250829098.0.16-release.tar.gz to shared cache (/Users/runner/Library/Caches/ReactNative)
+Build iOS	Install Pods	2026-08-03T09:19:38.3095220Z Adding spec repo `trunk` with CDN `https://cdn.cocoapods.org/`
+Build iOS	Install Pods	2026-08-03T09:19:38.3095730Z Downloading dependencies
+Build iOS	Install Pods	2026-08-03T09:19:38.3096150Z Installing BoringSSL-GRPC (0.0.37)
+Build iOS	Install Pods	2026-08-03T09:20:14.6337350Z Installing FBLazyVector (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:20:14.6337760Z Installing Firebase (12.15.0)
+Build iOS	Install Pods	2026-08-03T09:20:18.9888670Z Installing FirebaseAppCheckInterop (12.15.0)
+Build iOS	Install Pods	2026-08-03T09:20:46.1691150Z Installing FirebaseAuth (12.15.0)
+Build iOS	Install Pods	2026-08-03T09:20:50.9479710Z Installing FirebaseAuthInterop (12.15.0)
+Build iOS	Install Pods	2026-08-03T09:20:54.9926910Z Installing FirebaseCore (12.15.0)
+Build iOS	Install Pods	2026-08-03T09:21:17.1176430Z Installing FirebaseCoreExtension (12.15.0)
+Build iOS	Install Pods	2026-08-03T09:21:21.4143530Z Installing FirebaseCoreInternal (12.15.0)
+Build iOS	Install Pods	2026-08-03T09:21:25.4966870Z Installing FirebaseFirestore (12.15.0)
+Build iOS	Install Pods	2026-08-03T09:21:30.5674730Z Installing FirebaseFirestoreInternal (12.15.0)
+Build iOS	Install Pods	2026-08-03T09:21:36.1875740Z Installing FirebaseSharedSwift (12.15.0)
+Build iOS	Install Pods	2026-08-03T09:21:40.3822090Z Installing GTMSessionFetcher (5.3.0)
+Build iOS	Install Pods	2026-08-03T09:21:41.0500380Z Installing GoogleUtilities (8.1.2)
+Build iOS	Install Pods	2026-08-03T09:21:41.7542440Z Installing RCTDeprecation (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:41.7542850Z Installing RCTRequired (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:41.7543280Z Installing RCTSwiftUI (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:41.7543690Z Installing RCTSwiftUIWrapper (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:41.7544140Z Installing RCTTypeSafety (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:41.7544470Z Installing RNFBApp (26.0.0)
+Build iOS	Install Pods	2026-08-03T09:21:41.7544700Z Installing RNFBAuth (26.0.0)
+Build iOS	Install Pods	2026-08-03T09:21:41.7544950Z Installing RNFBFirestore (26.0.0)
+Build iOS	Install Pods	2026-08-03T09:21:41.7545260Z Installing RNScreens (4.26.2)
+Build iOS	Install Pods	2026-08-03T09:21:41.7550430Z Installing React (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:41.7550670Z Installing React-Core (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:41.7551000Z Installing React-Core-prebuilt (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.3953710Z Installing React-CoreModules (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.3954700Z Installing React-Fabric (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.3955130Z Installing React-FabricComponents (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.3955520Z Installing React-FabricImage (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.3955950Z Installing React-ImageManager (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.3956370Z Installing React-Mapbuffer (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.3956800Z Installing React-NativeModulesApple (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.3957650Z Installing React-RCTActionSheet (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.3958040Z Installing React-RCTAnimation (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.3958460Z Installing React-RCTAppDelegate (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.3958870Z Installing React-RCTBlob (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.3959230Z Installing React-RCTFBReactNativeSpec (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.3959900Z Installing React-RCTFabric (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.3960330Z Installing React-RCTImage (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.3960820Z Installing React-RCTLinking (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.3961270Z Installing React-RCTNetwork (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.3961600Z Installing React-RCTRuntime (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.3961970Z Installing React-RCTSettings (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.3962300Z Installing React-RCTText (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.3962690Z Installing React-RCTVibration (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.3963080Z Installing React-RuntimeApple (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.3963460Z Installing React-RuntimeCore (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.3963850Z Installing React-RuntimeHermes (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.3964180Z Installing React-callinvoker (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.3964590Z Installing React-cxxreact (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.3964990Z Installing React-debug (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.3965400Z Installing React-defaultsnativemodule (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.3975730Z Installing React-domnativemodule (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.3976140Z Installing React-featureflags (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.3976560Z Installing React-featureflagsnativemodule (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.3976950Z Installing React-graphics (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.3977350Z Installing React-hermes (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.3977750Z Installing React-idlecallbacksnativemodule (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.3978280Z Installing React-intersectionobservernativemodule (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.3978730Z Installing React-jserrorhandler (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.3979050Z Installing React-jsi (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.3979440Z Installing React-jsiexecutor (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.3979790Z Installing React-jsinspector (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.3980180Z Installing React-jsinspectorcdp (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.3980690Z Installing React-jsinspectornetwork (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.3981160Z Installing React-jsinspectortracing (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.3981610Z Installing React-jsitooling (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.3981940Z Installing React-jsitracing (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.3982310Z Installing React-logger (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.3982730Z Installing React-microtasksnativemodule (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.3983160Z Installing React-mutationobservernativemodule (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.3983600Z Installing React-networking (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.3983930Z Installing React-oscompat (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.3984290Z Installing React-perflogger (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.3984750Z Installing React-performancecdpmetrics (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.3985170Z Installing React-performancetimeline (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.3985770Z Installing React-rendererconsistency (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.3986200Z Installing React-renderercss (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.3986600Z Installing React-rendererdebug (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.3986970Z Installing React-runtimeexecutor (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.3987340Z Installing React-runtimescheduler (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.3988020Z Installing React-timing (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.3992400Z Installing React-utils (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.3993090Z Installing React-viewtransitionnativemodule (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.3993650Z Installing React-webperformancenativemodule (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.4013350Z Installing ReactAppDependencyProvider (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.4013830Z Installing ReactCodegen (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.4014180Z Installing ReactCommon (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:53.4015810Z Installing ReactNativeDependencies (0.86.2)
+Build iOS	Install Pods	2026-08-03T09:21:58.9562650Z Installing RecaptchaInterop (101.0.0)
+Build iOS	Install Pods	2026-08-03T09:21:59.5801790Z Installing Yoga (0.0.0)
+Build iOS	Install Pods	2026-08-03T09:21:59.5802220Z Installing abseil (1.20240722.0)
+Build iOS	Install Pods	2026-08-03T09:22:02.0762270Z Installing gRPC-C++ (1.69.0)
+Build iOS	Install Pods	2026-08-03T09:22:16.1979810Z Installing gRPC-Core (1.69.0)
+Build iOS	Install Pods	2026-08-03T09:22:30.8712120Z Installing hermes-engine (250829098.0.16)
+Build iOS	Install Pods	2026-08-03T09:22:32.2376370Z Installing leveldb-library (1.22.6)
+Build iOS	Install Pods	2026-08-03T09:23:03.8805040Z Installing nanopb (3.30910.0)
+Build iOS	Install Pods	2026-08-03T09:23:26.2035250Z Installing react-native-safe-area-context (5.8.0)
+Build iOS	Install Pods	2026-08-03T09:23:26.2110190Z Generating Pods project
+Build iOS	Install Pods	2026-08-03T09:23:26.2113950Z Setting USE_HERMES build settings
+Build iOS	Install Pods	2026-08-03T09:23:26.2115570Z Setting REACT_NATIVE_PATH build settings
+Build iOS	Install Pods	2026-08-03T09:23:26.2118090Z Setting SWIFT_ACTIVE_COMPILATION_CONDITIONS build settings
+Build iOS	Install Pods	2026-08-03T09:23:28.3868220Z [Ccache]: Removing Ccache from CC, LD, CXX & LDPLUSPLUS build settings
+Build iOS	Install Pods	2026-08-03T09:23:28.3869310Z Setting SWIFT_ENABLE_EXPLICIT_MODULES build settings
+Build iOS	Install Pods	2026-08-03T09:23:28.3869900Z [ReactNativeCore] Processing VFS overlay file...
+Build iOS	Install Pods	2026-08-03T09:23:28.3870670Z [ReactNativeCore]   Created VFS overlay at /Users/runner/work/TaskFlowAI/TaskFlowAI/ios/Pods/React-Core-prebuilt/React-VFS.yaml
+Build iOS	Install Pods	2026-08-03T09:23:28.3871340Z [ReactNativeCore] VFS overlay setup complete
+Build iOS	Install Pods	2026-08-03T09:23:28.3871790Z [ReactNativeCore] Configuring xcconfig for prebuilt React Native Core...
+Build iOS	Install Pods	2026-08-03T09:23:28.3886610Z [ReactNativeCore] Prebuilt xcconfig configuration complete
+Build iOS	Install Pods	2026-08-03T09:23:28.3887170Z [SPM] Cleaning old SPM dependencies from Pods project
+Build iOS	Install Pods	2026-08-03T09:23:28.3887580Z [SPM] Adding SPM dependencies to Pods project
+Build iOS	Install Pods	2026-08-03T09:23:28.3888260Z [Privacy Manifest Aggregation] Appending aggregated reasons to existing PrivacyInfo.xcprivacy file.
+Build iOS	Install Pods	2026-08-03T09:23:28.3889100Z [Privacy Manifest Aggregation] Reading .xcprivacy files to aggregate all used Required Reason APIs.
+Build iOS	Install Pods	2026-08-03T09:23:28.3889940Z Setting CLANG_CXX_LANGUAGE_STANDARD to c++20 on /Users/runner/work/TaskFlowAI/TaskFlowAI/ios/TaskFlowAI.xcodeproj
+Build iOS	Install Pods	2026-08-03T09:23:31.2621940Z 
+Build iOS	Install Pods	2026-08-03T09:23:31.2622020Z 
+Build iOS	Install Pods	2026-08-03T09:23:31.2625210Z [!] FirebaseCore has been deprecated in favor of the Firebase Apple SDK via Swift Package Manager. Existing CocoaPods versions will remain available and installations will remain functional, but new versions will no longer be published to CocoaPods after October 2026. See: https://firebase.google.com/docs/ios/cocoapods-deprecation
+Build iOS	Install Pods	2026-08-03T09:23:31.2627010Z ==================== DEPRECATION NOTICE =====================
+Build iOS	Install Pods	2026-08-03T09:23:31.2627520Z 
+Build iOS	Install Pods	2026-08-03T09:23:31.2628050Z Calling `pod install` directly is deprecated in React Native
+Build iOS	Install Pods	2026-08-03T09:23:31.2628700Z because we are moving away from Cocoapods toward alternative
+Build iOS	Install Pods	2026-08-03T09:23:31.2629170Z solutions to build the project.
+Build iOS	Install Pods	2026-08-03T09:23:31.2629600Z * If you are using Expo, please run:
+Build iOS	Install Pods	2026-08-03T09:23:31.2629960Z `npx expo run:ios`
+Build iOS	Install Pods	2026-08-03T09:23:31.2630420Z * If you are using the Community CLI, please run:
+Build iOS	Install Pods	2026-08-03T09:23:31.2630900Z `yarn ios`
+Build iOS	Install Pods	2026-08-03T09:23:31.2631260Z =============================================================
+Build iOS	Install Pods	2026-08-03T09:23:31.2631530Z 
+Build iOS	Install Pods	2026-08-03T09:23:31.2631730Z Pod install took 241 [s] to run
+Build iOS	Install Pods	2026-08-03T09:23:31.2632020Z Integrating client project
+Build iOS	Install Pods	2026-08-03T09:23:31.2632640Z Pod installation complete! There are 81 dependencies from the Podfile and 99 total pods installed.
+Build iOS	Install Pods	2026-08-03T09:23:31.2634200Z [!] React-Core-prebuilt has added 1 script phase. Please inspect before executing a build. See `https://guides.cocoapods.org/syntax/podspec.html#script_phases` for more information.
+Build iOS	Install Pods	2026-08-03T09:23:31.2642570Z 
+Build iOS	Install Pods	2026-08-03T09:23:31.2643540Z [!] ReactNativeDependencies has added 1 script phase. Please inspect before executing a build. See `https://guides.cocoapods.org/syntax/podspec.html#script_phases` for more information.
+Build iOS	Install Pods	2026-08-03T09:23:31.2644310Z 
+Build iOS	Install Pods	2026-08-03T09:23:31.2645120Z [!] hermes-engine has added 1 script phase. Please inspect before executing a build. See `https://guides.cocoapods.org/syntax/podspec.html#script_phases` for more information.
+Build iOS	Generate mock GoogleService-Info.plist	﻿2026-08-03T09:23:31.3103530Z ##[group]Run cat <<EOF > ios/TaskFlowAI/GoogleService-Info.plist
+Build iOS	Generate mock GoogleService-Info.plist	2026-08-03T09:23:31.3104170Z ^[[36;1mcat <<EOF > ios/TaskFlowAI/GoogleService-Info.plist^[[0m
+Build iOS	Generate mock GoogleService-Info.plist	2026-08-03T09:23:31.3104540Z ^[[36;1m<?xml version="1.0" encoding="UTF-8"?>^[[0m
+Build iOS	Generate mock GoogleService-Info.plist	2026-08-03T09:23:31.3105140Z ^[[36;1m<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">^[[0m
+Build iOS	Generate mock GoogleService-Info.plist	2026-08-03T09:23:31.3106990Z ^[[36;1m<plist version="1.0">^[[0m
+Build iOS	Generate mock GoogleService-Info.plist	2026-08-03T09:23:31.3107320Z ^[[36;1m<dict>^[[0m
+Build iOS	Generate mock GoogleService-Info.plist	2026-08-03T09:23:31.3107630Z ^[[36;1m  <key>CLIENT_ID</key><string>mock</string>^[[0m
+Build iOS	Generate mock GoogleService-Info.plist	2026-08-03T09:23:31.3108050Z ^[[36;1m  <key>REVERSED_CLIENT_ID</key><string>mock</string>^[[0m
+Build iOS	Generate mock GoogleService-Info.plist	2026-08-03T09:23:31.3108420Z ^[[36;1m  <key>API_KEY</key><string>mock</string>^[[0m
+Build iOS	Generate mock GoogleService-Info.plist	2026-08-03T09:23:31.3108810Z ^[[36;1m  <key>GCM_SENDER_ID</key><string>mock</string>^[[0m
+Build iOS	Generate mock GoogleService-Info.plist	2026-08-03T09:23:31.3109220Z ^[[36;1m  <key>PLIST_VERSION</key><string>1</string>^[[0m
+Build iOS	Generate mock GoogleService-Info.plist	2026-08-03T09:23:31.3109730Z ^[[36;1m  <key>BUNDLE_ID</key><string>org.reactjs.native.example.TaskFlowAI</string>^[[0m
+Build iOS	Generate mock GoogleService-Info.plist	2026-08-03T09:23:31.3110320Z ^[[36;1m  <key>PROJECT_ID</key><string>mock</string>^[[0m
+Build iOS	Generate mock GoogleService-Info.plist	2026-08-03T09:23:31.3110750Z ^[[36;1m  <key>STORAGE_BUCKET</key><string>mock</string>^[[0m
+Build iOS	Generate mock GoogleService-Info.plist	2026-08-03T09:23:31.3111110Z ^[[36;1m  <key>IS_ADS_ENABLED</key><false></false>^[[0m
+Build iOS	Generate mock GoogleService-Info.plist	2026-08-03T09:23:31.3111480Z ^[[36;1m  <key>IS_ANALYTICS_ENABLED</key><false></false>^[[0m
+Build iOS	Generate mock GoogleService-Info.plist	2026-08-03T09:23:31.3112110Z ^[[36;1m  <key>IS_APPINVITE_ENABLED</key><true></true>^[[0m
+Build iOS	Generate mock GoogleService-Info.plist	2026-08-03T09:23:31.3112420Z ^[[36;1m  <key>IS_GCM_ENABLED</key><true></true>^[[0m
+Build iOS	Generate mock GoogleService-Info.plist	2026-08-03T09:23:31.3112730Z ^[[36;1m  <key>IS_SIGNIN_ENABLED</key><true></true>^[[0m
+Build iOS	Generate mock GoogleService-Info.plist	2026-08-03T09:23:31.3113610Z ^[[36;1m  <key>GOOGLE_APP_ID</key><string>1:1:ios:1</string>^[[0m
+Build iOS	Generate mock GoogleService-Info.plist	2026-08-03T09:23:31.3114110Z ^[[36;1m</dict>^[[0m
+Build iOS	Generate mock GoogleService-Info.plist	2026-08-03T09:23:31.3114460Z ^[[36;1m</plist>^[[0m
+Build iOS	Generate mock GoogleService-Info.plist	2026-08-03T09:23:31.3114730Z ^[[36;1mEOF^[[0m
+Build iOS	Generate mock GoogleService-Info.plist	2026-08-03T09:23:31.5090570Z shell: /bin/bash -e {0}
+Build iOS	Generate mock GoogleService-Info.plist	2026-08-03T09:23:31.5090840Z env:
+Build iOS	Generate mock GoogleService-Info.plist	2026-08-03T09:23:31.5092290Z   PATH: /Users/runner/hostedtoolcache/node/20.20.2/arm64/bin:/Users/runner/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/runner/.cargo/bin:/usr/local/opt/curl/bin:/usr/local/bin:/usr/local/sbin:/Users/runner/bin:/Users/runner/.yarn/bin:/Users/runner/Library/Android/sdk/tools:/Users/runner/Library/Android/sdk/platform-tools:/Library/Frameworks/Python.framework/Versions/Current/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/usr/bin:/bin:/usr/sbin:/sbin:/Users/runner/.dotnet/tools
+Build iOS	Generate mock GoogleService-Info.plist	2026-08-03T09:23:31.5093810Z ##[endgroup]
+Build iOS	Run Fastlane	﻿2026-08-03T09:23:31.5572840Z ##[group]Run bundle exec fastlane build
+Build iOS	Run Fastlane	2026-08-03T09:23:31.5573170Z ^[[36;1mbundle exec fastlane build^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:23:31.5614970Z shell: /bin/bash -e {0}
+Build iOS	Run Fastlane	2026-08-03T09:23:31.5615270Z env:
+Build iOS	Run Fastlane	2026-08-03T09:23:31.5616720Z   PATH: /Users/runner/hostedtoolcache/node/20.20.2/arm64/bin:/Users/runner/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/runner/.cargo/bin:/usr/local/opt/curl/bin:/usr/local/bin:/usr/local/sbin:/Users/runner/bin:/Users/runner/.yarn/bin:/Users/runner/Library/Android/sdk/tools:/Users/runner/Library/Android/sdk/platform-tools:/Library/Frameworks/Python.framework/Versions/Current/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/usr/bin:/bin:/usr/sbin:/sbin:/Users/runner/.dotnet/tools
+Build iOS	Run Fastlane	2026-08-03T09:23:31.5618250Z ##[endgroup]
+Build iOS	Run Fastlane	2026-08-03T09:23:33.8493590Z [09:23:33]: Sending anonymous analytics information
+Build iOS	Run Fastlane	2026-08-03T09:23:33.8494380Z [09:23:33]: Learn more at https://docs.fastlane.tools/#metrics
+Build iOS	Run Fastlane	2026-08-03T09:23:33.8494830Z [09:23:33]: No personal or sensitive data is sent.
+Build iOS	Run Fastlane	2026-08-03T09:23:33.8495580Z [09:23:33]: You can disable this by adding `opt_out_usage` at the top of your Fastfile
+Build iOS	Run Fastlane	2026-08-03T09:23:33.8587730Z [09:23:33]: ^[[32m------------------------------^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:23:33.8588440Z [09:23:33]: ^[[32m--- Step: default_platform ---^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:23:33.8589040Z [09:23:33]: ^[[32m------------------------------^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:23:33.8589720Z [09:23:33]: ^[[32mDriving the lane 'ios build' 🚀^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:23:33.8912450Z [09:23:33]: ^[[32m-----------------------^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:23:33.8913060Z [09:23:33]: ^[[32m--- Step: build_app ---^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:23:33.8913690Z [09:23:33]: ^[[32m-----------------------^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:23:33.9302170Z [09:23:33]: ^[[33mResolving Swift Package Manager dependencies...^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:23:33.9303300Z [09:23:33]: ^[[36m$ xcodebuild -resolvePackageDependencies -workspace TaskFlowAI.xcworkspace -scheme TaskFlowAI^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:23:36.9972420Z [09:23:36]: ▸ ^[[35mCommand line invocation:^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:23:36.9996770Z [09:23:36]: ▸ ^[[35m    /Applications/Xcode_26.6.app/Contents/Developer/usr/bin/xcodebuild -resolvePackageDependencies -workspace TaskFlowAI.xcworkspace -scheme TaskFlowAI^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:23:46.6359100Z [09:23:46]: ▸ ^[[35mResolve Package Graph^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:23:46.6811680Z [09:23:46]: ▸ ^[[35mFetching from https://github.com/google/GoogleAppMeasurement.git^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:23:47.3892070Z [09:23:47]: ▸ ^[[35mFetching from https://github.com/google/interop-ios-for-google-sdks.git^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:23:47.3929980Z [09:23:47]: ▸ ^[[35mFetching from https://github.com/google/abseil-cpp-binary.git^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:23:47.9894560Z [09:23:47]: ▸ ^[[35mFetching from https://github.com/googleads/google-ads-on-device-conversion-ios-sdk^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:23:48.6591410Z [09:23:48]: ▸ ^[[35mFetching from https://github.com/google/GoogleDataTransport.git^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:23:48.7899130Z [09:23:48]: ▸ ^[[35mFetching from https://github.com/google/promises.git^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:23:49.2709700Z [09:23:49]: ▸ ^[[35mFetching from https://github.com/google/app-check.git^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:23:49.4041760Z [09:23:49]: ▸ ^[[35mFetching from https://github.com/firebase/firebase-ios-sdk^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:03.9949680Z [09:24:03]: ▸ ^[[35mFetching from https://github.com/google/GoogleUtilities.git^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:03.9954170Z [09:24:03]: ▸ ^[[35mFetching from https://github.com/firebase/leveldb.git^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:04.0002030Z [09:24:03]: ▸ ^[[35mFetching from https://github.com/firebase/nanopb.git^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:04.0003140Z [09:24:03]: ▸ ^[[35mFetching from https://github.com/google/gtm-session-fetcher.git^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:04.0006710Z [09:24:03]: ▸ ^[[35mFetching from https://github.com/google/grpc-binary.git^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:04.1207680Z [09:24:04]: ▸ ^[[35mCreating working copy of package ‘interop-ios-for-google-sdks’^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:04.1830740Z [09:24:04]: ▸ ^[[35mCreating working copy of package ‘GoogleAppMeasurement’^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:04.2661130Z [09:24:04]: ▸ ^[[35mChecking out 101.0.0 of package ‘interop-ios-for-google-sdks’^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:04.5653590Z [09:24:04]: ▸ ^[[35mChecking out 12.17.0 of package ‘GoogleAppMeasurement’^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:04.5896630Z [09:24:04]: ▸ ^[[35mCreating working copy of package ‘abseil-cpp-binary’^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:04.8703400Z [09:24:04]: ▸ ^[[35mCreating working copy of package ‘google-ads-on-device-conversion-ios-sdk’^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:04.8807160Z [09:24:04]: ▸ ^[[35mChecking out 3.6.1 of package ‘google-ads-on-device-conversion-ios-sdk’^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:04.8909420Z [09:24:04]: ▸ ^[[35mChecking out 1.2024072200.0 of package ‘abseil-cpp-binary’^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:04.9020930Z [09:24:04]: ▸ ^[[35mCreating working copy of package ‘GoogleDataTransport’^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:04.9027860Z [09:24:04]: ▸ ^[[35mCreating working copy of package ‘promises’^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:04.9029070Z [09:24:04]: ▸ ^[[35mChecking out 10.1.1 of package ‘GoogleDataTransport’^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:04.9030770Z [09:24:04]: ▸ ^[[35mChecking out 2.4.1 of package ‘promises’^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:04.9031750Z [09:24:04]: ▸ ^[[35mCreating working copy of package ‘app-check’^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:04.9032750Z [09:24:04]: ▸ ^[[35mCreating working copy of package ‘firebase-ios-sdk’^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:04.9033960Z [09:24:04]: ▸ ^[[35mChecking out 11.3.1 of package ‘app-check’^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:04.9034660Z [09:24:04]: ▸ ^[[35mCreating working copy of package ‘GoogleUtilities’^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:04.9035270Z [09:24:04]: ▸ ^[[35mCreating working copy of package ‘leveldb’^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:04.9035910Z [09:24:04]: ▸ ^[[35mChecking out 12.17.0 of package ‘firebase-ios-sdk’^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:06.6141290Z [09:24:06]: ▸ ^[[35mChecking out 8.1.2 of package ‘GoogleUtilities’^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:06.6243100Z [09:24:06]: ▸ ^[[35mChecking out 1.22.5 of package ‘leveldb’^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:06.6367240Z [09:24:06]: ▸ ^[[35mCreating working copy of package ‘nanopb’^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:06.6470340Z [09:24:06]: ▸ ^[[35mCreating working copy of package ‘gtm-session-fetcher’^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:06.6572600Z [09:24:06]: ▸ ^[[35mChecking out 2.30910.1 of package ‘nanopb’^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:06.6683520Z [09:24:06]: ▸ ^[[35mChecking out 5.3.0 of package ‘gtm-session-fetcher’^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:06.6785230Z [09:24:06]: ▸ ^[[35mCreating working copy of package ‘grpc-binary’^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:06.6888120Z [09:24:06]: ▸ ^[[35mChecking out 1.69.1 of package ‘grpc-binary’^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:39.9661470Z [09:24:39]: ▸ ^[[35mResolved source packages:^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:39.9729860Z [09:24:39]: ▸ ^[[35m  GTMSessionFetcher: https://github.com/google/gtm-session-fetcher.git @ 5.3.0^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:39.9732180Z [09:24:39]: ▸ ^[[35m  InteropForGoogle: https://github.com/google/interop-ios-for-google-sdks.git @ 101.0.0^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:39.9734720Z [09:24:39]: ▸ ^[[35m  leveldb: https://github.com/firebase/leveldb.git @ 1.22.5^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:39.9736510Z [09:24:39]: ▸ ^[[35m  abseil: https://github.com/google/abseil-cpp-binary.git @ 1.2024072200.0^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:39.9746620Z [09:24:39]: ▸ ^[[35m  Promises: https://github.com/google/promises.git @ 2.4.1^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:39.9747730Z [09:24:39]: ▸ ^[[35m  GoogleAppMeasurement: https://github.com/google/GoogleAppMeasurement.git @ 12.17.0^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:39.9748870Z [09:24:39]: ▸ ^[[35m  GoogleAdsOnDeviceConversion: https://github.com/googleads/google-ads-on-device-conversion-ios-sdk @ 3.6.1^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:39.9749880Z [09:24:39]: ▸ ^[[35m  gRPC: https://github.com/google/grpc-binary.git @ 1.69.1^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:39.9750770Z [09:24:39]: ▸ ^[[35m  AppCheck: https://github.com/google/app-check.git @ 11.3.1^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:39.9751510Z [09:24:39]: ▸ ^[[35m  nanopb: https://github.com/firebase/nanopb.git @ 2.30910.1^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:39.9752390Z [09:24:39]: ▸ ^[[35m  Firebase: https://github.com/firebase/firebase-ios-sdk @ 12.17.0^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:39.9753240Z [09:24:39]: ▸ ^[[35m  GoogleDataTransport: https://github.com/google/GoogleDataTransport.git @ 10.1.1^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:39.9754210Z [09:24:39]: ▸ ^[[35m  GoogleUtilities: https://github.com/google/GoogleUtilities.git @ 8.1.2^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:39.9766620Z [09:24:39]: ▸ ^[[35mresolved source packages: GTMSessionFetcher, InteropForGoogle, leveldb, abseil, Promises, GoogleAppMeasurement, GoogleAdsOnDeviceConversion, gRPC, AppCheck, nanopb, Firebase, GoogleDataTransport, GoogleUtilities^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:39.9889500Z [09:24:39]: ^[[36m$ xcodebuild -showBuildSettings -workspace TaskFlowAI.xcworkspace -scheme TaskFlowAI 2>&1^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:43.0013020Z [09:24:43]: ^[[33mCommand timed out after 3 seconds on try 1 of 4, trying again with a 6 second timeout...^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:49.0121410Z [09:24:49]: ^[[33mCommand timed out after 6 seconds on try 2 of 4, trying again with a 12 second timeout...^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:55.3145740Z 
+Build iOS	Run Fastlane	2026-08-03T09:24:55.3246940Z +--------------------------------------------------------------------------------------------------+
+Build iOS	Run Fastlane	2026-08-03T09:24:55.3347540Z |                                     ^[[32mSummary for gym 2.229.0^[[0m                                      |
+Build iOS	Run Fastlane	2026-08-03T09:24:55.3447930Z +--------------------------------------+-----------------------------------------------------------+
+Build iOS	Run Fastlane	2026-08-03T09:24:55.3549780Z | workspace                            | TaskFlowAI.xcworkspace                                    |
+Build iOS	Run Fastlane	2026-08-03T09:24:55.3652120Z | scheme                               | TaskFlowAI                                                |
+Build iOS	Run Fastlane	2026-08-03T09:24:55.3752870Z | clean                                | false                                                     |
+Build iOS	Run Fastlane	2026-08-03T09:24:55.3900840Z | output_directory                     | .                                                         |
+Build iOS	Run Fastlane	2026-08-03T09:24:55.4048570Z | output_name                          | TaskFlowAI                                                |
+Build iOS	Run Fastlane	2026-08-03T09:24:55.4167100Z | silent                               | false                                                     |
+Build iOS	Run Fastlane	2026-08-03T09:24:55.4269280Z | skip_package_ipa                     | false                                                     |
+Build iOS	Run Fastlane	2026-08-03T09:24:55.4270260Z | skip_package_pkg                     | false                                                     |
+Build iOS	Run Fastlane	2026-08-03T09:24:55.4371930Z | build_path                           | /Users/runner/Library/Developer/Xcode/Archives/2026-08-03 |
+Build iOS	Run Fastlane	2026-08-03T09:24:55.4474050Z | result_bundle                        | false                                                     |
+Build iOS	Run Fastlane	2026-08-03T09:24:55.4575920Z | buildlog_path                        | ~/Library/Logs/gym                                        |
+Build iOS	Run Fastlane	2026-08-03T09:24:55.4677820Z | destination                          | generic/platform=iOS                                      |
+Build iOS	Run Fastlane	2026-08-03T09:24:55.4779560Z | xcodebuild_formatter                 | xcbeautify                                                |
+Build iOS	Run Fastlane	2026-08-03T09:24:55.4881230Z | build_timing_summary                 | false                                                     |
+Build iOS	Run Fastlane	2026-08-03T09:24:55.4997660Z | skip_profile_detection               | false                                                     |
+Build iOS	Run Fastlane	2026-08-03T09:24:55.5099840Z | xcodebuild_command                   | xcodebuild                                                |
+Build iOS	Run Fastlane	2026-08-03T09:24:55.5201970Z | skip_package_dependencies_resolution | false                                                     |
+Build iOS	Run Fastlane	2026-08-03T09:24:55.5304260Z | disable_package_automatic_updates    | false                                                     |
+Build iOS	Run Fastlane	2026-08-03T09:24:55.5406140Z | use_system_scm                       | false                                                     |
+Build iOS	Run Fastlane	2026-08-03T09:24:55.5508120Z | xcode_path                           | /Applications/Xcode_26.6.app                              |
+Build iOS	Run Fastlane	2026-08-03T09:24:55.5609840Z +--------------------------------------+-----------------------------------------------------------+
+Build iOS	Run Fastlane	2026-08-03T09:24:55.5675650Z 
+Build iOS	Run Fastlane	2026-08-03T09:24:55.5678070Z [09:24:55]: ^[[36m$ set -o pipefail && xcodebuild -workspace TaskFlowAI.xcworkspace -scheme TaskFlowAI -destination 'generic/platform=iOS' -archivePath /Users/runner/Library/Developer/Xcode/Archives/2026-08-03/TaskFlowAI\ 2026-08-03\ 09.24.55.xcarchive archive | tee /Users/runner/Library/Logs/gym/TaskFlowAI-TaskFlowAI.log | xcbeautify^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:55.5689730Z [09:24:55]: ▸ ^[[35m----- xcbeautify -----^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:55.5791160Z [09:24:55]: ▸ ^[[35mVersion: 3.2.1^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:55.5894070Z [09:24:55]: ▸ ^[[35m----------------------^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:57.4277540Z [09:24:57]: ▸ ^[[35m^[[36;1mResolving Package Graph^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:59.1827830Z [09:24:59]: ▸ ^[[35m^[[32;1mResolved source packages^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:59.1837940Z [09:24:59]: ▸ ^[[35m^[[36;1mGoogleUtilities^[[0m - ^[[1mhttps://github.com/google/GoogleUtilities.git^[[0m @ ^[[32m8.1.2^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:59.1839700Z [09:24:59]: ▸ ^[[35m^[[36;1mnanopb^[[0m - ^[[1mhttps://github.com/firebase/nanopb.git^[[0m @ ^[[32m2.30910.1^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:59.1840640Z [09:24:59]: ▸ ^[[35m^[[36;1mleveldb^[[0m - ^[[1mhttps://github.com/firebase/leveldb.git^[[0m @ ^[[32m1.22.5^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:59.1841750Z [09:24:59]: ▸ ^[[35m^[[36;1mgRPC^[[0m - ^[[1mhttps://github.com/google/grpc-binary.git^[[0m @ ^[[32m1.69.1^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:59.1842680Z [09:24:59]: ▸ ^[[35m^[[36;1mInteropForGoogle^[[0m - ^[[1mhttps://github.com/google/interop-ios-for-google-sdks.git^[[0m @ ^[[32m101.0.0^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:59.1843950Z [09:24:59]: ▸ ^[[35m^[[36;1mGoogleAdsOnDeviceConversion^[[0m - ^[[1mhttps://github.com/googleads/google-ads-on-device-conversion-ios-sdk^[[0m @ ^[[32m3.6.1^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:59.1845210Z [09:24:59]: ▸ ^[[35m^[[36;1mGoogleAppMeasurement^[[0m - ^[[1mhttps://github.com/google/GoogleAppMeasurement.git^[[0m @ ^[[32m12.17.0^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:59.1846140Z [09:24:59]: ▸ ^[[35m^[[36;1mabseil^[[0m - ^[[1mhttps://github.com/google/abseil-cpp-binary.git^[[0m @ ^[[32m1.2024072200.0^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:59.1847690Z [09:24:59]: ▸ ^[[35m^[[36;1mGoogleDataTransport^[[0m - ^[[1mhttps://github.com/google/GoogleDataTransport.git^[[0m @ ^[[32m10.1.1^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:59.1848560Z [09:24:59]: ▸ ^[[35m^[[36;1mPromises^[[0m - ^[[1mhttps://github.com/google/promises.git^[[0m @ ^[[32m2.4.1^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:59.1849390Z [09:24:59]: ▸ ^[[35m^[[36;1mAppCheck^[[0m - ^[[1mhttps://github.com/google/app-check.git^[[0m @ ^[[32m11.3.1^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:59.1850680Z [09:24:59]: ▸ ^[[35m^[[36;1mGTMSessionFetcher^[[0m - ^[[1mhttps://github.com/google/gtm-session-fetcher.git^[[0m @ ^[[32m5.3.0^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:24:59.1851540Z [09:24:59]: ▸ ^[[35m^[[36;1mFirebase^[[0m - ^[[1mhttps://github.com/firebase/firebase-ios-sdk^[[0m @ ^[[32m12.17.0^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:04.5917520Z [09:25:04]: ▸ ^[[35m^[[36;1mnote: ^[[0mBuilding targets in dependency order^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:04.6424330Z [09:25:04]: ▸ ^[[35m^[[36;1mnote: ^[[0mTarget dependency graph (119 targets)^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:10.9015090Z [09:25:10]: ▸ ^[[35m::warning file=/Users/runner/work/TaskFlowAI/TaskFlowAI/ios/Pods/Pods.xcodeproj::The iOS deployment target 'IPHONEOS_DEPLOYMENT_TARGET' is set to 11.0, but the range of supported deployment target versions is 12.0 to 26.5.99. (in target 'leveldb-library-leveldb_Privacy' from project 'Pods')^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:10.9129080Z [09:25:10]: ▸ ^[[35m/Users/runner/work/TaskFlowAI/TaskFlowAI/ios/Pods/Pods.xcodeproj: warning: The iOS deployment target 'IPHONEOS_DEPLOYMENT_TARGET' is set to 10.0, but the range of supported deployment target versions is 12.0 to 26.5.99. (in target 'BoringSSL-GRPC-openssl_grpc' from project 'Pods')^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:10.9249000Z [09:25:10]: ▸ ^[[35mnote: Run script build phase '[CP-User] [RN]Check FBReactNativeSpec' will be run during every build because the option to run the script phase "Based on dependency analysis" is unchecked. (in target 'React-RCTFBReactNativeSpec' from project 'Pods')^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:10.9377480Z [09:25:10]: ▸ ^[[35m::warning ::Run script build phase '[CP-User] [Hermes] Replace Hermes for the right configuration, if needed' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'hermes-engine' from project 'Pods')^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:10.9481420Z [09:25:10]: ▸ ^[[35m::warning file=/Users/runner/work/TaskFlowAI/TaskFlowAI/ios/Pods/Pods.xcodeproj::The iOS deployment target 'IPHONEOS_DEPLOYMENT_TARGET' is set to 9.0, but the range of supported deployment target versions is 12.0 to 26.5.99. (in target 'abseil-xcprivacy' from project 'Pods')^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:10.9585010Z [09:25:10]: ▸ ^[[35mwarning: Run script build phase 'Create Symlinks to Header Folders' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'abseil' from project 'Pods')^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:10.9685770Z [09:25:10]: ▸ ^[[35m/Users/runner/work/TaskFlowAI/TaskFlowAI/ios/Pods/Pods.xcodeproj: warning: The iOS deployment target 'IPHONEOS_DEPLOYMENT_TARGET' is set to 11.0, but the range of supported deployment target versions is 12.0 to 26.5.99. (in target 'gRPC-C++-grpcpp' from project 'Pods')^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:10.9790050Z [09:25:10]: ▸ ^[[35m::warning ::Run script build phase 'Create Symlinks to Header Folders' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'gRPC-C++' from project 'Pods')^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:10.9890320Z [09:25:10]: ▸ ^[[35m^[[36;1mnote: ^[[0mRun script build phase '[CP-User] [RNDeps] Replace React Native Dependencies for the right configuration, if needed' will be run during every build because the option to run the script phase "Based on dependency analysis" is unchecked. (in target 'ReactNativeDependencies' from project 'Pods')^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:11.0007180Z ^[[31m
+Build iOS	Run Fastlane	2026-08-03T09:25:11.0008730Z [09:25:10]: ▸ ^[[35m::error file=/Users/runner/work/TaskFlowAI/TaskFlowAI/ios/TaskFlowAI.xcodeproj::Signing for "TaskFlowAI" requires a development team. Select a development team in the Signing & Capabilities editor. (in target 'TaskFlowAI' from project 'TaskFlowAI')^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:11.0011810Z [09:25:10]: ▸ ^[[35mwarning: Run script build phase 'Bundle React Native code and images' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'TaskFlowAI' from project 'TaskFlowAI')^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:11.0111040Z [!] Error building the application - see the log above^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:11.0113460Z [09:25:10]: ▸ ^[[35mwarning: Run script build phase '[CP-User] [RNFB] Core Configuration' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'TaskFlowAI' from project 'TaskFlowAI')^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:11.0215280Z [09:25:10]: ▸ ^[[35m::warning file=/Users/runner/work/TaskFlowAI/TaskFlowAI/ios/Pods/Pods.xcodeproj::The iOS deployment target 'IPHONEOS_DEPLOYMENT_TARGET' is set to 11.0, but the range of supported deployment target versions is 12.0 to 26.5.99. (in target 'gRPC-C++-gRPCCertificates-Cpp' from project 'Pods')^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:11.0318770Z [09:25:10]: ▸ ^[[35mnote: Run script build phase '[CP-User] [RNCore] Replace React Native Core for the right configuration, if needed' will be run during every build because the option to run the script phase "Based on dependency analysis" is unchecked. (in target 'React-Core-prebuilt' from project 'Pods')^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:11.0422350Z [09:25:10]: ▸ ^[[35mwarning: Run script build phase 'Create Symlinks to Header Folders' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'ReactCodegen' from project 'Pods')^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:11.0526200Z [09:25:10]: ▸ ^[[35m::warning file=/Users/runner/work/TaskFlowAI/TaskFlowAI/ios/Pods/Pods.xcodeproj::The iOS deployment target 'IPHONEOS_DEPLOYMENT_TARGET' is set to 11.0, but the range of supported deployment target versions is 12.0 to 26.5.99. (in target 'gRPC-Core-grpc' from project 'Pods')^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:11.0629510Z [09:25:10]: ▸ ^[[35mwarning: Run script build phase 'Create Symlinks to Header Folders' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'gRPC-Core' from project 'Pods')^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:11.0740870Z [09:25:10]: ▸ ^[[35mwarning: Run script build phase 'Create Symlinks to Header Folders' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'BoringSSL-GRPC' from project 'Pods')^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:11.0843120Z [09:25:10]: ▸ ^[[35m** ARCHIVE FAILED **^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:11.0943650Z [09:25:10]: ▸ ^[[35mThe following build commands failed:^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:11.1045210Z [09:25:10]: ▸ ^[[35m	Archiving workspace TaskFlowAI with scheme TaskFlowAI^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:11.1146580Z [09:25:10]: ▸ ^[[35m(1 failure)^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:11.1206960Z [09:25:10]: ^[[31mExit status: 65^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:11.1207450Z [09:25:10]: 
+Build iOS	Run Fastlane	2026-08-03T09:25:11.1214160Z [09:25:10]: ^[[33mMaybe the error shown is caused by using the wrong version of Xcode^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:11.1217290Z [09:25:10]: ^[[33mFound multiple versions of Xcode in '/Applications/'^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:11.1328650Z [09:25:10]: ^[[33mMake sure you selected the right version for your project^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:11.1430380Z [09:25:10]: ^[[33mThis build process was executed using '/Applications/Xcode_26.6.app'^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:11.1549420Z [09:25:10]: ^[[33mIf you want to update your Xcode path, either^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:11.1650510Z [09:25:10]: 
+Build iOS	Run Fastlane	2026-08-03T09:25:11.1757120Z [09:25:10]: - Specify the Xcode version in your Fastfile
+Build iOS	Run Fastlane	2026-08-03T09:25:11.1891380Z [09:25:10]: ▸ ^[[35mxcversion(version: "8.1") # Selects Xcode 8.1.0^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:11.1991440Z [09:25:10]: 
+Build iOS	Run Fastlane	2026-08-03T09:25:11.2092820Z [09:25:10]: - Specify an absolute path to your Xcode installation in your Fastfile
+Build iOS	Run Fastlane	2026-08-03T09:25:11.2193620Z [09:25:10]: ▸ ^[[35mxcode_select "/Applications/Xcode8.app"^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:11.2294420Z [09:25:10]: 
+Build iOS	Run Fastlane	2026-08-03T09:25:11.2395130Z [09:25:10]: - Manually update the path using
+Build iOS	Run Fastlane	2026-08-03T09:25:11.2496250Z [09:25:10]: ▸ ^[[35msudo xcode-select -s /Applications/Xcode.app^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:11.2596560Z [09:25:10]: 
+Build iOS	Run Fastlane	2026-08-03T09:25:11.2697310Z 
+Build iOS	Run Fastlane	2026-08-03T09:25:11.2798460Z +--------------------------------------------+
+Build iOS	Run Fastlane	2026-08-03T09:25:11.2899450Z |             ^[[32m^[[33mBuild environment^[[0m              |
+Build iOS	Run Fastlane	2026-08-03T09:25:11.3000020Z +-------------+------------------------------+
+Build iOS	Run Fastlane	2026-08-03T09:25:11.3101210Z | xcode_path  | /Applications/Xcode_26.6.app |
+Build iOS	Run Fastlane	2026-08-03T09:25:11.3201900Z | gym_version | 2.229.0                      |
+Build iOS	Run Fastlane	2026-08-03T09:25:11.3308840Z | sdk         | iPhoneOS26.5.sdk             |
+Build iOS	Run Fastlane	2026-08-03T09:25:11.3410110Z +-------------+------------------------------+
+Build iOS	Run Fastlane	2026-08-03T09:25:11.3515540Z 
+Build iOS	Run Fastlane	2026-08-03T09:25:11.3623580Z [09:25:10]: ▸ ^[[35mnote: Run script build phase '[CP-User] [RNCore] Replace React Native Core for the right configuration, if needed' will be run during every build because the option to run the script phase "Based on dependency analysis" is unchecked. (in target 'React-Core-prebuilt' from project 'Pods')^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:11.3727110Z [09:25:10]: ▸ ^[[35mwarning: Run script build phase 'Create Symlinks to Header Folders' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'ReactCodegen' from project 'Pods')^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:11.3830770Z [09:25:10]: ▸ ^[[35m/Users/runner/work/TaskFlowAI/TaskFlowAI/ios/Pods/Pods.xcodeproj: warning: The iOS deployment target 'IPHONEOS_DEPLOYMENT_TARGET' is set to 11.0, but the range of supported deployment target versions is 12.0 to 26.5.99. (in target 'gRPC-Core-grpc' from project 'Pods')^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:11.3934060Z [09:25:10]: ▸ ^[[35mwarning: Run script build phase 'Create Symlinks to Header Folders' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'gRPC-Core' from project 'Pods')^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:11.4038490Z [09:25:10]: ▸ ^[[35mwarning: Run script build phase 'Create Symlinks to Header Folders' will be run during every build because it does not specify any outputs. To address this issue, either add output dependencies to the script phase, or configure it to run in every build by unchecking "Based on dependency analysis" in the script phase. (in target 'BoringSSL-GRPC' from project 'Pods')^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:11.4145680Z [09:25:10]: 
+Build iOS	Run Fastlane	2026-08-03T09:25:11.4249160Z [09:25:10]: ^[[31m⬆️  Check out the few lines of raw `xcodebuild` output above for potential hints on how to solve this error^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:11.4351170Z [09:25:10]: ^[[33m📋  For the complete and more detailed error log, check the full log at:^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:11.4453340Z [09:25:10]: ^[[33m📋  /Users/runner/Library/Logs/gym/TaskFlowAI-TaskFlowAI.log^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:11.4553740Z [09:25:10]: 
+Build iOS	Run Fastlane	2026-08-03T09:25:11.4655510Z [09:25:10]: ^[[31mLooks like fastlane ran into a build/archive error with your project^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:11.4755840Z [09:25:10]: ^[[31mIt's hard to tell what's causing the error, so we wrote some guides on how^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:11.4857980Z [09:25:10]: ^[[31mto troubleshoot build and signing issues: https://docs.fastlane.tools/codesigning/getting-started/^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:11.4959070Z [09:25:10]: ^[[31mBefore submitting an issue on GitHub, please follow the guide above and make^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:11.4973700Z [09:25:10]: ^[[31msure your project is set up correctly.^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:11.4975350Z [09:25:10]: ^[[31mfastlane uses `xcodebuild` commands to generate your binary, you can see the^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:11.4976130Z [09:25:10]: ^[[31mthe full commands printed out in yellow in the above log.^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:11.4977130Z [09:25:10]: ^[[31mMake sure to inspect the output above, as usually you'll find more error information there^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:11.4980340Z [09:25:10]: 
+Build iOS	Run Fastlane	2026-08-03T09:25:11.4981530Z +------------------------------+
+Build iOS	Run Fastlane	2026-08-03T09:25:11.4982070Z |         ^[[33mLane Context^[[0m         |
+Build iOS	Run Fastlane	2026-08-03T09:25:11.4982510Z +------------------+-----------+
+Build iOS	Run Fastlane	2026-08-03T09:25:11.4982900Z | DEFAULT_PLATFORM | ios       |
+Build iOS	Run Fastlane	2026-08-03T09:25:11.4983480Z | PLATFORM_NAME    | ios       |
+Build iOS	Run Fastlane	2026-08-03T09:25:11.4988730Z | LANE_NAME        | ios build |
+Build iOS	Run Fastlane	2026-08-03T09:25:11.4994710Z +------------------+-----------+
+Build iOS	Run Fastlane	2026-08-03T09:25:11.4995330Z [09:25:10]: ^[[31mCalled from Fastfile at line 6^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:11.4995800Z [09:25:10]: ^[[31m```^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:11.4996270Z [09:25:10]: ^[[31m    4:	  desc "Build the iOS application"^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:11.4996790Z [09:25:10]: ^[[31m    5:	  lane :build do^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:11.4997720Z [09:25:10]: ^[[31m => 6:	    build_app(workspace: "TaskFlowAI.xcworkspace", scheme: "TaskFlowAI")^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5001170Z [09:25:10]: ^[[31m    7:	  end^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5005730Z [09:25:10]: ^[[31m    8:	end^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5036230Z [09:25:10]: ^[[31m```^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5036960Z [09:25:10]: ^[[31mError building the application - see the log above^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5042260Z 
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5042640Z +---------------------------------------+
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5043200Z |           ^[[32mfastlane summary^[[0m            |
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5043860Z +------+------------------+-------------+
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5056780Z | Step | Action           | Time (in s) |
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5059430Z +------+------------------+-------------+
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5063680Z | 1    | default_platform | 0           |
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5066810Z | 💥   | ^[[31mbuild_app^[[0m        | 97          |
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5068900Z +------+------------------+-------------+
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5072520Z 
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5072890Z [09:25:10]: ^[[31mfastlane finished with errors^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5073270Z 
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5073570Z #######################################################################
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5074190Z # fastlane 2.237.0 is available. You are on 2.229.0.
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5074640Z # You should use the latest version.
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5075320Z # Please update using `bundle update fastlane`.
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5077420Z #######################################################################
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5077710Z 
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5078000Z ^[[32m2.237.0 Improvements^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5078570Z * [ci] drop CircleCI for GHA (#30108) via Connor Tumbleson (@iBotPeaches)
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5079650Z * [fastlane_core] Restore altool -f flag, keep -assetFile only for iTMSTransporter (#30106) via Roman Gardukevich (@OdNairy)
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5085440Z * [gym] handle xcpretty errors cleaner & promote xcbeautify (#30099) via Connor Tumbleson (@iBotPeaches)
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5096400Z * [docs] Reflect specification changes regarding iPad Pro 12.9-inch screenshots in `deliver` (#30103) via 417-72KI (@417-72KI)
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5105730Z * [core] Reduce duplication on output and noise during failure. (#30097) via Connor Tumbleson (@iBotPeaches)
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5106640Z * Bump actions/checkout from 6 to 7 (#30100) via dependabot[bot] (@dependabot[bot])
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5112370Z * [match] Restore renew expired certs (opt in) (#30096) via Roman Gardukevich (@OdNairy)
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5159010Z * [match] fail fast for SSH authentication prompts in non-interactive shell (#30078) via Pratik Patil (@PratikPatil131)
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5160320Z * [gem] move to faraday 1.10.6 (#30095) via Connor Tumbleson (@iBotPeaches)
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5166300Z * [core] Skip repeating the output again when an sh command fails (#19545) via Peter Tutervai (@tutipeti)
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5167540Z * [scan] Forward force_legacy_xcresulttool to trainer (#30092) via Eyüp Can Akman (@eyupcanakman)
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5177790Z * [trainer] Fix output_remove_retry_attempts not stripping failures for skipped-on-retry tests (modern xcresult parser) (#30081) via Oliver Fox (@foxware00)
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5185250Z * [scan] Handle array destination in xcodebuild_destination_parameter (#30069) via Ricardo Sawir (@sawirricardo)
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5212370Z * [action][swiftlint] Fix path option for SwiftLint 0.48.0 and above (#30080) via Augusto Xavier (@augustocbx)
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5213250Z * [ci] move more workflows from CircleCI -> GHA (#30090) via Connor Tumbleson (@iBotPeaches)
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5216370Z * [core] remove upper bound on excon (#30085) via Connor Tumbleson (@iBotPeaches)
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5217760Z * Bump actions/checkout from 6 to 7 (#30091) via dependabot[bot] (@dependabot[bot])
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5222740Z * [spaceship] Fix appInfoLocalizations create/delete on the Tunes API (#30084) via Marcel Hoppe (@hoppsen)
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5227400Z * [match] Fix keychain import path escaping (#30072) via Ricardo Sawir (@sawirricardo)
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5228240Z * [precheck] Fix copyright year check to allow past years (#30076) via Augusto Xavier (@augustocbx)
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5229360Z * [supply] Fix version_codes_to_retain causing promote-only flow to use… (#30073) via Pratik Patil (@PratikPatil131)
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5230400Z * Bump rubygems/configure-rubygems-credentials from 2.0.0 to 2.1.0 (#30074) via dependabot[bot] (@dependabot[bot])
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5238410Z * [fastlane_core] Fix deprecated Transporter -f flag, use -assetFile fo… (#30061) via Pratik Patil (@PratikPatil131)
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5240700Z * [core] fix: update addressable to 2.9.0 min for CVE-2026-35611 (#30060) via OrbisAI Security (@orbisai0security)
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5242920Z 
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5243440Z ^[[32m2.236.1 Improvements^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5244320Z * Revert "[transporter] Decode Base64 key content for .p8 file generation in Al…" (#30066) via Connor Tumbleson (@iBotPeaches)
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5254230Z 
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5254670Z ^[[32m2.236.0 Improvements^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5261930Z * [ci] fix: add 'multi_json' as direct dep due to upstream googleapis bug. (#30062) via Connor Tumbleson (@iBotPeaches)
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5263800Z * Fix --copy_to_clipboard flag for spaceauth command (#29888) via owurman (@owurman)
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5266730Z * [transporter] Decode Base64 key content for .p8 file generation in Al… (#30057) via Kaan Çembertaş (@kaancembertas)
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5268840Z * [ci] remove xcode 16.3 as CircleCI dropped it (#30058) via Connor Tumbleson (@iBotPeaches)
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5271110Z * [action] Add update_app_age_rating action for standalone age rating updates (#30025) via Pratik Patil (@PratikPatil131)
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5275190Z * [core] Set ruby-jwt gem to v2.10.3 minimum.  (#30056) via Nakshatra Singh (@nakshatrasinghh)
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5279950Z * [snapshot] run simulator using Rosetta2 for Apple Silicon (#21559) via Iceman (@sidepelican)
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5289800Z * [snapshot] use simulator UDIDs for destinations (#30054) via Philip Niedertscheider (@philprime)
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5299530Z * [spaceship] remove dots from names (#30052) via Tim Shedor (@tshedor)
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5302330Z * [docs] keep docs assets moving along during update_docs (#30051) via Connor Tumbleson (@iBotPeaches)
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5302750Z 
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5303250Z ^[[32mTo see all new releases, open https://github.com/fastlane/fastlane/releases^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5303670Z 
+Build iOS	Run Fastlane	2026-08-03T09:25:11.5303980Z ^[[32mPlease update using `bundle update fastlane`^[[0m
+Build iOS	Run Fastlane	2026-08-03T09:25:11.6057740Z ##[error]Process completed with exit code 1.
+Build iOS	Post Checkout Repository	﻿2026-08-03T09:25:11.6246530Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+Build iOS	Post Checkout Repository	2026-08-03T09:25:11.6247660Z Post job cleanup.
+Build iOS	Post Checkout Repository	2026-08-03T09:25:12.1105400Z [command]/opt/homebrew/bin/git version
+Build iOS	Post Checkout Repository	2026-08-03T09:25:12.1538490Z git version 2.55.0
+Build iOS	Post Checkout Repository	2026-08-03T09:25:12.1570530Z Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/337f83fa-1eee-467e-a746-31279119f943/.gitconfig'
+Build iOS	Post Checkout Repository	2026-08-03T09:25:12.1577640Z Temporarily overriding HOME='/Users/runner/work/_temp/337f83fa-1eee-467e-a746-31279119f943' before making global git config changes
+Build iOS	Post Checkout Repository	2026-08-03T09:25:12.1578640Z Adding repository directory to the temporary git global config as a safe directory
+Build iOS	Post Checkout Repository	2026-08-03T09:25:12.1586190Z [command]/opt/homebrew/bin/git config --global --add safe.directory /Users/runner/work/TaskFlowAI/TaskFlowAI
+Build iOS	Post Checkout Repository	2026-08-03T09:25:12.1772260Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp core\.sshCommand
+Build iOS	Post Checkout Repository	2026-08-03T09:25:12.1868790Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Build iOS	Post Checkout Repository	2026-08-03T09:25:12.3269060Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Build iOS	Post Checkout Repository	2026-08-03T09:25:12.3342550Z http.https://github.com/.extraheader
+Build iOS	Post Checkout Repository	2026-08-03T09:25:12.3349790Z [command]/opt/homebrew/bin/git config --local --unset-all http.https://github.com/.extraheader
+Build iOS	Post Checkout Repository	2026-08-03T09:25:12.3462610Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Build iOS	Post Checkout Repository	2026-08-03T09:25:12.4599730Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Build iOS	Post Checkout Repository	2026-08-03T09:25:12.4681280Z [command]/opt/homebrew/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Build iOS	Complete job	﻿2026-08-03T09:25:12.5944460Z Cleaning up orphan processes
+Build iOS	Complete job	2026-08-03T09:25:12.7659360Z Terminate orphan process: pid (19010) (ibtoold)
+Build iOS	Complete job	2026-08-03T09:25:12.7903040Z Terminate orphan process: pid (19002) (ibtoold)
+Build iOS	Complete job	2026-08-03T09:25:13.1480860Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-node@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

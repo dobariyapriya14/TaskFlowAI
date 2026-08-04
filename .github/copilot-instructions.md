@@ -3,6 +3,7 @@
 This repository contains a React Native mobile application powered by Firebase.
 
 ## Technology Stack
+
 - **Framework**: React Native (TypeScript)
 - **Backend**: Firebase (Auth, Firestore, Cloud Functions)
 - **CI/CD**: GitHub Actions & Fastlane

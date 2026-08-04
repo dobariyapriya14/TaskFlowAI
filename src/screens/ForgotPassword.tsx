@@ -4,6 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Input } from '../components/Input';
 import { Button } from '../components/Button';
 import { authService } from '../services/authService';
+import { handleError } from '../utils/errorHandler';
 
 export const ForgotPassword = ({ navigation }: any) => {
   const [email, setEmail] = useState('');
@@ -20,7 +21,7 @@ export const ForgotPassword = ({ navigation }: any) => {
       Alert.alert('Success', 'Password reset email sent');
       navigation.navigate('Login');
     } catch (error: any) {
-      Alert.alert('Error', error.message);
+      handleError(error, 'ForgotPassword: handleReset', true);
     } finally {
       setLoading(false);
     }
@@ -30,7 +31,9 @@ export const ForgotPassword = ({ navigation }: any) => {
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
         <Text style={styles.title}>Reset Password</Text>
-        <Text style={styles.subtitle}>Enter your email to receive a password reset link.</Text>
+        <Text style={styles.subtitle}>
+          Enter your email to receive a password reset link.
+        </Text>
         <Input
           label="Email"
           placeholder="Enter your email"
@@ -39,8 +42,12 @@ export const ForgotPassword = ({ navigation }: any) => {
           keyboardType="email-address"
           autoCapitalize="none"
         />
-        <Button title="Send Reset Link" onPress={handleReset} loading={loading} />
-        
+        <Button
+          title="Send Reset Link"
+          onPress={handleReset}
+          loading={loading}
+        />
+
         <View style={styles.footerLinks}>
           <TouchableOpacity onPress={() => navigation.navigate('Login')}>
             <Text style={styles.link}>Back to Login</Text>
@@ -81,5 +88,5 @@ const styles = StyleSheet.create({
   link: {
     color: '#007bff',
     fontSize: 14,
-  }
+  },
 });

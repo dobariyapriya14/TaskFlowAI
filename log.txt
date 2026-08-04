@@ -1,0 +1,1394 @@
+Build Android	Set up job	﻿2026-08-03T09:11:04.5188773Z Current runner version: '2.336.0'
+Build Android	Set up job	2026-08-03T09:11:04.5216161Z ##[group]Runner Image Provisioner
+Build Android	Set up job	2026-08-03T09:11:04.5217034Z Hosted Compute Agent
+Build Android	Set up job	2026-08-03T09:11:04.5217690Z Version: 20260707.563
+Build Android	Set up job	2026-08-03T09:11:04.5218369Z Commit: 02667638d2b423fbc733a8e32a88b44996a3ba6e
+Build Android	Set up job	2026-08-03T09:11:04.5219094Z Build Date: 2026-07-07T19:33:50Z
+Build Android	Set up job	2026-08-03T09:11:04.5219876Z Worker ID: {6f3102c2-f5ac-4c2e-ba65-1b590894dc55}
+Build Android	Set up job	2026-08-03T09:11:04.5220607Z Azure Region: centralus
+Build Android	Set up job	2026-08-03T09:11:04.5221157Z ##[endgroup]
+Build Android	Set up job	2026-08-03T09:11:04.5222854Z ##[group]Operating System
+Build Android	Set up job	2026-08-03T09:11:04.5223507Z Ubuntu
+Build Android	Set up job	2026-08-03T09:11:04.5224118Z 24.04.4
+Build Android	Set up job	2026-08-03T09:11:04.5224634Z LTS
+Build Android	Set up job	2026-08-03T09:11:04.5225148Z ##[endgroup]
+Build Android	Set up job	2026-08-03T09:11:04.5226018Z ##[group]Runner Image
+Build Android	Set up job	2026-08-03T09:11:04.5226716Z Image: ubuntu-24.04
+Build Android	Set up job	2026-08-03T09:11:04.5227344Z Version: 20260720.247.2
+Build Android	Set up job	2026-08-03T09:11:04.5228488Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260720.247/images/ubuntu/Ubuntu2404-Readme.md
+Build Android	Set up job	2026-08-03T09:11:04.5230284Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260720.247
+Build Android	Set up job	2026-08-03T09:11:04.5231241Z ##[endgroup]
+Build Android	Set up job	2026-08-03T09:11:04.5232457Z ##[group]GITHUB_TOKEN Permissions
+Build Android	Set up job	2026-08-03T09:11:04.5234838Z Contents: read
+Build Android	Set up job	2026-08-03T09:11:04.5235775Z Metadata: read
+Build Android	Set up job	2026-08-03T09:11:04.5236462Z Packages: read
+Build Android	Set up job	2026-08-03T09:11:04.5237128Z ##[endgroup]
+Build Android	Set up job	2026-08-03T09:11:04.5239276Z Secret source: Actions
+Build Android	Set up job	2026-08-03T09:11:04.5240791Z Prepare workflow directory
+Build Android	Set up job	2026-08-03T09:11:04.5583382Z Prepare all required actions
+Build Android	Set up job	2026-08-03T09:11:04.5632436Z Getting action download info
+Build Android	Set up job	2026-08-03T09:11:04.8546235Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+Build Android	Set up job	2026-08-03T09:11:05.3074209Z Download action repository 'actions/setup-node@v4' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+Build Android	Set up job	2026-08-03T09:11:05.4090017Z Download action repository 'actions/setup-java@v4' (SHA:d7793b545071e98d581d3bf084a51c3213318a07)
+Build Android	Set up job	2026-08-03T09:11:06.0078377Z Download action repository 'ruby/setup-ruby@v1' (SHA:95ef2b042f9d7a56d8268cba8559e2842e2ad01b)
+Build Android	Set up job	2026-08-03T09:11:06.4627139Z Complete job name: Build Android
+Build Android	Checkout Repository	﻿2026-08-03T09:11:06.5546873Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+Build Android	Checkout Repository	2026-08-03T09:11:06.5558148Z ##[group]Run actions/checkout@v4
+Build Android	Checkout Repository	2026-08-03T09:11:06.5559426Z with:
+Build Android	Checkout Repository	2026-08-03T09:11:06.5560334Z   repository: dobariyapriya14/TaskFlowAI
+Build Android	Checkout Repository	2026-08-03T09:11:06.5570684Z   token: ***
+Build Android	Checkout Repository	2026-08-03T09:11:06.5571609Z   ssh-strict: true
+Build Android	Checkout Repository	2026-08-03T09:11:06.5572483Z   ssh-user: git
+Build Android	Checkout Repository	2026-08-03T09:11:06.5573361Z   persist-credentials: true
+Build Android	Checkout Repository	2026-08-03T09:11:06.5574344Z   clean: true
+Build Android	Checkout Repository	2026-08-03T09:11:06.5575233Z   sparse-checkout-cone-mode: true
+Build Android	Checkout Repository	2026-08-03T09:11:06.5576555Z   fetch-depth: 1
+Build Android	Checkout Repository	2026-08-03T09:11:06.5577439Z   fetch-tags: false
+Build Android	Checkout Repository	2026-08-03T09:11:06.5578340Z   show-progress: true
+Build Android	Checkout Repository	2026-08-03T09:11:06.5579245Z   lfs: false
+Build Android	Checkout Repository	2026-08-03T09:11:06.5580072Z   submodules: false
+Build Android	Checkout Repository	2026-08-03T09:11:06.5581021Z   set-safe-directory: true
+Build Android	Checkout Repository	2026-08-03T09:11:06.5582046Z   allow-unsafe-pr-checkout: false
+Build Android	Checkout Repository	2026-08-03T09:11:06.5583420Z ##[endgroup]
+Build Android	Checkout Repository	2026-08-03T09:11:06.6601719Z Syncing repository: dobariyapriya14/TaskFlowAI
+Build Android	Checkout Repository	2026-08-03T09:11:06.6604712Z ##[group]Getting Git version info
+Build Android	Checkout Repository	2026-08-03T09:11:06.6606639Z Working directory is '/home/runner/work/TaskFlowAI/TaskFlowAI'
+Build Android	Checkout Repository	2026-08-03T09:11:06.6608751Z [command]/usr/bin/git version
+Build Android	Checkout Repository	2026-08-03T09:11:06.6688653Z git version 2.54.0
+Build Android	Checkout Repository	2026-08-03T09:11:06.6714563Z ##[endgroup]
+Build Android	Checkout Repository	2026-08-03T09:11:06.6750017Z Temporarily overriding HOME='/home/runner/work/_temp/689d8ad7-01c1-4b3d-a9cb-6014a7760e92' before making global git config changes
+Build Android	Checkout Repository	2026-08-03T09:11:06.6753217Z Adding repository directory to the temporary git global config as a safe directory
+Build Android	Checkout Repository	2026-08-03T09:11:06.6757369Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/TaskFlowAI/TaskFlowAI
+Build Android	Checkout Repository	2026-08-03T09:11:06.6809818Z Deleting the contents of '/home/runner/work/TaskFlowAI/TaskFlowAI'
+Build Android	Checkout Repository	2026-08-03T09:11:06.6827689Z ##[group]Initializing the repository
+Build Android	Checkout Repository	2026-08-03T09:11:06.6829728Z [command]/usr/bin/git init /home/runner/work/TaskFlowAI/TaskFlowAI
+Build Android	Checkout Repository	2026-08-03T09:11:06.6931386Z hint: Using 'master' as the name for the initial branch. This default branch name
+Build Android	Checkout Repository	2026-08-03T09:11:06.6933882Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+Build Android	Checkout Repository	2026-08-03T09:11:06.6936260Z hint: to use in all of your new repositories, which will suppress this warning,
+Build Android	Checkout Repository	2026-08-03T09:11:06.6939067Z hint: call:
+Build Android	Checkout Repository	2026-08-03T09:11:06.6941022Z hint:
+Build Android	Checkout Repository	2026-08-03T09:11:06.6943354Z hint: 	git config --global init.defaultBranch <name>
+Build Android	Checkout Repository	2026-08-03T09:11:06.6946291Z hint:
+Build Android	Checkout Repository	2026-08-03T09:11:06.6948922Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+Build Android	Checkout Repository	2026-08-03T09:11:06.6952282Z hint: 'development'. The just-created branch can be renamed via this command:
+Build Android	Checkout Repository	2026-08-03T09:11:06.6954872Z hint:
+Build Android	Checkout Repository	2026-08-03T09:11:06.6956426Z hint: 	git branch -m <name>
+Build Android	Checkout Repository	2026-08-03T09:11:06.6958243Z hint:
+Build Android	Checkout Repository	2026-08-03T09:11:06.6960372Z hint: Disable this message with "git config set advice.defaultBranchName false"
+Build Android	Checkout Repository	2026-08-03T09:11:06.6963908Z Initialized empty Git repository in /home/runner/work/TaskFlowAI/TaskFlowAI/.git/
+Build Android	Checkout Repository	2026-08-03T09:11:06.6969693Z [command]/usr/bin/git remote add origin https://github.com/dobariyapriya14/TaskFlowAI
+Build Android	Checkout Repository	2026-08-03T09:11:06.6997049Z ##[endgroup]
+Build Android	Checkout Repository	2026-08-03T09:11:06.6998906Z ##[group]Disabling automatic garbage collection
+Build Android	Checkout Repository	2026-08-03T09:11:06.7002308Z [command]/usr/bin/git config --local gc.auto 0
+Build Android	Checkout Repository	2026-08-03T09:11:06.7034040Z ##[endgroup]
+Build Android	Checkout Repository	2026-08-03T09:11:06.7036073Z ##[group]Setting up auth
+Build Android	Checkout Repository	2026-08-03T09:11:06.7041501Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+Build Android	Checkout Repository	2026-08-03T09:11:06.7077007Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Build Android	Checkout Repository	2026-08-03T09:11:06.7448580Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Build Android	Checkout Repository	2026-08-03T09:11:06.7491945Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Build Android	Checkout Repository	2026-08-03T09:11:06.7723032Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Build Android	Checkout Repository	2026-08-03T09:11:06.7761302Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Build Android	Checkout Repository	2026-08-03T09:11:06.7986120Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+Build Android	Checkout Repository	2026-08-03T09:11:06.8024256Z ##[endgroup]
+Build Android	Checkout Repository	2026-08-03T09:11:06.8026063Z ##[group]Fetching the repository
+Build Android	Checkout Repository	2026-08-03T09:11:06.8034813Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +ccbe42ce8554f5486ae03514ad6ef74dfaaea177:refs/remotes/pull/2/merge
+Build Android	Checkout Repository	2026-08-03T09:11:07.2199200Z From https://github.com/dobariyapriya14/TaskFlowAI
+Build Android	Checkout Repository	2026-08-03T09:11:07.2202062Z  * [new ref]         ccbe42ce8554f5486ae03514ad6ef74dfaaea177 -> pull/2/merge
+Build Android	Checkout Repository	2026-08-03T09:11:07.2237171Z ##[endgroup]
+Build Android	Checkout Repository	2026-08-03T09:11:07.2239685Z ##[group]Determining the checkout info
+Build Android	Checkout Repository	2026-08-03T09:11:07.2242615Z ##[endgroup]
+Build Android	Checkout Repository	2026-08-03T09:11:07.2246767Z [command]/usr/bin/git sparse-checkout disable
+Build Android	Checkout Repository	2026-08-03T09:11:07.2296576Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+Build Android	Checkout Repository	2026-08-03T09:11:07.2353538Z ##[group]Checking out the ref
+Build Android	Checkout Repository	2026-08-03T09:11:07.2356224Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/2/merge
+Build Android	Checkout Repository	2026-08-03T09:11:07.2504985Z Note: switching to 'refs/remotes/pull/2/merge'.
+Build Android	Checkout Repository	2026-08-03T09:11:07.2506699Z 
+Build Android	Checkout Repository	2026-08-03T09:11:07.2507848Z You are in 'detached HEAD' state. You can look around, make experimental
+Build Android	Checkout Repository	2026-08-03T09:11:07.2510894Z changes and commit them, and you can discard any commits you make in this
+Build Android	Checkout Repository	2026-08-03T09:11:07.2512743Z state without impacting any branches by switching back to a branch.
+Build Android	Checkout Repository	2026-08-03T09:11:07.2514525Z 
+Build Android	Checkout Repository	2026-08-03T09:11:07.2515958Z If you want to create a new branch to retain commits you create, you may
+Build Android	Checkout Repository	2026-08-03T09:11:07.2518380Z do so (now or later) by using -c with the switch command. Example:
+Build Android	Checkout Repository	2026-08-03T09:11:07.2519519Z 
+Build Android	Checkout Repository	2026-08-03T09:11:07.2519919Z   git switch -c <new-branch-name>
+Build Android	Checkout Repository	2026-08-03T09:11:07.2520598Z 
+Build Android	Checkout Repository	2026-08-03T09:11:07.2520969Z Or undo this operation with:
+Build Android	Checkout Repository	2026-08-03T09:11:07.2521570Z 
+Build Android	Checkout Repository	2026-08-03T09:11:07.2521898Z   git switch -
+Build Android	Checkout Repository	2026-08-03T09:11:07.2522388Z 
+Build Android	Checkout Repository	2026-08-03T09:11:07.2523161Z Turn off this advice by setting config variable advice.detachedHead to false
+Build Android	Checkout Repository	2026-08-03T09:11:07.2524312Z 
+Build Android	Checkout Repository	2026-08-03T09:11:07.2526044Z HEAD is now at ccbe42c Merge 6a0bc18173500fc3f605c0b170b2bdd7aab6e127 into 4c7e9c140fb7499126c7207e7ab29aa35a0545e0
+Build Android	Checkout Repository	2026-08-03T09:11:07.2530103Z ##[endgroup]
+Build Android	Checkout Repository	2026-08-03T09:11:07.2558380Z [command]/usr/bin/git log -1 --format=%H
+Build Android	Checkout Repository	2026-08-03T09:11:07.2584888Z ccbe42ce8554f5486ae03514ad6ef74dfaaea177
+Build Android	Set up Node.js	﻿2026-08-03T09:11:07.2939035Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+Build Android	Set up Node.js	2026-08-03T09:11:07.2944158Z ##[group]Run actions/setup-node@v4
+Build Android	Set up Node.js	2026-08-03T09:11:07.2945087Z with:
+Build Android	Set up Node.js	2026-08-03T09:11:07.2946084Z   node-version: 20
+Build Android	Set up Node.js	2026-08-03T09:11:07.2946837Z   cache: npm
+Build Android	Set up Node.js	2026-08-03T09:11:07.2947544Z   always-auth: false
+Build Android	Set up Node.js	2026-08-03T09:11:07.2948328Z   check-latest: false
+Build Android	Set up Node.js	2026-08-03T09:11:07.2957819Z   token: ***
+Build Android	Set up Node.js	2026-08-03T09:11:07.2958553Z ##[endgroup]
+Build Android	Set up Node.js	2026-08-03T09:11:07.4354014Z Attempting to download 20...
+Build Android	Set up Node.js	2026-08-03T09:11:07.4460897Z (node:2260) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+Build Android	Set up Node.js	2026-08-03T09:11:07.4463857Z (Use `node --trace-deprecation ...` to show where the warning was created)
+Build Android	Set up Node.js	2026-08-03T09:11:08.2876670Z Acquiring 20.20.2 - x64 from https://github.com/actions/node-versions/releases/download/20.20.2-23521894959/node-20.20.2-linux-x64.tar.gz
+Build Android	Set up Node.js	2026-08-03T09:11:08.8670555Z Extracting ...
+Build Android	Set up Node.js	2026-08-03T09:11:08.8813433Z [command]/usr/bin/tar xz --strip 1 --warning=no-unknown-keyword --overwrite -C /home/runner/work/_temp/1a0e829c-9e2e-4876-9063-d74cd951b5ef -f /home/runner/work/_temp/ff65edd4-e198-4a12-aa35-45332d5415ca
+Build Android	Set up Node.js	2026-08-03T09:11:09.9043942Z Adding to the cache ...
+Build Android	Set up Node.js	2026-08-03T09:11:11.5675142Z ##[group]Environment details
+Build Android	Set up Node.js	2026-08-03T09:11:11.7992104Z node: v20.20.2
+Build Android	Set up Node.js	2026-08-03T09:11:11.7992533Z npm: 10.8.2
+Build Android	Set up Node.js	2026-08-03T09:11:11.7993200Z yarn: 1.22.22
+Build Android	Set up Node.js	2026-08-03T09:11:11.7993931Z ##[endgroup]
+Build Android	Set up Node.js	2026-08-03T09:11:11.8015285Z [command]/opt/hostedtoolcache/node/20.20.2/x64/bin/npm config get cache
+Build Android	Set up Node.js	2026-08-03T09:11:11.9078994Z /home/runner/.npm
+Build Android	Set up Node.js	2026-08-03T09:11:12.0505632Z npm cache is not found
+Build Android	Set up JDK	﻿2026-08-03T09:11:12.0746017Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+Build Android	Set up JDK	2026-08-03T09:11:12.0747350Z ##[group]Run actions/setup-java@v4
+Build Android	Set up JDK	2026-08-03T09:11:12.0747605Z with:
+Build Android	Set up JDK	2026-08-03T09:11:12.0747799Z   java-version: 17
+Build Android	Set up JDK	2026-08-03T09:11:12.0748024Z   distribution: zulu
+Build Android	Set up JDK	2026-08-03T09:11:12.0748233Z   cache: gradle
+Build Android	Set up JDK	2026-08-03T09:11:12.0748428Z   java-package: jdk
+Build Android	Set up JDK	2026-08-03T09:11:12.0748640Z   check-latest: false
+Build Android	Set up JDK	2026-08-03T09:11:12.0748863Z   server-id: github
+Build Android	Set up JDK	2026-08-03T09:11:12.0749070Z   server-username: GITHUB_ACTOR
+Build Android	Set up JDK	2026-08-03T09:11:12.0749320Z   server-password: GITHUB_TOKEN
+Build Android	Set up JDK	2026-08-03T09:11:12.0749567Z   overwrite-settings: true
+Build Android	Set up JDK	2026-08-03T09:11:12.0749987Z   job-status: success
+Build Android	Set up JDK	2026-08-03T09:11:12.0752695Z   token: ***
+Build Android	Set up JDK	2026-08-03T09:11:12.0752909Z ##[endgroup]
+Build Android	Set up JDK	2026-08-03T09:11:12.2383620Z ##[group]Installed distributions
+Build Android	Set up JDK	2026-08-03T09:11:12.2416682Z Trying to resolve the latest version from remote
+Build Android	Set up JDK	2026-08-03T09:11:12.2513386Z (node:2306) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+Build Android	Set up JDK	2026-08-03T09:11:12.2514360Z (Use `node --trace-deprecation ...` to show where the warning was created)
+Build Android	Set up JDK	2026-08-03T09:11:12.3214074Z Resolved latest version as 17.0.20+8
+Build Android	Set up JDK	2026-08-03T09:11:12.3215122Z Trying to download...
+Build Android	Set up JDK	2026-08-03T09:11:12.3216960Z Downloading Java 17.0.20+8 (Zulu) from https://cdn.azul.com/zulu/bin/zulu17.68.17-ca-jdk17.0.20-linux_x64.tar.gz ...
+Build Android	Set up JDK	2026-08-03T09:11:17.0257507Z Extracting Java archive...
+Build Android	Set up JDK	2026-08-03T09:11:17.0433925Z [command]/usr/bin/tar xz --warning=no-unknown-keyword --overwrite -C /home/runner/work/_temp/9ffc02b4-c368-4147-9747-c3b42b3103e2 -f /home/runner/work/_temp/d526d117-de50-4d68-84b0-e720161d5155
+Build Android	Set up JDK	2026-08-03T09:11:19.7813487Z Java 17.0.20+8 was downloaded
+Build Android	Set up JDK	2026-08-03T09:11:19.7814101Z Setting Java 17.0.20+8 as the default
+Build Android	Set up JDK	2026-08-03T09:11:19.7823972Z Creating toolchains.xml for JDK version 17 from zulu
+Build Android	Set up JDK	2026-08-03T09:11:19.7900521Z Writing to /home/runner/.m2/toolchains.xml
+Build Android	Set up JDK	2026-08-03T09:11:19.7901222Z 
+Build Android	Set up JDK	2026-08-03T09:11:19.7901542Z Java configuration:
+Build Android	Set up JDK	2026-08-03T09:11:19.7901993Z   Distribution: zulu
+Build Android	Set up JDK	2026-08-03T09:11:19.7902465Z   Version: 17.0.20+8
+Build Android	Set up JDK	2026-08-03T09:11:19.7903066Z   Path: /opt/hostedtoolcache/Java_Zulu_jdk/17.0.20-8/x64
+Build Android	Set up JDK	2026-08-03T09:11:19.7903525Z 
+Build Android	Set up JDK	2026-08-03T09:11:19.7903974Z ##[endgroup]
+Build Android	Set up JDK	2026-08-03T09:11:19.7908285Z Creating settings.xml with server-id: github
+Build Android	Set up JDK	2026-08-03T09:11:19.7918732Z Writing to /home/runner/.m2/settings.xml
+Build Android	Set up JDK	2026-08-03T09:11:19.9774457Z gradle cache is not found
+Build Android	Set up Ruby	﻿2026-08-03T09:11:19.9971993Z ##[group]Run ruby/setup-ruby@v1
+Build Android	Set up Ruby	2026-08-03T09:11:19.9972280Z with:
+Build Android	Set up Ruby	2026-08-03T09:11:19.9972474Z   ruby-version: 3.1
+Build Android	Set up Ruby	2026-08-03T09:11:19.9972692Z   bundler-cache: true
+Build Android	Set up Ruby	2026-08-03T09:11:19.9972894Z   bundler: latest
+Build Android	Set up Ruby	2026-08-03T09:11:19.9975863Z   token: ***
+Build Android	Set up Ruby	2026-08-03T09:11:19.9976065Z env:
+Build Android	Set up Ruby	2026-08-03T09:11:19.9976316Z   JAVA_HOME: /opt/hostedtoolcache/Java_Zulu_jdk/17.0.20-8/x64
+Build Android	Set up Ruby	2026-08-03T09:11:19.9976716Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Zulu_jdk/17.0.20-8/x64
+Build Android	Set up Ruby	2026-08-03T09:11:19.9977046Z ##[endgroup]
+Build Android	Set up Ruby	2026-08-03T09:11:20.1352401Z ##[group]Modifying PATH
+Build Android	Set up Ruby	2026-08-03T09:11:20.1371618Z Entries added to PATH to use selected Ruby:
+Build Android	Set up Ruby	2026-08-03T09:11:20.1376470Z   /opt/hostedtoolcache/Ruby/3.1.7/x64/bin
+Build Android	Set up Ruby	2026-08-03T09:11:20.1406439Z ##[endgroup]
+Build Android	Set up Ruby	2026-08-03T09:11:20.1407403Z ##[group]Downloading Ruby
+Build Android	Set up Ruby	2026-08-03T09:11:20.1408450Z https://github.com/ruby/ruby-builder/releases/download/ruby-3.1.7/ruby-3.1.7-ubuntu-24.04-x64.tar.gz
+Build Android	Set up Ruby	2026-08-03T09:11:20.6356777Z Took   0.50 seconds
+Build Android	Set up Ruby	2026-08-03T09:11:20.6357833Z ##[endgroup]
+Build Android	Set up Ruby	2026-08-03T09:11:20.6358909Z ##[group]Extracting  Ruby
+Build Android	Set up Ruby	2026-08-03T09:11:20.6390384Z [command]/usr/bin/tar -xz -C /opt/hostedtoolcache/Ruby/3.1.7 -f /home/runner/work/_temp/3eb4b210-1d62-4192-ba11-755df791c6ca
+Build Android	Set up Ruby	2026-08-03T09:11:21.0031223Z Took   0.37 seconds
+Build Android	Set up Ruby	2026-08-03T09:11:21.0031814Z ##[endgroup]
+Build Android	Set up Ruby	2026-08-03T09:11:21.0032244Z ##[group]Print Ruby version
+Build Android	Set up Ruby	2026-08-03T09:11:21.0048663Z [command]/opt/hostedtoolcache/Ruby/3.1.7/x64/bin/ruby --version
+Build Android	Set up Ruby	2026-08-03T09:11:21.0237259Z ruby 3.1.7p261 (2025-03-26 revision 0a3704f218) [x86_64-linux]
+Build Android	Set up Ruby	2026-08-03T09:11:21.0257109Z Took   0.02 seconds
+Build Android	Set up Ruby	2026-08-03T09:11:21.0257926Z ##[endgroup]
+Build Android	Set up Ruby	2026-08-03T09:11:21.0259311Z ##[group]Installing Bundler
+Build Android	Set up Ruby	2026-08-03T09:11:21.0266339Z [command]/opt/hostedtoolcache/Ruby/3.1.7/x64/bin/gem install bundler -v ~> 2.0
+Build Android	Set up Ruby	2026-08-03T09:11:21.6189617Z Successfully installed bundler-2.6.9
+Build Android	Set up Ruby	2026-08-03T09:11:21.6269988Z 1 gem installed
+Build Android	Set up Ruby	2026-08-03T09:11:21.6294812Z Took   0.60 seconds
+Build Android	Set up Ruby	2026-08-03T09:11:21.6295673Z ##[endgroup]
+Build Android	Set up Ruby	2026-08-03T09:11:21.6296082Z > bundle install
+Build Android	Set up Ruby	2026-08-03T09:11:21.6296828Z Setting BUNDLER_VERSION=2 for "bundle config|lock" commands below to ensure Bundler 2 is used
+Build Android	Set up Ruby	2026-08-03T09:11:21.6298638Z [command]/opt/hostedtoolcache/Ruby/3.1.7/x64/bin/bundle config set --local path /home/runner/work/TaskFlowAI/TaskFlowAI/vendor/bundle
+Build Android	Set up Ruby	2026-08-03T09:11:21.7838547Z You are replacing the current local value of path, which is currently "vendor/bundle"
+Build Android	Set up Ruby	2026-08-03T09:11:21.7902365Z [command]/opt/hostedtoolcache/Ruby/3.1.7/x64/bin/bundle config set --local deployment true
+Build Android	Set up Ruby	2026-08-03T09:11:21.9449548Z ##[group]Print lockfile
+Build Android	Set up Ruby	2026-08-03T09:11:21.9465891Z [command]/usr/bin/cat Gemfile.lock
+Build Android	Set up Ruby	2026-08-03T09:11:21.9498913Z GEM
+Build Android	Set up Ruby	2026-08-03T09:11:21.9499510Z   remote: https://rubygems.org/
+Build Android	Set up Ruby	2026-08-03T09:11:21.9499993Z   specs:
+Build Android	Set up Ruby	2026-08-03T09:11:21.9500347Z     CFPropertyList (3.0.9)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9500639Z     abbrev (0.1.2)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9500868Z     activesupport (6.1.7.10)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9501158Z       concurrent-ruby (~> 1.0, >= 1.0.2)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9501458Z       i18n (>= 1.6, < 2)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9501682Z       minitest (>= 5.1)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9501912Z       tzinfo (~> 2.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9502125Z       zeitwerk (~> 2.3)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9502345Z     addressable (2.9.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9502601Z       public_suffix (>= 2.0.2, < 8.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9503011Z     algoliasearch (1.27.5)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9503313Z       httpclient (~> 2.8, >= 2.8.3)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9503565Z       json (>= 1.5.1)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9503781Z     artifactory (3.0.17)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9503999Z     atomos (0.1.3)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9504215Z     aws-eventstream (1.3.2)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9504457Z     aws-partitions (1.1109.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9504705Z     aws-sdk-core (3.224.1)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9504968Z       aws-eventstream (~> 1, >= 1.3.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9505264Z       aws-partitions (~> 1, >= 1.992.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9505922Z       aws-sigv4 (~> 1.9)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9506310Z       base64
+Build Android	Set up Ruby	2026-08-03T09:11:21.9507145Z       jmespath (~> 1, >= 1.6.1)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9507574Z       logger
+Build Android	Set up Ruby	2026-08-03T09:11:21.9507862Z     aws-sdk-kms (1.101.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9508352Z       aws-sdk-core (~> 3, >= 3.216.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9508631Z       aws-sigv4 (~> 1.5)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9508863Z     aws-sdk-s3 (1.188.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9509116Z       aws-sdk-core (~> 3, >= 3.224.1)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9509378Z       aws-sdk-kms (~> 1)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9509600Z       aws-sigv4 (~> 1.5)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9509819Z     aws-sigv4 (1.11.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9510071Z       aws-eventstream (~> 1, >= 1.0.2)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9510331Z     babosa (1.0.4)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9510532Z     base64 (0.3.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9510735Z     benchmark (0.5.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9510952Z     bigdecimal (4.1.2)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9511173Z     claide (1.1.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9511382Z     cocoapods (1.15.2)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9511601Z       addressable (~> 2.8)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9511851Z       claide (>= 1.0.2, < 2.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9512137Z       cocoapods-core (= 1.15.2)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9512441Z       cocoapods-deintegrate (>= 1.0.3, < 2.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9512772Z       cocoapods-downloader (>= 2.1, < 3.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9513080Z       cocoapods-plugins (>= 1.0.0, < 2.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9513381Z       cocoapods-search (>= 1.0.0, < 2.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9513676Z       cocoapods-trunk (>= 1.6.0, < 2.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9513965Z       cocoapods-try (>= 1.1.0, < 2.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9514222Z       colored2 (~> 3.1)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9514442Z       escape (~> 0.0.4)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9514692Z       fourflusher (>= 2.3.0, < 3.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9514955Z       gh_inspector (~> 1.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9515195Z       molinillo (~> 0.8.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9515889Z       nap (~> 1.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9516131Z       ruby-macho (>= 2.3.0, < 3.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9516427Z       xcodeproj (>= 1.23.0, < 2.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9516689Z     cocoapods-core (1.15.2)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9516963Z       activesupport (>= 5.0, < 8)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9517221Z       addressable (~> 2.8)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9517810Z       algoliasearch (~> 1.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9518109Z       concurrent-ruby (~> 1.1)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9518353Z       fuzzy_match (~> 2.0.4)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9518580Z       nap (~> 1.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9518807Z       netrc (~> 0.11)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9519034Z       public_suffix (~> 4.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9519289Z       typhoeus (~> 1.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9519572Z     cocoapods-deintegrate (1.0.5)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9519857Z     cocoapods-downloader (2.1)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9520112Z     cocoapods-plugins (1.0.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9520348Z       nap
+Build Android	Set up Ruby	2026-08-03T09:11:21.9520547Z     cocoapods-search (1.0.1)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9520786Z     cocoapods-trunk (1.6.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9521016Z       nap (>= 0.8, < 2.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9521241Z       netrc (~> 0.11)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9521477Z     cocoapods-try (1.2.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9521706Z     colored (1.2)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9521907Z     colored2 (3.1.2)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9522118Z     commander (4.6.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9522338Z       highline (~> 2.0.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9522567Z     concurrent-ruby (1.3.3)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9522792Z     csv (3.3.6)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9522994Z     declarative (0.0.20)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9523216Z     digest-crc (0.7.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9523580Z       rake (>= 12.0.0, < 14.0.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9523957Z     domain_name (0.5.20190701)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9524201Z       unf (>= 0.0.5, < 1.0.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9524428Z     dotenv (2.8.1)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9524636Z     emoji_regex (3.2.3)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9524850Z     escape (0.0.4)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9525047Z     ethon (0.18.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9525245Z       ffi (>= 1.15.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9526264Z       logger
+Build Android	Set up Ruby	2026-08-03T09:11:21.9526480Z     excon (0.109.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9526689Z     faraday (1.10.6)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9527139Z       faraday-em_http (~> 1.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9527871Z       faraday-em_synchrony (~> 1.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9528333Z       faraday-excon (~> 1.1)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9528713Z       faraday-httpclient (~> 1.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9529008Z       faraday-multipart (~> 1.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9529292Z       faraday-net_http (~> 1.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9529581Z       faraday-net_http_persistent (~> 1.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9529865Z       faraday-patron (~> 1.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9530105Z       faraday-rack (~> 1.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9530337Z       faraday-retry (~> 1.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9530595Z       ruby2_keywords (>= 0.0.4)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9530857Z     faraday-cookie_jar (0.0.8)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9531092Z       faraday (>= 0.8.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9531320Z       http-cookie (>= 1.0.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9531562Z     faraday-em_http (1.0.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9531823Z     faraday-em_synchrony (1.0.1)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9532075Z     faraday-excon (1.1.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9532330Z     faraday-httpclient (1.0.1)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9532584Z     faraday-multipart (1.2.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9532830Z       multipart-post (~> 2.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9533073Z     faraday-net_http (1.0.2)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9533346Z     faraday-net_http_persistent (1.2.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9533621Z     faraday-patron (1.0.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9533856Z     faraday-rack (1.0.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9534082Z     faraday-retry (1.0.4)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9534328Z     faraday_middleware (1.2.1)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9534561Z       faraday (~> 1.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9534775Z     fastimage (2.4.1)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9534983Z     fastlane (2.229.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9535226Z       CFPropertyList (>= 2.3, < 4.0.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9535766Z       abbrev (~> 0.1.2)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9536016Z       addressable (>= 2.8, < 3.0.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9536269Z       artifactory (~> 3.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9536496Z       aws-sdk-s3 (~> 1.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9536737Z       babosa (>= 1.0.3, < 2.0.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9536994Z       bundler (>= 1.12.0, < 3.0.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9537244Z       colored (~> 1.2)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9537454Z       commander (~> 4.6)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9537842Z       csv (~> 3.3)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9538062Z       dotenv (>= 2.1.1, < 3.0.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9538316Z       emoji_regex (>= 0.1, < 4.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9538573Z       excon (>= 0.71.0, < 1.0.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9538797Z       faraday (~> 1.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9539033Z       faraday-cookie_jar (~> 0.0.6)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9539305Z       faraday_middleware (~> 1.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9539562Z       fastimage (>= 2.1.0, < 3.0.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9539823Z       fastlane-sirp (>= 1.0.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9540090Z       gh_inspector (>= 1.1.2, < 2.0.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9540407Z       google-apis-androidpublisher_v3 (~> 0.3)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9540785Z       google-apis-playcustomapp_v1 (~> 0.1)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9541095Z       google-cloud-env (>= 1.6.0, < 2.0.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9541386Z       google-cloud-storage (~> 1.31)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9541671Z       highline (~> 2.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9541895Z       http-cookie (~> 1.0.5)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9542130Z       json (< 3.0.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9542337Z       jwt (>= 2.1.0, < 3)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9542579Z       mini_magick (>= 4.9.4, < 5.0.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9542857Z       multipart-post (>= 2.0.0, < 3.0.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9543115Z       mutex_m (~> 0.3.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9543331Z       naturally (~> 2.2)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9543573Z       optparse (>= 0.1.1, < 1.0.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9543842Z       plist (>= 3.1.0, < 4.0.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9544099Z       rubyzip (>= 2.0.0, < 3.0.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9544341Z       security (= 0.1.5)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9544556Z       simctl (~> 1.6.3)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9544810Z       terminal-notifier (>= 2.0.0, < 3.0.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9545086Z       terminal-table (~> 3)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9545630Z       tty-screen (>= 0.6.3, < 1.0.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9546132Z       tty-spinner (>= 0.8.0, < 1.0.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9546727Z       word_wrap (~> 1.0.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9547003Z       xcodeproj (>= 1.13.0, < 2.0.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9547271Z       xcpretty (~> 0.4.1)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9547564Z       xcpretty-travis-formatter (>= 0.0.3, < 2.0.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9547874Z     fastlane-sirp (1.1.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9548093Z     ffi (1.17.4)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9548293Z     fourflusher (2.3.1)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9548508Z     fuzzy_match (2.0.4)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9548720Z     gh_inspector (1.1.3)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9549000Z     google-apis-androidpublisher_v3 (0.54.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9549326Z       google-apis-core (>= 0.11.0, < 2.a)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9549611Z     google-apis-core (0.11.3)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9549873Z       addressable (~> 2.5, >= 2.5.1)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9550283Z       googleauth (>= 0.16.2, < 2.a)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9550757Z       httpclient (>= 2.8.1, < 3.a)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9551164Z       mini_mime (~> 1.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9551558Z       representable (~> 3.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9552032Z       retriable (>= 2.0, < 4.a)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9552423Z       rexml
+Build Android	Set up Ruby	2026-08-03T09:11:21.9552848Z     google-apis-iamcredentials_v1 (0.17.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9553420Z       google-apis-core (>= 0.11.0, < 2.a)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9553982Z     google-apis-playcustomapp_v1 (0.13.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9554553Z       google-apis-core (>= 0.11.0, < 2.a)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9555084Z     google-apis-storage_v1 (0.29.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9555947Z       google-apis-core (>= 0.11.0, < 2.a)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9556327Z     google-cloud-core (1.6.1)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9556610Z       google-cloud-env (>= 1.0, < 3.a)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9556904Z       google-cloud-errors (~> 1.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9557169Z     google-cloud-env (1.6.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9557423Z       faraday (>= 0.17.3, < 3.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9557689Z     google-cloud-errors (1.3.1)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9557961Z     google-cloud-storage (1.45.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9558213Z       addressable (~> 2.8)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9558492Z       digest-crc (~> 0.4)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9558977Z       google-apis-iamcredentials_v1 (~> 0.1)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9559768Z       google-apis-storage_v1 (~> 0.29.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9560079Z       google-cloud-core (~> 1.6)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9560353Z       googleauth (>= 0.16.2, < 2.a)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9560601Z       mini_mime (~> 1.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9560819Z     googleauth (1.8.1)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9561052Z       faraday (>= 0.17.3, < 3.a)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9561410Z       jwt (>= 1.4, < 3.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9561728Z       multi_json (~> 1.11)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9561952Z       os (>= 0.9, < 2.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9562167Z       signet (>= 0.16, < 2.a)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9562397Z     highline (2.0.3)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9562613Z     http-cookie (1.0.8)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9562831Z       domain_name (~> 0.5)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9563049Z     httpclient (2.9.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9563251Z       mutex_m
+Build Android	Set up Ruby	2026-08-03T09:11:21.9563435Z     i18n (1.14.8)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9563670Z       concurrent-ruby (~> 1.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9563903Z     jmespath (1.6.2)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9564102Z     json (2.7.6)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9564417Z     jwt (2.10.3)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9564702Z       base64
+Build Android	Set up Ruby	2026-08-03T09:11:21.9564892Z     logger (1.7.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9565101Z     mini_magick (4.13.2)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9565502Z     mini_mime (1.1.5)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9565761Z     minitest (5.25.4)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9565967Z     molinillo (0.8.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9566171Z     multi_json (1.15.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9566431Z     multipart-post (2.4.1)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9566666Z     mutex_m (0.3.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9566865Z     nanaimo (0.3.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9567058Z     nap (1.1.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9567250Z     naturally (2.3.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9567450Z     netrc (0.11.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9567654Z     nkf (0.3.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9567868Z     optparse (0.8.1)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9568067Z     os (1.1.4)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9568263Z     plist (3.7.2)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9568711Z     public_suffix (4.0.7)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9568926Z     rake (13.4.2)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9569128Z     representable (3.2.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9569360Z       declarative (< 0.1.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9569634Z       trailblazer-option (>= 0.1.1, < 0.2.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9569899Z       uber (< 0.2.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9570220Z     retriable (3.8.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9570523Z     rexml (3.4.4)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9570712Z     rouge (3.28.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9570906Z     ruby-macho (2.5.1)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9571144Z     ruby2_keywords (0.0.5)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9571547Z     rubyzip (2.4.1)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9571889Z     security (0.1.5)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9572095Z     signet (0.18.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9572307Z       addressable (~> 2.8)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9572550Z       faraday (>= 0.17.5, < 3.a)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9572785Z       jwt (>= 1.5, < 3.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9572995Z       multi_json (~> 1.10)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9573206Z     simctl (1.6.10)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9573410Z       CFPropertyList
+Build Android	Set up Ruby	2026-08-03T09:11:21.9573609Z       naturally
+Build Android	Set up Ruby	2026-08-03T09:11:21.9573817Z     terminal-notifier (2.0.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9574064Z     terminal-table (3.0.2)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9574327Z       unicode-display_width (>= 1.1.1, < 3)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9574625Z     trailblazer-option (0.1.2)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9574873Z     tty-cursor (0.7.1)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9575087Z     tty-screen (0.8.2)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9575454Z     tty-spinner (0.9.3)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9575676Z       tty-cursor (~> 0.7)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9575889Z     typhoeus (1.6.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9576189Z       ethon (>= 0.18.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9576507Z     tzinfo (2.0.6)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9576736Z       concurrent-ruby (~> 1.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9576963Z     uber (0.1.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9577149Z     unf (0.2.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9577405Z     unicode-display_width (2.6.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9577648Z     word_wrap (1.0.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9577854Z     xcodeproj (1.25.1)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9578102Z       CFPropertyList (>= 2.3.3, < 4.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9578359Z       atomos (~> 0.1.3)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9578755Z       claide (>= 1.0.2, < 2.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9578983Z       colored2 (~> 3.1)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9579198Z       nanaimo (~> 0.3.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9579536Z       rexml (>= 3.3.6, < 4.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9579853Z     xcpretty (0.4.1)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9580060Z       rouge (~> 3.28.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9580314Z     xcpretty-travis-formatter (1.0.1)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9580600Z       xcpretty (~> 0.2, >= 0.0.7)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9580838Z     zeitwerk (2.6.18)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9580971Z 
+Build Android	Set up Ruby	2026-08-03T09:11:21.9581056Z PLATFORMS
+Build Android	Set up Ruby	2026-08-03T09:11:21.9581241Z   ruby
+Build Android	Set up Ruby	2026-08-03T09:11:21.9581346Z 
+Build Android	Set up Ruby	2026-08-03T09:11:21.9581429Z DEPENDENCIES
+Build Android	Set up Ruby	2026-08-03T09:11:21.9581670Z   activesupport (>= 6.1.7.5, != 7.1.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9581920Z   benchmark
+Build Android	Set up Ruby	2026-08-03T09:11:21.9582098Z   bigdecimal
+Build Android	Set up Ruby	2026-08-03T09:11:21.9582319Z   cocoapods (>= 1.13, != 1.15.1, != 1.15.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9582757Z   concurrent-ruby (< 1.3.4)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9583005Z   fastlane
+Build Android	Set up Ruby	2026-08-03T09:11:21.9583182Z   logger
+Build Android	Set up Ruby	2026-08-03T09:11:21.9583362Z   mutex_m
+Build Android	Set up Ruby	2026-08-03T09:11:21.9583534Z   nkf
+Build Android	Set up Ruby	2026-08-03T09:11:21.9583714Z   xcodeproj (< 1.26.0)
+Build Android	Set up Ruby	2026-08-03T09:11:21.9583850Z 
+Build Android	Set up Ruby	2026-08-03T09:11:21.9583929Z RUBY VERSION
+Build Android	Set up Ruby	2026-08-03T09:11:21.9584138Z    ruby 2.6.10p210
+Build Android	Set up Ruby	2026-08-03T09:11:21.9584254Z 
+Build Android	Set up Ruby	2026-08-03T09:11:21.9584550Z ##[endgroup]
+Build Android	Set up Ruby	2026-08-03T09:11:21.9586195Z Cache key: setup-ruby-bundler-cache-v6-ubuntu-24.04-x64-ruby-3.1.7-wd-/home/runner/work/TaskFlowAI/TaskFlowAI-with--without--only--Gemfile.lock-a0909da01179a0005d393fa3d5e1eb4f0defaef42d94d15e9dfee17ddfe767b8
+Build Android	Set up Ruby	2026-08-03T09:11:22.0766321Z [command]/opt/hostedtoolcache/Ruby/3.1.7/x64/bin/bundle install --jobs 4
+Build Android	Set up Ruby	2026-08-03T09:11:28.8557102Z Fetching gem metadata from https://rubygems.org/.......
+Build Android	Set up Ruby	2026-08-03T09:11:28.8669754Z Fetching rake 13.4.2
+Build Android	Set up Ruby	2026-08-03T09:11:28.9629808Z Installing rake 13.4.2
+Build Android	Set up Ruby	2026-08-03T09:11:28.9761196Z Fetching CFPropertyList 3.0.9
+Build Android	Set up Ruby	2026-08-03T09:11:28.9789276Z Fetching abbrev 0.1.2
+Build Android	Set up Ruby	2026-08-03T09:11:28.9792519Z Fetching concurrent-ruby 1.3.3
+Build Android	Set up Ruby	2026-08-03T09:11:28.9794192Z Fetching minitest 5.25.4
+Build Android	Set up Ruby	2026-08-03T09:11:28.9938846Z Installing CFPropertyList 3.0.9
+Build Android	Set up Ruby	2026-08-03T09:11:28.9980116Z Fetching zeitwerk 2.6.18
+Build Android	Set up Ruby	2026-08-03T09:11:29.0074566Z Installing abbrev 0.1.2
+Build Android	Set up Ruby	2026-08-03T09:11:29.0108624Z Fetching public_suffix 4.0.7
+Build Android	Set up Ruby	2026-08-03T09:11:29.0599251Z Installing concurrent-ruby 1.3.3
+Build Android	Set up Ruby	2026-08-03T09:11:29.0766111Z Installing minitest 5.25.4
+Build Android	Set up Ruby	2026-08-03T09:11:29.0892491Z Installing zeitwerk 2.6.18
+Build Android	Set up Ruby	2026-08-03T09:11:29.1143792Z Fetching mutex_m 0.3.0
+Build Android	Set up Ruby	2026-08-03T09:11:29.1187956Z Installing public_suffix 4.0.7
+Build Android	Set up Ruby	2026-08-03T09:11:29.1191645Z Fetching json 2.7.6
+Build Android	Set up Ruby	2026-08-03T09:11:29.1332617Z Installing mutex_m 0.3.0
+Build Android	Set up Ruby	2026-08-03T09:11:29.1398190Z Fetching artifactory 3.0.17
+Build Android	Set up Ruby	2026-08-03T09:11:29.1534270Z Installing json 2.7.6 with native extensions
+Build Android	Set up Ruby	2026-08-03T09:11:29.1566425Z Fetching atomos 0.1.3
+Build Android	Set up Ruby	2026-08-03T09:11:29.1580247Z Fetching aws-eventstream 1.3.2
+Build Android	Set up Ruby	2026-08-03T09:11:29.1623097Z Installing artifactory 3.0.17
+Build Android	Set up Ruby	2026-08-03T09:11:29.1784779Z Fetching aws-partitions 1.1109.0
+Build Android	Set up Ruby	2026-08-03T09:11:29.1793307Z Installing atomos 0.1.3
+Build Android	Set up Ruby	2026-08-03T09:11:29.1960528Z Installing aws-eventstream 1.3.2
+Build Android	Set up Ruby	2026-08-03T09:11:29.2030304Z Fetching base64 0.3.0
+Build Android	Set up Ruby	2026-08-03T09:11:29.2034982Z Fetching jmespath 1.6.2
+Build Android	Set up Ruby	2026-08-03T09:11:29.2107998Z Installing aws-partitions 1.1109.0
+Build Android	Set up Ruby	2026-08-03T09:11:29.2210070Z Fetching logger 1.7.0
+Build Android	Set up Ruby	2026-08-03T09:11:29.2222866Z Installing base64 0.3.0
+Build Android	Set up Ruby	2026-08-03T09:11:29.2248707Z Fetching babosa 1.0.4
+Build Android	Set up Ruby	2026-08-03T09:11:29.2350726Z Installing jmespath 1.6.2
+Build Android	Set up Ruby	2026-08-03T09:11:29.2415289Z Fetching benchmark 0.5.0
+Build Android	Set up Ruby	2026-08-03T09:11:29.2497886Z Installing logger 1.7.0
+Build Android	Set up Ruby	2026-08-03T09:11:29.2549215Z Fetching bigdecimal 4.1.2
+Build Android	Set up Ruby	2026-08-03T09:11:29.2638888Z Installing babosa 1.0.4
+Build Android	Set up Ruby	2026-08-03T09:11:29.2730037Z Fetching claide 1.1.0
+Build Android	Set up Ruby	2026-08-03T09:11:29.2768167Z Installing benchmark 0.5.0
+Build Android	Set up Ruby	2026-08-03T09:11:29.2804563Z Fetching fuzzy_match 2.0.4
+Build Android	Set up Ruby	2026-08-03T09:11:29.2942418Z Installing bigdecimal 4.1.2 with native extensions
+Build Android	Set up Ruby	2026-08-03T09:11:29.3069454Z Installing claide 1.1.0
+Build Android	Set up Ruby	2026-08-03T09:11:29.3151188Z Fetching nap 1.1.0
+Build Android	Set up Ruby	2026-08-03T09:11:29.3239661Z Installing fuzzy_match 2.0.4
+Build Android	Set up Ruby	2026-08-03T09:11:29.3327638Z Fetching netrc 0.11.0
+Build Android	Set up Ruby	2026-08-03T09:11:29.3405959Z Installing nap 1.1.0
+Build Android	Set up Ruby	2026-08-03T09:11:29.3455931Z Fetching ffi 1.17.4
+Build Android	Set up Ruby	2026-08-03T09:11:29.3514120Z Installing netrc 0.11.0
+Build Android	Set up Ruby	2026-08-03T09:11:29.3552695Z Fetching cocoapods-deintegrate 1.0.5
+Build Android	Set up Ruby	2026-08-03T09:11:29.4106253Z Installing cocoapods-deintegrate 1.0.5
+Build Android	Set up Ruby	2026-08-03T09:11:29.4155099Z Fetching cocoapods-downloader 2.1
+Build Android	Set up Ruby	2026-08-03T09:11:29.4255641Z Installing ffi 1.17.4 with native extensions
+Build Android	Set up Ruby	2026-08-03T09:11:29.4335717Z Installing cocoapods-downloader 2.1
+Build Android	Set up Ruby	2026-08-03T09:11:29.4434241Z Fetching cocoapods-search 1.0.1
+Build Android	Set up Ruby	2026-08-03T09:11:29.7642202Z Installing cocoapods-search 1.0.1
+Build Android	Set up Ruby	2026-08-03T09:11:29.7773432Z Fetching cocoapods-try 1.2.0
+Build Android	Set up Ruby	2026-08-03T09:11:29.7943087Z Installing cocoapods-try 1.2.0
+Build Android	Set up Ruby	2026-08-03T09:11:29.8041412Z Fetching colored2 3.1.2
+Build Android	Set up Ruby	2026-08-03T09:11:29.8208833Z Installing colored2 3.1.2
+Build Android	Set up Ruby	2026-08-03T09:11:29.8285800Z Fetching escape 0.0.4
+Build Android	Set up Ruby	2026-08-03T09:11:29.8450175Z Installing escape 0.0.4
+Build Android	Set up Ruby	2026-08-03T09:11:29.8487877Z Fetching fourflusher 2.3.1
+Build Android	Set up Ruby	2026-08-03T09:11:29.8661392Z Installing fourflusher 2.3.1
+Build Android	Set up Ruby	2026-08-03T09:11:29.8724334Z Fetching gh_inspector 1.1.3
+Build Android	Set up Ruby	2026-08-03T09:11:29.8897709Z Installing gh_inspector 1.1.3
+Build Android	Set up Ruby	2026-08-03T09:11:29.8963433Z Fetching molinillo 0.8.0
+Build Android	Set up Ruby	2026-08-03T09:11:29.9130502Z Installing molinillo 0.8.0
+Build Android	Set up Ruby	2026-08-03T09:11:29.9210462Z Fetching ruby-macho 2.5.1
+Build Android	Set up Ruby	2026-08-03T09:11:29.9387269Z Installing ruby-macho 2.5.1
+Build Android	Set up Ruby	2026-08-03T09:11:29.9444292Z Fetching nanaimo 0.3.0
+Build Android	Set up Ruby	2026-08-03T09:11:29.9619095Z Installing nanaimo 0.3.0
+Build Android	Set up Ruby	2026-08-03T09:11:29.9676072Z Fetching rexml 3.4.4
+Build Android	Set up Ruby	2026-08-03T09:11:29.9859544Z Installing rexml 3.4.4
+Build Android	Set up Ruby	2026-08-03T09:11:30.0010369Z Fetching colored 1.2
+Build Android	Set up Ruby	2026-08-03T09:11:30.0171124Z Installing colored 1.2
+Build Android	Set up Ruby	2026-08-03T09:11:30.0192567Z Fetching highline 2.0.3
+Build Android	Set up Ruby	2026-08-03T09:11:30.0414922Z Installing highline 2.0.3
+Build Android	Set up Ruby	2026-08-03T09:11:30.0545214Z Fetching csv 3.3.6
+Build Android	Set up Ruby	2026-08-03T09:11:30.0728160Z Installing csv 3.3.6
+Build Android	Set up Ruby	2026-08-03T09:11:30.0847010Z Fetching declarative 0.0.20
+Build Android	Set up Ruby	2026-08-03T09:11:30.1008510Z Installing declarative 0.0.20
+Build Android	Set up Ruby	2026-08-03T09:11:30.1053007Z Fetching digest-crc 0.7.0
+Build Android	Set up Ruby	2026-08-03T09:11:30.1236628Z Installing digest-crc 0.7.0 with native extensions
+Build Android	Set up Ruby	2026-08-03T09:11:34.1200350Z Fetching unf 0.2.0
+Build Android	Set up Ruby	2026-08-03T09:11:34.1719067Z Installing unf 0.2.0 with native extensions
+Build Android	Set up Ruby	2026-08-03T09:11:34.4371578Z Fetching dotenv 2.8.1
+Build Android	Set up Ruby	2026-08-03T09:11:34.4563213Z Installing dotenv 2.8.1
+Build Android	Set up Ruby	2026-08-03T09:11:34.4632005Z Fetching emoji_regex 3.2.3
+Build Android	Set up Ruby	2026-08-03T09:11:34.4811233Z Installing emoji_regex 3.2.3
+Build Android	Set up Ruby	2026-08-03T09:11:34.4859773Z Fetching excon 0.109.0
+Build Android	Set up Ruby	2026-08-03T09:11:34.5403500Z Installing excon 0.109.0
+Build Android	Set up Ruby	2026-08-03T09:11:34.5548944Z Fetching faraday-em_http 1.0.0
+Build Android	Set up Ruby	2026-08-03T09:11:34.5740036Z Installing faraday-em_http 1.0.0
+Build Android	Set up Ruby	2026-08-03T09:11:34.5797141Z Fetching faraday-em_synchrony 1.0.1
+Build Android	Set up Ruby	2026-08-03T09:11:34.5978818Z Installing faraday-em_synchrony 1.0.1
+Build Android	Set up Ruby	2026-08-03T09:11:34.6029743Z Fetching faraday-excon 1.1.0
+Build Android	Set up Ruby	2026-08-03T09:11:34.6213082Z Installing faraday-excon 1.1.0
+Build Android	Set up Ruby	2026-08-03T09:11:34.6262499Z Fetching faraday-httpclient 1.0.1
+Build Android	Set up Ruby	2026-08-03T09:11:34.6449465Z Installing faraday-httpclient 1.0.1
+Build Android	Set up Ruby	2026-08-03T09:11:34.6497710Z Fetching multipart-post 2.4.1
+Build Android	Set up Ruby	2026-08-03T09:11:34.6673869Z Installing multipart-post 2.4.1
+Build Android	Set up Ruby	2026-08-03T09:11:34.6744336Z Fetching faraday-net_http 1.0.2
+Build Android	Set up Ruby	2026-08-03T09:11:34.6927862Z Installing faraday-net_http 1.0.2
+Build Android	Set up Ruby	2026-08-03T09:11:34.6974305Z Fetching faraday-net_http_persistent 1.2.0
+Build Android	Set up Ruby	2026-08-03T09:11:34.7147094Z Installing faraday-net_http_persistent 1.2.0
+Build Android	Set up Ruby	2026-08-03T09:11:34.7195582Z Fetching faraday-patron 1.0.0
+Build Android	Set up Ruby	2026-08-03T09:11:34.7396658Z Installing faraday-patron 1.0.0
+Build Android	Set up Ruby	2026-08-03T09:11:34.7442591Z Fetching faraday-rack 1.0.0
+Build Android	Set up Ruby	2026-08-03T09:11:34.7629745Z Installing faraday-rack 1.0.0
+Build Android	Set up Ruby	2026-08-03T09:11:34.7683870Z Fetching faraday-retry 1.0.4
+Build Android	Set up Ruby	2026-08-03T09:11:34.7853141Z Installing faraday-retry 1.0.4
+Build Android	Set up Ruby	2026-08-03T09:11:34.7906405Z Fetching ruby2_keywords 0.0.5
+Build Android	Set up Ruby	2026-08-03T09:11:34.8076027Z Installing ruby2_keywords 0.0.5
+Build Android	Set up Ruby	2026-08-03T09:11:34.8132389Z Fetching fastimage 2.4.1
+Build Android	Set up Ruby	2026-08-03T09:11:34.8313343Z Installing fastimage 2.4.1
+Build Android	Set up Ruby	2026-08-03T09:11:34.8386577Z Fetching fastlane-sirp 1.1.0
+Build Android	Set up Ruby	2026-08-03T09:11:34.8606397Z Installing fastlane-sirp 1.1.0
+Build Android	Set up Ruby	2026-08-03T09:11:34.8922922Z Fetching multi_json 1.15.0
+Build Android	Set up Ruby	2026-08-03T09:11:34.9136413Z Installing multi_json 1.15.0
+Build Android	Set up Ruby	2026-08-03T09:11:34.9216459Z Fetching os 1.1.4
+Build Android	Set up Ruby	2026-08-03T09:11:34.9389843Z Installing os 1.1.4
+Build Android	Set up Ruby	2026-08-03T09:11:34.9459933Z Fetching mini_mime 1.1.5
+Build Android	Set up Ruby	2026-08-03T09:11:34.9647307Z Installing mini_mime 1.1.5
+Build Android	Set up Ruby	2026-08-03T09:11:34.9738279Z Fetching trailblazer-option 0.1.2
+Build Android	Set up Ruby	2026-08-03T09:11:34.9912881Z Installing trailblazer-option 0.1.2
+Build Android	Set up Ruby	2026-08-03T09:11:34.9992639Z Fetching uber 0.1.0
+Build Android	Set up Ruby	2026-08-03T09:11:35.0169419Z Installing uber 0.1.0
+Build Android	Set up Ruby	2026-08-03T09:11:35.0264050Z Fetching retriable 3.8.0
+Build Android	Set up Ruby	2026-08-03T09:11:35.0450727Z Installing retriable 3.8.0
+Build Android	Set up Ruby	2026-08-03T09:11:35.0565793Z Fetching google-cloud-errors 1.3.1
+Build Android	Set up Ruby	2026-08-03T09:11:35.0762413Z Installing google-cloud-errors 1.3.1
+Build Android	Set up Ruby	2026-08-03T09:11:35.0828735Z Fetching mini_magick 4.13.2
+Build Android	Set up Ruby	2026-08-03T09:11:35.1013420Z Installing mini_magick 4.13.2
+Build Android	Set up Ruby	2026-08-03T09:11:35.1099945Z Fetching naturally 2.3.0
+Build Android	Set up Ruby	2026-08-03T09:11:35.1271896Z Installing naturally 2.3.0
+Build Android	Set up Ruby	2026-08-03T09:11:35.1347139Z Fetching optparse 0.8.1
+Build Android	Set up Ruby	2026-08-03T09:11:35.1530555Z Installing optparse 0.8.1
+Build Android	Set up Ruby	2026-08-03T09:11:35.1763304Z Fetching plist 3.7.2
+Build Android	Set up Ruby	2026-08-03T09:11:35.1966705Z Installing plist 3.7.2
+Build Android	Set up Ruby	2026-08-03T09:11:35.1996149Z Fetching rubyzip 2.4.1
+Build Android	Set up Ruby	2026-08-03T09:11:35.2226376Z Installing rubyzip 2.4.1
+Build Android	Set up Ruby	2026-08-03T09:11:35.2365578Z Fetching security 0.1.5
+Build Android	Set up Ruby	2026-08-03T09:11:35.2555825Z Installing security 0.1.5
+Build Android	Set up Ruby	2026-08-03T09:11:35.2619046Z Fetching terminal-notifier 2.0.0
+Build Android	Set up Ruby	2026-08-03T09:11:35.3646581Z Installing terminal-notifier 2.0.0
+Build Android	Set up Ruby	2026-08-03T09:11:35.3868218Z Fetching unicode-display_width 2.6.0
+Build Android	Set up Ruby	2026-08-03T09:11:35.4066522Z Installing unicode-display_width 2.6.0
+Build Android	Set up Ruby	2026-08-03T09:11:35.4105280Z Fetching tty-screen 0.8.2
+Build Android	Set up Ruby	2026-08-03T09:11:35.4296750Z Installing tty-screen 0.8.2
+Build Android	Set up Ruby	2026-08-03T09:11:35.4338042Z Fetching tty-cursor 0.7.1
+Build Android	Set up Ruby	2026-08-03T09:11:35.4526608Z Installing tty-cursor 0.7.1
+Build Android	Set up Ruby	2026-08-03T09:11:35.4566786Z Fetching word_wrap 1.0.0
+Build Android	Set up Ruby	2026-08-03T09:11:35.4739690Z Installing word_wrap 1.0.0
+Build Android	Set up Ruby	2026-08-03T09:11:35.4826190Z Fetching rouge 3.28.0
+Build Android	Set up Ruby	2026-08-03T09:11:35.5256514Z Installing rouge 3.28.0
+Build Android	Set up Ruby	2026-08-03T09:11:35.6596481Z Fetching nkf 0.3.0
+Build Android	Set up Ruby	2026-08-03T09:11:35.6836751Z Installing nkf 0.3.0 with native extensions
+Build Android	Set up Ruby	2026-08-03T09:11:39.0169507Z Fetching httpclient 2.9.0
+Build Android	Set up Ruby	2026-08-03T09:11:39.1346524Z Installing httpclient 2.9.0
+Build Android	Set up Ruby	2026-08-03T09:11:39.1550018Z Fetching i18n 1.14.8
+Build Android	Set up Ruby	2026-08-03T09:11:39.1746751Z Installing i18n 1.14.8
+Build Android	Set up Ruby	2026-08-03T09:11:39.1892857Z Fetching tzinfo 2.0.6
+Build Android	Set up Ruby	2026-08-03T09:11:39.2146463Z Installing tzinfo 2.0.6
+Build Android	Set up Ruby	2026-08-03T09:11:39.2283228Z Fetching addressable 2.9.0
+Build Android	Set up Ruby	2026-08-03T09:11:39.2516383Z Installing addressable 2.9.0
+Build Android	Set up Ruby	2026-08-03T09:11:39.2571121Z Fetching aws-sigv4 1.11.0
+Build Android	Set up Ruby	2026-08-03T09:11:39.2766858Z Installing aws-sigv4 1.11.0
+Build Android	Set up Ruby	2026-08-03T09:11:39.2826321Z Fetching jwt 2.10.3
+Build Android	Set up Ruby	2026-08-03T09:11:39.3078345Z Installing jwt 2.10.3
+Build Android	Set up Ruby	2026-08-03T09:11:39.3243563Z Fetching cocoapods-plugins 1.0.0
+Build Android	Set up Ruby	2026-08-03T09:11:39.3436577Z Installing cocoapods-plugins 1.0.0
+Build Android	Set up Ruby	2026-08-03T09:11:39.3546767Z Fetching cocoapods-trunk 1.6.0
+Build Android	Set up Ruby	2026-08-03T09:11:39.3756643Z Installing cocoapods-trunk 1.6.0
+Build Android	Set up Ruby	2026-08-03T09:11:39.3871022Z Fetching xcodeproj 1.25.1
+Build Android	Set up Ruby	2026-08-03T09:11:39.4114929Z Installing xcodeproj 1.25.1
+Build Android	Set up Ruby	2026-08-03T09:11:39.4334074Z Fetching commander 4.6.0
+Build Android	Set up Ruby	2026-08-03T09:11:39.4536800Z Installing commander 4.6.0
+Build Android	Set up Ruby	2026-08-03T09:11:39.4696595Z Fetching domain_name 0.5.20190701
+Build Android	Set up Ruby	2026-08-03T09:11:39.4976463Z Installing domain_name 0.5.20190701
+Build Android	Set up Ruby	2026-08-03T09:11:39.5076366Z Fetching faraday-multipart 1.2.0
+Build Android	Set up Ruby	2026-08-03T09:11:39.5266579Z Installing faraday-multipart 1.2.0
+Build Android	Set up Ruby	2026-08-03T09:11:39.5317720Z Fetching representable 3.2.0
+Build Android	Set up Ruby	2026-08-03T09:11:39.5566360Z Installing representable 3.2.0
+Build Android	Set up Ruby	2026-08-03T09:11:39.5845660Z Fetching simctl 1.6.10
+Build Android	Set up Ruby	2026-08-03T09:11:39.6046534Z Installing simctl 1.6.10
+Build Android	Set up Ruby	2026-08-03T09:11:39.6249886Z Fetching terminal-table 3.0.2
+Build Android	Set up Ruby	2026-08-03T09:11:39.6609766Z Installing terminal-table 3.0.2
+Build Android	Set up Ruby	2026-08-03T09:11:39.6727387Z Fetching tty-spinner 0.9.3
+Build Android	Set up Ruby	2026-08-03T09:11:39.6906597Z Installing tty-spinner 0.9.3
+Build Android	Set up Ruby	2026-08-03T09:11:39.6954308Z Fetching xcpretty 0.4.1
+Build Android	Set up Ruby	2026-08-03T09:11:39.7750330Z Installing xcpretty 0.4.1
+Build Android	Set up Ruby	2026-08-03T09:11:39.8750154Z Fetching algoliasearch 1.27.5
+Build Android	Set up Ruby	2026-08-03T09:11:39.9016583Z Installing algoliasearch 1.27.5
+Build Android	Set up Ruby	2026-08-03T09:11:39.9166392Z Fetching activesupport 6.1.7.10
+Build Android	Set up Ruby	2026-08-03T09:11:39.9476622Z Installing activesupport 6.1.7.10
+Build Android	Set up Ruby	2026-08-03T09:11:40.0167035Z Fetching aws-sdk-core 3.224.1
+Build Android	Set up Ruby	2026-08-03T09:11:40.0526520Z Installing aws-sdk-core 3.224.1
+Build Android	Set up Ruby	2026-08-03T09:11:40.1286632Z Fetching http-cookie 1.0.8
+Build Android	Set up Ruby	2026-08-03T09:11:40.1469527Z Installing http-cookie 1.0.8
+Build Android	Set up Ruby	2026-08-03T09:11:40.1586397Z Fetching faraday 1.10.6
+Build Android	Set up Ruby	2026-08-03T09:11:40.1806832Z Installing faraday 1.10.6
+Build Android	Set up Ruby	2026-08-03T09:11:40.2045860Z Fetching xcpretty-travis-formatter 1.0.1
+Build Android	Set up Ruby	2026-08-03T09:11:40.2236634Z Installing xcpretty-travis-formatter 1.0.1
+Build Android	Set up Ruby	2026-08-03T09:11:40.2277432Z Fetching aws-sdk-kms 1.101.0
+Build Android	Set up Ruby	2026-08-03T09:11:40.2546567Z Installing aws-sdk-kms 1.101.0
+Build Android	Set up Ruby	2026-08-03T09:11:40.2656081Z Fetching faraday-cookie_jar 0.0.8
+Build Android	Set up Ruby	2026-08-03T09:11:40.2843451Z Installing faraday-cookie_jar 0.0.8
+Build Android	Set up Ruby	2026-08-03T09:11:40.2914163Z Fetching faraday_middleware 1.2.1
+Build Android	Set up Ruby	2026-08-03T09:11:40.3089748Z Installing faraday_middleware 1.2.1
+Build Android	Set up Ruby	2026-08-03T09:11:40.3180769Z Fetching signet 0.18.0
+Build Android	Set up Ruby	2026-08-03T09:11:40.3406516Z Installing signet 0.18.0
+Build Android	Set up Ruby	2026-08-03T09:11:40.3483155Z Fetching google-cloud-env 1.6.0
+Build Android	Set up Ruby	2026-08-03T09:11:40.3674360Z Installing google-cloud-env 1.6.0
+Build Android	Set up Ruby	2026-08-03T09:11:40.3751595Z Fetching aws-sdk-s3 1.188.0
+Build Android	Set up Ruby	2026-08-03T09:11:40.4177252Z Installing aws-sdk-s3 1.188.0
+Build Android	Set up Ruby	2026-08-03T09:11:40.4622701Z Fetching googleauth 1.8.1
+Build Android	Set up Ruby	2026-08-03T09:11:40.4812980Z Installing googleauth 1.8.1
+Build Android	Set up Ruby	2026-08-03T09:11:40.4941034Z Fetching google-cloud-core 1.6.1
+Build Android	Set up Ruby	2026-08-03T09:11:40.5146012Z Installing google-cloud-core 1.6.1
+Build Android	Set up Ruby	2026-08-03T09:11:40.5212469Z Fetching google-apis-core 0.11.3
+Build Android	Set up Ruby	2026-08-03T09:11:40.5410657Z Installing google-apis-core 0.11.3
+Build Android	Set up Ruby	2026-08-03T09:11:40.5531068Z Fetching google-apis-androidpublisher_v3 0.54.0
+Build Android	Set up Ruby	2026-08-03T09:11:40.5739064Z Installing google-apis-androidpublisher_v3 0.54.0
+Build Android	Set up Ruby	2026-08-03T09:11:40.5827542Z Fetching google-apis-playcustomapp_v1 0.13.0
+Build Android	Set up Ruby	2026-08-03T09:11:40.6016852Z Installing google-apis-playcustomapp_v1 0.13.0
+Build Android	Set up Ruby	2026-08-03T09:11:40.6062089Z Fetching google-apis-iamcredentials_v1 0.17.0
+Build Android	Set up Ruby	2026-08-03T09:11:40.6246921Z Installing google-apis-iamcredentials_v1 0.17.0
+Build Android	Set up Ruby	2026-08-03T09:11:40.6306657Z Fetching google-apis-storage_v1 0.29.0
+Build Android	Set up Ruby	2026-08-03T09:11:40.6498929Z Installing google-apis-storage_v1 0.29.0
+Build Android	Set up Ruby	2026-08-03T09:11:41.3273882Z Fetching ethon 0.18.0
+Build Android	Set up Ruby	2026-08-03T09:11:41.3452225Z Installing ethon 0.18.0
+Build Android	Set up Ruby	2026-08-03T09:11:41.3565488Z Fetching typhoeus 1.6.0
+Build Android	Set up Ruby	2026-08-03T09:11:41.3752846Z Installing typhoeus 1.6.0
+Build Android	Set up Ruby	2026-08-03T09:11:41.3871976Z Fetching cocoapods-core 1.15.2
+Build Android	Set up Ruby	2026-08-03T09:11:41.4112812Z Installing cocoapods-core 1.15.2
+Build Android	Set up Ruby	2026-08-03T09:11:41.4249822Z Fetching cocoapods 1.15.2
+Build Android	Set up Ruby	2026-08-03T09:11:41.4543487Z Installing cocoapods 1.15.2
+Build Android	Set up Ruby	2026-08-03T09:11:49.8630009Z Fetching google-cloud-storage 1.45.0
+Build Android	Set up Ruby	2026-08-03T09:11:49.9317603Z Installing google-cloud-storage 1.45.0
+Build Android	Set up Ruby	2026-08-03T09:11:49.9430296Z Fetching fastlane 2.229.0
+Build Android	Set up Ruby	2026-08-03T09:11:50.3439732Z Installing fastlane 2.229.0
+Build Android	Set up Ruby	2026-08-03T09:11:50.5013646Z Bundle complete! 10 Gemfile dependencies, 121 gems now installed.
+Build Android	Set up Ruby	2026-08-03T09:11:50.5014547Z Bundled gems are installed into `./vendor/bundle`
+Build Android	Set up Ruby	2026-08-03T09:11:50.5015169Z Post-install message from algoliasearch:
+Build Android	Set up Ruby	2026-08-03T09:11:50.5016339Z A new major version is available for Algolia! Please now use the https://rubygems.org/gems/algolia gem to get the latest features.
+Build Android	Set up Ruby	2026-08-03T09:11:50.5017421Z Post-install message from rubyzip:
+Build Android	Set up Ruby	2026-08-03T09:11:50.5017894Z RubyZip 3.0 is coming!
+Build Android	Set up Ruby	2026-08-03T09:11:50.5018307Z **********************
+Build Android	Set up Ruby	2026-08-03T09:11:50.5018515Z 
+Build Android	Set up Ruby	2026-08-03T09:11:50.5018977Z The public API of some Rubyzip classes has been modernized to use named
+Build Android	Set up Ruby	2026-08-03T09:11:50.5020215Z parameters for optional arguments. Please check your usage of the
+Build Android	Set up Ruby	2026-08-03T09:11:50.5020827Z following classes:
+Build Android	Set up Ruby	2026-08-03T09:11:50.5021126Z   * `Zip::File`
+Build Android	Set up Ruby	2026-08-03T09:11:50.5021332Z   * `Zip::Entry`
+Build Android	Set up Ruby	2026-08-03T09:11:50.5021536Z   * `Zip::InputStream`
+Build Android	Set up Ruby	2026-08-03T09:11:50.5021749Z   * `Zip::OutputStream`
+Build Android	Set up Ruby	2026-08-03T09:11:50.5021960Z   * `Zip::DOSTime`
+Build Android	Set up Ruby	2026-08-03T09:11:50.5022081Z 
+Build Android	Set up Ruby	2026-08-03T09:11:50.5022312Z Run your test suite with the `RUBYZIP_V3_API_WARN` environment
+Build Android	Set up Ruby	2026-08-03T09:11:50.5022793Z variable set to see warnings about usage of the old API. This will
+Build Android	Set up Ruby	2026-08-03T09:11:50.5023291Z help you to identify any changes that you need to make to your code.
+Build Android	Set up Ruby	2026-08-03T09:11:50.5023831Z See https://github.com/rubyzip/rubyzip/wiki/Updating-to-version-3.x for
+Build Android	Set up Ruby	2026-08-03T09:11:50.5024235Z more information.
+Build Android	Set up Ruby	2026-08-03T09:11:50.5024374Z 
+Build Android	Set up Ruby	2026-08-03T09:11:50.5024635Z Please ensure that your Gemfiles and .gemspecs are suitably restrictive
+Build Android	Set up Ruby	2026-08-03T09:11:50.5025170Z to avoid an unexpected breakage when 3.0 is released (e.g. ~> 2.3.0).
+Build Android	Set up Ruby	2026-08-03T09:11:50.5026038Z See https://github.com/rubyzip/rubyzip for details. The Changelog also
+Build Android	Set up Ruby	2026-08-03T09:11:50.5026576Z lists other enhancements and bugfixes that have been implemented since
+Build Android	Set up Ruby	2026-08-03T09:11:50.5026932Z version 2.3.0.
+Build Android	Set up Ruby	2026-08-03T09:11:50.6113144Z Saving cache
+Build Android	Set up Ruby	2026-08-03T09:11:50.6239156Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/TaskFlowAI/TaskFlowAI --files-from manifest.txt --use-compress-program zstdmt
+Build Android	Set up Ruby	2026-08-03T09:11:51.8796770Z Sent 29123655 of 29123655 (100.0%), 33.7 MBs/sec
+Build Android	Set up Ruby	2026-08-03T09:11:52.0337945Z Took  30.41 seconds
+Build Android	Install npm dependencies	﻿2026-08-03T09:11:52.0480704Z ##[group]Run npm ci
+Build Android	Install npm dependencies	2026-08-03T09:11:52.0481008Z ^[[36;1mnpm ci^[[0m
+Build Android	Install npm dependencies	2026-08-03T09:11:52.0530336Z shell: /usr/bin/bash -e {0}
+Build Android	Install npm dependencies	2026-08-03T09:11:52.0530609Z env:
+Build Android	Install npm dependencies	2026-08-03T09:11:52.0530958Z   JAVA_HOME: /opt/hostedtoolcache/Java_Zulu_jdk/17.0.20-8/x64
+Build Android	Install npm dependencies	2026-08-03T09:11:52.0531428Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Zulu_jdk/17.0.20-8/x64
+Build Android	Install npm dependencies	2026-08-03T09:11:52.0531781Z ##[endgroup]
+Build Android	Install npm dependencies	2026-08-03T09:11:52.7599649Z npm warn EBADENGINE Unsupported engine {
+Build Android	Install npm dependencies	2026-08-03T09:11:52.7600571Z npm warn EBADENGINE   package: 'TaskFlowAI@0.0.1',
+Build Android	Install npm dependencies	2026-08-03T09:11:52.7601138Z npm warn EBADENGINE   required: { node: '>= 22.11.0' },
+Build Android	Install npm dependencies	2026-08-03T09:11:52.7601730Z npm warn EBADENGINE   current: { node: 'v20.20.2', npm: '10.8.2' }
+Build Android	Install npm dependencies	2026-08-03T09:11:52.7602187Z npm warn EBADENGINE }
+Build Android	Install npm dependencies	2026-08-03T09:11:55.0470451Z npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+Build Android	Install npm dependencies	2026-08-03T09:11:56.1309402Z npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+Build Android	Install npm dependencies	2026-08-03T09:11:56.2666704Z npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+Build Android	Install npm dependencies	2026-08-03T09:11:57.9400291Z npm warn deprecated @humanwhocodes/config-array@0.13.0: Use @eslint/config-array instead
+Build Android	Install npm dependencies	2026-08-03T09:11:57.9767003Z npm warn deprecated @humanwhocodes/object-schema@2.0.3: Use @eslint/object-schema instead
+Build Android	Install npm dependencies	2026-08-03T09:12:01.5930837Z npm warn deprecated eslint@8.57.1: This version is no longer supported. Please see https://eslint.org/version-support for other options.
+Build Android	Install npm dependencies	2026-08-03T09:12:07.1075974Z 
+Build Android	Install npm dependencies	2026-08-03T09:12:07.1076694Z added 969 packages, and audited 971 packages in 15s
+Build Android	Install npm dependencies	2026-08-03T09:12:07.1077142Z 
+Build Android	Install npm dependencies	2026-08-03T09:12:07.1077409Z 174 packages are looking for funding
+Build Android	Install npm dependencies	2026-08-03T09:12:07.1077930Z   run `npm fund` for details
+Build Android	Install npm dependencies	2026-08-03T09:12:07.1187011Z 
+Build Android	Install npm dependencies	2026-08-03T09:12:07.1187407Z 7 moderate severity vulnerabilities
+Build Android	Install npm dependencies	2026-08-03T09:12:07.1187745Z 
+Build Android	Install npm dependencies	2026-08-03T09:12:07.1187949Z To address all issues, run:
+Build Android	Install npm dependencies	2026-08-03T09:12:07.1188578Z   npm audit fix --force
+Build Android	Install npm dependencies	2026-08-03T09:12:07.1188745Z 
+Build Android	Install npm dependencies	2026-08-03T09:12:07.1188865Z Run `npm audit` for details.
+Build Android	Run Fastlane	﻿2026-08-03T09:12:07.1557248Z ##[group]Run bundle exec fastlane build
+Build Android	Run Fastlane	2026-08-03T09:12:07.1557613Z ^[[36;1mbundle exec fastlane build^[[0m
+Build Android	Run Fastlane	2026-08-03T09:12:07.1604178Z shell: /usr/bin/bash -e {0}
+Build Android	Run Fastlane	2026-08-03T09:12:07.1604440Z env:
+Build Android	Run Fastlane	2026-08-03T09:12:07.1604710Z   JAVA_HOME: /opt/hostedtoolcache/Java_Zulu_jdk/17.0.20-8/x64
+Build Android	Run Fastlane	2026-08-03T09:12:07.1605132Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Zulu_jdk/17.0.20-8/x64
+Build Android	Run Fastlane	2026-08-03T09:12:07.1605734Z ##[endgroup]
+Build Android	Run Fastlane	2026-08-03T09:12:08.5390208Z [09:12:08]: Sending anonymous analytics information
+Build Android	Run Fastlane	2026-08-03T09:12:08.5391232Z [09:12:08]: Learn more at https://docs.fastlane.tools/#metrics
+Build Android	Run Fastlane	2026-08-03T09:12:08.5391815Z [09:12:08]: No personal or sensitive data is sent.
+Build Android	Run Fastlane	2026-08-03T09:12:08.5392523Z [09:12:08]: You can disable this by adding `opt_out_usage` at the top of your Fastfile
+Build Android	Run Fastlane	2026-08-03T09:12:08.5585389Z [09:12:08]: ^[[32m------------------------------^[[0m
+Build Android	Run Fastlane	2026-08-03T09:12:08.5586126Z [09:12:08]: ^[[32m--- Step: default_platform ---^[[0m
+Build Android	Run Fastlane	2026-08-03T09:12:08.5586573Z [09:12:08]: ^[[32m------------------------------^[[0m
+Build Android	Run Fastlane	2026-08-03T09:12:08.5589245Z [09:12:08]: ^[[32mDriving the lane 'android build' 🚀^[[0m
+Build Android	Run Fastlane	2026-08-03T09:12:08.5595599Z [09:12:08]: ^[[32m---------------------------^[[0m
+Build Android	Run Fastlane	2026-08-03T09:12:08.5596695Z [09:12:08]: ^[[32m--- Step: assembleDebug ---^[[0m
+Build Android	Run Fastlane	2026-08-03T09:12:08.5597463Z [09:12:08]: ^[[32m---------------------------^[[0m
+Build Android	Run Fastlane	2026-08-03T09:12:08.5599094Z [09:12:08]: ^[[36m$ /home/runner/work/TaskFlowAI/TaskFlowAI/android/gradlew assembleDebug -p .^[[0m
+Build Android	Run Fastlane	2026-08-03T09:12:08.6540351Z [09:12:08]: ▸ ^[[35mDownloading https://services.gradle.org/distributions/gradle-9.3.1-bin.zip^[[0m
+Build Android	Run Fastlane	2026-08-03T09:12:10.1525711Z [09:12:10]: ▸ ^[[35m.............10%.............20%.............30%.............40%.............50%.............60%.............70%.............80%.............90%.............100%^[[0m
+Build Android	Run Fastlane	2026-08-03T09:12:11.3591728Z [09:12:11]: ▸ ^[[35mWelcome to Gradle 9.3.1!^[[0m
+Build Android	Run Fastlane	2026-08-03T09:12:11.3596663Z [09:12:11]: ▸ ^[[35mHere are the highlights of this release:^[[0m
+Build Android	Run Fastlane	2026-08-03T09:12:11.3597740Z [09:12:11]: ▸ ^[[35m- Test reporting improvements^[[0m
+Build Android	Run Fastlane	2026-08-03T09:12:11.3606940Z [09:12:11]: ▸ ^[[35m- Error and warning improvements^[[0m
+Build Android	Run Fastlane	2026-08-03T09:12:11.3608044Z [09:12:11]: ▸ ^[[35m- Build authoring improvements^[[0m
+Build Android	Run Fastlane	2026-08-03T09:12:11.3609426Z [09:12:11]: ▸ ^[[35mFor more details see https://docs.gradle.org/9.3.1/release-notes.html^[[0m
+Build Android	Run Fastlane	2026-08-03T09:12:11.4599406Z [09:12:11]: ▸ ^[[35mStarting a Gradle Daemon (subsequent builds will be faster)^[[0m
+Build Android	Run Fastlane	2026-08-03T09:13:00.8632720Z [09:13:00]: ▸ ^[[35m> Task :gradle-plugin:settings-plugin:checkKotlinGradlePluginConfigurationErrors SKIPPED^[[0m
+Build Android	Run Fastlane	2026-08-03T09:13:00.9589346Z [09:13:00]: ▸ ^[[35m> Task :gradle-plugin:shared:checkKotlinGradlePluginConfigurationErrors SKIPPED^[[0m
+Build Android	Run Fastlane	2026-08-03T09:13:05.8587185Z [09:13:05]: ▸ ^[[35m> Task :gradle-plugin:shared:processResources NO-SOURCE^[[0m
+Build Android	Run Fastlane	2026-08-03T09:13:05.9588353Z [09:13:05]: ▸ ^[[35m> Task :gradle-plugin:settings-plugin:pluginDescriptors^[[0m
+Build Android	Run Fastlane	2026-08-03T09:13:05.9589537Z [09:13:05]: ▸ ^[[35m> Task :gradle-plugin:settings-plugin:processResources^[[0m
+Build Android	Run Fastlane	2026-08-03T09:13:11.4600607Z [09:13:11]: ▸ ^[[35m> Task :gradle-plugin:shared:compileKotlin^[[0m
+Build Android	Run Fastlane	2026-08-03T09:13:11.4601983Z [09:13:11]: ▸ ^[[35m> Task :gradle-plugin:shared:compileJava NO-SOURCE^[[0m
+Build Android	Run Fastlane	2026-08-03T09:13:11.4603169Z [09:13:11]: ▸ ^[[35m> Task :gradle-plugin:shared:classes UP-TO-DATE^[[0m
+Build Android	Run Fastlane	2026-08-03T09:13:11.5583246Z [09:13:11]: ▸ ^[[35m> Task :gradle-plugin:shared:jar^[[0m
+Build Android	Run Fastlane	2026-08-03T09:13:18.1587614Z [09:13:18]: ▸ ^[[35m> Task :gradle-plugin:settings-plugin:compileKotlin^[[0m
+Build Android	Run Fastlane	2026-08-03T09:13:18.1588689Z [09:13:18]: ▸ ^[[35m> Task :gradle-plugin:settings-plugin:compileJava NO-SOURCE^[[0m
+Build Android	Run Fastlane	2026-08-03T09:13:18.1589354Z [09:13:18]: ▸ ^[[35m> Task :gradle-plugin:settings-plugin:classes^[[0m
+Build Android	Run Fastlane	2026-08-03T09:13:18.1592630Z [09:13:18]: ▸ ^[[35m> Task :gradle-plugin:settings-plugin:jar^[[0m
+Build Android	Run Fastlane	2026-08-03T09:13:27.5587064Z [09:13:27]: ▸ ^[[35m> Task :gradle-plugin:react-native-gradle-plugin:checkKotlinGradlePluginConfigurationErrors SKIPPED^[[0m
+Build Android	Run Fastlane	2026-08-03T09:13:30.1607333Z [09:13:30]: ▸ ^[[35m> Task :gradle-plugin:react-native-gradle-plugin:pluginDescriptors^[[0m
+Build Android	Run Fastlane	2026-08-03T09:13:30.1609423Z [09:13:30]: ▸ ^[[35m> Task :gradle-plugin:react-native-gradle-plugin:processResources^[[0m
+Build Android	Run Fastlane	2026-08-03T09:13:36.3584645Z [09:13:36]: ▸ ^[[35m> Task :gradle-plugin:react-native-gradle-plugin:compileKotlin^[[0m
+Build Android	Run Fastlane	2026-08-03T09:13:36.3589229Z [09:13:36]: ▸ ^[[35m> Task :gradle-plugin:react-native-gradle-plugin:compileJava NO-SOURCE^[[0m
+Build Android	Run Fastlane	2026-08-03T09:13:36.3590507Z [09:13:36]: ▸ ^[[35m> Task :gradle-plugin:react-native-gradle-plugin:classes^[[0m
+Build Android	Run Fastlane	2026-08-03T09:13:36.3591919Z [09:13:36]: ▸ ^[[35m> Task :gradle-plugin:react-native-gradle-plugin:jar^[[0m
+Build Android	Run Fastlane	2026-08-03T09:13:50.3593089Z [09:13:50]: ▸ ^[[35m> Configure project :app^[[0m
+Build Android	Run Fastlane	2026-08-03T09:13:50.3595174Z [09:13:50]: ▸ ^[[35mChecking the license for package NDK (Side by side) 27.1.12297006 in /usr/local/lib/android/sdk/licenses^[[0m
+Build Android	Run Fastlane	2026-08-03T09:13:50.4584786Z [09:13:50]: ▸ ^[[35mLicense for package NDK (Side by side) 27.1.12297006 accepted.^[[0m
+Build Android	Run Fastlane	2026-08-03T09:13:50.4586764Z [09:13:50]: ▸ ^[[35mPreparing "Install NDK (Side by side) 27.1.12297006 v.27.1.12297006".^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:05.3598116Z [09:14:05]: ▸ ^[[35m"Install NDK (Side by side) 27.1.12297006 v.27.1.12297006" ready.^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:05.3617930Z [09:14:05]: ▸ ^[[35mInstalling NDK (Side by side) 27.1.12297006 in /usr/local/lib/android/sdk/ndk/27.1.12297006^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:05.3619408Z [09:14:05]: ▸ ^[[35m"Install NDK (Side by side) 27.1.12297006 v.27.1.12297006" complete.^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:05.4617241Z [09:14:05]: ▸ ^[[35m"Install NDK (Side by side) 27.1.12297006 v.27.1.12297006" finished.^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:07.6601081Z [09:14:07]: ▸ ^[[35m> Configure project :react-native-firebase_app^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:07.6617752Z [09:14:07]: ▸ ^[[35m:react-native-firebase_app package.json found at /home/runner/work/TaskFlowAI/TaskFlowAI/node_modules/@react-native-firebase/app/package.json^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:07.6619946Z [09:14:07]: ▸ ^[[35m:react-native-firebase_app:firebase.bom using default value: 34.15.0^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:07.6621862Z [09:14:07]: ▸ ^[[35m:react-native-firebase_app:play.play-services-auth using default value: 21.5.0^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:07.6624314Z [09:14:07]: ▸ ^[[35m:react-native-firebase_app package.json found at /home/runner/work/TaskFlowAI/TaskFlowAI/node_modules/@react-native-firebase/app/package.json^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:07.6626757Z [09:14:07]: ▸ ^[[35m:react-native-firebase_app:version set from package.json: 26.0.0 (26,0,0 - 26000000)^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:07.6628435Z [09:14:07]: ▸ ^[[35m:react-native-firebase_app:android.compileSdk using custom value: 36^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:07.6630044Z [09:14:07]: ▸ ^[[35m:react-native-firebase_app:android.targetSdk using custom value: 36^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:07.6631616Z [09:14:07]: ▸ ^[[35m:react-native-firebase_app:android.minSdk using custom value: 24^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:07.6633592Z [09:14:07]: ▸ ^[[35m:react-native-firebase_app:reactNativeAndroidDir /home/runner/work/TaskFlowAI/TaskFlowAI/node_modules/react-native^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:07.8617146Z [09:14:07]: ▸ ^[[35m> Configure project :react-native-firebase_auth^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:07.8619281Z [09:14:07]: ▸ ^[[35m:react-native-firebase_auth package.json found at /home/runner/work/TaskFlowAI/TaskFlowAI/node_modules/@react-native-firebase/auth/package.json^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:07.8621797Z [09:14:07]: ▸ ^[[35m:react-native-firebase_app package.json found at /home/runner/work/TaskFlowAI/TaskFlowAI/node_modules/@react-native-firebase/app/package.json^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:07.8623671Z [09:14:07]: ▸ ^[[35m:react-native-firebase_auth:firebase.bom using default value: 34.15.0^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:07.8637052Z [09:14:07]: ▸ ^[[35m:react-native-firebase_auth package.json found at /home/runner/work/TaskFlowAI/TaskFlowAI/node_modules/@react-native-firebase/auth/package.json^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:07.8639152Z [09:14:07]: ▸ ^[[35m:react-native-firebase_auth:version set from package.json: 26.0.0 (26,0,0 - 26000000)^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:07.8640942Z [09:14:07]: ▸ ^[[35m:react-native-firebase_auth:android.compileSdk using custom value: 36^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:07.8642297Z [09:14:07]: ▸ ^[[35m:react-native-firebase_auth:android.targetSdk using custom value: 36^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:07.8643838Z [09:14:07]: ▸ ^[[35m:react-native-firebase_auth:android.minSdk using custom value: 24^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:07.8645849Z [09:14:07]: ▸ ^[[35m:react-native-firebase_auth:reactNativeAndroidDir /home/runner/work/TaskFlowAI/TaskFlowAI/node_modules/react-native^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:08.0604100Z [09:14:08]: ▸ ^[[35m> Configure project :react-native-firebase_firestore^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:08.0607551Z [09:14:08]: ▸ ^[[35m:react-native-firebase_firestore package.json found at /home/runner/work/TaskFlowAI/TaskFlowAI/node_modules/@react-native-firebase/firestore/package.json^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:08.0610522Z [09:14:08]: ▸ ^[[35m:react-native-firebase_app package.json found at /home/runner/work/TaskFlowAI/TaskFlowAI/node_modules/@react-native-firebase/app/package.json^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:08.0612727Z [09:14:08]: ▸ ^[[35m:react-native-firebase_firestore:firebase.bom using default value: 34.15.0^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:08.0615136Z [09:14:08]: ▸ ^[[35m:react-native-firebase_firestore package.json found at /home/runner/work/TaskFlowAI/TaskFlowAI/node_modules/@react-native-firebase/firestore/package.json^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:08.0617743Z [09:14:08]: ▸ ^[[35m:react-native-firebase_firestore:version set from package.json: 26.0.0 (26,0,0 - 26000000)^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:08.0619504Z [09:14:08]: ▸ ^[[35m:react-native-firebase_firestore:android.compileSdk using custom value: 36^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:08.0621120Z [09:14:08]: ▸ ^[[35m:react-native-firebase_firestore:android.targetSdk using custom value: 36^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:08.0622690Z [09:14:08]: ▸ ^[[35m:react-native-firebase_firestore:android.minSdk using custom value: 24^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:08.0624739Z [09:14:08]: ▸ ^[[35m:react-native-firebase_firestore:reactNativeAndroidDir /home/runner/work/TaskFlowAI/TaskFlowAI/node_modules/react-native^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:38.3589666Z [09:14:38]: ▸ ^[[35m> Task :app:generateAutolinkingNewArchitectureFiles^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:38.4589451Z [09:14:38]: ▸ ^[[35m> Task :app:generateAutolinkingPackageList^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:38.4591122Z [09:14:38]: ▸ ^[[35m> Task :app:generateCodegenSchemaFromJavaScript SKIPPED^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:38.4592438Z [09:14:38]: ▸ ^[[35m> Task :app:generateCodegenArtifactsFromSchema SKIPPED^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:38.4593541Z [09:14:38]: ▸ ^[[35m> Task :app:generateReactNativeEntryPoint^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:38.4594670Z [09:14:38]: ▸ ^[[35m> Task :react-native-firebase_app:preBuild UP-TO-DATE^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:38.4596192Z [09:14:38]: ▸ ^[[35m> Task :react-native-firebase_auth:preBuild UP-TO-DATE^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:38.4597376Z [09:14:38]: ▸ ^[[35m> Task :react-native-firebase_firestore:preBuild UP-TO-DATE^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:38.5584962Z [09:14:38]: ▸ ^[[35m> Task :react-native-safe-area-context:generateCodegenSchemaFromJavaScript^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:38.7584770Z [09:14:38]: ▸ ^[[35m> Task :react-native-safe-area-context:generateCodegenArtifactsFromSchema^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:38.7606514Z [09:14:38]: ▸ ^[[35m> Task :react-native-safe-area-context:preBuild^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:38.8584298Z [09:14:38]: ▸ ^[[35m> Task :react-native-screens:generateCodegenSchemaFromJavaScript^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:39.0587783Z [09:14:39]: ▸ ^[[35m> Task :react-native-screens:generateCodegenArtifactsFromSchema^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:39.0591464Z [09:14:39]: ▸ ^[[35m> Task :react-native-screens:preBuild^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:39.0592564Z [09:14:39]: ▸ ^[[35m> Task :app:preBuild^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:39.0593385Z [09:14:39]: ▸ ^[[35m> Task :app:preDebugBuild^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:39.0594608Z [09:14:39]: ▸ ^[[35m> Task :app:mergeDebugNativeDebugMetadata NO-SOURCE^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:39.0596341Z [09:14:39]: ▸ ^[[35m> Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:39.1583320Z [09:14:39]: ▸ ^[[35m> Task :app:generateDebugBuildConfig^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:39.1595747Z [09:14:39]: ▸ ^[[35m> Task :react-native-firebase_app:preDebugBuild UP-TO-DATE^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:39.1597926Z [09:14:39]: ▸ ^[[35m> Task :react-native-firebase_auth:preDebugBuild UP-TO-DATE^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:39.1599843Z [09:14:39]: ▸ ^[[35m> Task :react-native-firebase_firestore:preDebugBuild UP-TO-DATE^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:39.1601261Z [09:14:39]: ▸ ^[[35m> Task :react-native-firebase_app:writeDebugAarMetadata^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:39.1602600Z [09:14:39]: ▸ ^[[35m> Task :react-native-firebase_auth:writeDebugAarMetadata^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:39.1603927Z [09:14:39]: ▸ ^[[35m> Task :react-native-safe-area-context:preDebugBuild^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:39.1605525Z [09:14:39]: ▸ ^[[35m> Task :react-native-firebase_firestore:writeDebugAarMetadata^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:39.1606865Z [09:14:39]: ▸ ^[[35m> Task :react-native-screens:preDebugBuild^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:39.1608176Z [09:14:39]: ▸ ^[[35m> Task :react-native-safe-area-context:writeDebugAarMetadata^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:39.1609524Z [09:14:39]: ▸ ^[[35m> Task :react-native-screens:writeDebugAarMetadata^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:39.1610699Z [09:14:39]: ▸ ^[[35m> Task :app:generateDebugResValues^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:53.3595264Z [09:14:53]: ▸ ^[[35m> Task :app:processDebugGoogleServices FAILED^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:53.3607474Z [09:14:53]: ▸ ^[[35m> Task :app:checkDebugAarMetadata^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:53.4597864Z [09:14:53]: ▸ ^[[35m[Incubating] Problems report is available at: file:///home/runner/work/TaskFlowAI/TaskFlowAI/android/build/reports/problems/problems-report.html^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:53.4626488Z [09:14:53]: ▸ ^[[35mFAILURE: Build failed with an exception.^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:53.4646529Z [09:14:53]: ▸ ^[[35m* What went wrong:^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:53.4661507Z [09:14:53]: ▸ ^[[35mExecution failed for task ':app:processDebugGoogleServices'.^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:53.4662767Z [09:14:53]: ▸ ^[[35m> File google-services.json is missing.^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:53.4692435Z [09:14:53]: ▸ ^[[35mThe Google Services Plugin cannot function without it.^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:53.4707056Z [09:14:53]: ▸ ^[[35mSearched locations: /home/runner/work/TaskFlowAI/TaskFlowAI/android/app/src/debug/google-services.json, /home/runner/work/TaskFlowAI/TaskFlowAI/android/app/src/debug/google-services.json, /home/runner/work/TaskFlowAI/TaskFlowAI/android/app/src/google-services.json, /home/runner/work/TaskFlowAI/TaskFlowAI/android/app/src/debug/google-services.json, /home/runner/work/TaskFlowAI/TaskFlowAI/android/app/src/Debug/google-services.json, /home/runner/work/TaskFlowAI/TaskFlowAI/android/app/google-services.json^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:53.4711005Z [09:14:53]: ▸ ^[[35m* Try:^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:53.4711953Z [09:14:53]: ▸ ^[[35m> Run with --stacktrace option to get the stack trace.^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:53.4713224Z [09:14:53]: ▸ ^[[35m> Run with --info or --debug option to get more log output.^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:53.4714702Z [09:14:53]: ▸ ^[[35m> Run with --scan to get full insights from a Build Scan (powered by Develocity).^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:53.4718693Z [09:14:53]: ▸ ^[[35m> Get more help at https://help.gradle.org.^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:53.4721569Z [09:14:53]: ▸ ^[[35mDeprecated Gradle features were used in this build, making it incompatible with Gradle 10.^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:53.4723980Z [09:14:53]: ▸ ^[[35mYou can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:53.4726958Z [09:14:53]: ▸ ^[[35mFor more on this, please refer to https://docs.gradle.org/9.3.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:53.4728600Z [09:14:53]: ▸ ^[[35mBUILD FAILED in 2m 44s^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:53.4729440Z [09:14:53]: ▸ ^[[35m26 actionable tasks: 26 executed^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:53.8781605Z +----------------------------------+
+Build Android	Run Fastlane	2026-08-03T09:14:53.8782262Z |           ^[[33mLane Context^[[0m           |
+Build Android	Run Fastlane	2026-08-03T09:14:53.8782603Z +------------------+---------------+
+Build Android	Run Fastlane	2026-08-03T09:14:53.8782912Z | DEFAULT_PLATFORM | android       |
+Build Android	Run Fastlane	2026-08-03T09:14:53.8783308Z | PLATFORM_NAME    | android       |
+Build Android	Run Fastlane	2026-08-03T09:14:53.8783842Z | LANE_NAME        | android build |
+Build Android	Run Fastlane	2026-08-03T09:14:53.8784495Z +------------------+---------------+
+Build Android	Run Fastlane	2026-08-03T09:14:53.8784990Z [09:14:53]: ^[[31mCalled from Fastfile at line 6^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:53.8786354Z [09:14:53]: ^[[31m```^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:53.8787089Z [09:14:53]: ^[[31m    4:	  desc "Build the Android application in Debug mode"^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:53.8787597Z [09:14:53]: ^[[31m    5:	  lane :build do^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:53.8788157Z [09:14:53]: ^[[31m => 6:	    gradle(task: "assembleDebug")^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:53.8788670Z [09:14:53]: ^[[31m    7:	  end^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:53.8789014Z [09:14:53]: ^[[31m    8:	^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:53.8789462Z [09:14:53]: ^[[31m```^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:53.8790830Z [09:14:53]: ^[[31mExit status of command '/home/runner/work/TaskFlowAI/TaskFlowAI/android/gradlew assembleDebug -p .' was 1 instead of 0.
+Build Android	Run Fastlane	2026-08-03T09:14:53.8792263Z Downloading https://services.gradle.org/distributions/gradle-9.3.1-bin.zip
+Build Android	Run Fastlane	2026-08-03T09:14:53.8793585Z .............10%.............20%.............30%.............40%.............50%.............60%.............70%.............80%.............90%.............100%
+Build Android	Run Fastlane	2026-08-03T09:14:53.8794248Z 
+Build Android	Run Fastlane	2026-08-03T09:14:53.8794436Z Welcome to Gradle 9.3.1!
+Build Android	Run Fastlane	2026-08-03T09:14:53.8794685Z 
+Build Android	Run Fastlane	2026-08-03T09:14:53.8794950Z Here are the highlights of this release:
+Build Android	Run Fastlane	2026-08-03T09:14:53.8795718Z  - Test reporting improvements
+Build Android	Run Fastlane	2026-08-03T09:14:53.8796028Z  - Error and warning improvements
+Build Android	Run Fastlane	2026-08-03T09:14:53.8796316Z  - Build authoring improvements
+Build Android	Run Fastlane	2026-08-03T09:14:53.8796484Z 
+Build Android	Run Fastlane	2026-08-03T09:14:53.8796755Z For more details see https://docs.gradle.org/9.3.1/release-notes.html
+Build Android	Run Fastlane	2026-08-03T09:14:53.8797044Z 
+Build Android	Run Fastlane	2026-08-03T09:14:53.8797275Z Starting a Gradle Daemon (subsequent builds will be faster)
+Build Android	Run Fastlane	2026-08-03T09:14:53.8797891Z > Task :gradle-plugin:settings-plugin:checkKotlinGradlePluginConfigurationErrors SKIPPED
+Build Android	Run Fastlane	2026-08-03T09:14:53.8798600Z > Task :gradle-plugin:shared:checkKotlinGradlePluginConfigurationErrors SKIPPED
+Build Android	Run Fastlane	2026-08-03T09:14:53.8799147Z > Task :gradle-plugin:shared:processResources NO-SOURCE
+Build Android	Run Fastlane	2026-08-03T09:14:53.8799582Z > Task :gradle-plugin:settings-plugin:pluginDescriptors
+Build Android	Run Fastlane	2026-08-03T09:14:53.8800007Z > Task :gradle-plugin:settings-plugin:processResources
+Build Android	Run Fastlane	2026-08-03T09:14:53.8800390Z > Task :gradle-plugin:shared:compileKotlin
+Build Android	Run Fastlane	2026-08-03T09:14:53.8800768Z > Task :gradle-plugin:shared:compileJava NO-SOURCE
+Build Android	Run Fastlane	2026-08-03T09:14:53.8801162Z > Task :gradle-plugin:shared:classes UP-TO-DATE
+Build Android	Run Fastlane	2026-08-03T09:14:53.8801499Z > Task :gradle-plugin:shared:jar
+Build Android	Run Fastlane	2026-08-03T09:14:53.8801851Z > Task :gradle-plugin:settings-plugin:compileKotlin
+Build Android	Run Fastlane	2026-08-03T09:14:53.8802281Z > Task :gradle-plugin:settings-plugin:compileJava NO-SOURCE
+Build Android	Run Fastlane	2026-08-03T09:14:53.8802688Z > Task :gradle-plugin:settings-plugin:classes
+Build Android	Run Fastlane	2026-08-03T09:14:53.8803042Z > Task :gradle-plugin:settings-plugin:jar
+Build Android	Run Fastlane	2026-08-03T09:14:53.8803644Z > Task :gradle-plugin:react-native-gradle-plugin:checkKotlinGradlePluginConfigurationErrors SKIPPED
+Build Android	Run Fastlane	2026-08-03T09:14:53.8804312Z > Task :gradle-plugin:react-native-gradle-plugin:pluginDescriptors
+Build Android	Run Fastlane	2026-08-03T09:14:53.8804831Z > Task :gradle-plugin:react-native-gradle-plugin:processResources
+Build Android	Run Fastlane	2026-08-03T09:14:53.8805523Z > Task :gradle-plugin:react-native-gradle-plugin:compileKotlin
+Build Android	Run Fastlane	2026-08-03T09:14:53.8806422Z > Task :gradle-plugin:react-native-gradle-plugin:compileJava NO-SOURCE
+Build Android	Run Fastlane	2026-08-03T09:14:53.8806974Z > Task :gradle-plugin:react-native-gradle-plugin:classes
+Build Android	Run Fastlane	2026-08-03T09:14:53.8807396Z > Task :gradle-plugin:react-native-gradle-plugin:jar
+Build Android	Run Fastlane	2026-08-03T09:14:53.8807622Z 
+Build Android	Run Fastlane	2026-08-03T09:14:53.8807734Z > Configure project :app
+Build Android	Run Fastlane	2026-08-03T09:14:53.8808269Z Checking the license for package NDK (Side by side) 27.1.12297006 in /usr/local/lib/android/sdk/licenses
+Build Android	Run Fastlane	2026-08-03T09:14:53.8808858Z License for package NDK (Side by side) 27.1.12297006 accepted.
+Build Android	Run Fastlane	2026-08-03T09:14:53.8809345Z Preparing "Install NDK (Side by side) 27.1.12297006 v.27.1.12297006".
+Build Android	Run Fastlane	2026-08-03T09:14:53.8809863Z "Install NDK (Side by side) 27.1.12297006 v.27.1.12297006" ready.
+Build Android	Run Fastlane	2026-08-03T09:14:53.8810422Z Installing NDK (Side by side) 27.1.12297006 in /usr/local/lib/android/sdk/ndk/27.1.12297006
+Build Android	Run Fastlane	2026-08-03T09:14:53.8811480Z "Install NDK (Side by side) 27.1.12297006 v.27.1.12297006" complete.
+Build Android	Run Fastlane	2026-08-03T09:14:53.8812123Z "Install NDK (Side by side) 27.1.12297006 v.27.1.12297006" finished.
+Build Android	Run Fastlane	2026-08-03T09:14:53.8812380Z 
+Build Android	Run Fastlane	2026-08-03T09:14:53.8812564Z > Configure project :react-native-firebase_app
+Build Android	Run Fastlane	2026-08-03T09:14:53.8813379Z :react-native-firebase_app package.json found at /home/runner/work/TaskFlowAI/TaskFlowAI/node_modules/@react-native-firebase/app/package.json
+Build Android	Run Fastlane	2026-08-03T09:14:53.8814186Z :react-native-firebase_app:firebase.bom using default value: 34.15.0
+Build Android	Run Fastlane	2026-08-03T09:14:53.8814766Z :react-native-firebase_app:play.play-services-auth using default value: 21.5.0
+Build Android	Run Fastlane	2026-08-03T09:14:53.8816051Z :react-native-firebase_app package.json found at /home/runner/work/TaskFlowAI/TaskFlowAI/node_modules/@react-native-firebase/app/package.json
+Build Android	Run Fastlane	2026-08-03T09:14:53.8816978Z :react-native-firebase_app:version set from package.json: 26.0.0 (26,0,0 - 26000000)
+Build Android	Run Fastlane	2026-08-03T09:14:53.8817596Z :react-native-firebase_app:android.compileSdk using custom value: 36
+Build Android	Run Fastlane	2026-08-03T09:14:53.8818141Z :react-native-firebase_app:android.targetSdk using custom value: 36
+Build Android	Run Fastlane	2026-08-03T09:14:53.8818670Z :react-native-firebase_app:android.minSdk using custom value: 24
+Build Android	Run Fastlane	2026-08-03T09:14:53.8819416Z :react-native-firebase_app:reactNativeAndroidDir /home/runner/work/TaskFlowAI/TaskFlowAI/node_modules/react-native
+Build Android	Run Fastlane	2026-08-03T09:14:53.8819883Z 
+Build Android	Run Fastlane	2026-08-03T09:14:53.8820063Z > Configure project :react-native-firebase_auth
+Build Android	Run Fastlane	2026-08-03T09:14:53.8820890Z :react-native-firebase_auth package.json found at /home/runner/work/TaskFlowAI/TaskFlowAI/node_modules/@react-native-firebase/auth/package.json
+Build Android	Run Fastlane	2026-08-03T09:14:53.8822463Z :react-native-firebase_app package.json found at /home/runner/work/TaskFlowAI/TaskFlowAI/node_modules/@react-native-firebase/app/package.json
+Build Android	Run Fastlane	2026-08-03T09:14:53.8823613Z :react-native-firebase_auth:firebase.bom using default value: 34.15.0
+Build Android	Run Fastlane	2026-08-03T09:14:53.8824482Z :react-native-firebase_auth package.json found at /home/runner/work/TaskFlowAI/TaskFlowAI/node_modules/@react-native-firebase/auth/package.json
+Build Android	Run Fastlane	2026-08-03T09:14:53.8825605Z :react-native-firebase_auth:version set from package.json: 26.0.0 (26,0,0 - 26000000)
+Build Android	Run Fastlane	2026-08-03T09:14:53.8826224Z :react-native-firebase_auth:android.compileSdk using custom value: 36
+Build Android	Run Fastlane	2026-08-03T09:14:53.8826762Z :react-native-firebase_auth:android.targetSdk using custom value: 36
+Build Android	Run Fastlane	2026-08-03T09:14:53.8827278Z :react-native-firebase_auth:android.minSdk using custom value: 24
+Build Android	Run Fastlane	2026-08-03T09:14:53.8828113Z :react-native-firebase_auth:reactNativeAndroidDir /home/runner/work/TaskFlowAI/TaskFlowAI/node_modules/react-native
+Build Android	Run Fastlane	2026-08-03T09:14:53.8828742Z 
+Build Android	Run Fastlane	2026-08-03T09:14:53.8828948Z > Configure project :react-native-firebase_firestore
+Build Android	Run Fastlane	2026-08-03T09:14:53.8830014Z :react-native-firebase_firestore package.json found at /home/runner/work/TaskFlowAI/TaskFlowAI/node_modules/@react-native-firebase/firestore/package.json
+Build Android	Run Fastlane	2026-08-03T09:14:53.8831199Z :react-native-firebase_app package.json found at /home/runner/work/TaskFlowAI/TaskFlowAI/node_modules/@react-native-firebase/app/package.json
+Build Android	Run Fastlane	2026-08-03T09:14:53.8832039Z :react-native-firebase_firestore:firebase.bom using default value: 34.15.0
+Build Android	Run Fastlane	2026-08-03T09:14:53.8832990Z :react-native-firebase_firestore package.json found at /home/runner/work/TaskFlowAI/TaskFlowAI/node_modules/@react-native-firebase/firestore/package.json
+Build Android	Run Fastlane	2026-08-03T09:14:53.8833920Z :react-native-firebase_firestore:version set from package.json: 26.0.0 (26,0,0 - 26000000)
+Build Android	Run Fastlane	2026-08-03T09:14:53.8834554Z :react-native-firebase_firestore:android.compileSdk using custom value: 36
+Build Android	Run Fastlane	2026-08-03T09:14:53.8835137Z :react-native-firebase_firestore:android.targetSdk using custom value: 36
+Build Android	Run Fastlane	2026-08-03T09:14:53.8836101Z :react-native-firebase_firestore:android.minSdk using custom value: 24
+Build Android	Run Fastlane	2026-08-03T09:14:53.8836886Z :react-native-firebase_firestore:reactNativeAndroidDir /home/runner/work/TaskFlowAI/TaskFlowAI/node_modules/react-native
+Build Android	Run Fastlane	2026-08-03T09:14:53.8837369Z 
+Build Android	Run Fastlane	2026-08-03T09:14:53.8838019Z > Task :app:generateAutolinkingNewArchitectureFiles
+Build Android	Run Fastlane	2026-08-03T09:14:53.8838654Z > Task :app:generateAutolinkingPackageList
+Build Android	Run Fastlane	2026-08-03T09:14:53.8839574Z > Task :app:generateCodegenSchemaFromJavaScript SKIPPED
+Build Android	Run Fastlane	2026-08-03T09:14:53.8840328Z > Task :app:generateCodegenArtifactsFromSchema SKIPPED
+Build Android	Run Fastlane	2026-08-03T09:14:53.8840978Z > Task :app:generateReactNativeEntryPoint
+Build Android	Run Fastlane	2026-08-03T09:14:53.8841641Z > Task :react-native-firebase_app:preBuild UP-TO-DATE
+Build Android	Run Fastlane	2026-08-03T09:14:53.8842330Z > Task :react-native-firebase_auth:preBuild UP-TO-DATE
+Build Android	Run Fastlane	2026-08-03T09:14:53.8843030Z > Task :react-native-firebase_firestore:preBuild UP-TO-DATE
+Build Android	Run Fastlane	2026-08-03T09:14:53.8844030Z > Task :react-native-safe-area-context:generateCodegenSchemaFromJavaScript
+Build Android	Run Fastlane	2026-08-03T09:14:53.8845164Z > Task :react-native-safe-area-context:generateCodegenArtifactsFromSchema
+Build Android	Run Fastlane	2026-08-03T09:14:53.8846202Z > Task :react-native-safe-area-context:preBuild
+Build Android	Run Fastlane	2026-08-03T09:14:53.8846687Z > Task :react-native-screens:generateCodegenSchemaFromJavaScript
+Build Android	Run Fastlane	2026-08-03T09:14:53.8847218Z > Task :react-native-screens:generateCodegenArtifactsFromSchema
+Build Android	Run Fastlane	2026-08-03T09:14:53.8847626Z > Task :react-native-screens:preBuild
+Build Android	Run Fastlane	2026-08-03T09:14:53.8847919Z > Task :app:preBuild
+Build Android	Run Fastlane	2026-08-03T09:14:53.8848165Z > Task :app:preDebugBuild
+Build Android	Run Fastlane	2026-08-03T09:14:53.8848503Z > Task :app:mergeDebugNativeDebugMetadata NO-SOURCE
+Build Android	Run Fastlane	2026-08-03T09:14:53.8848981Z > Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+Build Android	Run Fastlane	2026-08-03T09:14:53.8849393Z > Task :app:generateDebugBuildConfig
+Build Android	Run Fastlane	2026-08-03T09:14:53.8849789Z > Task :react-native-firebase_app:preDebugBuild UP-TO-DATE
+Build Android	Run Fastlane	2026-08-03T09:14:53.8850247Z > Task :react-native-firebase_auth:preDebugBuild UP-TO-DATE
+Build Android	Run Fastlane	2026-08-03T09:14:53.8850730Z > Task :react-native-firebase_firestore:preDebugBuild UP-TO-DATE
+Build Android	Run Fastlane	2026-08-03T09:14:53.8851189Z > Task :react-native-firebase_app:writeDebugAarMetadata
+Build Android	Run Fastlane	2026-08-03T09:14:53.8851619Z > Task :react-native-firebase_auth:writeDebugAarMetadata
+Build Android	Run Fastlane	2026-08-03T09:14:53.8852047Z > Task :react-native-safe-area-context:preDebugBuild
+Build Android	Run Fastlane	2026-08-03T09:14:53.8852499Z > Task :react-native-firebase_firestore:writeDebugAarMetadata
+Build Android	Run Fastlane	2026-08-03T09:14:53.8852905Z > Task :react-native-screens:preDebugBuild
+Build Android	Run Fastlane	2026-08-03T09:14:53.8853327Z > Task :react-native-safe-area-context:writeDebugAarMetadata
+Build Android	Run Fastlane	2026-08-03T09:14:53.8853763Z > Task :react-native-screens:writeDebugAarMetadata
+Build Android	Run Fastlane	2026-08-03T09:14:53.8854122Z > Task :app:generateDebugResValues
+Build Android	Run Fastlane	2026-08-03T09:14:53.8854466Z > Task :app:processDebugGoogleServices FAILED
+Build Android	Run Fastlane	2026-08-03T09:14:53.8854805Z > Task :app:checkDebugAarMetadata
+Build Android	Run Fastlane	2026-08-03T09:14:53.8854985Z 
+Build Android	Run Fastlane	2026-08-03T09:14:53.8855858Z [Incubating] Problems report is available at: file:///home/runner/work/TaskFlowAI/TaskFlowAI/android/build/reports/problems/problems-report.html
+Build Android	Run Fastlane	2026-08-03T09:14:53.8856419Z 
+Build Android	Run Fastlane	2026-08-03T09:14:53.8856576Z FAILURE: Build failed with an exception.
+Build Android	Run Fastlane	2026-08-03T09:14:53.8856764Z 
+Build Android	Run Fastlane	2026-08-03T09:14:53.8856869Z * What went wrong:
+Build Android	Run Fastlane	2026-08-03T09:14:53.8857227Z Execution failed for task ':app:processDebugGoogleServices'.
+Build Android	Run Fastlane	2026-08-03T09:14:53.8857644Z > File google-services.json is missing. 
+Build Android	Run Fastlane	2026-08-03T09:14:53.8858005Z   The Google Services Plugin cannot function without it. 
+Build Android	Run Fastlane	2026-08-03T09:14:53.8860278Z   Searched locations: /home/runner/work/TaskFlowAI/TaskFlowAI/android/app/src/debug/google-services.json, /home/runner/work/TaskFlowAI/TaskFlowAI/android/app/src/debug/google-services.json, /home/runner/work/TaskFlowAI/TaskFlowAI/android/app/src/google-services.json, /home/runner/work/TaskFlowAI/TaskFlowAI/android/app/src/debug/google-services.json, /home/runner/work/TaskFlowAI/TaskFlowAI/android/app/src/Debug/google-services.json, /home/runner/work/TaskFlowAI/TaskFlowAI/android/app/google-services.json
+Build Android	Run Fastlane	2026-08-03T09:14:53.8862153Z 
+Build Android	Run Fastlane	2026-08-03T09:14:53.8862235Z * Try:
+Build Android	Run Fastlane	2026-08-03T09:14:53.8862528Z > Run with --stacktrace option to get the stack trace.
+Build Android	Run Fastlane	2026-08-03T09:14:53.8862968Z > Run with --info or --debug option to get more log output.
+Build Android	Run Fastlane	2026-08-03T09:14:53.8863496Z > Run with --scan to get full insights from a Build Scan (powered by Develocity).
+Build Android	Run Fastlane	2026-08-03T09:14:53.8864165Z > Get more help at https://help.gradle.org.
+Build Android	Run Fastlane	2026-08-03T09:14:53.8864366Z 
+Build Android	Run Fastlane	2026-08-03T09:14:53.8864715Z Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+Build Android	Run Fastlane	2026-08-03T09:14:53.8865216Z 
+Build Android	Run Fastlane	2026-08-03T09:14:53.8866006Z You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+Build Android	Run Fastlane	2026-08-03T09:14:53.8866517Z 
+Build Android	Run Fastlane	2026-08-03T09:14:53.8867156Z For more on this, please refer to https://docs.gradle.org/9.3.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+Build Android	Run Fastlane	2026-08-03T09:14:53.8867718Z 
+Build Android	Run Fastlane	2026-08-03T09:14:53.8867827Z BUILD FAILED in 2m 44s
+Build Android	Run Fastlane	2026-08-03T09:14:53.8868095Z 26 actionable tasks: 26 executed
+Build Android	Run Fastlane	2026-08-03T09:14:53.8868403Z ^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:53.8868522Z 
+Build Android	Run Fastlane	2026-08-03T09:14:53.8868665Z +---------------------------------------+
+Build Android	Run Fastlane	2026-08-03T09:14:53.8869053Z |           ^[[32mfastlane summary^[[0m            |
+Build Android	Run Fastlane	2026-08-03T09:14:53.8869388Z +------+------------------+-------------+
+Build Android	Run Fastlane	2026-08-03T09:14:53.8869694Z | Step | Action           | Time (in s) |
+Build Android	Run Fastlane	2026-08-03T09:14:53.8869998Z +------+------------------+-------------+
+Build Android	Run Fastlane	2026-08-03T09:14:53.8870302Z | 1    | default_platform | 0           |
+Build Android	Run Fastlane	2026-08-03T09:14:53.8870701Z | 💥   | ^[[31massembleDebug^[[0m    | 165         |
+Build Android	Run Fastlane	2026-08-03T09:14:53.8871043Z +------+------------------+-------------+
+Build Android	Run Fastlane	2026-08-03T09:14:53.8871218Z 
+Build Android	Run Fastlane	2026-08-03T09:14:53.8871443Z [09:14:53]: ^[[31mfastlane finished with errors^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:53.8881650Z 
+Build Android	Run Fastlane	2026-08-03T09:14:53.8881976Z Looking for related GitHub issues on fastlane/fastlane...
+Build Android	Run Fastlane	2026-08-03T09:14:53.8882399Z 
+Build Android	Run Fastlane	2026-08-03T09:14:53.9694523Z 
+Build Android	Run Fastlane	2026-08-03T09:14:53.9694960Z #######################################################################
+Build Android	Run Fastlane	2026-08-03T09:14:53.9695775Z # fastlane 2.237.0 is available. You are on 2.229.0.
+Build Android	Run Fastlane	2026-08-03T09:14:53.9696236Z # You should use the latest version.
+Build Android	Run Fastlane	2026-08-03T09:14:53.9696677Z # Please update using `bundle update fastlane`.
+Build Android	Run Fastlane	2026-08-03T09:14:53.9697185Z #######################################################################
+Build Android	Run Fastlane	2026-08-03T09:14:54.1932421Z 
+Build Android	Run Fastlane	2026-08-03T09:14:54.1933367Z ^[[32m2.237.0 Improvements^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:54.1934103Z * [ci] drop CircleCI for GHA (#30108) via Connor Tumbleson (@iBotPeaches)
+Build Android	Run Fastlane	2026-08-03T09:14:54.1935111Z * [fastlane_core] Restore altool -f flag, keep -assetFile only for iTMSTransporter (#30106) via Roman Gardukevich (@OdNairy)
+Build Android	Run Fastlane	2026-08-03T09:14:54.1936399Z * [gym] handle xcpretty errors cleaner & promote xcbeautify (#30099) via Connor Tumbleson (@iBotPeaches)
+Build Android	Run Fastlane	2026-08-03T09:14:54.1937402Z * [docs] Reflect specification changes regarding iPad Pro 12.9-inch screenshots in `deliver` (#30103) via 417-72KI (@417-72KI)
+Build Android	Run Fastlane	2026-08-03T09:14:54.1938381Z * [core] Reduce duplication on output and noise during failure. (#30097) via Connor Tumbleson (@iBotPeaches)
+Build Android	Run Fastlane	2026-08-03T09:14:54.1939169Z * Bump actions/checkout from 6 to 7 (#30100) via dependabot[bot] (@dependabot[bot])
+Build Android	Run Fastlane	2026-08-03T09:14:54.1939877Z * [match] Restore renew expired certs (opt in) (#30096) via Roman Gardukevich (@OdNairy)
+Build Android	Run Fastlane	2026-08-03T09:14:54.1940787Z * [match] fail fast for SSH authentication prompts in non-interactive shell (#30078) via Pratik Patil (@PratikPatil131)
+Build Android	Run Fastlane	2026-08-03T09:14:54.1941582Z * [gem] move to faraday 1.10.6 (#30095) via Connor Tumbleson (@iBotPeaches)
+Build Android	Run Fastlane	2026-08-03T09:14:54.1942327Z * [core] Skip repeating the output again when an sh command fails (#19545) via Peter Tutervai (@tutipeti)
+Build Android	Run Fastlane	2026-08-03T09:14:54.1943744Z * [scan] Forward force_legacy_xcresulttool to trainer (#30092) via Eyüp Can Akman (@eyupcanakman)
+Build Android	Run Fastlane	2026-08-03T09:14:54.1944948Z * [trainer] Fix output_remove_retry_attempts not stripping failures for skipped-on-retry tests (modern xcresult parser) (#30081) via Oliver Fox (@foxware00)
+Build Android	Run Fastlane	2026-08-03T09:14:54.1946347Z * [scan] Handle array destination in xcodebuild_destination_parameter (#30069) via Ricardo Sawir (@sawirricardo)
+Build Android	Run Fastlane	2026-08-03T09:14:54.1947178Z * [action][swiftlint] Fix path option for SwiftLint 0.48.0 and above (#30080) via Augusto Xavier (@augustocbx)
+Build Android	Run Fastlane	2026-08-03T09:14:54.1948225Z * [ci] move more workflows from CircleCI -> GHA (#30090) via Connor Tumbleson (@iBotPeaches)
+Build Android	Run Fastlane	2026-08-03T09:14:54.1948976Z * [core] remove upper bound on excon (#30085) via Connor Tumbleson (@iBotPeaches)
+Build Android	Run Fastlane	2026-08-03T09:14:54.1949577Z * Bump actions/checkout from 6 to 7 (#30091) via dependabot[bot] (@dependabot[bot])
+Build Android	Run Fastlane	2026-08-03T09:14:54.1950306Z * [spaceship] Fix appInfoLocalizations create/delete on the Tunes API (#30084) via Marcel Hoppe (@hoppsen)
+Build Android	Run Fastlane	2026-08-03T09:14:54.1951021Z * [match] Fix keychain import path escaping (#30072) via Ricardo Sawir (@sawirricardo)
+Build Android	Run Fastlane	2026-08-03T09:14:54.1951712Z * [precheck] Fix copyright year check to allow past years (#30076) via Augusto Xavier (@augustocbx)
+Build Android	Run Fastlane	2026-08-03T09:14:54.1952716Z * [supply] Fix version_codes_to_retain causing promote-only flow to use… (#30073) via Pratik Patil (@PratikPatil131)
+Build Android	Run Fastlane	2026-08-03T09:14:54.1953616Z * Bump rubygems/configure-rubygems-credentials from 2.0.0 to 2.1.0 (#30074) via dependabot[bot] (@dependabot[bot])
+Build Android	Run Fastlane	2026-08-03T09:14:54.1954581Z * [fastlane_core] Fix deprecated Transporter -f flag, use -assetFile fo… (#30061) via Pratik Patil (@PratikPatil131)
+Build Android	Run Fastlane	2026-08-03T09:14:54.1955589Z * [core] fix: update addressable to 2.9.0 min for CVE-2026-35611 (#30060) via OrbisAI Security (@orbisai0security)
+Build Android	Run Fastlane	2026-08-03T09:14:54.1956006Z 
+Build Android	Run Fastlane	2026-08-03T09:14:54.1956162Z ^[[32m2.236.1 Improvements^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:54.1956900Z * Revert "[transporter] Decode Base64 key content for .p8 file generation in Al…" (#30066) via Connor Tumbleson (@iBotPeaches)
+Build Android	Run Fastlane	2026-08-03T09:14:54.1957356Z 
+Build Android	Run Fastlane	2026-08-03T09:14:54.1957502Z ^[[32m2.236.0 Improvements^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:54.1958091Z * [ci] fix: add 'multi_json' as direct dep due to upstream googleapis bug. (#30062) via Connor Tumbleson (@iBotPeaches)
+Build Android	Run Fastlane	2026-08-03T09:14:54.1958804Z * Fix --copy_to_clipboard flag for spaceauth command (#29888) via owurman (@owurman)
+Build Android	Run Fastlane	2026-08-03T09:14:54.1959655Z * [transporter] Decode Base64 key content for .p8 file generation in Al… (#30057) via Kaan Çembertaş (@kaancembertas)
+Build Android	Run Fastlane	2026-08-03T09:14:54.1960438Z * [ci] remove xcode 16.3 as CircleCI dropped it (#30058) via Connor Tumbleson (@iBotPeaches)
+Build Android	Run Fastlane	2026-08-03T09:14:54.1961239Z * [action] Add update_app_age_rating action for standalone age rating updates (#30025) via Pratik Patil (@PratikPatil131)
+Build Android	Run Fastlane	2026-08-03T09:14:54.1962003Z * [core] Set ruby-jwt gem to v2.10.3 minimum.  (#30056) via Nakshatra Singh (@nakshatrasinghh)
+Build Android	Run Fastlane	2026-08-03T09:14:54.1962677Z * [snapshot] run simulator using Rosetta2 for Apple Silicon (#21559) via Iceman (@sidepelican)
+Build Android	Run Fastlane	2026-08-03T09:14:54.1963388Z * [snapshot] use simulator UDIDs for destinations (#30054) via Philip Niedertscheider (@philprime)
+Build Android	Run Fastlane	2026-08-03T09:14:54.1964004Z * [spaceship] remove dots from names (#30052) via Tim Shedor (@tshedor)
+Build Android	Run Fastlane	2026-08-03T09:14:54.1964651Z * [docs] keep docs assets moving along during update_docs (#30051) via Connor Tumbleson (@iBotPeaches)
+Build Android	Run Fastlane	2026-08-03T09:14:54.1965022Z 
+Build Android	Run Fastlane	2026-08-03T09:14:54.1965537Z ^[[32mTo see all new releases, open https://github.com/fastlane/fastlane/releases^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:54.1965882Z 
+Build Android	Run Fastlane	2026-08-03T09:14:54.1966131Z ^[[32mPlease update using `bundle update fastlane`^[[0m
+Build Android	Run Fastlane	2026-08-03T09:14:54.5425553Z bundler: failed to load command: fastlane (/home/runner/work/TaskFlowAI/TaskFlowAI/vendor/bundle/ruby/3.1.0/bin/fastlane)
+Build Android	Run Fastlane	2026-08-03T09:14:54.5428471Z /home/runner/work/TaskFlowAI/TaskFlowAI/vendor/bundle/ruby/3.1.0/gems/fastlane-2.229.0/fastlane_core/lib/fastlane_core/ui/interface.rb:153:in `shell_error!': \e[31m[!] Exit status of command '/home/runner/work/TaskFlowAI/TaskFlowAI/android/gradlew assembleDebug -p .' was 1 instead of 0. (FastlaneCore::Interface::FastlaneShellError)
+Build Android	Run Fastlane	2026-08-03T09:14:54.5430018Z Downloading https://services.gradle.org/distributions/gradle-9.3.1-bin.zip
+Build Android	Run Fastlane	2026-08-03T09:14:54.5430792Z .............10%.............20%.............30%.............40%.............50%.............60%.............70%.............80%.............90%.............100%
+Build Android	Run Fastlane	2026-08-03T09:14:54.5431187Z 
+Build Android	Run Fastlane	2026-08-03T09:14:54.5431306Z Welcome to Gradle 9.3.1!
+Build Android	Run Fastlane	2026-08-03T09:14:54.5431794Z 
+Build Android	Run Fastlane	2026-08-03T09:14:54.5431956Z Here are the highlights of this release:
+Build Android	Run Fastlane	2026-08-03T09:14:54.5432424Z  - Test reporting improvements
+Build Android	Run Fastlane	2026-08-03T09:14:54.5432714Z  - Error and warning improvements
+Build Android	Run Fastlane	2026-08-03T09:14:54.5432996Z  - Build authoring improvements
+Build Android	Run Fastlane	2026-08-03T09:14:54.5433158Z 
+Build Android	Run Fastlane	2026-08-03T09:14:54.5433426Z For more details see https://docs.gradle.org/9.3.1/release-notes.html
+Build Android	Run Fastlane	2026-08-03T09:14:54.5433712Z 
+Build Android	Run Fastlane	2026-08-03T09:14:54.5433931Z Starting a Gradle Daemon (subsequent builds will be faster)
+Build Android	Run Fastlane	2026-08-03T09:14:54.5434551Z > Task :gradle-plugin:settings-plugin:checkKotlinGradlePluginConfigurationErrors SKIPPED
+Build Android	Run Fastlane	2026-08-03T09:14:54.5435240Z > Task :gradle-plugin:shared:checkKotlinGradlePluginConfigurationErrors SKIPPED
+Build Android	Run Fastlane	2026-08-03T09:14:54.5435973Z > Task :gradle-plugin:shared:processResources NO-SOURCE
+Build Android	Run Fastlane	2026-08-03T09:14:54.5436403Z > Task :gradle-plugin:settings-plugin:pluginDescriptors
+Build Android	Run Fastlane	2026-08-03T09:14:54.5436826Z > Task :gradle-plugin:settings-plugin:processResources
+Build Android	Run Fastlane	2026-08-03T09:14:54.5437209Z > Task :gradle-plugin:shared:compileKotlin
+Build Android	Run Fastlane	2026-08-03T09:14:54.5437582Z > Task :gradle-plugin:shared:compileJava NO-SOURCE
+Build Android	Run Fastlane	2026-08-03T09:14:54.5437974Z > Task :gradle-plugin:shared:classes UP-TO-DATE
+Build Android	Run Fastlane	2026-08-03T09:14:54.5438319Z > Task :gradle-plugin:shared:jar
+Build Android	Run Fastlane	2026-08-03T09:14:54.5438673Z > Task :gradle-plugin:settings-plugin:compileKotlin
+Build Android	Run Fastlane	2026-08-03T09:14:54.5439107Z > Task :gradle-plugin:settings-plugin:compileJava NO-SOURCE
+Build Android	Run Fastlane	2026-08-03T09:14:54.5439511Z > Task :gradle-plugin:settings-plugin:classes
+Build Android	Run Fastlane	2026-08-03T09:14:54.5439861Z > Task :gradle-plugin:settings-plugin:jar
+Build Android	Run Fastlane	2026-08-03T09:14:54.5440485Z > Task :gradle-plugin:react-native-gradle-plugin:checkKotlinGradlePluginConfigurationErrors SKIPPED
+Build Android	Run Fastlane	2026-08-03T09:14:54.5441206Z > Task :gradle-plugin:react-native-gradle-plugin:pluginDescriptors
+Build Android	Run Fastlane	2026-08-03T09:14:54.5441734Z > Task :gradle-plugin:react-native-gradle-plugin:processResources
+Build Android	Run Fastlane	2026-08-03T09:14:54.5442232Z > Task :gradle-plugin:react-native-gradle-plugin:compileKotlin
+Build Android	Run Fastlane	2026-08-03T09:14:54.5442770Z > Task :gradle-plugin:react-native-gradle-plugin:compileJava NO-SOURCE
+Build Android	Run Fastlane	2026-08-03T09:14:54.5443268Z > Task :gradle-plugin:react-native-gradle-plugin:classes
+Build Android	Run Fastlane	2026-08-03T09:14:54.5443699Z > Task :gradle-plugin:react-native-gradle-plugin:jar
+Build Android	Run Fastlane	2026-08-03T09:14:54.5443923Z 
+Build Android	Run Fastlane	2026-08-03T09:14:54.5444039Z > Configure project :app
+Build Android	Run Fastlane	2026-08-03T09:14:54.5444581Z Checking the license for package NDK (Side by side) 27.1.12297006 in /usr/local/lib/android/sdk/licenses
+Build Android	Run Fastlane	2026-08-03T09:14:54.5445192Z License for package NDK (Side by side) 27.1.12297006 accepted.
+Build Android	Run Fastlane	2026-08-03T09:14:54.5445812Z Preparing "Install NDK (Side by side) 27.1.12297006 v.27.1.12297006".
+Build Android	Run Fastlane	2026-08-03T09:14:54.5446298Z "Install NDK (Side by side) 27.1.12297006 v.27.1.12297006" ready.
+Build Android	Run Fastlane	2026-08-03T09:14:54.5446860Z Installing NDK (Side by side) 27.1.12297006 in /usr/local/lib/android/sdk/ndk/27.1.12297006
+Build Android	Run Fastlane	2026-08-03T09:14:54.5447424Z "Install NDK (Side by side) 27.1.12297006 v.27.1.12297006" complete.
+Build Android	Run Fastlane	2026-08-03T09:14:54.5459633Z "Install NDK (Side by side) 27.1.12297006 v.27.1.12297006" finished.
+Build Android	Run Fastlane	2026-08-03T09:14:54.5460101Z 
+Build Android	Run Fastlane	2026-08-03T09:14:54.5460313Z > Configure project :react-native-firebase_app
+Build Android	Run Fastlane	2026-08-03T09:14:54.5461183Z :react-native-firebase_app package.json found at /home/runner/work/TaskFlowAI/TaskFlowAI/node_modules/@react-native-firebase/app/package.json
+Build Android	Run Fastlane	2026-08-03T09:14:54.5462031Z :react-native-firebase_app:firebase.bom using default value: 34.15.0
+Build Android	Run Fastlane	2026-08-03T09:14:54.5462708Z :react-native-firebase_app:play.play-services-auth using default value: 21.5.0
+Build Android	Run Fastlane	2026-08-03T09:14:54.5463639Z :react-native-firebase_app package.json found at /home/runner/work/TaskFlowAI/TaskFlowAI/node_modules/@react-native-firebase/app/package.json
+Build Android	Run Fastlane	2026-08-03T09:14:54.5464525Z :react-native-firebase_app:version set from package.json: 26.0.0 (26,0,0 - 26000000)
+Build Android	Run Fastlane	2026-08-03T09:14:54.5465144Z :react-native-firebase_app:android.compileSdk using custom value: 36
+Build Android	Run Fastlane	2026-08-03T09:14:54.5466105Z :react-native-firebase_app:android.targetSdk using custom value: 36
+Build Android	Run Fastlane	2026-08-03T09:14:54.5466882Z :react-native-firebase_app:android.minSdk using custom value: 24
+Build Android	Run Fastlane	2026-08-03T09:14:54.5467645Z :react-native-firebase_app:reactNativeAndroidDir /home/runner/work/TaskFlowAI/TaskFlowAI/node_modules/react-native
+Build Android	Run Fastlane	2026-08-03T09:14:54.5468233Z 
+Build Android	Run Fastlane	2026-08-03T09:14:54.5468419Z > Configure project :react-native-firebase_auth
+Build Android	Run Fastlane	2026-08-03T09:14:54.5469246Z :react-native-firebase_auth package.json found at /home/runner/work/TaskFlowAI/TaskFlowAI/node_modules/@react-native-firebase/auth/package.json
+Build Android	Run Fastlane	2026-08-03T09:14:54.5470388Z :react-native-firebase_app package.json found at /home/runner/work/TaskFlowAI/TaskFlowAI/node_modules/@react-native-firebase/app/package.json
+Build Android	Run Fastlane	2026-08-03T09:14:54.5471197Z :react-native-firebase_auth:firebase.bom using default value: 34.15.0
+Build Android	Run Fastlane	2026-08-03T09:14:54.5472073Z :react-native-firebase_auth package.json found at /home/runner/work/TaskFlowAI/TaskFlowAI/node_modules/@react-native-firebase/auth/package.json
+Build Android	Run Fastlane	2026-08-03T09:14:54.5472946Z :react-native-firebase_auth:version set from package.json: 26.0.0 (26,0,0 - 26000000)
+Build Android	Run Fastlane	2026-08-03T09:14:54.5473555Z :react-native-firebase_auth:android.compileSdk using custom value: 36
+Build Android	Run Fastlane	2026-08-03T09:14:54.5474102Z :react-native-firebase_auth:android.targetSdk using custom value: 36
+Build Android	Run Fastlane	2026-08-03T09:14:54.5474629Z :react-native-firebase_auth:android.minSdk using custom value: 24
+Build Android	Run Fastlane	2026-08-03T09:14:54.5475609Z :react-native-firebase_auth:reactNativeAndroidDir /home/runner/work/TaskFlowAI/TaskFlowAI/node_modules/react-native
+Build Android	Run Fastlane	2026-08-03T09:14:54.5476074Z 
+Build Android	Run Fastlane	2026-08-03T09:14:54.5476276Z > Configure project :react-native-firebase_firestore
+Build Android	Run Fastlane	2026-08-03T09:14:54.5477143Z :react-native-firebase_firestore package.json found at /home/runner/work/TaskFlowAI/TaskFlowAI/node_modules/@react-native-firebase/firestore/package.json
+Build Android	Run Fastlane	2026-08-03T09:14:54.5478315Z :react-native-firebase_app package.json found at /home/runner/work/TaskFlowAI/TaskFlowAI/node_modules/@react-native-firebase/app/package.json
+Build Android	Run Fastlane	2026-08-03T09:14:54.5479150Z :react-native-firebase_firestore:firebase.bom using default value: 34.15.0
+Build Android	Run Fastlane	2026-08-03T09:14:54.5480097Z :react-native-firebase_firestore package.json found at /home/runner/work/TaskFlowAI/TaskFlowAI/node_modules/@react-native-firebase/firestore/package.json
+Build Android	Run Fastlane	2026-08-03T09:14:54.5481031Z :react-native-firebase_firestore:version set from package.json: 26.0.0 (26,0,0 - 26000000)
+Build Android	Run Fastlane	2026-08-03T09:14:54.5481672Z :react-native-firebase_firestore:android.compileSdk using custom value: 36
+Build Android	Run Fastlane	2026-08-03T09:14:54.5482256Z :react-native-firebase_firestore:android.targetSdk using custom value: 36
+Build Android	Run Fastlane	2026-08-03T09:14:54.5482827Z :react-native-firebase_firestore:android.minSdk using custom value: 24
+Build Android	Run Fastlane	2026-08-03T09:14:54.5483660Z :react-native-firebase_firestore:reactNativeAndroidDir /home/runner/work/TaskFlowAI/TaskFlowAI/node_modules/react-native
+Build Android	Run Fastlane	2026-08-03T09:14:54.5484230Z 
+Build Android	Run Fastlane	2026-08-03T09:14:54.5484495Z > Task :app:generateAutolinkingNewArchitectureFiles
+Build Android	Run Fastlane	2026-08-03T09:14:54.5485022Z > Task :app:generateAutolinkingPackageList
+Build Android	Run Fastlane	2026-08-03T09:14:54.5485659Z > Task :app:generateCodegenSchemaFromJavaScript SKIPPED
+Build Android	Run Fastlane	2026-08-03T09:14:54.5486232Z > Task :app:generateCodegenArtifactsFromSchema SKIPPED
+Build Android	Run Fastlane	2026-08-03T09:14:54.5486756Z > Task :app:generateReactNativeEntryPoint
+Build Android	Run Fastlane	2026-08-03T09:14:54.5487258Z > Task :react-native-firebase_app:preBuild UP-TO-DATE
+Build Android	Run Fastlane	2026-08-03T09:14:54.5487794Z > Task :react-native-firebase_auth:preBuild UP-TO-DATE
+Build Android	Run Fastlane	2026-08-03T09:14:54.5488357Z > Task :react-native-firebase_firestore:preBuild UP-TO-DATE
+Build Android	Run Fastlane	2026-08-03T09:14:54.5489064Z > Task :react-native-safe-area-context:generateCodegenSchemaFromJavaScript
+Build Android	Run Fastlane	2026-08-03T09:14:54.5489840Z > Task :react-native-safe-area-context:generateCodegenArtifactsFromSchema
+Build Android	Run Fastlane	2026-08-03T09:14:54.5490469Z > Task :react-native-safe-area-context:preBuild
+Build Android	Run Fastlane	2026-08-03T09:14:54.5491057Z > Task :react-native-screens:generateCodegenSchemaFromJavaScript
+Build Android	Run Fastlane	2026-08-03T09:14:54.5491697Z > Task :react-native-screens:generateCodegenArtifactsFromSchema
+Build Android	Run Fastlane	2026-08-03T09:14:54.5492226Z > Task :react-native-screens:preBuild
+Build Android	Run Fastlane	2026-08-03T09:14:54.5492775Z > Task :app:preBuild
+Build Android	Run Fastlane	2026-08-03T09:14:54.5493092Z > Task :app:preDebugBuild
+Build Android	Run Fastlane	2026-08-03T09:14:54.5493513Z > Task :app:mergeDebugNativeDebugMetadata NO-SOURCE
+Build Android	Run Fastlane	2026-08-03T09:14:54.5494267Z > Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+Build Android	Run Fastlane	2026-08-03T09:14:54.5494810Z > Task :app:generateDebugBuildConfig
+Build Android	Run Fastlane	2026-08-03T09:14:54.5495442Z > Task :react-native-firebase_app:preDebugBuild UP-TO-DATE
+Build Android	Run Fastlane	2026-08-03T09:14:54.5496029Z > Task :react-native-firebase_auth:preDebugBuild UP-TO-DATE
+Build Android	Run Fastlane	2026-08-03T09:14:54.5496648Z > Task :react-native-firebase_firestore:preDebugBuild UP-TO-DATE
+Build Android	Run Fastlane	2026-08-03T09:14:54.5497229Z > Task :react-native-firebase_app:writeDebugAarMetadata
+Build Android	Run Fastlane	2026-08-03T09:14:54.5497803Z > Task :react-native-firebase_auth:writeDebugAarMetadata
+Build Android	Run Fastlane	2026-08-03T09:14:54.5498351Z > Task :react-native-safe-area-context:preDebugBuild
+Build Android	Run Fastlane	2026-08-03T09:14:54.5498940Z > Task :react-native-firebase_firestore:writeDebugAarMetadata
+Build Android	Run Fastlane	2026-08-03T09:14:54.5499452Z > Task :react-native-screens:preDebugBuild
+Build Android	Run Fastlane	2026-08-03T09:14:54.5500014Z > Task :react-native-safe-area-context:writeDebugAarMetadata
+Build Android	Run Fastlane	2026-08-03T09:14:54.5500576Z > Task :react-native-screens:writeDebugAarMetadata
+Build Android	Run Fastlane	2026-08-03T09:14:54.5501050Z > Task :app:generateDebugResValues
+Build Android	Run Fastlane	2026-08-03T09:14:54.5501504Z > Task :app:processDebugGoogleServices FAILED
+Build Android	Run Fastlane	2026-08-03T09:14:54.5501968Z > Task :app:checkDebugAarMetadata
+Build Android	Run Fastlane	2026-08-03T09:14:54.5502208Z 
+Build Android	Run Fastlane	2026-08-03T09:14:54.5503012Z [Incubating] Problems report is available at: file:///home/runner/work/TaskFlowAI/TaskFlowAI/android/build/reports/problems/problems-report.html
+Build Android	Run Fastlane	2026-08-03T09:14:54.5503721Z 
+Build Android	Run Fastlane	2026-08-03T09:14:54.5503910Z FAILURE: Build failed with an exception.
+Build Android	Run Fastlane	2026-08-03T09:14:54.5504159Z 
+Build Android	Run Fastlane	2026-08-03T09:14:54.5504291Z * What went wrong:
+Build Android	Run Fastlane	2026-08-03T09:14:54.5504751Z Execution failed for task ':app:processDebugGoogleServices'.
+Build Android	Run Fastlane	2026-08-03T09:14:54.5505481Z > File google-services.json is missing. 
+Build Android	Run Fastlane	2026-08-03T09:14:54.5506131Z   The Google Services Plugin cannot function without it. 
+Build Android	Run Fastlane	2026-08-03T09:14:54.5509031Z   Searched locations: /home/runner/work/TaskFlowAI/TaskFlowAI/android/app/src/debug/google-services.json, /home/runner/work/TaskFlowAI/TaskFlowAI/android/app/src/debug/google-services.json, /home/runner/work/TaskFlowAI/TaskFlowAI/android/app/src/google-services.json, /home/runner/work/TaskFlowAI/TaskFlowAI/android/app/src/debug/google-services.json, /home/runner/work/TaskFlowAI/TaskFlowAI/android/app/src/Debug/google-services.json, /home/runner/work/TaskFlowAI/TaskFlowAI/android/app/google-services.json
+Build Android	Run Fastlane	2026-08-03T09:14:54.5511439Z 
+Build Android	Run Fastlane	2026-08-03T09:14:54.5511542Z * Try:
+Build Android	Run Fastlane	2026-08-03T09:14:54.5511926Z > Run with --stacktrace option to get the stack trace.
+Build Android	Run Fastlane	2026-08-03T09:14:54.5512479Z > Run with --info or --debug option to get more log output.
+Build Android	Run Fastlane	2026-08-03T09:14:54.5513171Z > Run with --scan to get full insights from a Build Scan (powered by Develocity).
+Build Android	Run Fastlane	2026-08-03T09:14:54.5513793Z > Get more help at https://help.gradle.org.
+Build Android	Run Fastlane	2026-08-03T09:14:54.5514047Z 
+Build Android	Run Fastlane	2026-08-03T09:14:54.5514506Z Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+Build Android	Run Fastlane	2026-08-03T09:14:54.5514972Z 
+Build Android	Run Fastlane	2026-08-03T09:14:54.5515792Z You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+Build Android	Run Fastlane	2026-08-03T09:14:54.5516336Z 
+Build Android	Run Fastlane	2026-08-03T09:14:54.5516975Z For more on this, please refer to https://docs.gradle.org/9.3.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+Build Android	Run Fastlane	2026-08-03T09:14:54.5517556Z 
+Build Android	Run Fastlane	2026-08-03T09:14:54.5517666Z BUILD FAILED in 2m 44s
+Build Android	Run Fastlane	2026-08-03T09:14:54.5517937Z 26 actionable tasks: 26 executed
+Build Android	Run Fastlane	2026-08-03T09:14:54.5518201Z \e[0m
+Build Android	Run Fastlane	2026-08-03T09:14:54.5518875Z 	from /home/runner/work/TaskFlowAI/TaskFlowAI/vendor/bundle/ruby/3.1.0/gems/fastlane-2.229.0/fastlane_core/lib/fastlane_core/ui/ui.rb:17:in `method_missing'
+Build Android	Run Fastlane	2026-08-03T09:14:54.5520550Z 	from /home/runner/work/TaskFlowAI/TaskFlowAI/vendor/bundle/ruby/3.1.0/gems/fastlane-2.229.0/fastlane/lib/fastlane/helper/sh_helper.rb:80:in `sh_control_output'
+Build Android	Run Fastlane	2026-08-03T09:14:54.5522118Z 	from /opt/hostedtoolcache/Ruby/3.1.7/x64/lib/ruby/3.1.0/forwardable.rb:238:in `sh'
+Build Android	Run Fastlane	2026-08-03T09:14:54.5523539Z 	from /home/runner/work/TaskFlowAI/TaskFlowAI/vendor/bundle/ruby/3.1.0/gems/fastlane-2.229.0/fastlane/lib/fastlane/helper/gradle_helper.rb:32:in `trigger'
+Build Android	Run Fastlane	2026-08-03T09:14:54.5525621Z 	from /home/runner/work/TaskFlowAI/TaskFlowAI/vendor/bundle/ruby/3.1.0/gems/fastlane-2.229.0/fastlane/lib/fastlane/actions/gradle.rb:60:in `run'
+Build Android	Run Fastlane	2026-08-03T09:14:54.5527466Z 	from /home/runner/work/TaskFlowAI/TaskFlowAI/vendor/bundle/ruby/3.1.0/gems/fastlane-2.229.0/fastlane/lib/fastlane/runner.rb:263:in `block (2 levels) in execute_action'
+Build Android	Run Fastlane	2026-08-03T09:14:54.5529408Z 	from /home/runner/work/TaskFlowAI/TaskFlowAI/vendor/bundle/ruby/3.1.0/gems/fastlane-2.229.0/fastlane/lib/fastlane/actions/actions_helper.rb:69:in `execute_action'
+Build Android	Run Fastlane	2026-08-03T09:14:54.5531285Z 	from /home/runner/work/TaskFlowAI/TaskFlowAI/vendor/bundle/ruby/3.1.0/gems/fastlane-2.229.0/fastlane/lib/fastlane/runner.rb:255:in `block in execute_action'
+Build Android	Run Fastlane	2026-08-03T09:14:54.5533044Z 	from /home/runner/work/TaskFlowAI/TaskFlowAI/vendor/bundle/ruby/3.1.0/gems/fastlane-2.229.0/fastlane/lib/fastlane/runner.rb:229:in `chdir'
+Build Android	Run Fastlane	2026-08-03T09:14:54.5534729Z 	from /home/runner/work/TaskFlowAI/TaskFlowAI/vendor/bundle/ruby/3.1.0/gems/fastlane-2.229.0/fastlane/lib/fastlane/runner.rb:229:in `execute_action'
+Build Android	Run Fastlane	2026-08-03T09:14:54.5537581Z 	from /home/runner/work/TaskFlowAI/TaskFlowAI/vendor/bundle/ruby/3.1.0/gems/fastlane-2.229.0/fastlane/lib/fastlane/runner.rb:157:in `trigger_action_by_name'
+Build Android	Run Fastlane	2026-08-03T09:14:54.5539419Z 	from /home/runner/work/TaskFlowAI/TaskFlowAI/vendor/bundle/ruby/3.1.0/gems/fastlane-2.229.0/fastlane/lib/fastlane/fast_file.rb:159:in `method_missing'
+Build Android	Run Fastlane	2026-08-03T09:14:54.5540680Z 	from Fastfile:6:in `block (2 levels) in parsing_binding'
+Build Android	Run Fastlane	2026-08-03T09:14:54.5541925Z 	from /home/runner/work/TaskFlowAI/TaskFlowAI/vendor/bundle/ruby/3.1.0/gems/fastlane-2.229.0/fastlane/lib/fastlane/lane.rb:41:in `call'
+Build Android	Run Fastlane	2026-08-03T09:14:54.5543689Z 	from /home/runner/work/TaskFlowAI/TaskFlowAI/vendor/bundle/ruby/3.1.0/gems/fastlane-2.229.0/fastlane/lib/fastlane/runner.rb:49:in `block in execute'
+Build Android	Run Fastlane	2026-08-03T09:14:54.5545594Z 	from /home/runner/work/TaskFlowAI/TaskFlowAI/vendor/bundle/ruby/3.1.0/gems/fastlane-2.229.0/fastlane/lib/fastlane/runner.rb:45:in `chdir'
+Build Android	Run Fastlane	2026-08-03T09:14:54.5547382Z 	from /home/runner/work/TaskFlowAI/TaskFlowAI/vendor/bundle/ruby/3.1.0/gems/fastlane-2.229.0/fastlane/lib/fastlane/runner.rb:45:in `execute'
+Build Android	Run Fastlane	2026-08-03T09:14:54.5549129Z 	from /home/runner/work/TaskFlowAI/TaskFlowAI/vendor/bundle/ruby/3.1.0/gems/fastlane-2.229.0/fastlane/lib/fastlane/lane_manager.rb:46:in `cruise_lane'
+Build Android	Run Fastlane	2026-08-03T09:14:54.5551048Z 	from /home/runner/work/TaskFlowAI/TaskFlowAI/vendor/bundle/ruby/3.1.0/gems/fastlane-2.229.0/fastlane/lib/fastlane/command_line_handler.rb:34:in `handle'
+Build Android	Run Fastlane	2026-08-03T09:14:54.5553126Z 	from /home/runner/work/TaskFlowAI/TaskFlowAI/vendor/bundle/ruby/3.1.0/gems/fastlane-2.229.0/fastlane/lib/fastlane/commands_generator.rb:110:in `block (2 levels) in run'
+Build Android	Run Fastlane	2026-08-03T09:14:54.5554921Z 	from /home/runner/work/TaskFlowAI/TaskFlowAI/vendor/bundle/ruby/3.1.0/gems/commander-4.6.0/lib/commander/command.rb:187:in `call'
+Build Android	Run Fastlane	2026-08-03T09:14:54.5556751Z 	from /home/runner/work/TaskFlowAI/TaskFlowAI/vendor/bundle/ruby/3.1.0/gems/commander-4.6.0/lib/commander/command.rb:157:in `run'
+Build Android	Run Fastlane	2026-08-03T09:14:54.5558496Z 	from /home/runner/work/TaskFlowAI/TaskFlowAI/vendor/bundle/ruby/3.1.0/gems/commander-4.6.0/lib/commander/runner.rb:444:in `run_active_command'
+Build Android	Run Fastlane	2026-08-03T09:14:54.5560350Z 	from /home/runner/work/TaskFlowAI/TaskFlowAI/vendor/bundle/ruby/3.1.0/gems/fastlane-2.229.0/fastlane_core/lib/fastlane_core/ui/fastlane_runner.rb:124:in `run!'
+Build Android	Run Fastlane	2026-08-03T09:14:54.5562231Z 	from /home/runner/work/TaskFlowAI/TaskFlowAI/vendor/bundle/ruby/3.1.0/gems/commander-4.6.0/lib/commander/delegates.rb:18:in `run!'
+Build Android	Run Fastlane	2026-08-03T09:14:54.5564048Z 	from /home/runner/work/TaskFlowAI/TaskFlowAI/vendor/bundle/ruby/3.1.0/gems/fastlane-2.229.0/fastlane/lib/fastlane/commands_generator.rb:363:in `run'
+Build Android	Run Fastlane	2026-08-03T09:14:54.5566387Z 	from /home/runner/work/TaskFlowAI/TaskFlowAI/vendor/bundle/ruby/3.1.0/gems/fastlane-2.229.0/fastlane/lib/fastlane/commands_generator.rb:43:in `start'
+Build Android	Run Fastlane	2026-08-03T09:14:54.5568536Z 	from /home/runner/work/TaskFlowAI/TaskFlowAI/vendor/bundle/ruby/3.1.0/gems/fastlane-2.229.0/fastlane/lib/fastlane/cli_tools_distributor.rb:123:in `take_off'
+Build Android	Run Fastlane	2026-08-03T09:14:54.5570305Z 	from /home/runner/work/TaskFlowAI/TaskFlowAI/vendor/bundle/ruby/3.1.0/gems/fastlane-2.229.0/bin/fastlane:23:in `<top (required)>'
+Build Android	Run Fastlane	2026-08-03T09:14:54.5571651Z 	from /home/runner/work/TaskFlowAI/TaskFlowAI/vendor/bundle/ruby/3.1.0/bin/fastlane:25:in `load'
+Build Android	Run Fastlane	2026-08-03T09:14:54.5572906Z 	from /home/runner/work/TaskFlowAI/TaskFlowAI/vendor/bundle/ruby/3.1.0/bin/fastlane:25:in `<top (required)>'
+Build Android	Run Fastlane	2026-08-03T09:14:54.5574234Z 	from /opt/hostedtoolcache/Ruby/3.1.7/x64/lib/ruby/gems/3.1.0/gems/bundler-2.6.9/lib/bundler/cli/exec.rb:59:in `load'
+Build Android	Run Fastlane	2026-08-03T09:14:54.5575823Z 	from /opt/hostedtoolcache/Ruby/3.1.7/x64/lib/ruby/gems/3.1.0/gems/bundler-2.6.9/lib/bundler/cli/exec.rb:59:in `kernel_load'
+Build Android	Run Fastlane	2026-08-03T09:14:54.5577234Z 	from /opt/hostedtoolcache/Ruby/3.1.7/x64/lib/ruby/gems/3.1.0/gems/bundler-2.6.9/lib/bundler/cli/exec.rb:23:in `run'
+Build Android	Run Fastlane	2026-08-03T09:14:54.5578584Z 	from /opt/hostedtoolcache/Ruby/3.1.7/x64/lib/ruby/gems/3.1.0/gems/bundler-2.6.9/lib/bundler/cli.rb:452:in `exec'
+Build Android	Run Fastlane	2026-08-03T09:14:54.5580046Z 	from /opt/hostedtoolcache/Ruby/3.1.7/x64/lib/ruby/gems/3.1.0/gems/bundler-2.6.9/lib/bundler/vendor/thor/lib/thor/command.rb:28:in `run'
+Build Android	Run Fastlane	2026-08-03T09:14:54.5581706Z 	from /opt/hostedtoolcache/Ruby/3.1.7/x64/lib/ruby/gems/3.1.0/gems/bundler-2.6.9/lib/bundler/vendor/thor/lib/thor/invocation.rb:127:in `invoke_command'
+Build Android	Run Fastlane	2026-08-03T09:14:54.5583303Z 	from /opt/hostedtoolcache/Ruby/3.1.7/x64/lib/ruby/gems/3.1.0/gems/bundler-2.6.9/lib/bundler/vendor/thor/lib/thor.rb:538:in `dispatch'
+Build Android	Run Fastlane	2026-08-03T09:14:54.5584715Z 	from /opt/hostedtoolcache/Ruby/3.1.7/x64/lib/ruby/gems/3.1.0/gems/bundler-2.6.9/lib/bundler/cli.rb:35:in `dispatch'
+Build Android	Run Fastlane	2026-08-03T09:14:54.5586456Z 	from /opt/hostedtoolcache/Ruby/3.1.7/x64/lib/ruby/gems/3.1.0/gems/bundler-2.6.9/lib/bundler/vendor/thor/lib/thor/base.rb:584:in `start'
+Build Android	Run Fastlane	2026-08-03T09:14:54.5587976Z 	from /opt/hostedtoolcache/Ruby/3.1.7/x64/lib/ruby/gems/3.1.0/gems/bundler-2.6.9/lib/bundler/cli.rb:29:in `start'
+Build Android	Run Fastlane	2026-08-03T09:14:54.5589336Z 	from /opt/hostedtoolcache/Ruby/3.1.7/x64/lib/ruby/gems/3.1.0/gems/bundler-2.6.9/exe/bundle:28:in `block in <top (required)>'
+Build Android	Run Fastlane	2026-08-03T09:14:54.5590951Z 	from /opt/hostedtoolcache/Ruby/3.1.7/x64/lib/ruby/gems/3.1.0/gems/bundler-2.6.9/lib/bundler/friendly_errors.rb:117:in `with_friendly_errors'
+Build Android	Run Fastlane	2026-08-03T09:14:54.5592513Z 	from /opt/hostedtoolcache/Ruby/3.1.7/x64/lib/ruby/gems/3.1.0/gems/bundler-2.6.9/exe/bundle:20:in `<top (required)>'
+Build Android	Run Fastlane	2026-08-03T09:14:54.5593589Z 	from /opt/hostedtoolcache/Ruby/3.1.7/x64/bin/bundle:25:in `load'
+Build Android	Run Fastlane	2026-08-03T09:14:54.5594303Z 	from /opt/hostedtoolcache/Ruby/3.1.7/x64/bin/bundle:25:in `<main>'
+Build Android	Run Fastlane	2026-08-03T09:14:54.5635146Z ##[error]Process completed with exit code 1.
+Build Android	Post Set up JDK	﻿2026-08-03T09:14:54.5744419Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+Build Android	Post Set up JDK	2026-08-03T09:14:54.5745954Z Post job cleanup.
+Build Android	Post Set up JDK	2026-08-03T09:14:54.7100916Z (node:4054) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+Build Android	Post Set up JDK	2026-08-03T09:14:54.7101839Z (Use `node --trace-deprecation ...` to show where the warning was created)
+Build Android	Post Checkout Repository	﻿2026-08-03T09:14:54.7293290Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+Build Android	Post Checkout Repository	2026-08-03T09:14:54.7294708Z Post job cleanup.
+Build Android	Post Checkout Repository	2026-08-03T09:14:54.8193881Z [command]/usr/bin/git version
+Build Android	Post Checkout Repository	2026-08-03T09:14:54.8245576Z git version 2.54.0
+Build Android	Post Checkout Repository	2026-08-03T09:14:54.8322831Z Temporarily overriding HOME='/home/runner/work/_temp/17b7df1d-07ff-487f-91d6-ed6c1235092a' before making global git config changes
+Build Android	Post Checkout Repository	2026-08-03T09:14:54.8324366Z Adding repository directory to the temporary git global config as a safe directory
+Build Android	Post Checkout Repository	2026-08-03T09:14:54.8327982Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/TaskFlowAI/TaskFlowAI
+Build Android	Post Checkout Repository	2026-08-03T09:14:54.8366481Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+Build Android	Post Checkout Repository	2026-08-03T09:14:54.8402859Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Build Android	Post Checkout Repository	2026-08-03T09:14:54.8662908Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Build Android	Post Checkout Repository	2026-08-03T09:14:54.8706016Z http.https://github.com/.extraheader
+Build Android	Post Checkout Repository	2026-08-03T09:14:54.8727764Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+Build Android	Post Checkout Repository	2026-08-03T09:14:54.8783612Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Build Android	Post Checkout Repository	2026-08-03T09:14:54.9042875Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Build Android	Post Checkout Repository	2026-08-03T09:14:54.9079342Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Build Android	Complete job	﻿2026-08-03T09:14:54.9560112Z Cleaning up orphan processes
+Build Android	Complete job	2026-08-03T09:14:54.9909953Z Terminate orphan process: pid (3627) (java)
+Build Android	Complete job	2026-08-03T09:14:54.9955939Z Terminate orphan process: pid (3842) (java)
+Build Android	Complete job	2026-08-03T09:14:54.9967362Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-java@v4, actions/setup-node@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
