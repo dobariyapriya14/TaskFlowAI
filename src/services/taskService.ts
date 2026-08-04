@@ -1,4 +1,5 @@
 import { getFirestore, collection, addDoc, updateDoc, doc, deleteDoc, getDocs, getDoc, serverTimestamp, query, where, orderBy, limit, startAfter } from '@react-native-firebase/firestore';
+import { getAuth } from '@react-native-firebase/auth';
 import { logTaskCreated, logTaskCompleted, logTaskDeleted } from './analytics';
 
 const db = getFirestore();
@@ -28,6 +29,7 @@ export const taskService = {
     try {
       const taskData = {
         ...task,
+        userId: getAuth().currentUser?.uid,
         createdAt: serverTimestamp(),
       };
       const docRef = await addDoc(collection(db, 'tasks'), taskData);
@@ -47,6 +49,11 @@ export const taskService = {
       const { limitTasks, lastDoc, category, priority, completed, searchQuery } = options;
       
       let q = query(collection(db, 'tasks'));
+      const userId = getAuth().currentUser?.uid;
+
+      if (userId) {
+        q = query(q, where('userId', '==', userId));
+      }
 
       if (category) {
         q = query(q, where('category', '==', category));
@@ -93,7 +100,9 @@ export const taskService = {
   // READ (All Tasks)
   async getTasks(): Promise<Task[]> {
     try {
-      const querySnapshot = await getDocs(collection(db, 'tasks'));
+      const userId = getAuth().currentUser?.uid;
+      const q = userId ? query(collection(db, 'tasks'), where('userId', '==', userId)) : collection(db, 'tasks');
+      const querySnapshot = await getDocs(q);
       const tasks: Task[] = [];
       querySnapshot.forEach((documentSnapshot) => {
         tasks.push({ id: documentSnapshot.id, ...documentSnapshot.data() } as Task);
