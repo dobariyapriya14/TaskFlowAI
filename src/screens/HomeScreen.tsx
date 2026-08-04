@@ -1,26 +1,96 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, Alert, Platform } from 'react-native';
+import React, { useState, useEffect, useCallback } from 'react';
+import { View, Text, StyleSheet, Alert, FlatList, Modal, TouchableOpacity, RefreshControl } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Button } from '../components/Button';
+import { Input } from '../components/Input';
 import { authService } from '../services/authService';
-import { useAuth } from '../context/AuthContext';
-import { logMessage, logError, triggerCrash } from '../services/crashlytics';
+import { logMessage } from '../services/crashlytics';
+import { taskService, Task } from '../services/taskService';
 
 export const HomeScreen = () => {
-  const { user } = useAuth();
-  const [loadingApi, setLoadingApi] = useState(false);
+  const [tasks, setTasks] = useState<Task[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
+  
+  // Form State
+  const [editingTaskId, setEditingTaskId] = useState<string | null>(null);
+  const [title, setTitle] = useState('');
+  const [category, setCategory] = useState('');
+  const [priority, setPriority] = useState('Normal');
+
+  const loadTasks = useCallback(async () => {
+    setLoading(true);
+    try {
+      const { tasks: fetchedTasks } = await taskService.queryTasks();
+      setTasks(fetchedTasks);
+    } catch (error: any) {
+      Alert.alert('Error', error.message);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
 
   useEffect(() => {
     logMessage('User opened Home Screen');
-  }, []);
+    loadTasks();
+  }, [loadTasks]);
 
-  const testNonFatalError = () => {
-    try {
-      throw new Error('This is a test non-fatal error');
-    } catch (e) {
-      logError(e as Error);
-      Alert.alert('Error Logged', 'Non-fatal error sent to Crashlytics.');
+  const handleSaveTask = async () => {
+    if (!title.trim()) {
+      Alert.alert('Validation Error', 'Title is required');
+      return;
     }
+    
+    setLoading(true);
+    try {
+      if (editingTaskId) {
+        await taskService.updateTask(editingTaskId, { title, category, priority });
+      } else {
+        await taskService.addTask({ title, category, priority, completed: false });
+      }
+      setModalVisible(false);
+      resetForm();
+      loadTasks();
+    } catch (error: any) {
+      Alert.alert('Error', error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleEditClick = (task: Task) => {
+    setEditingTaskId(task.id || null);
+    setTitle(task.title);
+    setCategory(task.category || '');
+    setPriority(task.priority || 'Normal');
+    setModalVisible(true);
+  };
+
+  const resetForm = () => {
+    setEditingTaskId(null);
+    setTitle('');
+    setCategory('');
+    setPriority('Normal');
+  };
+
+  const openAddModal = () => {
+    resetForm();
+    setModalVisible(true);
+  };
+
+  const handleDeleteTask = async (id: string) => {
+    Alert.alert('Delete Task', 'Are you sure?', [
+      { text: 'Cancel', style: 'cancel' },
+      { text: 'Delete', style: 'destructive', onPress: async () => {
+          try {
+            await taskService.deleteTask(id);
+            loadTasks();
+          } catch (e: any) {
+            Alert.alert('Error', e.message);
+          }
+        }
+      }
+    ]);
   };
 
   const handleLogout = async () => {
@@ -31,52 +101,82 @@ export const HomeScreen = () => {
     }
   };
 
-  const testHealthAPI = async () => {
-    setLoadingApi(true);
-    try {
-      // Use standard localhost for iOS simulator or 10.0.2.2 for Android emulator
-      // Default firebase emulator port for functions is 5001
-      // Replace PROJECT_ID with your actual project ID (taskflowai-c0f40)
-      const host = Platform.OS === 'android' ? '10.0.2.2' : '127.0.0.1';
-      const baseUrl = `http://${host}:5001/taskflowai-c0f40/us-central1/health`;
-      
-      const response = await fetch(baseUrl);
-      const data = await response.json();
-      
-      Alert.alert('API Response', JSON.stringify(data, null, 2));
-    } catch (error: any) {
-      Alert.alert('API Error', error.message + '\n\nMake sure your local Firebase emulator is running!');
-    } finally {
-      setLoadingApi(false);
-    }
-  };
+  const renderItem = ({ item }: { item: Task }) => (
+    <View style={styles.taskItem}>
+      <View style={styles.taskInfo}>
+        <Text style={styles.taskTitle}>{item.title}</Text>
+        <Text style={styles.taskSub}>{item.category || 'No Category'} - {item.priority || 'Normal'}</Text>
+      </View>
+      <View style={styles.taskActions}>
+        <TouchableOpacity onPress={() => handleEditClick(item)} style={styles.iconButton}>
+          <Text style={styles.iconText}>✏️</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => item.id && handleDeleteTask(item.id)} style={styles.iconButton}>
+          <Text style={styles.iconText}>🗑️</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
 
   return (
     <SafeAreaView style={styles.safeArea}>
-      <View style={styles.container}>
-        <Text style={styles.title}>Welcome!</Text>
-        <Text style={styles.subtitle}>{user?.displayName || user?.email}</Text>
-        
-        <View style={styles.buttonContainer}>
-          <Button 
-            title="Test Health API" 
-            onPress={testHealthAPI} 
-            loading={loadingApi} 
-          />
-          <Button 
-            title="Test Non-Fatal Error" 
-            onPress={testNonFatalError} 
-          />
-          <Button 
-            title="Test Crash" 
-            onPress={() => triggerCrash()} 
-          />
-          <Button 
-            title="Logout" 
-            onPress={handleLogout} 
-          />
-        </View>
+      <View style={styles.header}>
+        <Text style={styles.title}>Tasks</Text>
+        <TouchableOpacity onPress={handleLogout}>
+          <Text style={styles.logoutText}>Logout</Text>
+        </TouchableOpacity>
       </View>
+      
+      <FlatList
+        data={tasks}
+        keyExtractor={(item) => item.id || Math.random().toString()}
+        renderItem={renderItem}
+        contentContainerStyle={styles.listContainer}
+        refreshControl={
+          <RefreshControl refreshing={loading} onRefresh={loadTasks} />
+        }
+        ListEmptyComponent={<Text style={styles.emptyText}>No tasks found. Add one!</Text>}
+      />
+
+      <View style={styles.fabContainer}>
+        <Button title="+ Add Task" onPress={openAddModal} />
+      </View>
+
+      <Modal visible={modalVisible} animationType="slide" transparent={true}>
+        <View style={styles.modalOverlay}>
+          <View style={styles.modalContent}>
+            <Text style={styles.modalTitle}>{editingTaskId ? 'Edit Task' : 'Add Task'}</Text>
+            
+            <Input
+              label="Title"
+              placeholder="Task Title"
+              value={title}
+              onChangeText={setTitle}
+            />
+            <Input
+              label="Category"
+              placeholder="e.g. Work, Personal"
+              value={category}
+              onChangeText={setCategory}
+            />
+            <Input
+              label="Priority"
+              placeholder="e.g. High, Normal, Low"
+              value={priority}
+              onChangeText={setPriority}
+            />
+            
+            <View style={styles.modalButtons}>
+              <View style={styles.modalButton}>
+                <Button title="Cancel" onPress={() => setModalVisible(false)} />
+              </View>
+              <View style={styles.modalButton}>
+                <Button title="Save" onPress={handleSaveTask} loading={loading} />
+              </View>
+            </View>
+          </View>
+        </View>
+      </Modal>
     </SafeAreaView>
   );
 };
@@ -86,25 +186,103 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#f5f5f5',
   },
-  container: {
-    flex: 1,
-    padding: 20,
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     alignItems: 'center',
-    justifyContent: 'center',
+    padding: 20,
+    backgroundColor: '#fff',
+    borderBottomWidth: 1,
+    borderBottomColor: '#eee',
   },
   title: {
-    fontSize: 32,
+    fontSize: 24,
     fontWeight: 'bold',
     color: '#333',
+  },
+  logoutText: {
+    color: '#007AFF',
+    fontSize: 16,
+  },
+  listContainer: {
+    padding: 15,
+  },
+  taskItem: {
+    flexDirection: 'row',
+    backgroundColor: '#fff',
+    padding: 15,
+    borderRadius: 8,
     marginBottom: 10,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
+    elevation: 2,
   },
-  subtitle: {
-    fontSize: 18,
+  taskInfo: {
+    flex: 1,
+  },
+  taskTitle: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#333',
+    marginBottom: 4,
+  },
+  taskSub: {
+    fontSize: 12,
     color: '#666',
-    marginBottom: 40,
   },
-  buttonContainer: {
-    width: '100%',
-    paddingHorizontal: 20,
-  }
+  taskActions: {
+    flexDirection: 'row',
+  },
+  iconButton: {
+    padding: 8,
+    marginLeft: 5,
+  },
+  iconText: {
+    fontSize: 18,
+  },
+  emptyText: {
+    textAlign: 'center',
+    color: '#999',
+    marginTop: 50,
+  },
+  fabContainer: {
+    padding: 15,
+    backgroundColor: '#fff',
+    borderTopWidth: 1,
+    borderTopColor: '#eee',
+  },
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    justifyContent: 'center',
+    padding: 20,
+  },
+  modalContent: {
+    backgroundColor: '#fff',
+    borderRadius: 12,
+    padding: 20,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  modalTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 15,
+    textAlign: 'center',
+  },
+  modalButtons: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 20,
+  },
+  modalButton: {
+    flex: 1,
+    marginHorizontal: 5,
+  },
 });
