@@ -5,6 +5,7 @@ import { Input } from '../components/Input';
 import { Button } from '../components/Button';
 import { authService } from '../services/authService';
 import { handleError } from '../utils/errorHandler';
+import { triggerCrash } from '../services/crashlytics';
 
 export const LoginScreen = ({ navigation }: any) => {
   const [email, setEmail] = useState('');
@@ -47,6 +48,10 @@ export const LoginScreen = ({ navigation }: any) => {
           secureTextEntry
         />
         <Button title="Login" onPress={handleLogin} loading={loading} />
+
+        <View style={{ marginTop: 20 }}>
+          <Button title="Force Test Crash" onPress={() => triggerCrash()} />
+        </View>
 
         <View style={styles.footerLinks}>
           <TouchableOpacity
