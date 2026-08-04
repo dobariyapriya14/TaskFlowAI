@@ -1,5 +1,21 @@
-import { getFirestore, collection, addDoc, updateDoc, doc, deleteDoc, getDocs, getDoc, serverTimestamp, query, where, orderBy, limit, startAfter } from '@react-native-firebase/firestore';
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  updateDoc,
+  doc,
+  deleteDoc,
+  getDocs,
+  getDoc,
+  serverTimestamp,
+  query,
+  where,
+  orderBy,
+  limit,
+  startAfter,
+} from '@react-native-firebase/firestore';
 import { getAuth } from '@react-native-firebase/auth';
+import { getPerformance, trace } from '@react-native-firebase/perf';
 import { logTaskCreated, logTaskCompleted, logTaskDeleted } from './analytics';
 
 const db = getFirestore();
@@ -26,6 +42,8 @@ export interface QueryTasksOptions {
 export const taskService = {
   // CREATE
   async addTask(task: Task) {
+    const addTaskTrace = trace(getPerformance(), 'custom_create_task_trace');
+    await addTaskTrace.start();
     try {
       const taskData = {
         ...task,
@@ -37,17 +55,30 @@ export const taskService = {
         priority: task.priority || 'Normal',
         category: task.category || 'General',
       });
+      await addTaskTrace.stop();
       return docRef.id;
     } catch (error) {
+      await addTaskTrace.stop();
       throw error;
     }
   },
 
   // READ (Advanced Query with Pagination, Filtering, Search)
-  async queryTasks(options: QueryTasksOptions = {}): Promise<{ tasks: Task[], lastVisible: any }> {
+  async queryTasks(
+    options: QueryTasksOptions = {},
+  ): Promise<{ tasks: Task[]; lastVisible: any }> {
+    const queryTrace = trace(getPerformance(), 'custom_query_tasks_trace');
+    await queryTrace.start();
     try {
-      const { limitTasks, lastDoc, category, priority, completed, searchQuery } = options;
-      
+      const {
+        limitTasks,
+        lastDoc,
+        category,
+        priority,
+        completed,
+        searchQuery,
+      } = options;
+
       let q = query(collection(db, 'tasks'));
       const userId = getAuth().currentUser?.uid;
 
@@ -66,9 +97,10 @@ export const taskService = {
       }
 
       if (searchQuery) {
-        q = query(q, 
+        q = query(
+          q,
           where('title', '>=', searchQuery),
-          where('title', '<=', searchQuery + '\uf8ff')
+          where('title', '<=', searchQuery + '\uf8ff'),
         );
       } else {
         q = query(q, orderBy('createdAt', 'desc'));
@@ -84,15 +116,20 @@ export const taskService = {
 
       const querySnapshot = await getDocs(q);
       const tasks: Task[] = [];
-      
-      querySnapshot.forEach((documentSnapshot) => {
-        tasks.push({ id: documentSnapshot.id, ...documentSnapshot.data() } as Task);
+
+      querySnapshot.forEach(documentSnapshot => {
+        tasks.push({
+          id: documentSnapshot.id,
+          ...documentSnapshot.data(),
+        } as Task);
       });
 
       const lastVisible = querySnapshot.docs[querySnapshot.docs.length - 1];
 
+      await queryTrace.stop();
       return { tasks, lastVisible };
     } catch (error) {
+      await queryTrace.stop();
       throw error;
     }
   },
@@ -101,11 +138,16 @@ export const taskService = {
   async getTasks(): Promise<Task[]> {
     try {
       const userId = getAuth().currentUser?.uid;
-      const q = userId ? query(collection(db, 'tasks'), where('userId', '==', userId)) : collection(db, 'tasks');
+      const q = userId
+        ? query(collection(db, 'tasks'), where('userId', '==', userId))
+        : collection(db, 'tasks');
       const querySnapshot = await getDocs(q);
       const tasks: Task[] = [];
-      querySnapshot.forEach((documentSnapshot) => {
-        tasks.push({ id: documentSnapshot.id, ...documentSnapshot.data() } as Task);
+      querySnapshot.forEach(documentSnapshot => {
+        tasks.push({
+          id: documentSnapshot.id,
+          ...documentSnapshot.data(),
+        } as Task);
       });
       return tasks;
     } catch (error) {
@@ -158,6 +200,5 @@ export const taskService = {
     } catch (error) {
       throw error;
     }
-  }
+  },
 };
-
