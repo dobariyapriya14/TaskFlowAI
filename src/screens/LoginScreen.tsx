@@ -4,6 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Input } from '../components/Input';
 import { Button } from '../components/Button';
 import { authService } from '../services/authService';
+import { handleError } from '../utils/errorHandler';
 
 export const LoginScreen = ({ navigation }: any) => {
   const [email, setEmail] = useState('');
@@ -20,7 +21,7 @@ export const LoginScreen = ({ navigation }: any) => {
       await authService.login(email, password);
       // Navigation is handled by auth state observer
     } catch (error: any) {
-      Alert.alert('Login Failed', error.message);
+      handleError(error, 'LoginScreen: handleLogin', true);
     } finally {
       setLoading(false);
     }
@@ -46,12 +47,17 @@ export const LoginScreen = ({ navigation }: any) => {
           secureTextEntry
         />
         <Button title="Login" onPress={handleLogin} loading={loading} />
-        
+
         <View style={styles.footerLinks}>
-          <TouchableOpacity onPress={() => navigation.navigate('ForgotPassword')}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('ForgotPassword')}
+          >
             <Text style={styles.link}>Forgot Password?</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('Signup')} style={{ marginTop: 15 }}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('Signup')}
+            style={styles.signupLink}
+          >
             <Text style={styles.link}>Don't have an account? Sign Up</Text>
           </TouchableOpacity>
         </View>
@@ -84,5 +90,8 @@ const styles = StyleSheet.create({
   link: {
     color: '#007bff',
     fontSize: 14,
-  }
+  },
+  signupLink: {
+    marginTop: 15,
+  },
 });

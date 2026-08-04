@@ -17,6 +17,7 @@ import {
 import { getAuth } from '@react-native-firebase/auth';
 import { getPerformance, trace } from '@react-native-firebase/perf';
 import { logTaskCreated, logTaskCompleted, logTaskDeleted } from './analytics';
+import { handleError } from '../utils/errorHandler';
 
 const db = getFirestore();
 
@@ -59,6 +60,7 @@ export const taskService = {
       return docRef.id;
     } catch (error) {
       await addTaskTrace.stop();
+      handleError(error, 'taskService: addTask');
       throw error;
     }
   },
@@ -130,6 +132,7 @@ export const taskService = {
       return { tasks, lastVisible };
     } catch (error) {
       await queryTrace.stop();
+      handleError(error, 'taskService: queryTasks');
       throw error;
     }
   },
@@ -151,6 +154,7 @@ export const taskService = {
       });
       return tasks;
     } catch (error) {
+      handleError(error, 'taskService: getTasks');
       throw error;
     }
   },
@@ -165,6 +169,7 @@ export const taskService = {
       }
       return null;
     } catch (error) {
+      handleError(error, 'taskService: getTask');
       throw error;
     }
   },
@@ -174,6 +179,7 @@ export const taskService = {
     try {
       await updateDoc(doc(db, 'tasks', id), updates);
     } catch (error) {
+      handleError(error, 'taskService: updateTask');
       throw error;
     }
   },
@@ -188,6 +194,7 @@ export const taskService = {
         completed_in: completedInMinutes || 0,
       });
     } catch (error) {
+      handleError(error, 'taskService: completeTask');
       throw error;
     }
   },
@@ -198,6 +205,7 @@ export const taskService = {
       await deleteDoc(doc(db, 'tasks', id));
       await logTaskDeleted();
     } catch (error) {
+      handleError(error, 'taskService: deleteTask');
       throw error;
     }
   },

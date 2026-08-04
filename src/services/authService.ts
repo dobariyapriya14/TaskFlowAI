@@ -11,6 +11,7 @@ import { getFirestore, doc, setDoc } from '@react-native-firebase/firestore';
 import { logLogin, logLogout } from './analytics';
 import { setUser } from './crashlytics';
 import { getPerformance, trace } from '@react-native-firebase/perf';
+import { handleError } from '../utils/errorHandler';
 
 const auth = getAuth();
 const db = getFirestore();
@@ -47,6 +48,7 @@ export const authService = {
       return userCredential;
     } catch (error) {
       await signupTrace.stop();
+      handleError(error, 'authService: signup');
       throw error;
     }
   },
@@ -66,6 +68,7 @@ export const authService = {
       return userCredential;
     } catch (error) {
       await loginTrace.stop();
+      handleError(error, 'authService: login');
       throw error;
     }
   },
@@ -75,6 +78,7 @@ export const authService = {
       await signOut(auth);
       await logLogout();
     } catch (error) {
+      handleError(error, 'authService: logout');
       throw error;
     }
   },
@@ -83,6 +87,7 @@ export const authService = {
     try {
       await sendPasswordResetEmail(auth, email);
     } catch (error) {
+      handleError(error, 'authService: forgotPassword');
       throw error;
     }
   },

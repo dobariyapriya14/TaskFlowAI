@@ -1,17 +1,27 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { View, Text, StyleSheet, Alert, FlatList, Modal, TouchableOpacity, RefreshControl } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Alert,
+  FlatList,
+  Modal,
+  TouchableOpacity,
+  RefreshControl,
+} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Button } from '../components/Button';
 import { Input } from '../components/Input';
 import { authService } from '../services/authService';
 import { logMessage } from '../services/crashlytics';
 import { taskService, Task } from '../services/taskService';
+import { handleError } from '../utils/errorHandler';
 
 export const HomeScreen = () => {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [loading, setLoading] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
-  
+
   // Form State
   const [editingTaskId, setEditingTaskId] = useState<string | null>(null);
   const [title, setTitle] = useState('');
@@ -24,7 +34,7 @@ export const HomeScreen = () => {
       const { tasks: fetchedTasks } = await taskService.queryTasks();
       setTasks(fetchedTasks);
     } catch (error: any) {
-      Alert.alert('Error', error.message);
+      handleError(error, 'HomeScreen: loadTasks', true);
     } finally {
       setLoading(false);
     }
@@ -40,19 +50,28 @@ export const HomeScreen = () => {
       Alert.alert('Validation Error', 'Title is required');
       return;
     }
-    
+
     setLoading(true);
     try {
       if (editingTaskId) {
-        await taskService.updateTask(editingTaskId, { title, category, priority });
+        await taskService.updateTask(editingTaskId, {
+          title,
+          category,
+          priority,
+        });
       } else {
-        await taskService.addTask({ title, category, priority, completed: false });
+        await taskService.addTask({
+          title,
+          category,
+          priority,
+          completed: false,
+        });
       }
       setModalVisible(false);
       resetForm();
       loadTasks();
     } catch (error: any) {
-      Alert.alert('Error', error.message);
+      handleError(error, 'HomeScreen: handleSaveTask', true);
     } finally {
       setLoading(false);
     }
@@ -81,15 +100,18 @@ export const HomeScreen = () => {
   const handleDeleteTask = async (id: string) => {
     Alert.alert('Delete Task', 'Are you sure?', [
       { text: 'Cancel', style: 'cancel' },
-      { text: 'Delete', style: 'destructive', onPress: async () => {
+      {
+        text: 'Delete',
+        style: 'destructive',
+        onPress: async () => {
           try {
             await taskService.deleteTask(id);
             loadTasks();
           } catch (e: any) {
-            Alert.alert('Error', e.message);
+            handleError(e, 'HomeScreen: handleDeleteTask', true);
           }
-        }
-      }
+        },
+      },
     ]);
   };
 
@@ -97,7 +119,7 @@ export const HomeScreen = () => {
     try {
       await authService.logout();
     } catch (error) {
-      console.error(error);
+      handleError(error, 'HomeScreen: handleLogout', true);
     }
   };
 
@@ -105,13 +127,21 @@ export const HomeScreen = () => {
     <View style={styles.taskItem}>
       <View style={styles.taskInfo}>
         <Text style={styles.taskTitle}>{item.title}</Text>
-        <Text style={styles.taskSub}>{item.category || 'No Category'} - {item.priority || 'Normal'}</Text>
+        <Text style={styles.taskSub}>
+          {item.category || 'No Category'} - {item.priority || 'Normal'}
+        </Text>
       </View>
       <View style={styles.taskActions}>
-        <TouchableOpacity onPress={() => handleEditClick(item)} style={styles.iconButton}>
+        <TouchableOpacity
+          onPress={() => handleEditClick(item)}
+          style={styles.iconButton}
+        >
           <Text style={styles.iconText}>✏️</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => item.id && handleDeleteTask(item.id)} style={styles.iconButton}>
+        <TouchableOpacity
+          onPress={() => item.id && handleDeleteTask(item.id)}
+          style={styles.iconButton}
+        >
           <Text style={styles.iconText}>🗑️</Text>
         </TouchableOpacity>
       </View>
@@ -126,16 +156,18 @@ export const HomeScreen = () => {
           <Text style={styles.logoutText}>Logout</Text>
         </TouchableOpacity>
       </View>
-      
+
       <FlatList
         data={tasks}
-        keyExtractor={(item) => item.id || Math.random().toString()}
+        keyExtractor={item => item.id || Math.random().toString()}
         renderItem={renderItem}
         contentContainerStyle={styles.listContainer}
         refreshControl={
           <RefreshControl refreshing={loading} onRefresh={loadTasks} />
         }
-        ListEmptyComponent={<Text style={styles.emptyText}>No tasks found. Add one!</Text>}
+        ListEmptyComponent={
+          <Text style={styles.emptyText}>No tasks found. Add one!</Text>
+        }
       />
 
       <View style={styles.fabContainer}>
@@ -145,8 +177,10 @@ export const HomeScreen = () => {
       <Modal visible={modalVisible} animationType="slide" transparent={true}>
         <View style={styles.modalOverlay}>
           <View style={styles.modalContent}>
-            <Text style={styles.modalTitle}>{editingTaskId ? 'Edit Task' : 'Add Task'}</Text>
-            
+            <Text style={styles.modalTitle}>
+              {editingTaskId ? 'Edit Task' : 'Add Task'}
+            </Text>
+
             <Input
               label="Title"
               placeholder="Task Title"
@@ -165,13 +199,17 @@ export const HomeScreen = () => {
               value={priority}
               onChangeText={setPriority}
             />
-            
+
             <View style={styles.modalButtons}>
               <View style={styles.modalButton}>
                 <Button title="Cancel" onPress={() => setModalVisible(false)} />
               </View>
               <View style={styles.modalButton}>
-                <Button title="Save" onPress={handleSaveTask} loading={loading} />
+                <Button
+                  title="Save"
+                  onPress={handleSaveTask}
+                  loading={loading}
+                />
               </View>
             </View>
           </View>
