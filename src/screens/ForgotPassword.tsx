@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Alert, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Input } from '../components/Input';
 import { Button } from '../components/Button';
-import { authService } from '../services/authService';
+import { authService } from '../features/auth/services/AuthService';
 import { handleError } from '../utils/errorHandler';
 
 export const ForgotPassword = ({ navigation }: any) => {

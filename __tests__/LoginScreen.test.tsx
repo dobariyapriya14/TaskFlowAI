@@ -6,13 +6,22 @@ import {
   screen,
 } from '@testing-library/react-native';
 import { LoginScreen } from '../src/screens/LoginScreen';
-import { authService } from '../src/services/authService';
+import { authService } from '../src/features/auth/services/AuthService';
 import { Alert } from 'react-native';
 
 // Mock the authService
-jest.mock('../src/services/authService', () => ({
+jest.mock('../src/features/auth/services/AuthService', () => ({
   authService: {
     login: jest.fn(),
+  },
+}));
+
+// Mock the crashlytics service
+jest.mock('../src/core/firebase/CrashlyticsCoreService', () => ({
+  CrashlyticsService: {
+    triggerCrash: jest.fn(),
+    logError: jest.fn(),
+    logMessage: jest.fn(),
   },
 }));
 

@@ -10,7 +10,7 @@ import {
 import { Input } from '../components/Input';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Button } from '../components/Button';
-import { authService } from '../services/authService';
+import { authService } from '../features/auth/services/AuthService';
 import { handleError } from '../utils/errorHandler';
 
 export const SignupScreen = ({ navigation }: any) => {

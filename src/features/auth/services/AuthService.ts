@@ -7,14 +7,34 @@ import {
   updateProfile,
   UserCredential,
 } from '@react-native-firebase/auth';
-import { getFirestore, doc, setDoc } from '@react-native-firebase/firestore';
-import { logLogin, logLogout } from './analytics';
-import { setUser } from './crashlytics';
 import { getPerformance, trace } from '@react-native-firebase/perf';
-import { handleError } from '../utils/errorHandler';
+import { AnalyticsService } from '../../../core/firebase/AnalyticsCoreService';
+import { CrashlyticsService } from '../../../core/firebase/CrashlyticsCoreService';
+import { FirestoreRepository } from '../../../core/firebase/FirestoreRepository';
+import { handleError } from '../../../utils/errorHandler';
 
 const auth = getAuth();
-const db = getFirestore();
+
+export interface UserDocument {
+  id?: string;
+  email: string;
+  name: string;
+  role: string;
+  createdAt: string;
+  updatedAt?: any;
+}
+
+class UserService extends FirestoreRepository<UserDocument> {
+  constructor() {
+    super('users');
+  }
+
+  async setUserDoc(uid: string, data: Omit<UserDocument, 'id'>) {
+    return this.setWithId(uid, data, 'custom_set_user_doc_trace');
+  }
+}
+
+const userService = new UserService();
 
 export const authService = {
   async signup(
@@ -34,9 +54,9 @@ export const authService = {
         await updateProfile(userCredential.user, { displayName: name });
       }
 
-      // Save user document in Firestore
+      // Save user document in Firestore using repository pattern
       if (userCredential.user) {
-        await setDoc(doc(db, 'users', userCredential.user.uid), {
+        await userService.setUserDoc(userCredential.user.uid, {
           email: email,
           name: name || '',
           role: 'user',
@@ -62,8 +82,8 @@ export const authService = {
         email,
         password,
       );
-      await logLogin('email');
-      setUser(userCredential.user.uid);
+      await AnalyticsService.logLogin('email');
+      CrashlyticsService.setUser(userCredential.user.uid);
       await loginTrace.stop();
       return userCredential;
     } catch (error) {
@@ -76,7 +96,7 @@ export const authService = {
   async logout(): Promise<void> {
     try {
       await signOut(auth);
-      await logLogout();
+      await AnalyticsService.logLogout();
     } catch (error) {
       handleError(error, 'authService: logout');
       throw error;
