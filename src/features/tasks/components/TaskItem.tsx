@@ -10,22 +10,27 @@ interface TaskItemProps {
 
 export const TaskItem = React.memo<TaskItemProps>(
   ({ item, onEdit, onDelete }) => {
+    const taskId = item.id || 'temp';
     return (
-      <View style={styles.taskItem}>
+      <View style={styles.taskItem} testID={`task-item-${taskId}`}>
         <View style={styles.taskInfo}>
-          <Text style={styles.taskTitle}>{item.title}</Text>
+          <Text style={styles.taskTitle} testID={`task-title-${taskId}`}>
+            {item.title}
+          </Text>
           <Text style={styles.taskSub}>
             {item.category || 'No Category'} - {item.priority || 'Normal'}
           </Text>
         </View>
         <View style={styles.taskActions}>
           <TouchableOpacity
+            testID={`task-edit-button-${taskId}`}
             onPress={() => onEdit(item)}
             style={styles.iconButton}
           >
             <Text style={styles.iconText}>✏️</Text>
           </TouchableOpacity>
           <TouchableOpacity
+            testID={`task-delete-button-${taskId}`}
             onPress={() => item.id && onDelete(item.id)}
             style={styles.iconButton}
           >

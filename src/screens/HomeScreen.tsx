@@ -141,15 +141,16 @@ export const HomeScreen = () => {
   const keyExtractor = useCallback((item: Task) => item.id || item.title, []);
 
   return (
-    <SafeAreaView style={styles.safeArea}>
+    <SafeAreaView style={styles.safeArea} testID="home-screen">
       <View style={styles.header}>
         <Text style={styles.title}>Tasks</Text>
-        <TouchableOpacity onPress={handleLogout}>
+        <TouchableOpacity testID="logout-button" onPress={handleLogout}>
           <Text style={styles.logoutText}>Logout</Text>
         </TouchableOpacity>
       </View>
 
       <FlashList
+        testID="task-list"
         data={tasks}
         keyExtractor={keyExtractor}
         renderItem={renderItem}
@@ -158,34 +159,43 @@ export const HomeScreen = () => {
           <RefreshControl refreshing={loading} onRefresh={loadTasks} />
         }
         ListEmptyComponent={
-          <Text style={styles.emptyText}>No tasks found. Add one!</Text>
+          <Text style={styles.emptyText} testID="empty-task-list-text">
+            No tasks found. Add one!
+          </Text>
         }
       />
 
       <View style={styles.fabContainer}>
-        <Button title="+ Add Task" onPress={openAddModal} />
+        <Button
+          testID="open-add-task-modal-button"
+          title="+ Add Task"
+          onPress={openAddModal}
+        />
       </View>
 
       <Modal visible={modalVisible} animationType="slide" transparent={true}>
-        <View style={styles.modalOverlay}>
+        <View style={styles.modalOverlay} testID="task-modal">
           <View style={styles.modalContent}>
             <Text style={styles.modalTitle}>
               {editingTaskId ? 'Edit Task' : 'Add Task'}
             </Text>
 
             <Input
+              testID="task-title-input"
               label="Title"
               placeholder="Task Title"
               value={title}
               onChangeText={setTitle}
             />
             <Input
+              testID="task-category-input"
               label="Category"
               placeholder="e.g. Work, Personal"
               value={category}
               onChangeText={setCategory}
             />
             <Input
+              testID="task-priority-input"
               label="Priority"
               placeholder="e.g. High, Normal, Low"
               value={priority}
@@ -194,10 +204,15 @@ export const HomeScreen = () => {
 
             <View style={styles.modalButtons}>
               <View style={styles.modalButton}>
-                <Button title="Cancel" onPress={() => setModalVisible(false)} />
+                <Button
+                  testID="cancel-task-button"
+                  title="Cancel"
+                  onPress={() => setModalVisible(false)}
+                />
               </View>
               <View style={styles.modalButton}>
                 <Button
+                  testID="save-task-button"
                   title="Save"
                   onPress={handleSaveTask}
                   loading={loading}

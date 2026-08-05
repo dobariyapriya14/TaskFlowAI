@@ -10,15 +10,27 @@ const crashlytics = getCrashlytics();
 
 export const CrashlyticsService = {
   logError: (error: Error) => {
-    recordError(crashlytics, error);
+    try {
+      recordError(crashlytics, error);
+    } catch {
+      // Ignore
+    }
   },
 
   logMessage: (message: string) => {
-    log(crashlytics, message);
+    try {
+      log(crashlytics, message);
+    } catch {
+      // Ignore
+    }
   },
 
   setUser: (userId: string) => {
-    setUserId(crashlytics, userId);
+    try {
+      setUserId(crashlytics, userId);
+    } catch {
+      // Ignore
+    }
   },
 
   triggerCrash: () => {
