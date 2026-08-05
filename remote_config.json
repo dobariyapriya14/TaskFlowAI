@@ -1,0 +1,53 @@
+{
+  "parameters": {
+    "is_maintenance_mode": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "valueType": "BOOLEAN",
+      "description": "When true, blocks user access and shows the Maintenance Mode screen"
+    },
+    "maintenance_message": {
+      "defaultValue": {
+        "value": "TaskFlowAI is currently undergoing scheduled maintenance. Please check back shortly."
+      },
+      "valueType": "STRING",
+      "description": "Message displayed to users when Maintenance Mode is enabled"
+    },
+    "min_required_version": {
+      "defaultValue": {
+        "value": "0.0.1"
+      },
+      "valueType": "STRING",
+      "description": "Minimum app version required. Lower versions will prompt Force Update"
+    },
+    "force_update_message": {
+      "defaultValue": {
+        "value": "A new version of TaskFlowAI is available. Please update to continue using the app."
+      },
+      "valueType": "STRING",
+      "description": "Message displayed on the Force Update prompt screen"
+    },
+    "store_url": {
+      "defaultValue": {
+        "value": "https://play.google.com/store/apps/details?id=com.taskflowai"
+      },
+      "valueType": "STRING",
+      "description": "URL link to Play Store or App Store for updating the app"
+    },
+    "feature_ai_task_suggestions": {
+      "defaultValue": {
+        "value": "true"
+      },
+      "valueType": "BOOLEAN",
+      "description": "Feature flag enabling AI task suggestions"
+    },
+    "feature_dark_mode": {
+      "defaultValue": {
+        "value": "false"
+      },
+      "valueType": "BOOLEAN",
+      "description": "Feature flag enabling Dark Mode theme option"
+    }
+  }
+}

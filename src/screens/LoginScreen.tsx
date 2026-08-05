@@ -29,10 +29,11 @@ export const LoginScreen = ({ navigation }: any) => {
   };
 
   return (
-    <SafeAreaView style={styles.safeArea}>
+    <SafeAreaView style={styles.safeArea} testID="login-screen">
       <View style={styles.container}>
         <Text style={styles.title}>Welcome Back</Text>
         <Input
+          testID="login-email-input"
           label="Email"
           placeholder="Enter your email"
           value={email}
@@ -41,13 +42,19 @@ export const LoginScreen = ({ navigation }: any) => {
           autoCapitalize="none"
         />
         <Input
+          testID="login-password-input"
           label="Password"
           placeholder="Enter your password"
           value={password}
           onChangeText={setPassword}
           secureTextEntry
         />
-        <Button title="Login" onPress={handleLogin} loading={loading} />
+        <Button
+          testID="login-submit-button"
+          title="Login"
+          onPress={handleLogin}
+          loading={loading}
+        />
 
         <View style={styles.crashContainer}>
           <Button
@@ -58,11 +65,13 @@ export const LoginScreen = ({ navigation }: any) => {
 
         <View style={styles.footerLinks}>
           <TouchableOpacity
+            testID="forgot-password-link"
             onPress={() => navigation.navigate('ForgotPassword')}
           >
             <Text style={styles.link}>Forgot Password?</Text>
           </TouchableOpacity>
           <TouchableOpacity
+            testID="navigate-signup-button"
             onPress={() => navigation.navigate('Signup')}
             style={styles.signupLink}
           >

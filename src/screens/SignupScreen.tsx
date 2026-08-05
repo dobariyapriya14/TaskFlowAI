@@ -41,10 +41,11 @@ export const SignupScreen = ({ navigation }: any) => {
   };
 
   return (
-    <SafeAreaView style={styles.safeArea}>
+    <SafeAreaView style={styles.safeArea} testID="signup-screen">
       <ScrollView contentContainerStyle={styles.container}>
         <Text style={styles.title}>Create Account</Text>
         <Input
+          testID="signup-name-input"
           label="Name (optional)"
           placeholder="Enter your name"
           value={name}
@@ -52,6 +53,7 @@ export const SignupScreen = ({ navigation }: any) => {
           autoCapitalize="words"
         />
         <Input
+          testID="signup-email-input"
           label="Email"
           placeholder="Enter your email"
           value={email}
@@ -60,6 +62,7 @@ export const SignupScreen = ({ navigation }: any) => {
           autoCapitalize="none"
         />
         <Input
+          testID="signup-password-input"
           label="Password"
           placeholder="Enter your password"
           value={password}
@@ -67,6 +70,7 @@ export const SignupScreen = ({ navigation }: any) => {
           secureTextEntry
         />
         <Input
+          testID="signup-confirm-password-input"
           label="Confirm Password"
           placeholder="Confirm your password"
           value={confirmPassword}
@@ -74,13 +78,17 @@ export const SignupScreen = ({ navigation }: any) => {
           secureTextEntry
         />
         <Button
+          testID="signup-submit-button"
           title="Create Account"
           onPress={handleSignup}
           loading={loading}
         />
 
         <View style={styles.footerLinks}>
-          <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+          <TouchableOpacity
+            testID="navigate-login-button"
+            onPress={() => navigation.navigate('Login')}
+          >
             <Text style={styles.link}>Already have an account? Login</Text>
           </TouchableOpacity>
         </View>

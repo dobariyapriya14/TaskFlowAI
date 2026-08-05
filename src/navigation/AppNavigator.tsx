@@ -1,39 +1,35 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { LoginScreen } from '../screens/LoginScreen';
+import { SignupScreen } from '../screens/SignupScreen';
+import { ForgotPassword } from '../screens/ForgotPassword';
 import { HomeScreen } from '../screens/HomeScreen';
+import { MaintenanceScreen } from '../screens/MaintenanceScreen';
+import { ForceUpdateScreen } from '../screens/ForceUpdateScreen';
 import { useAuth } from '../context/AuthContext';
+import {
+  RemoteConfigProvider,
+  useRemoteConfig,
+} from '../context/RemoteConfigContext';
 import { Loader } from '../components/Loader';
-
-const SignupScreenLazy = React.lazy(() =>
-  import('../screens/SignupScreen').then(module => ({
-    default: module.SignupScreen,
-  })),
-);
-const ForgotPasswordLazy = React.lazy(() =>
-  import('../screens/ForgotPassword').then(module => ({
-    default: module.ForgotPassword,
-  })),
-);
-
-const withSuspense = (Component: React.ComponentType<any>) => (props: any) =>
-  (
-    <Suspense fallback={<Loader />}>
-      <Component {...props} />
-    </Suspense>
-  );
-
-const LazySignupScreen = withSuspense(SignupScreenLazy);
-const LazyForgotPasswordScreen = withSuspense(ForgotPasswordLazy);
 
 const Stack = createNativeStackNavigator();
 
-export const AppNavigator = () => {
-  const { user, loading } = useAuth();
+const NavigationContent = () => {
+  const { user, loading: authLoading } = useAuth();
+  const { config, loading: configLoading } = useRemoteConfig();
 
-  if (loading) {
+  if (authLoading || configLoading) {
     return <Loader />;
+  }
+
+  if (config.isMaintenanceMode) {
+    return <MaintenanceScreen />;
+  }
+
+  if (config.isForceUpdateRequired) {
+    return <ForceUpdateScreen />;
   }
 
   return (
@@ -44,14 +40,19 @@ export const AppNavigator = () => {
         ) : (
           <>
             <Stack.Screen name="Login" component={LoginScreen} />
-            <Stack.Screen name="Signup" component={LazySignupScreen} />
-            <Stack.Screen
-              name="ForgotPassword"
-              component={LazyForgotPasswordScreen}
-            />
+            <Stack.Screen name="Signup" component={SignupScreen} />
+            <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
           </>
         )}
       </Stack.Navigator>
     </NavigationContainer>
+  );
+};
+
+export const AppNavigator = () => {
+  return (
+    <RemoteConfigProvider>
+      <NavigationContent />
+    </RemoteConfigProvider>
   );
 };

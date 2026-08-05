@@ -9,6 +9,7 @@ platform :ios, min_ios_version_supported
 prepare_react_native_project!
 
 $RNFirebaseAsStaticFramework = true
+$RNFirebaseDisableSPM = true
 
 linkage = ENV['USE_FRAMEWORKS'] || 'static'
 if linkage != nil
