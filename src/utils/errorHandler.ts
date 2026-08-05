@@ -1,5 +1,5 @@
 import { Alert } from 'react-native';
-import { logError, logMessage } from '../services/crashlytics';
+import { CrashlyticsService } from '../core/firebase/CrashlyticsCoreService';
 
 /**
  * Centralized error handler
@@ -23,11 +23,13 @@ export const handleError = (
   }
 
   // 1. Log custom breadcrumb context to Crashlytics
-  logMessage(`[Error Context]: ${context} | Message: ${err.message}`);
+  CrashlyticsService.logMessage(
+    `[Error Context]: ${context} | Message: ${err.message}`,
+  );
 
   // 2. Record the non-fatal error to Crashlytics if not already reported
   if (!(err as any)._isReported) {
-    logError(err);
+    CrashlyticsService.logError(err);
     (err as any)._isReported = true;
   }
 

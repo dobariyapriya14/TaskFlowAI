@@ -3,9 +3,9 @@ import { View, Text, StyleSheet, Alert, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Input } from '../components/Input';
 import { Button } from '../components/Button';
-import { authService } from '../services/authService';
+import { authService } from '../features/auth/services/AuthService';
 import { handleError } from '../utils/errorHandler';
-import { triggerCrash } from '../services/crashlytics';
+import { CrashlyticsService } from '../core/firebase/CrashlyticsCoreService';
 
 export const LoginScreen = ({ navigation }: any) => {
   const [email, setEmail] = useState('');
@@ -49,8 +49,11 @@ export const LoginScreen = ({ navigation }: any) => {
         />
         <Button title="Login" onPress={handleLogin} loading={loading} />
 
-        <View style={{ marginTop: 20 }}>
-          <Button title="Force Test Crash" onPress={() => triggerCrash()} />
+        <View style={styles.crashContainer}>
+          <Button
+            title="Force Test Crash"
+            onPress={() => CrashlyticsService.triggerCrash()}
+          />
         </View>
 
         <View style={styles.footerLinks}>
@@ -87,6 +90,9 @@ const styles = StyleSheet.create({
     color: '#333',
     marginBottom: 30,
     textAlign: 'center',
+  },
+  crashContainer: {
+    marginTop: 20,
   },
   footerLinks: {
     marginTop: 20,

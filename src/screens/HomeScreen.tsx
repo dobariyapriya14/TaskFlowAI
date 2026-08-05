@@ -12,9 +12,9 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Button } from '../components/Button';
 import { Input } from '../components/Input';
-import { authService } from '../services/authService';
-import { logMessage } from '../services/crashlytics';
-import { taskService, Task } from '../services/taskService';
+import { authService } from '../features/auth/services/AuthService';
+import { CrashlyticsService } from '../core/firebase/CrashlyticsCoreService';
+import { taskService, Task } from '../features/tasks/services/TaskService';
 import { handleError } from '../utils/errorHandler';
 
 export const HomeScreen = () => {
@@ -41,7 +41,7 @@ export const HomeScreen = () => {
   }, []);
 
   useEffect(() => {
-    logMessage('User opened Home Screen');
+    CrashlyticsService.logMessage('User opened Home Screen');
     loadTasks();
   }, [loadTasks]);
 
