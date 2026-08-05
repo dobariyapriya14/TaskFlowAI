@@ -5,16 +5,31 @@ import { LoginScreen } from '../screens/LoginScreen';
 import { SignupScreen } from '../screens/SignupScreen';
 import { ForgotPassword } from '../screens/ForgotPassword';
 import { HomeScreen } from '../screens/HomeScreen';
+import { MaintenanceScreen } from '../screens/MaintenanceScreen';
+import { ForceUpdateScreen } from '../screens/ForceUpdateScreen';
 import { useAuth } from '../context/AuthContext';
+import {
+  RemoteConfigProvider,
+  useRemoteConfig,
+} from '../context/RemoteConfigContext';
 import { Loader } from '../components/Loader';
 
 const Stack = createNativeStackNavigator();
 
-export const AppNavigator = () => {
-  const { user, loading } = useAuth();
+const NavigationContent = () => {
+  const { user, loading: authLoading } = useAuth();
+  const { config, loading: configLoading } = useRemoteConfig();
 
-  if (loading) {
+  if (authLoading || configLoading) {
     return <Loader />;
+  }
+
+  if (config.isMaintenanceMode) {
+    return <MaintenanceScreen />;
+  }
+
+  if (config.isForceUpdateRequired) {
+    return <ForceUpdateScreen />;
   }
 
   return (
@@ -31,5 +46,13 @@ export const AppNavigator = () => {
         )}
       </Stack.Navigator>
     </NavigationContainer>
+  );
+};
+
+export const AppNavigator = () => {
+  return (
+    <RemoteConfigProvider>
+      <NavigationContent />
+    </RemoteConfigProvider>
   );
 };
