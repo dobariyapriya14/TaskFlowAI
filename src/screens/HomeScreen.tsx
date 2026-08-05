@@ -4,17 +4,18 @@ import {
   Text,
   StyleSheet,
   Alert,
-  FlatList,
   Modal,
   TouchableOpacity,
   RefreshControl,
 } from 'react-native';
+import { FlashList } from '@shopify/flash-list';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Button } from '../components/Button';
 import { Input } from '../components/Input';
 import { authService } from '../features/auth/services/AuthService';
 import { CrashlyticsService } from '../core/firebase/CrashlyticsCoreService';
 import { taskService, Task } from '../features/tasks/services/TaskService';
+import { TaskItem } from '../features/tasks/components/TaskItem';
 import { handleError } from '../utils/errorHandler';
 
 export const HomeScreen = () => {
@@ -77,76 +78,67 @@ export const HomeScreen = () => {
     }
   };
 
-  const handleEditClick = (task: Task) => {
+  const resetForm = useCallback(() => {
+    setEditingTaskId(null);
+    setTitle('');
+    setCategory('');
+    setPriority('Normal');
+  }, []);
+
+  const openAddModal = useCallback(() => {
+    resetForm();
+    setModalVisible(true);
+  }, [resetForm]);
+
+  const handleEditClick = useCallback((task: Task) => {
     setEditingTaskId(task.id || null);
     setTitle(task.title);
     setCategory(task.category || '');
     setPriority(task.priority || 'Normal');
     setModalVisible(true);
-  };
+  }, []);
 
-  const resetForm = () => {
-    setEditingTaskId(null);
-    setTitle('');
-    setCategory('');
-    setPriority('Normal');
-  };
-
-  const openAddModal = () => {
-    resetForm();
-    setModalVisible(true);
-  };
-
-  const handleDeleteTask = async (id: string) => {
-    Alert.alert('Delete Task', 'Are you sure?', [
-      { text: 'Cancel', style: 'cancel' },
-      {
-        text: 'Delete',
-        style: 'destructive',
-        onPress: async () => {
-          try {
-            await taskService.deleteTask(id);
-            loadTasks();
-          } catch (e: any) {
-            handleError(e, 'HomeScreen: handleDeleteTask', true);
-          }
+  const handleDeleteTask = useCallback(
+    async (id: string) => {
+      Alert.alert('Delete Task', 'Are you sure?', [
+        { text: 'Cancel', style: 'cancel' },
+        {
+          text: 'Delete',
+          style: 'destructive',
+          onPress: async () => {
+            try {
+              await taskService.deleteTask(id);
+              loadTasks();
+            } catch (e: any) {
+              handleError(e, 'HomeScreen: handleDeleteTask', true);
+            }
+          },
         },
-      },
-    ]);
-  };
+      ]);
+    },
+    [loadTasks],
+  );
 
-  const handleLogout = async () => {
+  const handleLogout = useCallback(async () => {
     try {
       await authService.logout();
     } catch (error) {
       handleError(error, 'HomeScreen: handleLogout', true);
     }
-  };
+  }, []);
 
-  const renderItem = ({ item }: { item: Task }) => (
-    <View style={styles.taskItem}>
-      <View style={styles.taskInfo}>
-        <Text style={styles.taskTitle}>{item.title}</Text>
-        <Text style={styles.taskSub}>
-          {item.category || 'No Category'} - {item.priority || 'Normal'}
-        </Text>
-      </View>
-      <View style={styles.taskActions}>
-        <TouchableOpacity
-          onPress={() => handleEditClick(item)}
-          style={styles.iconButton}
-        >
-          <Text style={styles.iconText}>✏️</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => item.id && handleDeleteTask(item.id)}
-          style={styles.iconButton}
-        >
-          <Text style={styles.iconText}>🗑️</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
+  const renderItem = useCallback(
+    ({ item }: { item: Task }) => (
+      <TaskItem
+        item={item}
+        onEdit={handleEditClick}
+        onDelete={handleDeleteTask}
+      />
+    ),
+    [handleEditClick, handleDeleteTask],
   );
+
+  const keyExtractor = useCallback((item: Task) => item.id || item.title, []);
 
   return (
     <SafeAreaView style={styles.safeArea}>
@@ -157,9 +149,9 @@ export const HomeScreen = () => {
         </TouchableOpacity>
       </View>
 
-      <FlatList
+      <FlashList
         data={tasks}
-        keyExtractor={item => item.id || Math.random().toString()}
+        keyExtractor={keyExtractor}
         renderItem={renderItem}
         contentContainerStyle={styles.listContainer}
         refreshControl={
