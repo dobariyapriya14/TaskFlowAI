@@ -4,7 +4,7 @@ import {
   orderBy,
   QueryConstraint,
 } from '@react-native-firebase/firestore';
-import { BaseFirestoreService } from '../../../core/firebase/BaseFirestoreService';
+import { FirestoreRepository } from '../../../core/firebase/FirestoreRepository';
 import { AnalyticsService } from '../../../core/firebase/AnalyticsCoreService';
 
 export interface Task {
@@ -13,7 +13,8 @@ export interface Task {
   category?: string;
   priority?: string;
   completed?: boolean;
-  createdAt?: string;
+  createdAt?: any;
+  updatedAt?: any;
   userId?: string;
   [key: string]: any;
 }
@@ -27,7 +28,7 @@ export interface QueryTasksOptions {
   searchQuery?: string;
 }
 
-class TaskServiceImpl extends BaseFirestoreService<Task> {
+class TaskServiceImpl extends FirestoreRepository<Task> {
   constructor() {
     super('tasks');
   }
@@ -39,7 +40,7 @@ class TaskServiceImpl extends BaseFirestoreService<Task> {
       userId,
     };
 
-    const id = await this.add(taskData, 'custom_create_task_trace');
+    const id = await this.create(taskData, 'custom_create_task_trace');
 
     await AnalyticsService.logTaskCreated({
       priority: task.priority || 'Normal',
@@ -77,7 +78,7 @@ class TaskServiceImpl extends BaseFirestoreService<Task> {
       constraints.push(orderBy('createdAt', 'desc'));
     }
 
-    const { data, lastVisible } = await this.query(
+    const { data, lastVisible } = await this.queryDocs(
       {
         constraints,
         limitDocs: limitTasks,
@@ -96,12 +97,12 @@ class TaskServiceImpl extends BaseFirestoreService<Task> {
       constraints.push(where('userId', '==', userId));
     }
 
-    const { data } = await this.query({ constraints });
+    const { data } = await this.queryDocs({ constraints });
     return data;
   }
 
   async getTask(id: string): Promise<Task | null> {
-    return this.get(id);
+    return this.getById(id);
   }
 
   async updateTask(id: string, updates: Partial<Task>) {
@@ -118,6 +119,20 @@ class TaskServiceImpl extends BaseFirestoreService<Task> {
   async deleteTask(id: string) {
     await this.delete(id);
     await AnalyticsService.logTaskDeleted();
+  }
+
+  subscribeToUserTasks(
+    onUpdate: (tasks: Task[]) => void,
+    onError?: (error: Error) => void,
+  ): () => void {
+    const userId = getAuth().currentUser?.uid;
+    const constraints: QueryConstraint[] = [];
+    if (userId) {
+      constraints.push(where('userId', '==', userId));
+    }
+    constraints.push(orderBy('createdAt', 'desc'));
+
+    return this.subscribeToQuery({ constraints }, onUpdate, onError);
   }
 }
 

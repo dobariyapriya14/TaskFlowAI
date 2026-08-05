@@ -10,7 +10,7 @@ import {
 import { getPerformance, trace } from '@react-native-firebase/perf';
 import { AnalyticsService } from '../../../core/firebase/AnalyticsCoreService';
 import { CrashlyticsService } from '../../../core/firebase/CrashlyticsCoreService';
-import { BaseFirestoreService } from '../../../core/firebase/BaseFirestoreService';
+import { FirestoreRepository } from '../../../core/firebase/FirestoreRepository';
 import { handleError } from '../../../utils/errorHandler';
 
 const auth = getAuth();
@@ -21,25 +21,16 @@ export interface UserDocument {
   name: string;
   role: string;
   createdAt: string;
+  updatedAt?: any;
 }
 
-class UserService extends BaseFirestoreService<UserDocument> {
+class UserService extends FirestoreRepository<UserDocument> {
   constructor() {
     super('users');
   }
 
-  // Override to set specific ID instead of auto-generated
   async setUserDoc(uid: string, data: Omit<UserDocument, 'id'>) {
-    try {
-      const { setDoc, doc, getFirestore } = await import(
-        '@react-native-firebase/firestore'
-      );
-      const db = getFirestore();
-      await setDoc(doc(db, 'users', uid), data);
-    } catch (error) {
-      handleError(error, 'UserService: setUserDoc');
-      throw error;
-    }
+    return this.setWithId(uid, data, 'custom_set_user_doc_trace');
   }
 }
 
@@ -63,7 +54,7 @@ export const authService = {
         await updateProfile(userCredential.user, { displayName: name });
       }
 
-      // Save user document in Firestore
+      // Save user document in Firestore using repository pattern
       if (userCredential.user) {
         await userService.setUserDoc(userCredential.user.uid, {
           email: email,
