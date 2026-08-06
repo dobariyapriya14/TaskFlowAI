@@ -84,3 +84,23 @@ jest.mock('@react-native-firebase/perf', () => {
     trace: jest.fn(() => mockTrace),
   };
 });
+
+// Mock Firebase App
+jest.mock('@react-native-firebase/app', () => ({
+  getApp: jest.fn(() => ({})),
+  getApps: jest.fn(() => [{}]),
+  initializeApp: jest.fn(),
+}));
+
+// Mock Firebase Remote Config
+jest.mock('@react-native-firebase/remote-config', () => ({
+  getRemoteConfig: jest.fn(() => ({})),
+  setDefaults: jest.fn().mockResolvedValue(undefined),
+  setConfigSettings: jest.fn().mockResolvedValue(undefined),
+  fetchAndActivate: jest.fn().mockResolvedValue(true),
+  onConfigUpdate: jest.fn(),
+  getValue: jest.fn(() => ({ value: '', source: 'default' })),
+  getBoolean: jest.fn(() => false),
+  getString: jest.fn(() => ''),
+  getNumber: jest.fn(() => 0),
+}));

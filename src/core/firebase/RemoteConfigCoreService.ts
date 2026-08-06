@@ -1,3 +1,4 @@
+import { retryWithBackoff } from '../../utils/retry';
 import {
   getRemoteConfig,
   setDefaults,
@@ -71,11 +72,17 @@ export const RemoteConfigCoreService = {
         minimumFetchIntervalMillis: __DEV__ ? 0 : 3600000,
       });
 
-      await fetchAndActivate(remoteConfigInstance);
+      await retryWithBackoff(() => fetchAndActivate(remoteConfigInstance), {
+        maxRetries: 2,
+        initialDelayMs: 500,
+      });
 
       if (onUpdate) {
         onConfigUpdate(remoteConfigInstance, async () => {
-          await fetchAndActivate(remoteConfigInstance);
+          await retryWithBackoff(() => fetchAndActivate(remoteConfigInstance), {
+            maxRetries: 2,
+            initialDelayMs: 500,
+          });
           onUpdate(this.getState());
         });
       }
@@ -88,7 +95,10 @@ export const RemoteConfigCoreService = {
 
   async fetchNow(): Promise<RemoteConfigState> {
     try {
-      await fetchAndActivate(remoteConfigInstance);
+      await retryWithBackoff(() => fetchAndActivate(remoteConfigInstance), {
+        maxRetries: 2,
+        initialDelayMs: 500,
+      });
     } catch {
       // Ignore
     }

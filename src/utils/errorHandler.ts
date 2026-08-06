@@ -44,3 +44,6 @@ export const handleError = (
     );
   }
 };
+
+export { retryWithBackoff, isTransientError } from './retry';
+export type { RetryOptions } from './retry';

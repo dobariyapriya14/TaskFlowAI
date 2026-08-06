@@ -21,7 +21,7 @@ import {
   Transaction,
 } from '@react-native-firebase/firestore';
 import { getPerformance, trace } from '@react-native-firebase/perf';
-import { handleError } from '../../utils/errorHandler';
+import { handleError, retryWithBackoff } from '../../utils/errorHandler';
 import {
   BaseRepository,
   RepositoryQueryOptions,
@@ -59,7 +59,9 @@ export class FirestoreRepository<T extends { id?: string } & DocumentData>
         createdAt: serverTimestamp(),
         updatedAt: serverTimestamp(),
       };
-      const docRef = await addDoc(this.collectionRef, dataWithTimestamp);
+      const docRef = await retryWithBackoff(() =>
+        addDoc(this.collectionRef, dataWithTimestamp),
+      );
       await perfTrace.stop();
       return docRef.id;
     } catch (error) {
@@ -88,7 +90,9 @@ export class FirestoreRepository<T extends { id?: string } & DocumentData>
         ...data,
         updatedAt: serverTimestamp(),
       };
-      await setDoc(docRef, dataWithTimestamp, { merge: true });
+      await retryWithBackoff(() =>
+        setDoc(docRef, dataWithTimestamp, { merge: true }),
+      );
       await perfTrace.stop();
     } catch (error) {
       await perfTrace.stop();
@@ -108,7 +112,7 @@ export class FirestoreRepository<T extends { id?: string } & DocumentData>
     await perfTrace.start();
     try {
       const docRef = this.getDocRef(id);
-      const docSnap = await getDoc(docRef);
+      const docSnap = await retryWithBackoff(() => getDoc(docRef));
       await perfTrace.stop();
 
       if (docSnap.exists()) {
@@ -141,7 +145,9 @@ export class FirestoreRepository<T extends { id?: string } & DocumentData>
         ...data,
         updatedAt: serverTimestamp(),
       };
-      await updateDoc(docRef, updatesWithTimestamp as DocumentData);
+      await retryWithBackoff(() =>
+        updateDoc(docRef, updatesWithTimestamp as DocumentData),
+      );
       await perfTrace.stop();
     } catch (error) {
       await perfTrace.stop();
@@ -161,7 +167,7 @@ export class FirestoreRepository<T extends { id?: string } & DocumentData>
     await perfTrace.start();
     try {
       const docRef = this.getDocRef(id);
-      await deleteDoc(docRef);
+      await retryWithBackoff(() => deleteDoc(docRef));
       await perfTrace.stop();
     } catch (error) {
       await perfTrace.stop();
@@ -197,7 +203,9 @@ export class FirestoreRepository<T extends { id?: string } & DocumentData>
         q = query(q, startAfter(options.lastDoc));
       }
 
-      const querySnapshot: QuerySnapshot<DocumentData> = await getDocs(q);
+      const querySnapshot: QuerySnapshot<DocumentData> = await retryWithBackoff(
+        () => getDocs(q),
+      );
       const data: T[] = [];
 
       querySnapshot.forEach(documentSnapshot => {
@@ -303,7 +311,7 @@ export class FirestoreRepository<T extends { id?: string } & DocumentData>
     try {
       const batch = writeBatch(db);
       batchOperations(batch);
-      await batch.commit();
+      await retryWithBackoff(() => batch.commit());
       await perfTrace.stop();
     } catch (error) {
       await perfTrace.stop();
@@ -325,7 +333,9 @@ export class FirestoreRepository<T extends { id?: string } & DocumentData>
     );
     await perfTrace.start();
     try {
-      const result = await runTransaction(db, updateFunction);
+      const result = await retryWithBackoff(() =>
+        runTransaction(db, updateFunction),
+      );
       await perfTrace.stop();
       return result;
     } catch (error) {
