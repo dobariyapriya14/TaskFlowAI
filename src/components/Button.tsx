@@ -1,16 +1,29 @@
 import React from 'react';
-import { TouchableOpacity, Text, StyleSheet, ActivityIndicator } from 'react-native';
+import {
+  TouchableOpacity,
+  Text,
+  StyleSheet,
+  ActivityIndicator,
+} from 'react-native';
 
 interface ButtonProps {
   title: string;
   onPress: () => void;
   loading?: boolean;
   disabled?: boolean;
+  testID?: string;
 }
 
-export const Button: React.FC<ButtonProps> = ({ title, onPress, loading = false, disabled = false }) => {
+export const Button: React.FC<ButtonProps> = ({
+  title,
+  onPress,
+  loading = false,
+  disabled = false,
+  testID,
+}) => {
   return (
     <TouchableOpacity
+      testID={testID}
       style={[styles.button, (disabled || loading) && styles.disabledButton]}
       onPress={onPress}
       disabled={disabled || loading}

@@ -1,9 +1,17 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Alert, TouchableOpacity, ScrollView } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Alert,
+  TouchableOpacity,
+  ScrollView,
+} from 'react-native';
 import { Input } from '../components/Input';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Button } from '../components/Button';
-import { authService } from '../services/authService';
+import { authService } from '../features/auth/services/AuthService';
+import { handleError } from '../utils/errorHandler';
 
 export const SignupScreen = ({ navigation }: any) => {
   const [name, setName] = useState('');
@@ -26,17 +34,18 @@ export const SignupScreen = ({ navigation }: any) => {
       await authService.signup(email, password, name);
       // Navigation is handled by auth state observer
     } catch (error: any) {
-      Alert.alert('Signup Failed', error.message);
+      handleError(error, 'SignupScreen: handleSignup', true);
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <SafeAreaView style={styles.safeArea}>
+    <SafeAreaView style={styles.safeArea} testID="signup-screen">
       <ScrollView contentContainerStyle={styles.container}>
         <Text style={styles.title}>Create Account</Text>
         <Input
+          testID="signup-name-input"
           label="Name (optional)"
           placeholder="Enter your name"
           value={name}
@@ -44,6 +53,7 @@ export const SignupScreen = ({ navigation }: any) => {
           autoCapitalize="words"
         />
         <Input
+          testID="signup-email-input"
           label="Email"
           placeholder="Enter your email"
           value={email}
@@ -52,6 +62,7 @@ export const SignupScreen = ({ navigation }: any) => {
           autoCapitalize="none"
         />
         <Input
+          testID="signup-password-input"
           label="Password"
           placeholder="Enter your password"
           value={password}
@@ -59,16 +70,25 @@ export const SignupScreen = ({ navigation }: any) => {
           secureTextEntry
         />
         <Input
+          testID="signup-confirm-password-input"
           label="Confirm Password"
           placeholder="Confirm your password"
           value={confirmPassword}
           onChangeText={setConfirmPassword}
           secureTextEntry
         />
-        <Button title="Create Account" onPress={handleSignup} loading={loading} />
-        
+        <Button
+          testID="signup-submit-button"
+          title="Create Account"
+          onPress={handleSignup}
+          loading={loading}
+        />
+
         <View style={styles.footerLinks}>
-          <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+          <TouchableOpacity
+            testID="navigate-login-button"
+            onPress={() => navigation.navigate('Login')}
+          >
             <Text style={styles.link}>Already have an account? Login</Text>
           </TouchableOpacity>
         </View>
@@ -101,5 +121,5 @@ const styles = StyleSheet.create({
   link: {
     color: '#007bff',
     fontSize: 14,
-  }
+  },
 });

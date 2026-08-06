@@ -1,0 +1,33 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    
+    // Helper function to check if user is authenticated
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    // Helper function to check if the user is an admin
+    // Note: Storage rules cannot natively query Firestore (like `get()` in Firestore rules).
+    // So we rely on custom claims (if set via cloud functions) OR the bootstrap email check.
+    // If you need cross-service RBAC, consider adding custom claims during auth.
+    function isAdmin() {
+      return isAuthenticated() && (
+        (request.auth.token.email == 'admin@taskflowai.com' && request.auth.token.email_verified == true)
+        || request.auth.token.role == 'admin' // Assumes a custom claim is set
+      );
+    }
+
+    // User-specific folders
+    // Users can only upload and read files in their own folder
+    match /users/{userId}/{allPaths=**} {
+      allow read: if isAuthenticated() && (request.auth.uid == userId || isAdmin());
+      allow write: if isAuthenticated() && (request.auth.uid == userId || isAdmin());
+    }
+
+    // Global deny by default
+    match /{allPaths=**} {
+      allow read, write: if isAdmin();
+    }
+  }
+}

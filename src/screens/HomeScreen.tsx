@@ -1,82 +1,236 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, Alert, Platform } from 'react-native';
+import React, { useState, useEffect, useCallback } from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Alert,
+  Modal,
+  TouchableOpacity,
+  RefreshControl,
+} from 'react-native';
+import { FlashList } from '@shopify/flash-list';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Button } from '../components/Button';
-import { authService } from '../services/authService';
-import { useAuth } from '../context/AuthContext';
-import { logMessage, logError, triggerCrash } from '../services/crashlytics';
+import { Input } from '../components/Input';
+import { authService } from '../features/auth/services/AuthService';
+import { CrashlyticsService } from '../core/firebase/CrashlyticsCoreService';
+import { taskService, Task } from '../features/tasks/services/TaskService';
+import { TaskItem } from '../features/tasks/components/TaskItem';
+import { handleError } from '../utils/errorHandler';
 
-export const HomeScreen = () => {
-  const { user } = useAuth();
-  const [loadingApi, setLoadingApi] = useState(false);
+export const HomeScreen = ({ navigation }: any) => {
+  const [tasks, setTasks] = useState<Task[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
 
-  useEffect(() => {
-    logMessage('User opened Home Screen');
+  // Form State
+  const [editingTaskId, setEditingTaskId] = useState<string | null>(null);
+  const [title, setTitle] = useState('');
+  const [category, setCategory] = useState('');
+  const [priority, setPriority] = useState('Normal');
+
+  const loadTasks = useCallback(async () => {
+    setLoading(true);
+    try {
+      const { tasks: fetchedTasks } = await taskService.queryTasks();
+      setTasks(fetchedTasks);
+    } catch (error: any) {
+      handleError(error, 'HomeScreen: loadTasks', true);
+    } finally {
+      setLoading(false);
+    }
   }, []);
 
-  const testNonFatalError = () => {
+  useEffect(() => {
+    CrashlyticsService.logMessage('User opened Home Screen');
+    loadTasks();
+  }, [loadTasks]);
+
+  const handleSaveTask = async () => {
+    if (!title.trim()) {
+      Alert.alert('Validation Error', 'Title is required');
+      return;
+    }
+
+    setLoading(true);
     try {
-      throw new Error('This is a test non-fatal error');
-    } catch (e) {
-      logError(e as Error);
-      Alert.alert('Error Logged', 'Non-fatal error sent to Crashlytics.');
+      if (editingTaskId) {
+        await taskService.updateTask(editingTaskId, {
+          title,
+          category,
+          priority,
+        });
+      } else {
+        await taskService.addTask({
+          title,
+          category,
+          priority,
+          completed: false,
+        });
+      }
+      setModalVisible(false);
+      resetForm();
+      loadTasks();
+    } catch (error: any) {
+      handleError(error, 'HomeScreen: handleSaveTask', true);
+    } finally {
+      setLoading(false);
     }
   };
 
-  const handleLogout = async () => {
+  const resetForm = useCallback(() => {
+    setEditingTaskId(null);
+    setTitle('');
+    setCategory('');
+    setPriority('Normal');
+  }, []);
+
+  const openAddModal = useCallback(() => {
+    resetForm();
+    setModalVisible(true);
+  }, [resetForm]);
+
+  const handleEditClick = useCallback((task: Task) => {
+    setEditingTaskId(task.id || null);
+    setTitle(task.title);
+    setCategory(task.category || '');
+    setPriority(task.priority || 'Normal');
+    setModalVisible(true);
+  }, []);
+
+  const handleDeleteTask = useCallback(
+    async (id: string) => {
+      Alert.alert('Delete Task', 'Are you sure?', [
+        { text: 'Cancel', style: 'cancel' },
+        {
+          text: 'Delete',
+          style: 'destructive',
+          onPress: async () => {
+            try {
+              await taskService.deleteTask(id);
+              loadTasks();
+            } catch (e: any) {
+              handleError(e, 'HomeScreen: handleDeleteTask', true);
+            }
+          },
+        },
+      ]);
+    },
+    [loadTasks],
+  );
+
+  const handleLogout = useCallback(async () => {
     try {
       await authService.logout();
     } catch (error) {
-      console.error(error);
+      handleError(error, 'HomeScreen: handleLogout', true);
     }
-  };
+  }, []);
 
-  const testHealthAPI = async () => {
-    setLoadingApi(true);
-    try {
-      // Use standard localhost for iOS simulator or 10.0.2.2 for Android emulator
-      // Default firebase emulator port for functions is 5001
-      // Replace PROJECT_ID with your actual project ID (taskflowai-c0f40)
-      const host = Platform.OS === 'android' ? '10.0.2.2' : '127.0.0.1';
-      const baseUrl = `http://${host}:5001/taskflowai-c0f40/us-central1/health`;
-      
-      const response = await fetch(baseUrl);
-      const data = await response.json();
-      
-      Alert.alert('API Response', JSON.stringify(data, null, 2));
-    } catch (error: any) {
-      Alert.alert('API Error', error.message + '\n\nMake sure your local Firebase emulator is running!');
-    } finally {
-      setLoadingApi(false);
-    }
-  };
+  const renderItem = useCallback(
+    ({ item }: { item: Task }) => (
+      <TaskItem
+        item={item}
+        onEdit={handleEditClick}
+        onDelete={handleDeleteTask}
+      />
+    ),
+    [handleEditClick, handleDeleteTask],
+  );
+
+  const keyExtractor = useCallback((item: Task) => item.id || item.title, []);
 
   return (
-    <SafeAreaView style={styles.safeArea}>
-      <View style={styles.container}>
-        <Text style={styles.title}>Welcome!</Text>
-        <Text style={styles.subtitle}>{user?.displayName || user?.email}</Text>
-        
-        <View style={styles.buttonContainer}>
-          <Button 
-            title="Test Health API" 
-            onPress={testHealthAPI} 
-            loading={loadingApi} 
-          />
-          <Button 
-            title="Test Non-Fatal Error" 
-            onPress={testNonFatalError} 
-          />
-          <Button 
-            title="Test Crash" 
-            onPress={() => triggerCrash()} 
-          />
-          <Button 
-            title="Logout" 
-            onPress={handleLogout} 
-          />
+    <SafeAreaView style={styles.safeArea} testID="home-screen">
+      <View style={styles.header}>
+        <Text style={styles.title}>Tasks</Text>
+        <View style={styles.headerRightContainer}>
+          <TouchableOpacity
+            testID="graphql-screen-button"
+            onPress={() => navigation?.navigate('GraphQLTasks')}
+            style={styles.graphqlButton}
+          >
+            <Text style={styles.graphqlButtonText}>GraphQL 🚀</Text>
+          </TouchableOpacity>
+          <TouchableOpacity testID="logout-button" onPress={handleLogout}>
+            <Text style={styles.logoutText}>Logout</Text>
+          </TouchableOpacity>
         </View>
       </View>
+
+      <FlashList
+        testID="task-list"
+        data={tasks}
+        keyExtractor={keyExtractor}
+        renderItem={renderItem}
+        contentContainerStyle={styles.listContainer}
+        refreshControl={
+          <RefreshControl refreshing={loading} onRefresh={loadTasks} />
+        }
+        ListEmptyComponent={
+          <Text style={styles.emptyText} testID="empty-task-list-text">
+            No tasks found. Add one!
+          </Text>
+        }
+      />
+
+      <View style={styles.fabContainer}>
+        <Button
+          testID="open-add-task-modal-button"
+          title="+ Add Task"
+          onPress={openAddModal}
+        />
+      </View>
+
+      <Modal visible={modalVisible} animationType="slide" transparent={true}>
+        <View style={styles.modalOverlay} testID="task-modal">
+          <View style={styles.modalContent}>
+            <Text style={styles.modalTitle}>
+              {editingTaskId ? 'Edit Task' : 'Add Task'}
+            </Text>
+
+            <Input
+              testID="task-title-input"
+              label="Title"
+              placeholder="Task Title"
+              value={title}
+              onChangeText={setTitle}
+            />
+            <Input
+              testID="task-category-input"
+              label="Category"
+              placeholder="e.g. Work, Personal"
+              value={category}
+              onChangeText={setCategory}
+            />
+            <Input
+              testID="task-priority-input"
+              label="Priority"
+              placeholder="e.g. High, Normal, Low"
+              value={priority}
+              onChangeText={setPriority}
+            />
+
+            <View style={styles.modalButtons}>
+              <View style={styles.modalButton}>
+                <Button
+                  testID="cancel-task-button"
+                  title="Cancel"
+                  onPress={() => setModalVisible(false)}
+                />
+              </View>
+              <View style={styles.modalButton}>
+                <Button
+                  testID="save-task-button"
+                  title="Save"
+                  onPress={handleSaveTask}
+                  loading={loading}
+                />
+              </View>
+            </View>
+          </View>
+        </View>
+      </Modal>
     </SafeAreaView>
   );
 };
@@ -86,25 +240,115 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#f5f5f5',
   },
-  container: {
-    flex: 1,
-    padding: 20,
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     alignItems: 'center',
-    justifyContent: 'center',
+    padding: 20,
+    backgroundColor: '#fff',
+    borderBottomWidth: 1,
+    borderBottomColor: '#eee',
   },
   title: {
-    fontSize: 32,
+    fontSize: 24,
     fontWeight: 'bold',
     color: '#333',
+  },
+  logoutText: {
+    color: '#007AFF',
+    fontSize: 16,
+  },
+  listContainer: {
+    padding: 15,
+  },
+  taskItem: {
+    flexDirection: 'row',
+    backgroundColor: '#fff',
+    padding: 15,
+    borderRadius: 8,
     marginBottom: 10,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
+    elevation: 2,
   },
-  subtitle: {
-    fontSize: 18,
+  taskInfo: {
+    flex: 1,
+  },
+  taskTitle: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#333',
+    marginBottom: 4,
+  },
+  taskSub: {
+    fontSize: 12,
     color: '#666',
-    marginBottom: 40,
   },
-  buttonContainer: {
-    width: '100%',
-    paddingHorizontal: 20,
-  }
+  taskActions: {
+    flexDirection: 'row',
+  },
+  iconButton: {
+    padding: 8,
+    marginLeft: 5,
+  },
+  iconText: {
+    fontSize: 18,
+  },
+  emptyText: {
+    textAlign: 'center',
+    color: '#999',
+    marginTop: 50,
+  },
+  fabContainer: {
+    padding: 15,
+    backgroundColor: '#fff',
+    borderTopWidth: 1,
+    borderTopColor: '#eee',
+  },
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    justifyContent: 'center',
+    padding: 20,
+  },
+  modalContent: {
+    backgroundColor: '#fff',
+    borderRadius: 12,
+    padding: 20,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  modalTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 15,
+    textAlign: 'center',
+  },
+  modalButtons: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 20,
+  },
+  modalButton: {
+    flex: 1,
+    marginHorizontal: 5,
+  },
+  headerRightContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  graphqlButton: {
+    marginRight: 15,
+  },
+  graphqlButtonText: {
+    color: '#007AFF',
+    fontSize: 15,
+    fontWeight: '600',
+  },
 });

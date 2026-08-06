@@ -3,7 +3,9 @@ import { View, Text, StyleSheet, Alert, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Input } from '../components/Input';
 import { Button } from '../components/Button';
-import { authService } from '../services/authService';
+import { authService } from '../features/auth/services/AuthService';
+import { handleError } from '../utils/errorHandler';
+import { CrashlyticsService } from '../core/firebase/CrashlyticsCoreService';
 
 export const LoginScreen = ({ navigation }: any) => {
   const [email, setEmail] = useState('');
@@ -20,17 +22,18 @@ export const LoginScreen = ({ navigation }: any) => {
       await authService.login(email, password);
       // Navigation is handled by auth state observer
     } catch (error: any) {
-      Alert.alert('Login Failed', error.message);
+      handleError(error, 'LoginScreen: handleLogin', true);
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <SafeAreaView style={styles.safeArea}>
+    <SafeAreaView style={styles.safeArea} testID="login-screen">
       <View style={styles.container}>
         <Text style={styles.title}>Welcome Back</Text>
         <Input
+          testID="login-email-input"
           label="Email"
           placeholder="Enter your email"
           value={email}
@@ -39,19 +42,39 @@ export const LoginScreen = ({ navigation }: any) => {
           autoCapitalize="none"
         />
         <Input
+          testID="login-password-input"
           label="Password"
           placeholder="Enter your password"
           value={password}
           onChangeText={setPassword}
           secureTextEntry
         />
-        <Button title="Login" onPress={handleLogin} loading={loading} />
-        
+        <Button
+          testID="login-submit-button"
+          title="Login"
+          onPress={handleLogin}
+          loading={loading}
+        />
+
+        <View style={styles.crashContainer}>
+          <Button
+            title="Force Test Crash"
+            onPress={() => CrashlyticsService.triggerCrash()}
+          />
+        </View>
+
         <View style={styles.footerLinks}>
-          <TouchableOpacity onPress={() => navigation.navigate('ForgotPassword')}>
+          <TouchableOpacity
+            testID="forgot-password-link"
+            onPress={() => navigation.navigate('ForgotPassword')}
+          >
             <Text style={styles.link}>Forgot Password?</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('Signup')} style={{ marginTop: 15 }}>
+          <TouchableOpacity
+            testID="navigate-signup-button"
+            onPress={() => navigation.navigate('Signup')}
+            style={styles.signupLink}
+          >
             <Text style={styles.link}>Don't have an account? Sign Up</Text>
           </TouchableOpacity>
         </View>
@@ -77,6 +100,9 @@ const styles = StyleSheet.create({
     marginBottom: 30,
     textAlign: 'center',
   },
+  crashContainer: {
+    marginTop: 20,
+  },
   footerLinks: {
     marginTop: 20,
     alignItems: 'center',
@@ -84,5 +110,8 @@ const styles = StyleSheet.create({
   link: {
     color: '#007bff',
     fontSize: 14,
-  }
+  },
+  signupLink: {
+    marginTop: 15,
+  },
 });

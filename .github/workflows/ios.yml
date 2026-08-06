@@ -30,7 +30,7 @@ jobs:
           bundler: latest
 
       - name: Install npm dependencies
-        run: npm ci
+        run: npm ci --legacy-peer-deps
 
       - name: Install Pods
         working-directory: ios
