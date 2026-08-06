@@ -1,15 +1,13 @@
 import { retryWithBackoff } from '../../utils/retry';
 import {
   getRemoteConfig,
-  setDefaults,
-  setConfigSettings,
   fetchAndActivate,
   onConfigUpdate,
   getValue,
   getBoolean as firebaseGetBoolean,
   getString as firebaseGetString,
   getNumber as firebaseGetNumber,
-  ConfigValue,
+  Value,
 } from '@react-native-firebase/remote-config';
 
 export const REMOTE_CONFIG_DEFAULTS = {
@@ -67,10 +65,11 @@ export const RemoteConfigCoreService = {
     onUpdate?: (state: RemoteConfigState) => void,
   ): Promise<RemoteConfigState> {
     try {
-      await setDefaults(remoteConfigInstance, REMOTE_CONFIG_DEFAULTS);
-      await setConfigSettings(remoteConfigInstance, {
+      remoteConfigInstance.defaultConfig = REMOTE_CONFIG_DEFAULTS;
+      remoteConfigInstance.settings = {
         minimumFetchIntervalMillis: __DEV__ ? 0 : 3600000,
-      });
+        fetchTimeoutMillis: 60000,
+      };
 
       await retryWithBackoff(() => fetchAndActivate(remoteConfigInstance), {
         maxRetries: 2,
@@ -78,12 +77,19 @@ export const RemoteConfigCoreService = {
       });
 
       if (onUpdate) {
-        onConfigUpdate(remoteConfigInstance, async () => {
-          await retryWithBackoff(() => fetchAndActivate(remoteConfigInstance), {
-            maxRetries: 2,
-            initialDelayMs: 500,
-          });
-          onUpdate(this.getState());
+        onConfigUpdate(remoteConfigInstance, {
+          next: async () => {
+            await retryWithBackoff(
+              () => fetchAndActivate(remoteConfigInstance),
+              {
+                maxRetries: 2,
+                initialDelayMs: 500,
+              },
+            );
+            onUpdate(this.getState());
+          },
+          error: () => {},
+          complete: () => {},
         });
       }
     } catch {
@@ -105,14 +111,17 @@ export const RemoteConfigCoreService = {
     return this.getState();
   },
 
-  getValue(key: string): ConfigValue {
+  getValue(key: string): Value {
     try {
       return getValue(remoteConfigInstance, key);
     } catch {
+      const valStr = String((REMOTE_CONFIG_DEFAULTS as any)[key] ?? '');
       return {
-        value: String((REMOTE_CONFIG_DEFAULTS as any)[key] ?? ''),
-        source: 'default',
-      } as ConfigValue;
+        getSource: () => 'default' as const,
+        asBoolean: () => valStr === 'true',
+        asNumber: () => Number(valStr) || 0,
+        asString: () => valStr,
+      };
     }
   },
 
