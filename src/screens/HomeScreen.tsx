@@ -18,7 +18,7 @@ import { taskService, Task } from '../features/tasks/services/TaskService';
 import { TaskItem } from '../features/tasks/components/TaskItem';
 import { handleError } from '../utils/errorHandler';
 
-export const HomeScreen = () => {
+export const HomeScreen = ({ navigation }: any) => {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [loading, setLoading] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
@@ -144,9 +144,18 @@ export const HomeScreen = () => {
     <SafeAreaView style={styles.safeArea} testID="home-screen">
       <View style={styles.header}>
         <Text style={styles.title}>Tasks</Text>
-        <TouchableOpacity testID="logout-button" onPress={handleLogout}>
-          <Text style={styles.logoutText}>Logout</Text>
-        </TouchableOpacity>
+        <View style={styles.headerRightContainer}>
+          <TouchableOpacity
+            testID="graphql-screen-button"
+            onPress={() => navigation?.navigate('GraphQLTasks')}
+            style={styles.graphqlButton}
+          >
+            <Text style={styles.graphqlButtonText}>GraphQL 🚀</Text>
+          </TouchableOpacity>
+          <TouchableOpacity testID="logout-button" onPress={handleLogout}>
+            <Text style={styles.logoutText}>Logout</Text>
+          </TouchableOpacity>
+        </View>
       </View>
 
       <FlashList
@@ -329,5 +338,17 @@ const styles = StyleSheet.create({
   modalButton: {
     flex: 1,
     marginHorizontal: 5,
+  },
+  headerRightContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  graphqlButton: {
+    marginRight: 15,
+  },
+  graphqlButtonText: {
+    color: '#007AFF',
+    fontSize: 15,
+    fontWeight: '600',
   },
 });

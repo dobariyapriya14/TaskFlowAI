@@ -5,6 +5,7 @@ import { LoginScreen } from '../screens/LoginScreen';
 import { SignupScreen } from '../screens/SignupScreen';
 import { ForgotPassword } from '../screens/ForgotPassword';
 import { HomeScreen } from '../screens/HomeScreen';
+import { GraphQLTasksScreen } from '../screens/GraphQLTasksScreen';
 import { MaintenanceScreen } from '../screens/MaintenanceScreen';
 import { ForceUpdateScreen } from '../screens/ForceUpdateScreen';
 import { useAuth } from '../context/AuthContext';
@@ -12,6 +13,7 @@ import {
   RemoteConfigProvider,
   useRemoteConfig,
 } from '../context/RemoteConfigContext';
+import { GraphQLProvider } from '../graphql/GraphQLProvider';
 import { Loader } from '../components/Loader';
 
 const Stack = createNativeStackNavigator();
@@ -36,7 +38,10 @@ const NavigationContent = () => {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         {user ? (
-          <Stack.Screen name="Home" component={HomeScreen} />
+          <>
+            <Stack.Screen name="Home" component={HomeScreen} />
+            <Stack.Screen name="GraphQLTasks" component={GraphQLTasksScreen} />
+          </>
         ) : (
           <>
             <Stack.Screen name="Login" component={LoginScreen} />
@@ -52,7 +57,9 @@ const NavigationContent = () => {
 export const AppNavigator = () => {
   return (
     <RemoteConfigProvider>
-      <NavigationContent />
+      <GraphQLProvider>
+        <NavigationContent />
+      </GraphQLProvider>
     </RemoteConfigProvider>
   );
 };

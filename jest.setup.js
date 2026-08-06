@@ -104,3 +104,21 @@ jest.mock('@react-native-firebase/remote-config', () => ({
   getString: jest.fn(() => ''),
   getNumber: jest.fn(() => 0),
 }));
+
+// Mock react-native-safe-area-context
+jest.mock('react-native-safe-area-context', () => {
+  const React = require('react');
+  const { View } = require('react-native');
+  const inset = { top: 0, right: 0, bottom: 0, left: 0 };
+  const SafeAreaContext = React.createContext(inset);
+  return {
+    SafeAreaProvider: ({ children }: any) =>
+      React.createElement(SafeAreaContext.Provider, { value: inset }, children),
+    SafeAreaView: ({ children, style, testID }: any) =>
+      React.createElement(View, { style, testID }, children),
+    useSafeAreaInsets: () => inset,
+    SafeAreaContext,
+    SafeAreaFrameContext: SafeAreaContext,
+    SafeAreaInsetsContext: SafeAreaContext,
+  };
+});
