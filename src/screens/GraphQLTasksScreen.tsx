@@ -10,23 +10,20 @@ import {
   Alert,
   RefreshControl,
 } from 'react-native';
-import { useQuery, useMutation } from '@apollo/client/react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Button } from '../components/Button';
 import { Input } from '../components/Input';
 import {
-  GET_TASKS_QUERY,
-  GET_AI_INSIGHTS_QUERY,
-  CREATE_TASK_MUTATION,
-  TOGGLE_TASK_COMPLETED_MUTATION,
-  DELETE_TASK_MUTATION,
-} from '../graphql/operations';
-import { GraphQLTask, AIInsight } from '../graphql/schema';
+  useGraphQLTasks,
+  useGraphQLAIInsights,
+  useGraphQLTaskMutations,
+  latestNativeHeaders,
+  GraphQLTask,
+} from '../graphql';
 import {
   GraphQLNativeBridge,
   NativeGraphQLHeaders,
 } from '../graphql/native/GraphQLNativeBridge';
-import { latestNativeHeaders } from '../graphql/client';
 
 export const GraphQLTasksScreen: React.FC<{ navigation?: any }> = ({
   navigation,
@@ -41,41 +38,11 @@ export const GraphQLTasksScreen: React.FC<{ navigation?: any }> = ({
     useState<NativeGraphQLHeaders | null>(latestNativeHeaders);
   const [cachedPayload, setCachedPayload] = useState<string | null>(null);
 
-  // GraphQL Operations
-  const { data, loading, error, refetch } = useQuery<{ tasks: GraphQLTask[] }>(
-    GET_TASKS_QUERY,
-    {
-      fetchPolicy: 'cache-and-network',
-    },
-  );
-
-  const { data: aiData, refetch: refetchAI } = useQuery<{
-    aiInsights: AIInsight;
-  }>(GET_AI_INSIGHTS_QUERY);
-
-  const [createTask, { loading: creating }] = useMutation(
-    CREATE_TASK_MUTATION,
-    {
-      refetchQueries: [
-        { query: GET_TASKS_QUERY },
-        { query: GET_AI_INSIGHTS_QUERY },
-      ],
-    },
-  );
-
-  const [toggleTaskCompleted] = useMutation(TOGGLE_TASK_COMPLETED_MUTATION, {
-    refetchQueries: [
-      { query: GET_TASKS_QUERY },
-      { query: GET_AI_INSIGHTS_QUERY },
-    ],
-  });
-
-  const [deleteTask] = useMutation(DELETE_TASK_MUTATION, {
-    refetchQueries: [
-      { query: GET_TASKS_QUERY },
-      { query: GET_AI_INSIGHTS_QUERY },
-    ],
-  });
+  // GraphQL Reusable Hooks & Service Layer
+  const { tasks, loading, error, refetch } = useGraphQLTasks();
+  const { aiInsights: ai, refetch: refetchAI } = useGraphQLAIInsights();
+  const { createTask, toggleTaskCompleted, deleteTask, creating } =
+    useGraphQLTaskMutations();
 
   // Load Native Headers & Native Module Cache
   const loadNativeModuleData = useCallback(async () => {
@@ -108,28 +75,15 @@ export const GraphQLTasksScreen: React.FC<{ navigation?: any }> = ({
     }
 
     try {
-      await createTask({
-        variables: {
-          input: {
-            title: title.trim(),
-            category: category.trim() || 'GraphQL',
-            priority,
-            completed: false,
-          },
+      await createTask(
+        {
+          title: title.trim(),
+          category: category.trim() || 'GraphQL',
+          priority,
+          completed: false,
         },
-        optimisticResponse: {
-          createTask: {
-            __typename: 'GraphQLTask',
-            id: `temp-${Date.now()}`,
-            title: title.trim(),
-            category: category.trim() || 'GraphQL',
-            priority,
-            completed: false,
-            createdAt: new Date().toISOString(),
-            updatedAt: new Date().toISOString(),
-          },
-        },
-      });
+        { optimistic: true },
+      );
 
       setTitle('');
       setCategory('');
@@ -142,17 +96,7 @@ export const GraphQLTasksScreen: React.FC<{ navigation?: any }> = ({
 
   const handleToggle = async (task: GraphQLTask) => {
     try {
-      await toggleTaskCompleted({
-        variables: { id: task.id },
-        optimisticResponse: {
-          toggleTaskCompleted: {
-            __typename: 'GraphQLTask',
-            ...task,
-            completed: !task.completed,
-            updatedAt: new Date().toISOString(),
-          },
-        },
-      });
+      await toggleTaskCompleted(task);
     } catch (err: any) {
       Alert.alert('Error', err.message || 'Failed to toggle task status');
     }
@@ -169,7 +113,7 @@ export const GraphQLTasksScreen: React.FC<{ navigation?: any }> = ({
           style: 'destructive',
           onPress: async () => {
             try {
-              await deleteTask({ variables: { id } });
+              await deleteTask(id);
             } catch (err: any) {
               Alert.alert('Error', err.message || 'Failed to delete task');
             }
@@ -182,9 +126,6 @@ export const GraphQLTasksScreen: React.FC<{ navigation?: any }> = ({
   const handleRefresh = async () => {
     await Promise.all([refetch(), refetchAI(), loadNativeModuleData()]);
   };
-
-  const tasks = data?.tasks || [];
-  const ai = aiData?.aiInsights;
 
   const getPriorityBadgeStyle = (taskPriority?: string) => {
     switch (taskPriority) {
