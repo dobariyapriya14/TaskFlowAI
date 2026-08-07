@@ -13,11 +13,27 @@ import {
 } from './native/GraphQLNativeBridge';
 import { MockGraphQLApiLink } from './mocks/mockLink';
 import { CrashlyticsService } from '../core/firebase/CrashlyticsCoreService';
+import {
+  authLink,
+  createAuthLink,
+  createAuthErrorLink,
+  createCombinedAuthLink,
+  AuthLinkOptions,
+} from './links/authLink';
+
+export {
+  authLink,
+  createAuthLink,
+  createAuthErrorLink,
+  createCombinedAuthLink,
+};
+export type { AuthLinkOptions };
 
 export interface ApolloClientOptions {
   useMockApi?: boolean;
   httpUri?: string;
   latencyMs?: number;
+  authOptions?: AuthLinkOptions;
 }
 
 export let latestNativeHeaders: NativeGraphQLHeaders | null = null;
@@ -51,37 +67,52 @@ export const nativeHeaderLink = new ApolloLink((operation, forward) => {
 });
 
 // Centralized Error Link
-export const errorLink = onError(
-  ({ graphQLErrors, networkError, operation }) => {
-    if (graphQLErrors) {
-      graphQLErrors.forEach(({ message }) => {
-        const errMessage = `[GraphQL Error] Operation: ${operation.operationName}, Message: ${message}`;
-        console.warn(errMessage);
-        try {
-          CrashlyticsService.logMessage(errMessage);
-        } catch {
-          // Crashlytics unavailable
-        }
-      });
-    }
-    if (networkError) {
-      const errMessage = `[Network Error] Operation: ${operation.operationName}, Message: ${networkError.message}`;
+export const errorLink = onError((errorResponse: any) => {
+  const { graphQLErrors, networkError, error, operation } = errorResponse;
+  const opName = operation?.operationName || 'Unknown';
+
+  const errors =
+    graphQLErrors ||
+    (error && (error as any).errors) ||
+    (error && Array.isArray((error as any).graphQLErrors)
+      ? (error as any).graphQLErrors
+      : null);
+
+  if (errors && Array.isArray(errors)) {
+    errors.forEach((err: any) => {
+      const errMessage = `[GraphQL Error] Operation: ${opName}, Message: ${err.message}`;
       console.warn(errMessage);
       try {
         CrashlyticsService.logMessage(errMessage);
       } catch {
         // Crashlytics unavailable
       }
+    });
+  }
+
+  const netErr = networkError || (error && !errors ? error : null);
+  if (netErr) {
+    const errMessage = `[Network Error] Operation: ${opName}, Message: ${netErr.message}`;
+    console.warn(errMessage);
+    try {
+      CrashlyticsService.logMessage(errMessage);
+    } catch {
+      // Crashlytics unavailable
     }
-  },
-);
+  }
+});
 
 export const createApolloClient = (options: ApolloClientOptions = {}) => {
   const {
     useMockApi = true,
     httpUri = 'https://api.taskflowai.com/graphql',
     latencyMs = 0,
+    authOptions,
   } = options;
+
+  const activeAuthLink = authOptions
+    ? createCombinedAuthLink(authOptions)
+    : createCombinedAuthLink();
 
   const terminatingLink = useMockApi
     ? new MockGraphQLApiLink(latencyMs)
@@ -105,21 +136,8 @@ export const createApolloClient = (options: ApolloClientOptions = {}) => {
   });
 
   return new ApolloClient({
-    link: from([errorLink, nativeHeaderLink, terminatingLink]),
+    link: from([errorLink, activeAuthLink, nativeHeaderLink, terminatingLink]),
     cache,
-    defaultOptions: {
-      watchQuery: {
-        fetchPolicy: 'no-cache',
-        errorPolicy: 'all',
-      },
-      query: {
-        fetchPolicy: 'no-cache',
-        errorPolicy: 'all',
-      },
-      mutate: {
-        errorPolicy: 'all',
-      },
-    },
   });
 };
 

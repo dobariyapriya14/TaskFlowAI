@@ -7,6 +7,7 @@ import {
 } from '@testing-library/react-native';
 import { GraphQLTasksScreen } from '../src/screens/GraphQLTasksScreen';
 import { GraphQLProvider } from '../src/graphql/GraphQLProvider';
+import { AuthProvider } from '../src/context/AuthContext';
 import { createApolloClient } from '../src/graphql/client';
 
 jest.mock('../src/core/firebase/CrashlyticsCoreService', () => ({
@@ -21,9 +22,11 @@ describe('GraphQLTasksScreen Integration', () => {
     const testClient = createApolloClient({ useMockApi: true, latencyMs: 0 });
 
     await render(
-      <GraphQLProvider client={testClient}>
-        <GraphQLTasksScreen />
-      </GraphQLProvider>,
+      <AuthProvider>
+        <GraphQLProvider client={testClient}>
+          <GraphQLTasksScreen />
+        </GraphQLProvider>
+      </AuthProvider>,
     );
 
     expect(screen.getByTestId('graphql-tasks-screen')).toBeTruthy();
@@ -38,9 +41,11 @@ describe('GraphQLTasksScreen Integration', () => {
     const testClient = createApolloClient({ useMockApi: true, latencyMs: 0 });
 
     await render(
-      <GraphQLProvider client={testClient}>
-        <GraphQLTasksScreen />
-      </GraphQLProvider>,
+      <AuthProvider>
+        <GraphQLProvider client={testClient}>
+          <GraphQLTasksScreen />
+        </GraphQLProvider>
+      </AuthProvider>,
     );
 
     const openModalBtn = screen.getByTestId('open-add-graphql-task-modal');

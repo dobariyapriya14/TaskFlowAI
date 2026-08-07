@@ -16,7 +16,10 @@ jest.mock('@react-navigation/native', () => ({
 jest.mock('@react-native-firebase/auth', () => {
   return {
     getAuth: jest.fn(() => ({
-      currentUser: { uid: 'test-uid' },
+      currentUser: {
+        uid: 'test-uid',
+        getIdToken: jest.fn().mockResolvedValue('test-firebase-token'),
+      },
     })),
     signInWithEmailAndPassword: jest.fn(),
     createUserWithEmailAndPassword: jest.fn(),
