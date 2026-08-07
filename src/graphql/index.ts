@@ -4,3 +4,4 @@ export * from './operations';
 export * from './GraphQLProvider';
 export * from './services';
 export * from './hooks';
+export * from './links/authLink';
