@@ -1,6 +1,7 @@
 import { useQuery, useMutation } from '@apollo/client/react';
 import {
   GET_TASKS_QUERY,
+  GET_TASK_BY_ID_QUERY,
   GET_AI_INSIGHTS_QUERY,
   CREATE_TASK_MUTATION,
   UPDATE_TASK_MUTATION,
@@ -21,6 +22,23 @@ export const useGraphQLTasks = (filter?: TaskFilterOptions) => {
 
   return {
     tasks: data?.tasks || [],
+    loading,
+    error,
+    refetch,
+  };
+};
+
+export const useGraphQLTaskById = (id: string) => {
+  const { data, loading, error, refetch } = useQuery<{
+    task: GraphQLTask | null;
+  }>(GET_TASK_BY_ID_QUERY, {
+    variables: { id },
+    skip: !id,
+    fetchPolicy: 'cache-and-network',
+  });
+
+  return {
+    task: data?.task || null,
     loading,
     error,
     refetch,
