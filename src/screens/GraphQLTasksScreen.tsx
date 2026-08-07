@@ -28,6 +28,7 @@ import {
 export const GraphQLTasksScreen: React.FC<{ navigation?: any }> = ({
   navigation,
 }) => {
+  const [editingTask, setEditingTask] = useState<GraphQLTask | null>(null);
   const [modalVisible, setModalVisible] = useState(false);
   const [title, setTitle] = useState('');
   const [category, setCategory] = useState('');
@@ -41,8 +42,14 @@ export const GraphQLTasksScreen: React.FC<{ navigation?: any }> = ({
   // GraphQL Reusable Hooks & Service Layer
   const { tasks, loading, error, refetch } = useGraphQLTasks();
   const { aiInsights: ai, refetch: refetchAI } = useGraphQLAIInsights();
-  const { createTask, toggleTaskCompleted, deleteTask, creating } =
-    useGraphQLTaskMutations();
+  const {
+    createTask,
+    updateTask,
+    toggleTaskCompleted,
+    deleteTask,
+    creating,
+    updating,
+  } = useGraphQLTaskMutations();
 
   // Load Native Headers & Native Module Cache
   const loadNativeModuleData = useCallback(async () => {
@@ -68,29 +75,55 @@ export const GraphQLTasksScreen: React.FC<{ navigation?: any }> = ({
     loadNativeModuleData();
   }, [loadNativeModuleData]);
 
-  const handleCreateTask = async () => {
+  const openCreateModal = () => {
+    setEditingTask(null);
+    setTitle('');
+    setCategory('');
+    setPriority('Normal');
+    setModalVisible(true);
+  };
+
+  const openEditModal = (task: GraphQLTask) => {
+    setEditingTask(task);
+    setTitle(task.title);
+    setCategory(task.category || '');
+    setPriority(task.priority || 'Normal');
+    setModalVisible(true);
+  };
+
+  const handleSaveTask = async () => {
     if (!title.trim()) {
       Alert.alert('Validation Error', 'Task title is required');
       return;
     }
 
     try {
-      await createTask(
-        {
+      if (editingTask) {
+        await updateTask(editingTask.id, {
           title: title.trim(),
           category: category.trim() || 'GraphQL',
           priority,
-          completed: false,
-        },
-        { optimistic: true },
-      );
+          completed: editingTask.completed,
+        });
+      } else {
+        await createTask(
+          {
+            title: title.trim(),
+            category: category.trim() || 'GraphQL',
+            priority,
+            completed: false,
+          },
+          { optimistic: true },
+        );
+      }
 
       setTitle('');
       setCategory('');
       setPriority('Normal');
+      setEditingTask(null);
       setModalVisible(false);
     } catch (err: any) {
-      Alert.alert('GraphQL Error', err.message || 'Failed to create task');
+      Alert.alert('GraphQL Error', err.message || 'Failed to save task');
     }
   };
 
@@ -290,13 +323,23 @@ export const GraphQLTasksScreen: React.FC<{ navigation?: any }> = ({
                   </View>
                 </View>
 
-                <TouchableOpacity
-                  onPress={() => handleDelete(item.id)}
-                  style={styles.deleteButton}
-                  testID={`delete-task-${item.id}`}
-                >
-                  <Text style={styles.deleteIcon}>🗑️</Text>
-                </TouchableOpacity>
+                <View style={styles.actionButtons}>
+                  <TouchableOpacity
+                    onPress={() => openEditModal(item)}
+                    style={styles.actionButton}
+                    testID={`edit-task-${item.id}`}
+                  >
+                    <Text style={styles.actionIcon}>✏️</Text>
+                  </TouchableOpacity>
+
+                  <TouchableOpacity
+                    onPress={() => handleDelete(item.id)}
+                    style={styles.actionButton}
+                    testID={`delete-task-${item.id}`}
+                  >
+                    <Text style={styles.actionIcon}>🗑️</Text>
+                  </TouchableOpacity>
+                </View>
               </View>
             );
           })
@@ -308,15 +351,17 @@ export const GraphQLTasksScreen: React.FC<{ navigation?: any }> = ({
         <Button
           testID="open-add-graphql-task-modal"
           title="+ Add GraphQL Task"
-          onPress={() => setModalVisible(true)}
+          onPress={openCreateModal}
         />
       </View>
 
-      {/* Add Task Modal */}
+      {/* Add / Edit Task Modal */}
       <Modal visible={modalVisible} animationType="slide" transparent={true}>
         <View style={styles.modalOverlay} testID="graphql-task-modal">
           <View style={styles.modalContent}>
-            <Text style={styles.modalTitle}>New GraphQL Task</Text>
+            <Text style={styles.modalTitle}>
+              {editingTask ? 'Edit GraphQL Task' : 'New GraphQL Task'}
+            </Text>
 
             <Input
               testID="graphql-task-title-input"
@@ -362,15 +407,18 @@ export const GraphQLTasksScreen: React.FC<{ navigation?: any }> = ({
                 <Button
                   testID="cancel-graphql-task-button"
                   title="Cancel"
-                  onPress={() => setModalVisible(false)}
+                  onPress={() => {
+                    setModalVisible(false);
+                    setEditingTask(null);
+                  }}
                 />
               </View>
               <View style={styles.modalButton}>
                 <Button
                   testID="save-graphql-task-button"
-                  title="Save Task"
-                  onPress={handleCreateTask}
-                  loading={creating}
+                  title={editingTask ? 'Update Task' : 'Save Task'}
+                  onPress={handleSaveTask}
+                  loading={creating || updating}
                 />
               </View>
             </View>
@@ -592,11 +640,15 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     color: '#4B5563',
   },
-  deleteButton: {
-    padding: 6,
-    marginLeft: 8,
+  actionButtons: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
-  deleteIcon: {
+  actionButton: {
+    padding: 6,
+    marginLeft: 6,
+  },
+  actionIcon: {
     fontSize: 16,
   },
   fabContainer: {

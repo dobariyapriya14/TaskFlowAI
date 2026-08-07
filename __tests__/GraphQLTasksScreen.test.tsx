@@ -53,6 +53,30 @@ describe('GraphQLTasksScreen Integration', () => {
 
     await waitFor(() => {
       expect(screen.getByTestId('graphql-task-modal')).toBeTruthy();
+      expect(screen.getByText('New GraphQL Task')).toBeTruthy();
+    });
+  });
+
+  it('opens edit modal when pressing edit button on a task', async () => {
+    const testClient = createApolloClient({ useMockApi: true, latencyMs: 0 });
+
+    await render(
+      <AuthProvider>
+        <GraphQLProvider client={testClient}>
+          <GraphQLTasksScreen />
+        </GraphQLProvider>
+      </AuthProvider>,
+    );
+
+    await waitFor(() => {
+      expect(screen.getByTestId('edit-task-gql-1')).toBeTruthy();
+    });
+
+    await fireEvent.press(screen.getByTestId('edit-task-gql-1'));
+
+    await waitFor(() => {
+      expect(screen.getByTestId('graphql-task-modal')).toBeTruthy();
+      expect(screen.getByText('Edit GraphQL Task')).toBeTruthy();
     });
   });
 });
