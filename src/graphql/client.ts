@@ -6,7 +6,9 @@ import {
   Observable,
   from,
 } from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
 import { onError } from '@apollo/client/link/error';
+import { getAuth } from '@react-native-firebase/auth';
 import {
   GraphQLNativeBridge,
   NativeGraphQLHeaders,
@@ -21,6 +23,26 @@ export interface ApolloClientOptions {
 }
 
 export let latestNativeHeaders: NativeGraphQLHeaders | null = null;
+
+// Auth Link: attaches the current Firebase ID token to every GraphQL request
+export const authLink = setContext(async (_, { headers = {} }) => {
+  try {
+    const user = getAuth().currentUser;
+    if (!user) {
+      return { headers };
+    }
+
+    const token = await user.getIdToken();
+    return {
+      headers: {
+        ...headers,
+        ...(token ? { authorization: `Bearer ${token}` } : {}),
+      },
+    };
+  } catch {
+    return { headers };
+  }
+});
 
 // Native Module Link: Intercepts requests and injects native security telemetry headers via Native Bridge
 export const nativeHeaderLink = new ApolloLink((operation, forward) => {
@@ -105,7 +127,7 @@ export const createApolloClient = (options: ApolloClientOptions = {}) => {
   });
 
   return new ApolloClient({
-    link: from([errorLink, nativeHeaderLink, terminatingLink]),
+    link: from([errorLink, authLink, nativeHeaderLink, terminatingLink]),
     cache,
     defaultOptions: {
       watchQuery: {

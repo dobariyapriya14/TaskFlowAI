@@ -13,7 +13,6 @@ import {
   RemoteConfigProvider,
   useRemoteConfig,
 } from '../context/RemoteConfigContext';
-import { GraphQLProvider } from '../graphql/GraphQLProvider';
 import { Loader } from '../components/Loader';
 
 const Stack = createNativeStackNavigator();
@@ -57,9 +56,7 @@ const NavigationContent = () => {
 export const AppNavigator = () => {
   return (
     <RemoteConfigProvider>
-      <GraphQLProvider>
-        <NavigationContent />
-      </GraphQLProvider>
+      <NavigationContent />
     </RemoteConfigProvider>
   );
 };
