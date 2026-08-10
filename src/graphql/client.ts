@@ -20,20 +20,30 @@ import {
   createCombinedAuthLink,
   AuthLinkOptions,
 } from './links/authLink';
+import {
+  initApolloCachePersist,
+  purgeApolloCache,
+  getApolloCachePersistor,
+  CachePersistOptions,
+} from './cachePersist';
 
 export {
   authLink,
   createAuthLink,
   createAuthErrorLink,
   createCombinedAuthLink,
+  initApolloCachePersist,
+  purgeApolloCache,
+  getApolloCachePersistor,
 };
-export type { AuthLinkOptions };
+export type { AuthLinkOptions, CachePersistOptions };
 
 export interface ApolloClientOptions {
   useMockApi?: boolean;
   httpUri?: string;
   latencyMs?: number;
   authOptions?: AuthLinkOptions;
+  cache?: InMemoryCache;
 }
 
 export let latestNativeHeaders: NativeGraphQLHeaders | null = null;
@@ -102,23 +112,8 @@ export const errorLink = onError((errorResponse: any) => {
   }
 });
 
-export const createApolloClient = (options: ApolloClientOptions = {}) => {
-  const {
-    useMockApi = true,
-    httpUri = 'https://api.taskflowai.com/graphql',
-    latencyMs = 0,
-    authOptions,
-  } = options;
-
-  const activeAuthLink = authOptions
-    ? createCombinedAuthLink(authOptions)
-    : createCombinedAuthLink();
-
-  const terminatingLink = useMockApi
-    ? new MockGraphQLApiLink(latencyMs)
-    : new HttpLink({ uri: httpUri });
-
-  const cache = new InMemoryCache({
+export const createApolloCache = (): InMemoryCache => {
+  return new InMemoryCache({
     typePolicies: {
       Query: {
         fields: {
@@ -134,6 +129,24 @@ export const createApolloClient = (options: ApolloClientOptions = {}) => {
       },
     },
   });
+};
+
+export const createApolloClient = (options: ApolloClientOptions = {}) => {
+  const {
+    useMockApi = true,
+    httpUri = 'https://api.taskflowai.com/graphql',
+    latencyMs = 0,
+    authOptions,
+    cache = createApolloCache(),
+  } = options;
+
+  const activeAuthLink = authOptions
+    ? createCombinedAuthLink(authOptions)
+    : createCombinedAuthLink();
+
+  const terminatingLink = useMockApi
+    ? new MockGraphQLApiLink(latencyMs)
+    : new HttpLink({ uri: httpUri });
 
   return new ApolloClient({
     link: from([errorLink, activeAuthLink, nativeHeaderLink, terminatingLink]),
