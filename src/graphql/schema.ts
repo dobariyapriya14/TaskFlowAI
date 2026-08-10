@@ -1,48 +1,20 @@
-export interface GraphQLTask {
-  __typename?: 'GraphQLTask';
-  id: string;
-  title: string;
-  category?: string;
-  priority: 'Low' | 'Normal' | 'High' | 'Urgent';
-  completed: boolean;
-  createdAt: string;
-  updatedAt: string;
-}
+import {
+  GraphQlTask,
+  TaskInput as GeneratedTaskInput,
+  AiInsight,
+  TaskEdge as GeneratedTaskEdge,
+  PageInfo as GeneratedPageInfo,
+  TaskConnection as GeneratedTaskConnection,
+  Priority as GeneratedPriority,
+} from './generated/types';
 
-export interface TaskInput {
-  title: string;
-  category?: string;
-  priority?: 'Low' | 'Normal' | 'High' | 'Urgent';
-  completed?: boolean;
-}
-
-export interface AIInsight {
-  __typename?: 'AIInsight';
-  summary: string;
-  productivityScore: number;
-  recommendations: string[];
-}
-
-export interface TaskEdge {
-  __typename?: 'TaskEdge';
-  cursor: string;
-  node: GraphQLTask;
-}
-
-export interface PageInfo {
-  __typename?: 'PageInfo';
-  startCursor?: string | null;
-  endCursor?: string | null;
-  hasPreviousPage: boolean;
-  hasNextPage: boolean;
-}
-
-export interface TaskConnection {
-  __typename?: 'TaskConnection';
-  edges: TaskEdge[];
-  pageInfo: PageInfo;
-  totalCount: number;
-}
+export type GraphQLTask = GraphQlTask;
+export type TaskInput = GeneratedTaskInput;
+export type AIInsight = AiInsight;
+export type TaskEdge = GeneratedTaskEdge;
+export type PageInfo = GeneratedPageInfo;
+export type TaskConnection = GeneratedTaskConnection;
+export type Priority = GeneratedPriority;
 
 export const typeDefs = `#graphql
   enum Priority {
