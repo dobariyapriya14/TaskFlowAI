@@ -44,4 +44,23 @@ describe('Apollo Client Setup', () => {
     expect(response.data).toBeDefined();
     expect(response.data!.tasks).toBeInstanceOf(Array);
   });
+
+  it('allows customizing retryOptions and errorOptions during client creation', async () => {
+    const onRetry = jest.fn();
+    const onGraphQLError = jest.fn();
+
+    const client = createApolloClient({
+      useMockApi: true,
+      latencyMs: 0,
+      retryOptions: { maxAttempts: 2, initialDelay: 1, onRetry },
+      errorOptions: { onGraphQLError },
+    });
+
+    const response = await client.query<{ tasks: any[] }>({
+      query: GET_TASKS_QUERY,
+    });
+
+    expect(response.data).toBeDefined();
+    expect(response.data!.tasks).toBeInstanceOf(Array);
+  });
 });
