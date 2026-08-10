@@ -6,21 +6,25 @@ import {
   Observable,
   from,
 } from '@apollo/client';
-import { onError } from '@apollo/client/link/error';
 import { relayStylePagination } from '@apollo/client/utilities';
 import {
   GraphQLNativeBridge,
   NativeGraphQLHeaders,
 } from './native/GraphQLNativeBridge';
 import { MockGraphQLApiLink } from './mocks/mockLink';
-import { CrashlyticsService } from '../core/firebase/CrashlyticsCoreService';
 import {
   authLink,
   createAuthLink,
   createAuthErrorLink,
   createCombinedAuthLink,
   AuthLinkOptions,
-} from './links/authLink';
+  retryLink,
+  createRetryLink,
+  GraphQLRetryLinkOptions,
+  errorLink,
+  createErrorLink,
+  GraphQLErrorLinkOptions,
+} from './links';
 import {
   initApolloCachePersist,
   purgeApolloCache,
@@ -33,17 +37,28 @@ export {
   createAuthLink,
   createAuthErrorLink,
   createCombinedAuthLink,
+  retryLink,
+  createRetryLink,
+  errorLink,
+  createErrorLink,
   initApolloCachePersist,
   purgeApolloCache,
   getApolloCachePersistor,
 };
-export type { AuthLinkOptions, CachePersistOptions };
+export type {
+  AuthLinkOptions,
+  GraphQLRetryLinkOptions,
+  GraphQLErrorLinkOptions,
+  CachePersistOptions,
+};
 
 export interface ApolloClientOptions {
   useMockApi?: boolean;
   httpUri?: string;
   latencyMs?: number;
   authOptions?: AuthLinkOptions;
+  retryOptions?: GraphQLRetryLinkOptions;
+  errorOptions?: GraphQLErrorLinkOptions;
   cache?: InMemoryCache;
 }
 
@@ -77,42 +92,6 @@ export const nativeHeaderLink = new ApolloLink((operation, forward) => {
   });
 });
 
-// Centralized Error Link
-export const errorLink = onError((errorResponse: any) => {
-  const { graphQLErrors, networkError, error, operation } = errorResponse;
-  const opName = operation?.operationName || 'Unknown';
-
-  const errors =
-    graphQLErrors ||
-    (error && (error as any).errors) ||
-    (error && Array.isArray((error as any).graphQLErrors)
-      ? (error as any).graphQLErrors
-      : null);
-
-  if (errors && Array.isArray(errors)) {
-    errors.forEach((err: any) => {
-      const errMessage = `[GraphQL Error] Operation: ${opName}, Message: ${err.message}`;
-      console.warn(errMessage);
-      try {
-        CrashlyticsService.logMessage(errMessage);
-      } catch {
-        // Crashlytics unavailable
-      }
-    });
-  }
-
-  const netErr = networkError || (error && !errors ? error : null);
-  if (netErr) {
-    const errMessage = `[Network Error] Operation: ${opName}, Message: ${netErr.message}`;
-    console.warn(errMessage);
-    try {
-      CrashlyticsService.logMessage(errMessage);
-    } catch {
-      // Crashlytics unavailable
-    }
-  }
-});
-
 export const createApolloCache = (): InMemoryCache => {
   return new InMemoryCache({
     typePolicies: {
@@ -139,9 +118,17 @@ export const createApolloClient = (options: ApolloClientOptions = {}) => {
     httpUri = 'https://api.taskflowai.com/graphql',
     latencyMs = 0,
     authOptions,
+    retryOptions,
+    errorOptions,
     cache = createApolloCache(),
   } = options;
 
+  const activeErrorLink = errorOptions
+    ? createErrorLink(errorOptions)
+    : errorLink;
+  const activeRetryLink = retryOptions
+    ? createRetryLink(retryOptions)
+    : retryLink;
   const activeAuthLink = authOptions
     ? createCombinedAuthLink(authOptions)
     : createCombinedAuthLink();
@@ -151,7 +138,13 @@ export const createApolloClient = (options: ApolloClientOptions = {}) => {
     : new HttpLink({ uri: httpUri });
 
   return new ApolloClient({
-    link: from([errorLink, activeAuthLink, nativeHeaderLink, terminatingLink]),
+    link: from([
+      activeErrorLink,
+      activeRetryLink,
+      activeAuthLink,
+      nativeHeaderLink,
+      terminatingLink,
+    ]),
     cache,
   });
 };
