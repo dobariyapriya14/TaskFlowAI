@@ -7,6 +7,7 @@ import {
   from,
 } from '@apollo/client';
 import { onError } from '@apollo/client/link/error';
+import { relayStylePagination } from '@apollo/client/utilities';
 import {
   GraphQLNativeBridge,
   NativeGraphQLHeaders,
@@ -20,20 +21,30 @@ import {
   createCombinedAuthLink,
   AuthLinkOptions,
 } from './links/authLink';
+import {
+  initApolloCachePersist,
+  purgeApolloCache,
+  getApolloCachePersistor,
+  CachePersistOptions,
+} from './cachePersist';
 
 export {
   authLink,
   createAuthLink,
   createAuthErrorLink,
   createCombinedAuthLink,
+  initApolloCachePersist,
+  purgeApolloCache,
+  getApolloCachePersistor,
 };
-export type { AuthLinkOptions };
+export type { AuthLinkOptions, CachePersistOptions };
 
 export interface ApolloClientOptions {
   useMockApi?: boolean;
   httpUri?: string;
   latencyMs?: number;
   authOptions?: AuthLinkOptions;
+  cache?: InMemoryCache;
 }
 
 export let latestNativeHeaders: NativeGraphQLHeaders | null = null;
@@ -102,12 +113,33 @@ export const errorLink = onError((errorResponse: any) => {
   }
 });
 
+export const createApolloCache = (): InMemoryCache => {
+  return new InMemoryCache({
+    typePolicies: {
+      Query: {
+        fields: {
+          tasks: {
+            merge(_existing, incoming) {
+              return incoming;
+            },
+          },
+          tasksConnection: relayStylePagination(['category', 'completed']),
+        },
+      },
+      GraphQLTask: {
+        keyFields: ['id'],
+      },
+    },
+  });
+};
+
 export const createApolloClient = (options: ApolloClientOptions = {}) => {
   const {
     useMockApi = true,
     httpUri = 'https://api.taskflowai.com/graphql',
     latencyMs = 0,
     authOptions,
+    cache = createApolloCache(),
   } = options;
 
   const activeAuthLink = authOptions
@@ -117,23 +149,6 @@ export const createApolloClient = (options: ApolloClientOptions = {}) => {
   const terminatingLink = useMockApi
     ? new MockGraphQLApiLink(latencyMs)
     : new HttpLink({ uri: httpUri });
-
-  const cache = new InMemoryCache({
-    typePolicies: {
-      Query: {
-        fields: {
-          tasks: {
-            merge(_existing, incoming) {
-              return incoming;
-            },
-          },
-        },
-      },
-      GraphQLTask: {
-        keyFields: ['id'],
-      },
-    },
-  });
 
   return new ApolloClient({
     link: from([errorLink, activeAuthLink, nativeHeaderLink, terminatingLink]),

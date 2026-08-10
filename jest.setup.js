@@ -125,3 +125,8 @@ jest.mock('react-native-safe-area-context', () => {
     SafeAreaInsetsContext: SafeAreaContext,
   };
 });
+
+// Mock @react-native-async-storage/async-storage
+jest.mock('@react-native-async-storage/async-storage', () =>
+  require('@react-native-async-storage/async-storage/jest'),
+);

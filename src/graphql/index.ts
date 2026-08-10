@@ -1,4 +1,5 @@
 export * from './client';
+export * from './cachePersist';
 export * from './schema';
 export * from './operations';
 export * from './GraphQLProvider';

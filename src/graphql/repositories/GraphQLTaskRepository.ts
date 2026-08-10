@@ -2,6 +2,7 @@ import { ApolloClient, NormalizedCacheObject } from '@apollo/client';
 import { BaseGraphQLRepository } from './BaseGraphQLRepository';
 import {
   GET_TASKS_QUERY,
+  GET_TASKS_CONNECTION_QUERY,
   GET_TASK_BY_ID_QUERY,
   GET_AI_INSIGHTS_QUERY,
   CREATE_TASK_MUTATION,
@@ -9,8 +10,13 @@ import {
   DELETE_TASK_MUTATION,
   TOGGLE_TASK_COMPLETED_MUTATION,
 } from '../operations';
-import { GraphQLTask, TaskInput, AIInsight } from '../schema';
+import { GraphQLTask, TaskInput, AIInsight, TaskConnection } from '../schema';
 import { TaskFilterOptions } from '../services/GraphQLTaskService';
+
+export interface TaskConnectionOptions extends TaskFilterOptions {
+  first?: number;
+  after?: string | null;
+}
 
 export class GraphQLTaskRepository extends BaseGraphQLRepository<
   GraphQLTask,
@@ -30,6 +36,19 @@ export class GraphQLTaskRepository extends BaseGraphQLRepository<
       filter,
     );
     return response.data?.tasks || [];
+  }
+
+  /**
+   * Fetch paginated tasks connection with cursor support
+   */
+  async getTasksConnection(
+    options?: TaskConnectionOptions,
+  ): Promise<TaskConnection | null> {
+    const response = await this.query<{ tasksConnection: TaskConnection }>(
+      GET_TASKS_CONNECTION_QUERY,
+      options,
+    );
+    return response.data?.tasksConnection || null;
   }
 
   /**
@@ -121,13 +140,37 @@ export class GraphQLTaskRepository extends BaseGraphQLRepository<
   }
 
   /**
-   * Update an existing task
+   * Update an existing task with optional optimistic update support
    */
-  async updateTask(id: string, input: TaskInput): Promise<GraphQLTask> {
+  async updateTask(
+    id: string,
+    input: TaskInput,
+    options?: { optimistic?: boolean; currentTask?: GraphQLTask },
+  ): Promise<GraphQLTask> {
+    let targetTask = options?.currentTask;
+    if (options?.optimistic && !targetTask) {
+      const cachedTasks = this.readCachedTasks();
+      targetTask = cachedTasks.find(t => t.id === id);
+    }
+
+    const optimisticResponse =
+      options?.optimistic && targetTask
+        ? {
+            updateTask: {
+              __typename: 'GraphQLTask' as const,
+              ...targetTask,
+              ...input,
+              completed: input.completed ?? targetTask.completed,
+              updatedAt: new Date().toISOString(),
+            },
+          }
+        : undefined;
+
     const response = await this.mutate<{ updateTask: GraphQLTask }>(
       UPDATE_TASK_MUTATION,
       { id, input },
       {
+        optimisticResponse,
         refetchQueries: [
           { query: GET_TASKS_QUERY },
           { query: GET_AI_INSIGHTS_QUERY },
@@ -147,23 +190,33 @@ export class GraphQLTaskRepository extends BaseGraphQLRepository<
   /**
    * Standard IGraphQLRepository update implementation
    */
-  async update(id: string, input: TaskInput): Promise<GraphQLTask> {
-    return this.updateTask(id, input);
+  async update(
+    id: string,
+    input: TaskInput,
+    options?: { optimistic?: boolean; currentTask?: GraphQLTask },
+  ): Promise<GraphQLTask> {
+    return this.updateTask(id, input, options);
   }
 
   /**
-   * Toggle completed status of a task
+   * Toggle completed status of a task with optimistic update support
    */
   async toggleTaskCompleted(
     id: string,
     currentTask?: GraphQLTask,
   ): Promise<GraphQLTask> {
-    const optimisticResponse = currentTask
+    let targetTask = currentTask;
+    if (!targetTask) {
+      const cachedTasks = this.readCachedTasks();
+      targetTask = cachedTasks.find(t => t.id === id);
+    }
+
+    const optimisticResponse = targetTask
       ? {
           toggleTaskCompleted: {
             __typename: 'GraphQLTask' as const,
-            ...currentTask,
-            completed: !currentTask.completed,
+            ...targetTask,
+            completed: !targetTask.completed,
             updatedAt: new Date().toISOString(),
           },
         }

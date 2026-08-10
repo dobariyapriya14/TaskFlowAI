@@ -23,6 +23,27 @@ export interface AIInsight {
   recommendations: string[];
 }
 
+export interface TaskEdge {
+  __typename?: 'TaskEdge';
+  cursor: string;
+  node: GraphQLTask;
+}
+
+export interface PageInfo {
+  __typename?: 'PageInfo';
+  startCursor?: string | null;
+  endCursor?: string | null;
+  hasPreviousPage: boolean;
+  hasNextPage: boolean;
+}
+
+export interface TaskConnection {
+  __typename?: 'TaskConnection';
+  edges: TaskEdge[];
+  pageInfo: PageInfo;
+  totalCount: number;
+}
+
 export const typeDefs = `#graphql
   enum Priority {
     Low
@@ -47,6 +68,24 @@ export const typeDefs = `#graphql
     recommendations: [String!]!
   }
 
+  type TaskEdge {
+    cursor: String!
+    node: GraphQLTask!
+  }
+
+  type PageInfo {
+    startCursor: String
+    endCursor: String
+    hasPreviousPage: Boolean!
+    hasNextPage: Boolean!
+  }
+
+  type TaskConnection {
+    edges: [TaskEdge!]!
+    pageInfo: PageInfo!
+    totalCount: Int!
+  }
+
   input TaskInput {
     title: String!
     category: String
@@ -56,6 +95,12 @@ export const typeDefs = `#graphql
 
   type Query {
     tasks(category: String, completed: Boolean): [GraphQLTask!]!
+    tasksConnection(
+      first: Int
+      after: String
+      category: String
+      completed: Boolean
+    ): TaskConnection!
     task(id: ID!): GraphQLTask
     aiInsights: AIInsight!
   }

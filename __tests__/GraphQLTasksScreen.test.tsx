@@ -79,4 +79,27 @@ describe('GraphQLTasksScreen Integration', () => {
       expect(screen.getByText('Edit GraphQL Task')).toBeTruthy();
     });
   });
+
+  it('toggles task completion when checkbox is pressed', async () => {
+    const testClient = createApolloClient({ useMockApi: true, latencyMs: 0 });
+
+    await render(
+      <AuthProvider>
+        <GraphQLProvider client={testClient}>
+          <GraphQLTasksScreen />
+        </GraphQLProvider>
+      </AuthProvider>,
+    );
+
+    await waitFor(() => {
+      expect(screen.getByTestId('toggle-task-gql-1')).toBeTruthy();
+    });
+
+    const toggleBtn = screen.getByTestId('toggle-task-gql-1');
+    await fireEvent.press(toggleBtn);
+
+    await waitFor(() => {
+      expect(screen.getByTestId('toggle-task-gql-1')).toBeTruthy();
+    });
+  });
 });

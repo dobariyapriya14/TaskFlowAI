@@ -98,6 +98,32 @@ export const HomeScreen = ({ navigation }: any) => {
     setModalVisible(true);
   }, []);
 
+  const handleToggleCompleted = useCallback(async (task: Task) => {
+    if (!task.id) return;
+    const targetId = task.id;
+    const originalCompleted = !!task.completed;
+    const newCompleted = !originalCompleted;
+
+    // Optimistic state update
+    setTasks(prev =>
+      prev.map(t =>
+        t.id === targetId ? { ...t, completed: newCompleted } : t,
+      ),
+    );
+
+    try {
+      await taskService.toggleTaskCompleted(targetId, originalCompleted);
+    } catch (error: any) {
+      // Revert optimistic update on error
+      setTasks(prev =>
+        prev.map(t =>
+          t.id === targetId ? { ...t, completed: originalCompleted } : t,
+        ),
+      );
+      handleError(error, 'HomeScreen: handleToggleCompleted', true);
+    }
+  }, []);
+
   const handleDeleteTask = useCallback(
     async (id: string) => {
       Alert.alert('Delete Task', 'Are you sure?', [
@@ -133,9 +159,10 @@ export const HomeScreen = ({ navigation }: any) => {
         item={item}
         onEdit={handleEditClick}
         onDelete={handleDeleteTask}
+        onToggleCompleted={handleToggleCompleted}
       />
     ),
-    [handleEditClick, handleDeleteTask],
+    [handleEditClick, handleDeleteTask, handleToggleCompleted],
   );
 
   const keyExtractor = useCallback((item: Task) => item.id || item.title, []);
