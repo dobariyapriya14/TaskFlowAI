@@ -116,6 +116,16 @@ class TaskServiceImpl extends FirestoreRepository<Task> {
     });
   }
 
+  async toggleTaskCompleted(id: string, currentCompleted?: boolean) {
+    const nextCompleted = !(currentCompleted ?? false);
+    await this.update(id, { completed: nextCompleted });
+    if (nextCompleted) {
+      await AnalyticsService.logTaskCompleted({
+        completed_in: 0,
+      });
+    }
+  }
+
   async deleteTask(id: string) {
     await this.delete(id);
     await AnalyticsService.logTaskDeleted();

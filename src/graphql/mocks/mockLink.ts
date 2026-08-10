@@ -32,6 +32,76 @@ let mockTasksStore: GraphQLTask[] = [
     createdAt: new Date(Date.now() - 3600000 * 6).toISOString(),
     updatedAt: new Date(Date.now() - 3600000 * 6).toISOString(),
   },
+  {
+    __typename: 'GraphQLTask',
+    id: 'gql-4',
+    title: 'Configure Apollo Cache Persistence with AsyncStorage',
+    category: 'Architecture',
+    priority: 'High',
+    completed: true,
+    createdAt: new Date(Date.now() - 3600000 * 5).toISOString(),
+    updatedAt: new Date(Date.now() - 3600000 * 5).toISOString(),
+  },
+  {
+    __typename: 'GraphQLTask',
+    id: 'gql-5',
+    title: 'Implement Optimistic UI Updates for Task Toggle',
+    category: 'UI',
+    priority: 'Normal',
+    completed: true,
+    createdAt: new Date(Date.now() - 3600000 * 4).toISOString(),
+    updatedAt: new Date(Date.now() - 3600000 * 4).toISOString(),
+  },
+  {
+    __typename: 'GraphQLTask',
+    id: 'gql-6',
+    title: 'Add Relay Cursor-based Pagination with fetchMore',
+    category: 'GraphQL',
+    priority: 'Urgent',
+    completed: false,
+    createdAt: new Date(Date.now() - 3600000 * 3).toISOString(),
+    updatedAt: new Date(Date.now() - 3600000 * 3).toISOString(),
+  },
+  {
+    __typename: 'GraphQLTask',
+    id: 'gql-7',
+    title: 'Audit Firebase Security Rules',
+    category: 'Security',
+    priority: 'High',
+    completed: false,
+    createdAt: new Date(Date.now() - 3600000 * 2).toISOString(),
+    updatedAt: new Date(Date.now() - 3600000 * 2).toISOString(),
+  },
+  {
+    __typename: 'GraphQLTask',
+    id: 'gql-8',
+    title: 'Set Up Crashlytics Core Exception Logging',
+    category: 'Telemetry',
+    priority: 'Normal',
+    completed: true,
+    createdAt: new Date(Date.now() - 3600000 * 1).toISOString(),
+    updatedAt: new Date(Date.now() - 3600000 * 1).toISOString(),
+  },
+  {
+    __typename: 'GraphQLTask',
+    id: 'gql-9',
+    title: 'Write Unit Tests for GraphQL Pagination Hook',
+    category: 'Testing',
+    priority: 'Normal',
+    completed: false,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+  },
+  {
+    __typename: 'GraphQLTask',
+    id: 'gql-10',
+    title: 'Optimize FlashList Render Performance',
+    category: 'Performance',
+    priority: 'Low',
+    completed: false,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+  },
 ];
 
 export class MockGraphQLApiLink extends ApolloLink {
@@ -83,6 +153,69 @@ export class MockGraphQLApiLink extends ApolloLink {
                 );
               }
               resultData = { tasks: filtered };
+              break;
+            }
+
+            case 'GetTasksConnection': {
+              let filtered = mockTasksStore.map(t => ({
+                __typename: 'GraphQLTask' as const,
+                ...t,
+              }));
+              if (variables?.category) {
+                filtered = filtered.filter(
+                  t =>
+                    t.category?.toLowerCase() ===
+                    variables.category.toLowerCase(),
+                );
+              }
+              if (typeof variables?.completed === 'boolean') {
+                filtered = filtered.filter(
+                  t => t.completed === variables.completed,
+                );
+              }
+
+              const totalCount = filtered.length;
+              const first =
+                typeof variables?.first === 'number' ? variables.first : 5;
+              const after = variables?.after || null;
+
+              let startIndex = 0;
+              if (after) {
+                const afterIndex = filtered.findIndex(
+                  t => t.id === after || `cursor-${t.id}` === after,
+                );
+                if (afterIndex !== -1) {
+                  startIndex = afterIndex + 1;
+                }
+              }
+
+              const sliced = filtered.slice(startIndex, startIndex + first);
+              const edges = sliced.map(t => ({
+                __typename: 'TaskEdge' as const,
+                cursor: t.id,
+                node: t,
+              }));
+
+              const startCursor = edges.length > 0 ? edges[0].cursor : null;
+              const endCursor =
+                edges.length > 0 ? edges[edges.length - 1].cursor : null;
+              const hasNextPage = startIndex + sliced.length < totalCount;
+              const hasPreviousPage = startIndex > 0;
+
+              resultData = {
+                tasksConnection: {
+                  __typename: 'TaskConnection' as const,
+                  edges,
+                  pageInfo: {
+                    __typename: 'PageInfo' as const,
+                    startCursor,
+                    endCursor,
+                    hasPreviousPage,
+                    hasNextPage,
+                  },
+                  totalCount,
+                },
+              };
               break;
             }
 

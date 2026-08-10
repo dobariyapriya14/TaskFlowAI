@@ -1,12 +1,17 @@
 import { ApolloClient, NormalizedCacheObject } from '@apollo/client';
 import { BaseGraphQLService } from './BaseGraphQLService';
-import { GraphQLTaskRepository } from '../repositories/GraphQLTaskRepository';
-import { GraphQLTask, TaskInput, AIInsight } from '../schema';
+import {
+  GraphQLTaskRepository,
+  TaskConnectionOptions,
+} from '../repositories/GraphQLTaskRepository';
+import { GraphQLTask, TaskInput, AIInsight, TaskConnection } from '../schema';
 
 export interface TaskFilterOptions {
   category?: string;
   completed?: boolean;
 }
+
+export type { TaskConnectionOptions };
 
 export class GraphQLTaskService extends BaseGraphQLService {
   private repository: GraphQLTaskRepository;
@@ -26,6 +31,15 @@ export class GraphQLTaskService extends BaseGraphQLService {
    */
   async getTasks(filter?: TaskFilterOptions): Promise<GraphQLTask[]> {
     return this.repository.getTasks(filter);
+  }
+
+  /**
+   * Fetch paginated tasks connection with cursor support
+   */
+  async getTasksConnection(
+    options?: TaskConnectionOptions,
+  ): Promise<TaskConnection | null> {
+    return this.repository.getTasksConnection(options);
   }
 
   /**
@@ -53,10 +67,14 @@ export class GraphQLTaskService extends BaseGraphQLService {
   }
 
   /**
-   * Update an existing task
+   * Update an existing task with optional optimistic updates
    */
-  async updateTask(id: string, input: TaskInput): Promise<GraphQLTask> {
-    return this.repository.updateTask(id, input);
+  async updateTask(
+    id: string,
+    input: TaskInput,
+    options?: { optimistic?: boolean; currentTask?: GraphQLTask },
+  ): Promise<GraphQLTask> {
+    return this.repository.updateTask(id, input, options);
   }
 
   /**

@@ -155,13 +155,31 @@ describe('GraphQLTaskRepository', () => {
     expect(updatedViaGeneric.title).toBe('Updated via Generic Interface');
   });
 
-  it('toggles task completed state via toggleTaskCompleted()', async () => {
+  it('toggles task completed state via toggleTaskCompleted() with and without currentTask', async () => {
     const tasks = await taskRepository.getTasks();
     const target = tasks[0];
     const initialCompleted = target.completed;
 
     const toggled = await taskRepository.toggleTaskCompleted(target.id, target);
     expect(toggled.completed).toBe(!initialCompleted);
+
+    // Toggle back without passing currentTask (tests cache auto-lookup)
+    const toggledBack = await taskRepository.toggleTaskCompleted(target.id);
+    expect(toggledBack.completed).toBe(initialCompleted);
+  });
+
+  it('updates task with optimistic updates option', async () => {
+    const tasks = await taskRepository.getTasks();
+    const target = tasks[0];
+
+    const updatedOptimistically = await taskRepository.updateTask(
+      target.id,
+      { completed: true, title: 'Optimistic Updated Title' },
+      { optimistic: true },
+    );
+
+    expect(updatedOptimistically.completed).toBe(true);
+    expect(updatedOptimistically.title).toBe('Optimistic Updated Title');
   });
 
   it('deletes task via deleteTask() and delete()', async () => {

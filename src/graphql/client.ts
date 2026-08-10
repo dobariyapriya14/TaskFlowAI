@@ -7,6 +7,7 @@ import {
   from,
 } from '@apollo/client';
 import { onError } from '@apollo/client/link/error';
+import { relayStylePagination } from '@apollo/client/utilities';
 import {
   GraphQLNativeBridge,
   NativeGraphQLHeaders,
@@ -122,6 +123,7 @@ export const createApolloCache = (): InMemoryCache => {
               return incoming;
             },
           },
+          tasksConnection: relayStylePagination(['category', 'completed']),
         },
       },
       GraphQLTask: {

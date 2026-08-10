@@ -21,6 +21,37 @@ export const GET_TASKS_QUERY = gql`
   }
 `;
 
+export const GET_TASKS_CONNECTION_QUERY = gql`
+  ${TASK_FRAGMENT}
+  query GetTasksConnection(
+    $first: Int
+    $after: String
+    $category: String
+    $completed: Boolean
+  ) {
+    tasksConnection(
+      first: $first
+      after: $after
+      category: $category
+      completed: $completed
+    ) {
+      edges {
+        cursor
+        node {
+          ...TaskFields
+        }
+      }
+      pageInfo {
+        startCursor
+        endCursor
+        hasPreviousPage
+        hasNextPage
+      }
+      totalCount
+    }
+  }
+`;
+
 export const GET_TASK_BY_ID_QUERY = gql`
   ${TASK_FRAGMENT}
   query GetTaskById($id: ID!) {

@@ -14,7 +14,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Button } from '../components/Button';
 import { Input } from '../components/Input';
 import {
-  useGraphQLTasks,
+  useGraphQLTasksConnection,
   useGraphQLAIInsights,
   useGraphQLTaskMutations,
   latestNativeHeaders,
@@ -39,8 +39,17 @@ export const GraphQLTasksScreen: React.FC<{ navigation?: any }> = ({
     useState<NativeGraphQLHeaders | null>(latestNativeHeaders);
   const [cachedPayload, setCachedPayload] = useState<string | null>(null);
 
-  // GraphQL Reusable Hooks & Service Layer
-  const { tasks, loading, error, refetch } = useGraphQLTasks();
+  // GraphQL Reusable Hooks with Cursor-based Pagination (fetchMore)
+  const {
+    tasks,
+    totalCount,
+    loading,
+    loadingMore,
+    error,
+    refetch,
+    fetchMoreTasks,
+    hasNextPage,
+  } = useGraphQLTasksConnection({ first: 4 });
   const { aiInsights: ai, refetch: refetchAI } = useGraphQLAIInsights();
   const {
     createTask,
@@ -250,7 +259,8 @@ export const GraphQLTasksScreen: React.FC<{ navigation?: any }> = ({
         {/* Task List Section */}
         <View style={styles.sectionHeader}>
           <Text style={styles.sectionTitle}>
-            Apollo Managed Tasks ({tasks.length})
+            Apollo Managed Tasks ({tasks.length}
+            {totalCount ? ` of ${totalCount}` : ''})
           </Text>
         </View>
 
@@ -271,78 +281,99 @@ export const GraphQLTasksScreen: React.FC<{ navigation?: any }> = ({
             </Text>
           </View>
         ) : (
-          tasks.map(item => {
-            const taskCategory = item.category || 'General';
-            const taskPriority = item.priority || 'Normal';
-            const taskTitle = item.title || 'Untitled Task';
+          <>
+            {tasks.map(item => {
+              const taskCategory = item.category || 'General';
+              const taskPriority = item.priority || 'Normal';
+              const taskTitle = item.title || 'Untitled Task';
 
-            return (
-              <View
-                key={item.id}
-                style={styles.taskCard}
-                testID={`graphql-task-item-${item.id}`}
-              >
-                <TouchableOpacity
-                  style={styles.checkboxContainer}
-                  onPress={() => handleToggle(item)}
-                  testID={`toggle-task-${item.id}`}
+              return (
+                <View
+                  key={item.id}
+                  style={styles.taskCard}
+                  testID={`graphql-task-item-${item.id}`}
                 >
-                  <View
-                    style={[
-                      styles.checkbox,
-                      item.completed && styles.checkboxChecked,
-                    ]}
+                  <TouchableOpacity
+                    style={styles.checkboxContainer}
+                    onPress={() => handleToggle(item)}
+                    testID={`toggle-task-${item.id}`}
                   >
-                    {item.completed && <Text style={styles.checkmark}>✓</Text>}
-                  </View>
-                </TouchableOpacity>
-
-                <View style={styles.taskContent}>
-                  <Text
-                    style={[
-                      styles.taskTitle,
-                      item.completed && styles.taskTitleCompleted,
-                    ]}
-                  >
-                    {taskTitle}
-                  </Text>
-                  <View style={styles.tagRow}>
-                    <View style={styles.tagBadge}>
-                      <Text style={styles.tagText}>{taskCategory}</Text>
-                    </View>
                     <View
                       style={[
-                        styles.priorityBadge,
-                        getPriorityBadgeStyle(taskPriority),
+                        styles.checkbox,
+                        item.completed && styles.checkboxChecked,
                       ]}
                     >
-                      <Text style={getPriorityTextStyle(taskPriority)}>
-                        {taskPriority}
-                      </Text>
+                      {item.completed && (
+                        <Text style={styles.checkmark}>✓</Text>
+                      )}
+                    </View>
+                  </TouchableOpacity>
+
+                  <View style={styles.taskContent}>
+                    <Text
+                      style={[
+                        styles.taskTitle,
+                        item.completed && styles.taskTitleCompleted,
+                      ]}
+                    >
+                      {taskTitle}
+                    </Text>
+                    <View style={styles.tagRow}>
+                      <View style={styles.tagBadge}>
+                        <Text style={styles.tagText}>{taskCategory}</Text>
+                      </View>
+                      <View
+                        style={[
+                          styles.priorityBadge,
+                          getPriorityBadgeStyle(taskPriority),
+                        ]}
+                      >
+                        <Text style={getPriorityTextStyle(taskPriority)}>
+                          {taskPriority}
+                        </Text>
+                      </View>
                     </View>
                   </View>
-                </View>
 
-                <View style={styles.actionButtons}>
-                  <TouchableOpacity
-                    onPress={() => openEditModal(item)}
-                    style={styles.actionButton}
-                    testID={`edit-task-${item.id}`}
-                  >
-                    <Text style={styles.actionIcon}>✏️</Text>
-                  </TouchableOpacity>
+                  <View style={styles.actionButtons}>
+                    <TouchableOpacity
+                      onPress={() => openEditModal(item)}
+                      style={styles.actionButton}
+                      testID={`edit-task-${item.id}`}
+                    >
+                      <Text style={styles.actionIcon}>✏️</Text>
+                    </TouchableOpacity>
 
-                  <TouchableOpacity
-                    onPress={() => handleDelete(item.id)}
-                    style={styles.actionButton}
-                    testID={`delete-task-${item.id}`}
-                  >
-                    <Text style={styles.actionIcon}>🗑️</Text>
-                  </TouchableOpacity>
+                    <TouchableOpacity
+                      onPress={() => handleDelete(item.id)}
+                      style={styles.actionButton}
+                      testID={`delete-task-${item.id}`}
+                    >
+                      <Text style={styles.actionIcon}>🗑️</Text>
+                    </TouchableOpacity>
+                  </View>
                 </View>
-              </View>
-            );
-          })
+              );
+            })}
+
+            {hasNextPage && (
+              <TouchableOpacity
+                testID="load-more-button"
+                style={styles.loadMoreButton}
+                onPress={fetchMoreTasks}
+                disabled={loadingMore}
+              >
+                {loadingMore ? (
+                  <ActivityIndicator color="#0284C7" size="small" />
+                ) : (
+                  <Text style={styles.loadMoreText}>
+                    Load More Tasks ({totalCount - tasks.length} remaining)
+                  </Text>
+                )}
+              </TouchableOpacity>
+            )}
+          </>
         )}
       </ScrollView>
 
@@ -715,5 +746,20 @@ const styles = StyleSheet.create({
   modalButton: {
     flex: 1,
     marginHorizontal: 4,
+  },
+  loadMoreButton: {
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    backgroundColor: '#E0F2FE',
+    borderRadius: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 10,
+    marginBottom: 20,
+  },
+  loadMoreText: {
+    color: '#0284C7',
+    fontSize: 14,
+    fontWeight: '600',
   },
 });
