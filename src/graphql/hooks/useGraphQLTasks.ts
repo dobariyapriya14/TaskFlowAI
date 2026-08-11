@@ -218,7 +218,6 @@ export const useGraphQLTaskMutations = () => {
               __typename: 'GraphQLTask' as const,
               ...options.currentTask,
               ...input,
-              priority: input.priority || options.currentTask.priority,
               completed: input.completed ?? options.currentTask.completed,
               updatedAt: new Date().toISOString(),
             },
