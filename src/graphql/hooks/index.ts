@@ -3,3 +3,6 @@ export * from './useGraphQLTaskService';
 export * from './useGraphQLTaskRepository';
 export * from './useGraphQLSubscriptions';
 export * from './useSyncDeviceTelemetry';
+export * from './useNetworkStatus';
+export * from './useOfflineSyncQueue';
+export * from './useOfflineTaskMutations';

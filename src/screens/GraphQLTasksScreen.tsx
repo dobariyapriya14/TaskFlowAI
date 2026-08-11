@@ -16,7 +16,7 @@ import { Input } from '../components/Input';
 import {
   useGraphQLTasksConnection,
   useGraphQLAIInsights,
-  useGraphQLTaskMutations,
+  useOfflineTaskMutations,
   latestNativeHeaders,
   GraphQLTask,
 } from '../graphql';
@@ -56,9 +56,14 @@ export const GraphQLTasksScreen: React.FC<{ navigation?: any }> = ({
     updateTask,
     toggleTaskCompleted,
     deleteTask,
+    isOnline,
+    toggleOffline,
+    pendingCount,
+    isSyncing,
     creating,
     updating,
-  } = useGraphQLTaskMutations();
+    syncQueue,
+  } = useOfflineTaskMutations();
 
   // Load Native Headers & Native Module Cache
   const loadNativeModuleData = useCallback(async () => {
@@ -218,6 +223,56 @@ export const GraphQLTasksScreen: React.FC<{ navigation?: any }> = ({
           <RefreshControl refreshing={loading} onRefresh={handleRefresh} />
         }
       >
+        {/* Offline Network Status & Sync Queue Banner */}
+        <View style={styles.offlineCard} testID="offline-status-banner">
+          <View style={styles.offlineHeaderRow}>
+            <View style={styles.offlineStatusRow}>
+              <View
+                style={[
+                  styles.statusDot,
+                  isOnline ? styles.statusOnline : styles.statusOffline,
+                ]}
+              />
+              <Text style={styles.offlineTitle}>
+                {isOnline ? 'Online Mode' : 'Offline Mode (Queued)'}
+              </Text>
+            </View>
+
+            <TouchableOpacity
+              testID="toggle-offline-button"
+              style={styles.toggleOfflineBtn}
+              onPress={toggleOffline}
+            >
+              <Text style={styles.toggleOfflineText}>
+                {isOnline ? 'Go Offline' : 'Go Online'}
+              </Text>
+            </TouchableOpacity>
+          </View>
+
+          <View style={styles.queueStatusRow}>
+            <Text style={styles.queueText} testID="pending-queue-count-text">
+              Pending Sync Queue: {pendingCount} item
+              {pendingCount === 1 ? '' : 's'}
+            </Text>
+            <TouchableOpacity
+              testID="sync-queue-button"
+              style={[
+                styles.syncQueueBtn,
+                (!isOnline || isSyncing || pendingCount === 0) &&
+                  styles.syncQueueBtnDisabled,
+              ]}
+              onPress={syncQueue}
+              disabled={!isOnline || isSyncing || pendingCount === 0}
+            >
+              {isSyncing ? (
+                <ActivityIndicator size="small" color="#FFFFFF" />
+              ) : (
+                <Text style={styles.syncQueueText}>Sync Queue</Text>
+              )}
+            </TouchableOpacity>
+          </View>
+        </View>
+
         {/* Native Module Header Card */}
         <View style={styles.nativeCard} testID="native-header-card">
           <Text style={styles.nativeCardTitle}>⚡ Native Module Telemetry</Text>
@@ -333,6 +388,15 @@ export const GraphQLTasksScreen: React.FC<{ navigation?: any }> = ({
                           {taskPriority}
                         </Text>
                       </View>
+
+                      {item.id.startsWith('temp-') && (
+                        <View
+                          style={styles.offlineBadge}
+                          testID={`offline-badge-${item.id}`}
+                        >
+                          <Text style={styles.offlineBadgeText}>Offline</Text>
+                        </View>
+                      )}
                     </View>
                   </View>
 
@@ -761,5 +825,89 @@ const styles = StyleSheet.create({
     color: '#0284C7',
     fontSize: 14,
     fontWeight: '600',
+  },
+  offlineCard: {
+    backgroundColor: '#0F172A',
+    borderRadius: 16,
+    padding: 16,
+    marginBottom: 16,
+  },
+  offlineHeaderRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 12,
+  },
+  offlineStatusRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  statusDot: {
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+    marginRight: 8,
+  },
+  statusOnline: {
+    backgroundColor: '#22C55E',
+  },
+  statusOffline: {
+    backgroundColor: '#F97316',
+  },
+  offlineTitle: {
+    color: '#F8FAFC',
+    fontSize: 15,
+    fontWeight: '700',
+  },
+  toggleOfflineBtn: {
+    backgroundColor: '#334155',
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 8,
+  },
+  toggleOfflineText: {
+    color: '#E2E8F0',
+    fontSize: 12,
+    fontWeight: '600',
+  },
+  queueStatusRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingTop: 8,
+    borderTopWidth: 1,
+    borderTopColor: '#1E293B',
+  },
+  queueText: {
+    color: '#94A3B8',
+    fontSize: 13,
+    fontWeight: '500',
+  },
+  syncQueueBtn: {
+    backgroundColor: '#0284C7',
+    paddingHorizontal: 14,
+    paddingVertical: 6,
+    borderRadius: 8,
+  },
+  syncQueueBtnDisabled: {
+    backgroundColor: '#475569',
+    opacity: 0.6,
+  },
+  syncQueueText: {
+    color: '#FFFFFF',
+    fontSize: 12,
+    fontWeight: '700',
+  },
+  offlineBadge: {
+    backgroundColor: '#FFEDD5',
+    paddingHorizontal: 8,
+    paddingVertical: 2,
+    borderRadius: 6,
+    marginLeft: 6,
+  },
+  offlineBadgeText: {
+    color: '#C2410C',
+    fontSize: 11,
+    fontWeight: '700',
   },
 });
