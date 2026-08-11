@@ -1,8 +1,6 @@
 import {
   ApolloClient,
   DocumentNode,
-  QueryOptions,
-  MutationOptions,
   ApolloQueryResult,
   FetchResult,
   NormalizedCacheObject,
@@ -11,15 +9,11 @@ import {
 import { apolloClient as defaultApolloClient } from '../client';
 import { CrashlyticsService } from '../../core/firebase/CrashlyticsCoreService';
 
-export interface GraphQLQueryOptions<
-  TData = any,
-  TVariables = OperationVariables,
-> extends Omit<QueryOptions<TVariables, TData>, 'query'> {}
-
-export interface GraphQLMutationOptions<
-  TData = any,
-  TVariables = OperationVariables,
-> extends Omit<MutationOptions<TData, TVariables>, 'mutation'> {}
+import {
+  GraphQLQueryOptions,
+  GraphQLMutationOptions,
+} from '../services/BaseGraphQLService';
+export { GraphQLQueryOptions, GraphQLMutationOptions };
 
 export interface IGraphQLRepository<
   T,

@@ -1,0 +1,66 @@
+enum Priority {
+  Low
+  Normal
+  High
+  Urgent
+}
+
+type GraphQLTask {
+  id: ID!
+  title: String!
+  category: String
+  priority: Priority!
+  completed: Boolean!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type AIInsight {
+  summary: String!
+  productivityScore: Int!
+  recommendations: [String!]!
+}
+
+type TaskEdge {
+  cursor: String!
+  node: GraphQLTask!
+}
+
+type PageInfo {
+  startCursor: String
+  endCursor: String
+  hasPreviousPage: Boolean!
+  hasNextPage: Boolean!
+}
+
+type TaskConnection {
+  edges: [TaskEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+input TaskInput {
+  title: String!
+  category: String
+  priority: Priority
+  completed: Boolean
+}
+
+type Query {
+  tasks(category: String, completed: Boolean): [GraphQLTask!]!
+  tasksConnection(
+    first: Int
+    after: String
+    category: String
+    completed: Boolean
+  ): TaskConnection!
+  task(id: ID!): GraphQLTask
+  aiInsights: AIInsight!
+}
+
+type Mutation {
+  createTask(input: TaskInput!): GraphQLTask!
+  updateTask(id: ID!, input: TaskInput!): GraphQLTask!
+  deleteTask(id: ID!): Boolean!
+  toggleTaskCompleted(id: ID!): GraphQLTask!
+}

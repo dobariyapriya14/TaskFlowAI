@@ -13,6 +13,7 @@
     "e2e:build-android": "detox build --configuration android.emu.debug",
     "e2e:test-android": "detox test --configuration android.emu.debug",
     "e2e:test-android-attached": "detox test --configuration android.attached.debug",
+    "codegen": "graphql-codegen --config codegen.ts",
     "prepare": "husky"
   },
   "dependencies": {
@@ -44,6 +45,10 @@
     "@babel/runtime": "^7.25.0",
     "@commitlint/cli": "^21.2.1",
     "@commitlint/config-conventional": "^21.2.0",
+    "@graphql-codegen/cli": "^7.2.0",
+    "@graphql-codegen/typescript": "^6.1.0",
+    "@graphql-codegen/typescript-operations": "^6.1.5",
+    "@graphql-codegen/typescript-react-apollo": "^4.4.2",
     "@react-native-community/cli": "20.1.0",
     "@react-native-community/cli-platform-android": "20.1.0",
     "@react-native-community/cli-platform-ios": "20.1.0",
