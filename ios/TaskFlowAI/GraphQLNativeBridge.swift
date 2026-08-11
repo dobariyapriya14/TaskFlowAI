@@ -42,4 +42,24 @@ class GraphQLNativeBridge: NSObject {
     let encrypted = "ENC(" + Data(payload.utf8).base64EncodedString() + ")"
     resolve(encrypted)
   }
+
+  @objc(getDeviceInfoAndBattery:withRejecter:)
+  func getDeviceInfoAndBattery(_ resolve: @escaping RCTPromiseResolveBlock, rejecter reject: @escaping RCTPromiseRejectBlock) {
+    UIDevice.current.isBatteryMonitoringEnabled = true
+    let rawLevel = UIDevice.current.batteryLevel
+    let batteryLevel: Float = rawLevel >= 0 ? rawLevel : 0.85
+    let state = UIDevice.current.batteryState
+    let isCharging = state == .charging || state == .full
+    let deviceModel = UIDevice.current.model
+    let osVersion = UIDevice.current.systemVersion
+
+    let telemetry: [String: Any] = [
+      "batteryLevel": batteryLevel,
+      "isCharging": isCharging,
+      "deviceModel": deviceModel,
+      "osVersion": osVersion,
+      "platform": "iOS"
+    ]
+    resolve(telemetry)
+  }
 }

@@ -1,5 +1,5 @@
 import { MockGraphQLStore } from './store';
-import { TaskInput } from '../schema';
+import { TaskInput, DeviceTelemetryInput } from '../schema';
 
 export const createResolvers = (store: MockGraphQLStore) => ({
   tasks: (args: { category?: string; completed?: boolean }) => {
@@ -24,6 +24,9 @@ export const createResolvers = (store: MockGraphQLStore) => ({
   aiInsights: () => {
     return store.getAIInsights();
   },
+  deviceTelemetry: () => {
+    return store.getDeviceTelemetry();
+  },
   createTask: (args: { input: TaskInput }) => {
     return store.createTask(args.input);
   },
@@ -35,5 +38,8 @@ export const createResolvers = (store: MockGraphQLStore) => ({
   },
   toggleTaskCompleted: (args: { id: string }) => {
     return store.toggleTaskCompleted(args.id);
+  },
+  syncDeviceTelemetry: (args: { input: DeviceTelemetryInput }) => {
+    return store.syncDeviceTelemetry(args.input);
   },
 });

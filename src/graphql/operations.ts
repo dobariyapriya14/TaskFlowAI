@@ -131,3 +131,31 @@ export const TASK_DELETED_SUBSCRIPTION = gql`
     taskDeleted
   }
 `;
+
+export const SYNC_DEVICE_TELEMETRY_MUTATION = gql`
+  mutation SyncDeviceTelemetry($input: DeviceTelemetryInput!) {
+    syncDeviceTelemetry(input: $input) {
+      id
+      batteryLevel
+      isCharging
+      deviceModel
+      osVersion
+      platform
+      syncedAt
+    }
+  }
+`;
+
+export const GET_DEVICE_TELEMETRY_QUERY = gql`
+  query GetDeviceTelemetry {
+    deviceTelemetry {
+      id
+      batteryLevel
+      isCharging
+      deviceModel
+      osVersion
+      platform
+      syncedAt
+    }
+  }
+`;

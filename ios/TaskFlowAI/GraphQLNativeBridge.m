@@ -18,4 +18,7 @@ RCT_EXTERN_METHOD(encryptGraphQLPayload:(NSString *)payload
                   withResolver:(RCTPromiseResolveBlock)resolve
                   withRejecter:(RCTPromiseRejectBlock)reject)
 
+RCT_EXTERN_METHOD(getDeviceInfoAndBattery:(RCTPromiseResolveBlock)resolve
+                  withRejecter:(RCTPromiseRejectBlock)reject)
+
 @end

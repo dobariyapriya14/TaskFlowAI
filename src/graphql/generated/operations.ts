@@ -9,6 +9,14 @@ export type Incremental<T> =
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
 const defaultOptions = {} as const;
+export type DeviceTelemetryInput = {
+  batteryLevel: number;
+  deviceModel: string;
+  isCharging: boolean;
+  osVersion: string;
+  platform: string;
+};
+
 export type Priority = 'High' | 'Low' | 'Normal' | 'Urgent';
 
 export type TaskEventType = 'CREATED' | 'DELETED' | 'UPDATED';
@@ -200,6 +208,36 @@ export type OnTaskDeletedSubscriptionVariables = Exact<{
 }>;
 
 export type OnTaskDeletedSubscription = { taskDeleted: string };
+
+export type SyncDeviceTelemetryMutationVariables = Exact<{
+  input: DeviceTelemetryInput;
+}>;
+
+export type SyncDeviceTelemetryMutation = {
+  syncDeviceTelemetry: {
+    id: string;
+    batteryLevel: number;
+    isCharging: boolean;
+    deviceModel: string;
+    osVersion: string;
+    platform: string;
+    syncedAt: string;
+  };
+};
+
+export type GetDeviceTelemetryQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetDeviceTelemetryQuery = {
+  deviceTelemetry: {
+    id: string;
+    batteryLevel: number;
+    isCharging: boolean;
+    deviceModel: string;
+    osVersion: string;
+    platform: string;
+    syncedAt: string;
+  } | null;
+};
 
 export const TaskFieldsFragmentDoc = gql`
   fragment TaskFields on GraphQLTask {
@@ -949,3 +987,163 @@ export type OnTaskDeletedSubscriptionHookResult = ReturnType<
 >;
 export type OnTaskDeletedSubscriptionResult =
   Apollo.SubscriptionResult<OnTaskDeletedSubscription>;
+export const SyncDeviceTelemetryDocument = gql`
+  mutation SyncDeviceTelemetry($input: DeviceTelemetryInput!) {
+    syncDeviceTelemetry(input: $input) {
+      id
+      batteryLevel
+      isCharging
+      deviceModel
+      osVersion
+      platform
+      syncedAt
+    }
+  }
+`;
+export type SyncDeviceTelemetryMutationFn = Apollo.MutationFunction<
+  SyncDeviceTelemetryMutation,
+  SyncDeviceTelemetryMutationVariables
+>;
+
+/**
+ * __useSyncDeviceTelemetryMutation__
+ *
+ * To run a mutation, you first call `useSyncDeviceTelemetryMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useSyncDeviceTelemetryMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [syncDeviceTelemetryMutation, { data, loading, error }] = useSyncDeviceTelemetryMutation({
+ *   variables: {
+ *      input: // value for 'input'
+ *   },
+ * });
+ */
+export function useSyncDeviceTelemetryMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    SyncDeviceTelemetryMutation,
+    SyncDeviceTelemetryMutationVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    SyncDeviceTelemetryMutation,
+    SyncDeviceTelemetryMutationVariables
+  >(SyncDeviceTelemetryDocument, options);
+}
+export type SyncDeviceTelemetryMutationHookResult = ReturnType<
+  typeof useSyncDeviceTelemetryMutation
+>;
+export type SyncDeviceTelemetryMutationResult =
+  Apollo.MutationResult<SyncDeviceTelemetryMutation>;
+export type SyncDeviceTelemetryMutationOptions = Apollo.BaseMutationOptions<
+  SyncDeviceTelemetryMutation,
+  SyncDeviceTelemetryMutationVariables
+>;
+export const GetDeviceTelemetryDocument = gql`
+  query GetDeviceTelemetry {
+    deviceTelemetry {
+      id
+      batteryLevel
+      isCharging
+      deviceModel
+      osVersion
+      platform
+      syncedAt
+    }
+  }
+`;
+
+/**
+ * __useGetDeviceTelemetryQuery__
+ *
+ * To run a query within a React component, call `useGetDeviceTelemetryQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetDeviceTelemetryQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetDeviceTelemetryQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetDeviceTelemetryQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    GetDeviceTelemetryQuery,
+    GetDeviceTelemetryQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    GetDeviceTelemetryQuery,
+    GetDeviceTelemetryQueryVariables
+  >(GetDeviceTelemetryDocument, options);
+}
+export function useGetDeviceTelemetryLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetDeviceTelemetryQuery,
+    GetDeviceTelemetryQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    GetDeviceTelemetryQuery,
+    GetDeviceTelemetryQueryVariables
+  >(GetDeviceTelemetryDocument, options);
+}
+// @ts-ignore
+export function useGetDeviceTelemetrySuspenseQuery(
+  baseOptions?: Apollo.SuspenseQueryHookOptions<
+    GetDeviceTelemetryQuery,
+    GetDeviceTelemetryQueryVariables
+  >,
+): Apollo.UseSuspenseQueryResult<
+  GetDeviceTelemetryQuery,
+  GetDeviceTelemetryQueryVariables
+>;
+export function useGetDeviceTelemetrySuspenseQuery(
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<
+        GetDeviceTelemetryQuery,
+        GetDeviceTelemetryQueryVariables
+      >,
+): Apollo.UseSuspenseQueryResult<
+  GetDeviceTelemetryQuery | undefined,
+  GetDeviceTelemetryQueryVariables
+>;
+export function useGetDeviceTelemetrySuspenseQuery(
+  baseOptions?:
+    | Apollo.SkipToken
+    | Apollo.SuspenseQueryHookOptions<
+        GetDeviceTelemetryQuery,
+        GetDeviceTelemetryQueryVariables
+      >,
+) {
+  const options =
+    baseOptions === Apollo.skipToken
+      ? baseOptions
+      : { ...defaultOptions, ...baseOptions };
+  return Apollo.useSuspenseQuery<
+    GetDeviceTelemetryQuery,
+    GetDeviceTelemetryQueryVariables
+  >(GetDeviceTelemetryDocument, options);
+}
+export type GetDeviceTelemetryQueryHookResult = ReturnType<
+  typeof useGetDeviceTelemetryQuery
+>;
+export type GetDeviceTelemetryLazyQueryHookResult = ReturnType<
+  typeof useGetDeviceTelemetryLazyQuery
+>;
+export type GetDeviceTelemetrySuspenseQueryHookResult = ReturnType<
+  typeof useGetDeviceTelemetrySuspenseQuery
+>;
+export type GetDeviceTelemetryQueryResult = Apollo.QueryResult<
+  GetDeviceTelemetryQuery,
+  GetDeviceTelemetryQueryVariables
+>;

@@ -1,4 +1,37 @@
-import { EventEmitter } from 'events';
+export class SimpleEventEmitter {
+  private listeners: Record<string, ((...args: any[]) => void)[]> = {};
+
+  public setMaxListeners(_n: number): this {
+    return this;
+  }
+
+  public on(event: string, listener: (...args: any[]) => void): this {
+    if (!this.listeners[event]) {
+      this.listeners[event] = [];
+    }
+    this.listeners[event].push(listener);
+    return this;
+  }
+
+  public off(event: string, listener: (...args: any[]) => void): this {
+    if (!this.listeners[event]) return this;
+    this.listeners[event] = this.listeners[event].filter(l => l !== listener);
+    return this;
+  }
+
+  public emit(event: string, ...args: any[]): boolean {
+    if (!this.listeners[event]) return false;
+    this.listeners[event].forEach(listener => {
+      try {
+        listener(...args);
+      } catch (e) {
+        console.error(`Error in event listener for ${event}:`, e);
+      }
+    });
+    return true;
+  }
+}
+
 import {
   GraphQLTask,
   TaskInput,
@@ -6,6 +39,8 @@ import {
   TaskConnection,
   TaskEdge,
   PageInfo,
+  DeviceTelemetry,
+  DeviceTelemetryInput,
 } from '../schema';
 
 export interface TaskSubscriptionPayload {
@@ -109,11 +144,11 @@ export const INITIAL_MOCK_TASKS: GraphQLTask[] = [
 
 export class MockGraphQLStore {
   private tasks: GraphQLTask[];
-  public emitter: EventEmitter;
+  public emitter: SimpleEventEmitter;
 
   constructor(initialTasks: GraphQLTask[] = INITIAL_MOCK_TASKS) {
     this.tasks = JSON.parse(JSON.stringify(initialTasks));
-    this.emitter = new EventEmitter();
+    this.emitter = new SimpleEventEmitter();
     this.emitter.setMaxListeners(100);
   }
 
@@ -293,6 +328,26 @@ export class MockGraphQLStore {
     this.emitter.emit('TASK_UPDATED', payload);
 
     return updated;
+  }
+
+  private telemetry: DeviceTelemetry | null = null;
+
+  public getDeviceTelemetry(): DeviceTelemetry | null {
+    return this.telemetry;
+  }
+
+  public syncDeviceTelemetry(input: DeviceTelemetryInput): DeviceTelemetry {
+    const record: DeviceTelemetry = {
+      id: `tel-${Date.now()}`,
+      batteryLevel: input.batteryLevel,
+      isCharging: input.isCharging,
+      deviceModel: input.deviceModel,
+      osVersion: input.osVersion,
+      platform: input.platform,
+      syncedAt: new Date().toISOString(),
+    };
+    this.telemetry = record;
+    return record;
   }
 }
 

@@ -16,6 +16,25 @@ export type AiInsight = {
   summary: Scalars['String']['output'];
 };
 
+export type DeviceTelemetry = {
+  __typename?: 'DeviceTelemetry';
+  batteryLevel: Scalars['Float']['output'];
+  deviceModel: Scalars['String']['output'];
+  id: Scalars['ID']['output'];
+  isCharging: Scalars['Boolean']['output'];
+  osVersion: Scalars['String']['output'];
+  platform: Scalars['String']['output'];
+  syncedAt: Scalars['String']['output'];
+};
+
+export type DeviceTelemetryInput = {
+  batteryLevel: Scalars['Float']['input'];
+  deviceModel: Scalars['String']['input'];
+  isCharging: Scalars['Boolean']['input'];
+  osVersion: Scalars['String']['input'];
+  platform: Scalars['String']['input'];
+};
+
 export type GraphQlTask = {
   __typename?: 'GraphQLTask';
   category?: Maybe<Scalars['String']['output']>;
@@ -31,6 +50,7 @@ export type Mutation = {
   __typename?: 'Mutation';
   createTask: GraphQlTask;
   deleteTask: Scalars['Boolean']['output'];
+  syncDeviceTelemetry: DeviceTelemetry;
   toggleTaskCompleted: GraphQlTask;
   updateTask: GraphQlTask;
 };
@@ -41,6 +61,10 @@ export type MutationCreateTaskArgs = {
 
 export type MutationDeleteTaskArgs = {
   id: Scalars['ID']['input'];
+};
+
+export type MutationSyncDeviceTelemetryArgs = {
+  input: DeviceTelemetryInput;
 };
 
 export type MutationToggleTaskCompletedArgs = {
@@ -65,6 +89,7 @@ export type Priority = 'High' | 'Low' | 'Normal' | 'Urgent';
 export type Query = {
   __typename?: 'Query';
   aiInsights: AiInsight;
+  deviceTelemetry?: Maybe<DeviceTelemetry>;
   task?: Maybe<GraphQlTask>;
   tasks: Array<GraphQlTask>;
   tasksConnection: TaskConnection;

@@ -253,6 +253,29 @@ export class MockGraphQLApiLink extends ApolloLink {
               break;
             }
 
+            case 'GetDeviceTelemetry': {
+              const telemetry = mockServerStore.getDeviceTelemetry();
+              resultData = {
+                deviceTelemetry: telemetry
+                  ? { __typename: 'DeviceTelemetry', ...telemetry }
+                  : null,
+              };
+              break;
+            }
+
+            case 'SyncDeviceTelemetry': {
+              const synced = mockServerStore.syncDeviceTelemetry(
+                variables.input,
+              );
+              resultData = {
+                syncDeviceTelemetry: {
+                  __typename: 'DeviceTelemetry',
+                  ...synced,
+                },
+              };
+              break;
+            }
+
             case 'OnTaskUpdated': {
               const listener = (payload: any) => {
                 observer.next({
