@@ -75,6 +75,7 @@ export const typeDefs = `#graphql
     ): TaskConnection!
     task(id: ID!): GraphQLTask
     aiInsights: AIInsight!
+    deviceTelemetry: DeviceTelemetry
   }
 
   type Mutation {
@@ -82,5 +83,42 @@ export const typeDefs = `#graphql
     updateTask(id: ID!, input: TaskInput!): GraphQLTask!
     deleteTask(id: ID!): Boolean!
     toggleTaskCompleted(id: ID!): GraphQLTask!
+    syncDeviceTelemetry(input: DeviceTelemetryInput!): DeviceTelemetry!
+  }
+
+  input DeviceTelemetryInput {
+    batteryLevel: Float!
+    isCharging: Boolean!
+    deviceModel: String!
+    osVersion: String!
+    platform: String!
+  }
+
+  type DeviceTelemetry {
+    id: ID!
+    batteryLevel: Float!
+    isCharging: Boolean!
+    deviceModel: String!
+    osVersion: String!
+    platform: String!
+    syncedAt: String!
+  }
+
+  enum TaskEventType {
+    CREATED
+    UPDATED
+    DELETED
+  }
+
+  type TaskSubscriptionPayload {
+    event: TaskEventType!
+    taskId: ID!
+    task: GraphQLTask
+  }
+
+  type Subscription {
+    taskUpdated: TaskSubscriptionPayload!
+    taskCreated: GraphQLTask!
+    taskDeleted: ID!
   }
 `;

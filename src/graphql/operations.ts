@@ -103,3 +103,59 @@ export const TOGGLE_TASK_COMPLETED_MUTATION = gql`
     }
   }
 `;
+
+export const TASK_UPDATED_SUBSCRIPTION = gql`
+  ${TASK_FRAGMENT}
+  subscription OnTaskUpdated {
+    taskUpdated {
+      event
+      taskId
+      task {
+        ...TaskFields
+      }
+    }
+  }
+`;
+
+export const TASK_CREATED_SUBSCRIPTION = gql`
+  ${TASK_FRAGMENT}
+  subscription OnTaskCreated {
+    taskCreated {
+      ...TaskFields
+    }
+  }
+`;
+
+export const TASK_DELETED_SUBSCRIPTION = gql`
+  subscription OnTaskDeleted {
+    taskDeleted
+  }
+`;
+
+export const SYNC_DEVICE_TELEMETRY_MUTATION = gql`
+  mutation SyncDeviceTelemetry($input: DeviceTelemetryInput!) {
+    syncDeviceTelemetry(input: $input) {
+      id
+      batteryLevel
+      isCharging
+      deviceModel
+      osVersion
+      platform
+      syncedAt
+    }
+  }
+`;
+
+export const GET_DEVICE_TELEMETRY_QUERY = gql`
+  query GetDeviceTelemetry {
+    deviceTelemetry {
+      id
+      batteryLevel
+      isCharging
+      deviceModel
+      osVersion
+      platform
+      syncedAt
+    }
+  }
+`;

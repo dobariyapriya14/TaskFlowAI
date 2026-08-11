@@ -8,11 +8,20 @@ export interface NativeGraphQLHeaders {
   'X-Native-Client-Version': string;
 }
 
+export interface NativeDeviceInfoAndBattery {
+  batteryLevel: number;
+  isCharging: boolean;
+  deviceModel: string;
+  osVersion: string;
+  platform: string;
+}
+
 export interface IGraphQLNativeBridge {
   getNativeHeaders(): Promise<NativeGraphQLHeaders>;
   cacheGraphQLResponse(key: string, value: string): Promise<boolean>;
   getCachedGraphQLResponse(key: string): Promise<string | null>;
   encryptGraphQLPayload(payload: string): Promise<string>;
+  getDeviceInfoAndBattery(): Promise<NativeDeviceInfoAndBattery>;
 }
 
 const { GraphQLNativeBridge: NativeModule } = NativeModules;
@@ -36,6 +45,28 @@ class GraphQLNativeBridgeService implements IGraphQLNativeBridge {
       'X-Native-OS-Version': String(Platform.Version),
       'X-Native-Security-Token': `js_sec_token_${Date.now()}`,
       'X-Native-Client-Version': '1.0.0-js',
+    };
+  }
+
+  async getDeviceInfoAndBattery(): Promise<NativeDeviceInfoAndBattery> {
+    if (
+      NativeModule &&
+      typeof NativeModule.getDeviceInfoAndBattery === 'function'
+    ) {
+      try {
+        return await NativeModule.getDeviceInfoAndBattery();
+      } catch {
+        // Fall back
+      }
+    }
+
+    return {
+      batteryLevel: 0.85,
+      isCharging: true,
+      deviceModel:
+        Platform.OS === 'ios' ? 'iPhone-Simulator' : 'Android-Emulator',
+      osVersion: String(Platform.Version),
+      platform: Platform.OS === 'ios' ? 'iOS' : 'Android',
     };
   }
 

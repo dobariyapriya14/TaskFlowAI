@@ -14,6 +14,7 @@
     "e2e:test-android": "detox test --configuration android.emu.debug",
     "e2e:test-android-attached": "detox test --configuration android.attached.debug",
     "codegen": "graphql-codegen --config codegen.ts",
+    "mock:server": "ts-node src/graphql/server/index.ts",
     "prepare": "husky"
   },
   "dependencies": {
