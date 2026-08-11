@@ -86,6 +86,13 @@ export type QueryTasksConnectionArgs = {
   first?: InputMaybe<Scalars['Int']['input']>;
 };
 
+export type Subscription = {
+  __typename?: 'Subscription';
+  taskCreated: GraphQlTask;
+  taskDeleted: Scalars['ID']['output'];
+  taskUpdated: TaskSubscriptionPayload;
+};
+
 export type TaskConnection = {
   __typename?: 'TaskConnection';
   edges: Array<TaskEdge>;
@@ -99,9 +106,18 @@ export type TaskEdge = {
   node: GraphQlTask;
 };
 
+export type TaskEventType = 'CREATED' | 'DELETED' | 'UPDATED';
+
 export type TaskInput = {
   category?: InputMaybe<Scalars['String']['input']>;
   completed?: InputMaybe<Scalars['Boolean']['input']>;
   priority?: InputMaybe<Priority>;
   title: Scalars['String']['input'];
+};
+
+export type TaskSubscriptionPayload = {
+  __typename?: 'TaskSubscriptionPayload';
+  event: TaskEventType;
+  task?: Maybe<GraphQlTask>;
+  taskId: Scalars['ID']['output'];
 };

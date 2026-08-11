@@ -83,4 +83,22 @@ export const typeDefs = `#graphql
     deleteTask(id: ID!): Boolean!
     toggleTaskCompleted(id: ID!): GraphQLTask!
   }
+
+  enum TaskEventType {
+    CREATED
+    UPDATED
+    DELETED
+  }
+
+  type TaskSubscriptionPayload {
+    event: TaskEventType!
+    taskId: ID!
+    task: GraphQLTask
+  }
+
+  type Subscription {
+    taskUpdated: TaskSubscriptionPayload!
+    taskCreated: GraphQLTask!
+    taskDeleted: ID!
+  }
 `;

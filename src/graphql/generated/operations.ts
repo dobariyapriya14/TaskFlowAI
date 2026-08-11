@@ -11,6 +11,8 @@ import * as Apollo from '@apollo/client';
 const defaultOptions = {} as const;
 export type Priority = 'High' | 'Low' | 'Normal' | 'Urgent';
 
+export type TaskEventType = 'CREATED' | 'DELETED' | 'UPDATED';
+
 export type TaskInput = {
   category?: string | null | undefined;
   completed?: boolean | null | undefined;
@@ -156,6 +158,48 @@ export type ToggleTaskCompletedMutation = {
     updatedAt: string;
   };
 };
+
+export type OnTaskUpdatedSubscriptionVariables = Exact<{
+  [key: string]: never;
+}>;
+
+export type OnTaskUpdatedSubscription = {
+  taskUpdated: {
+    event: TaskEventType;
+    taskId: string;
+    task: {
+      id: string;
+      title: string;
+      category: string | null;
+      priority: Priority;
+      completed: boolean;
+      createdAt: string;
+      updatedAt: string;
+    } | null;
+  };
+};
+
+export type OnTaskCreatedSubscriptionVariables = Exact<{
+  [key: string]: never;
+}>;
+
+export type OnTaskCreatedSubscription = {
+  taskCreated: {
+    id: string;
+    title: string;
+    category: string | null;
+    priority: Priority;
+    completed: boolean;
+    createdAt: string;
+    updatedAt: string;
+  };
+};
+
+export type OnTaskDeletedSubscriptionVariables = Exact<{
+  [key: string]: never;
+}>;
+
+export type OnTaskDeletedSubscription = { taskDeleted: string };
 
 export const TaskFieldsFragmentDoc = gql`
   fragment TaskFields on GraphQLTask {
@@ -781,3 +825,127 @@ export type ToggleTaskCompletedMutationOptions = Apollo.BaseMutationOptions<
   ToggleTaskCompletedMutation,
   ToggleTaskCompletedMutationVariables
 >;
+export const OnTaskUpdatedDocument = gql`
+  subscription OnTaskUpdated {
+    taskUpdated {
+      event
+      taskId
+      task {
+        ...TaskFields
+      }
+    }
+  }
+  ${TaskFieldsFragmentDoc}
+`;
+
+/**
+ * __useOnTaskUpdatedSubscription__
+ *
+ * To run a query within a React component, call `useOnTaskUpdatedSubscription` and pass it any options that fit your needs.
+ * When your component renders, `useOnTaskUpdatedSubscription` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the subscription, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useOnTaskUpdatedSubscription({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useOnTaskUpdatedSubscription(
+  baseOptions?: Apollo.SubscriptionHookOptions<
+    OnTaskUpdatedSubscription,
+    OnTaskUpdatedSubscriptionVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSubscription<
+    OnTaskUpdatedSubscription,
+    OnTaskUpdatedSubscriptionVariables
+  >(OnTaskUpdatedDocument, options);
+}
+export type OnTaskUpdatedSubscriptionHookResult = ReturnType<
+  typeof useOnTaskUpdatedSubscription
+>;
+export type OnTaskUpdatedSubscriptionResult =
+  Apollo.SubscriptionResult<OnTaskUpdatedSubscription>;
+export const OnTaskCreatedDocument = gql`
+  subscription OnTaskCreated {
+    taskCreated {
+      ...TaskFields
+    }
+  }
+  ${TaskFieldsFragmentDoc}
+`;
+
+/**
+ * __useOnTaskCreatedSubscription__
+ *
+ * To run a query within a React component, call `useOnTaskCreatedSubscription` and pass it any options that fit your needs.
+ * When your component renders, `useOnTaskCreatedSubscription` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the subscription, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useOnTaskCreatedSubscription({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useOnTaskCreatedSubscription(
+  baseOptions?: Apollo.SubscriptionHookOptions<
+    OnTaskCreatedSubscription,
+    OnTaskCreatedSubscriptionVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSubscription<
+    OnTaskCreatedSubscription,
+    OnTaskCreatedSubscriptionVariables
+  >(OnTaskCreatedDocument, options);
+}
+export type OnTaskCreatedSubscriptionHookResult = ReturnType<
+  typeof useOnTaskCreatedSubscription
+>;
+export type OnTaskCreatedSubscriptionResult =
+  Apollo.SubscriptionResult<OnTaskCreatedSubscription>;
+export const OnTaskDeletedDocument = gql`
+  subscription OnTaskDeleted {
+    taskDeleted
+  }
+`;
+
+/**
+ * __useOnTaskDeletedSubscription__
+ *
+ * To run a query within a React component, call `useOnTaskDeletedSubscription` and pass it any options that fit your needs.
+ * When your component renders, `useOnTaskDeletedSubscription` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the subscription, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useOnTaskDeletedSubscription({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useOnTaskDeletedSubscription(
+  baseOptions?: Apollo.SubscriptionHookOptions<
+    OnTaskDeletedSubscription,
+    OnTaskDeletedSubscriptionVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useSubscription<
+    OnTaskDeletedSubscription,
+    OnTaskDeletedSubscriptionVariables
+  >(OnTaskDeletedDocument, options);
+}
+export type OnTaskDeletedSubscriptionHookResult = ReturnType<
+  typeof useOnTaskDeletedSubscription
+>;
+export type OnTaskDeletedSubscriptionResult =
+  Apollo.SubscriptionResult<OnTaskDeletedSubscription>;

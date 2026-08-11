@@ -1,5 +1,6 @@
 import { ApolloLink, Observable, Operation, FetchResult } from '@apollo/client';
 import { GraphQLTask, TaskInput, AIInsight } from '../schema';
+import { mockServerStore } from '../server/store';
 
 let mockTasksStore: GraphQLTask[] = [
   {
@@ -252,6 +253,55 @@ export class MockGraphQLApiLink extends ApolloLink {
               break;
             }
 
+            case 'OnTaskUpdated': {
+              const listener = (payload: any) => {
+                observer.next({
+                  data: {
+                    taskUpdated: {
+                      __typename: 'TaskSubscriptionPayload',
+                      event: payload.event,
+                      taskId: payload.taskId,
+                      task: payload.task
+                        ? { __typename: 'GraphQLTask', ...payload.task }
+                        : null,
+                    },
+                  },
+                });
+              };
+              mockServerStore.emitter.on('TASK_UPDATED', listener);
+              return () => {
+                mockServerStore.emitter.off('TASK_UPDATED', listener);
+              };
+            }
+
+            case 'OnTaskCreated': {
+              const listener = (task: any) => {
+                observer.next({
+                  data: {
+                    taskCreated: { __typename: 'GraphQLTask', ...task },
+                  },
+                });
+              };
+              mockServerStore.emitter.on('TASK_CREATED', listener);
+              return () => {
+                mockServerStore.emitter.off('TASK_CREATED', listener);
+              };
+            }
+
+            case 'OnTaskDeleted': {
+              const listener = (id: string) => {
+                observer.next({
+                  data: {
+                    taskDeleted: id,
+                  },
+                });
+              };
+              mockServerStore.emitter.on('TASK_DELETED', listener);
+              return () => {
+                mockServerStore.emitter.off('TASK_DELETED', listener);
+              };
+            }
+
             case 'CreateTask': {
               const input: TaskInput = variables.input;
               const newTask: GraphQLTask = {
@@ -259,12 +309,18 @@ export class MockGraphQLApiLink extends ApolloLink {
                 id: `gql-${Date.now()}-${Math.floor(Math.random() * 1000)}`,
                 title: input.title,
                 category: input.category || 'General',
-                priority: input.priority || 'Normal',
+                priority: (input.priority || 'Normal') as any,
                 completed: input.completed ?? false,
                 createdAt: new Date().toISOString(),
                 updatedAt: new Date().toISOString(),
               };
               mockTasksStore.unshift(newTask);
+              mockServerStore.emitter.emit('TASK_UPDATED', {
+                event: 'CREATED',
+                taskId: newTask.id,
+                task: newTask,
+              });
+              mockServerStore.emitter.emit('TASK_CREATED', newTask);
               resultData = { createTask: newTask };
               break;
             }
@@ -281,10 +337,22 @@ export class MockGraphQLApiLink extends ApolloLink {
               const updatedTask: GraphQLTask = {
                 ...mockTasksStore[index],
                 ...input,
+                title: input.title || mockTasksStore[index].title,
+                priority: (input.priority ||
+                  mockTasksStore[index].priority) as any,
+                completed:
+                  typeof input.completed === 'boolean'
+                    ? input.completed
+                    : mockTasksStore[index].completed,
                 __typename: 'GraphQLTask',
                 updatedAt: new Date().toISOString(),
               };
               mockTasksStore[index] = updatedTask;
+              mockServerStore.emitter.emit('TASK_UPDATED', {
+                event: 'UPDATED',
+                taskId: updatedTask.id,
+                task: updatedTask,
+              });
               resultData = { updateTask: updatedTask };
               break;
             }
@@ -302,6 +370,11 @@ export class MockGraphQLApiLink extends ApolloLink {
                 updatedAt: new Date().toISOString(),
               };
               mockTasksStore[index] = updatedTask;
+              mockServerStore.emitter.emit('TASK_UPDATED', {
+                event: 'UPDATED',
+                taskId: updatedTask.id,
+                task: updatedTask,
+              });
               resultData = { toggleTaskCompleted: updatedTask };
               break;
             }
@@ -310,7 +383,16 @@ export class MockGraphQLApiLink extends ApolloLink {
               const { id } = variables as { id: string };
               const initialLen = mockTasksStore.length;
               mockTasksStore = mockTasksStore.filter(t => t.id !== id);
-              resultData = { deleteTask: mockTasksStore.length < initialLen };
+              const isDeleted = mockTasksStore.length < initialLen;
+              if (isDeleted) {
+                mockServerStore.emitter.emit('TASK_UPDATED', {
+                  event: 'DELETED',
+                  taskId: id,
+                  task: null,
+                });
+                mockServerStore.emitter.emit('TASK_DELETED', id);
+              }
+              resultData = { deleteTask: isDeleted };
               break;
             }
 
