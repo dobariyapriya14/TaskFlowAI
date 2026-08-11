@@ -33,7 +33,7 @@ export const useOfflineTaskMutations = () => {
   const updateTask = useCallback(
     async (
       id: string,
-      input: TaskInput,
+      input: Partial<TaskInput>,
       currentTask?: GraphQLTask,
     ): Promise<GraphQLTask> => {
       return offlineTaskRepository.updateTask(id, input, currentTask);

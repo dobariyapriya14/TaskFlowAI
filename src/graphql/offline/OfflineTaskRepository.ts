@@ -6,6 +6,7 @@ import {
   networkStatusService,
   NetworkStatusService,
 } from './NetworkStatusService';
+import { conflictResolver } from './ConflictResolver';
 
 export class OfflineTaskRepository {
   private repository: GraphQLTaskRepository;
@@ -13,6 +14,10 @@ export class OfflineTaskRepository {
   private network: NetworkStatusService;
   private isSyncing = false;
   private lastSyncedAt: string | null = null;
+  private currentSyncPromise: Promise<{
+    successCount: number;
+    failCount: number;
+  }> | null = null;
 
   constructor(
     client?: ApolloClient<NormalizedCacheObject>,
@@ -84,12 +89,31 @@ export class OfflineTaskRepository {
    */
   public async updateTask(
     id: string,
-    input: TaskInput,
+    input: Partial<TaskInput>,
     currentTask?: GraphQLTask,
   ): Promise<GraphQLTask> {
     if (this.network.isOnline()) {
       try {
-        const result = await this.repository.updateTask(id, input, {
+        const cachedTask = currentTask || this.getTaskFromCache(id);
+        const fullInput: TaskInput = {
+          title:
+            input.title !== undefined
+              ? input.title
+              : cachedTask?.title || 'Task',
+          category:
+            input.category !== undefined
+              ? input.category
+              : cachedTask?.category || 'General',
+          priority:
+            input.priority !== undefined
+              ? input.priority
+              : cachedTask?.priority || 'Normal',
+          completed:
+            input.completed !== undefined
+              ? input.completed
+              : cachedTask?.completed ?? false,
+        };
+        const result = await this.repository.updateTask(id, fullInput, {
           optimistic: true,
           currentTask,
         });
@@ -107,10 +131,19 @@ export class OfflineTaskRepository {
     const updatedTask: GraphQLTask = {
       __typename: 'GraphQLTask',
       id,
-      title: input.title,
-      category: input.category || cachedTask?.category || 'General',
-      priority: input.priority || cachedTask?.priority || 'Normal',
-      completed: input.completed ?? cachedTask?.completed ?? false,
+      title: input.title !== undefined ? input.title : cachedTask?.title || '',
+      category:
+        input.category !== undefined
+          ? input.category
+          : cachedTask?.category || 'General',
+      priority:
+        input.priority !== undefined
+          ? input.priority
+          : cachedTask?.priority || 'Normal',
+      completed:
+        input.completed !== undefined
+          ? input.completed
+          : cachedTask?.completed ?? false,
       createdAt: cachedTask?.createdAt || new Date().toISOString(),
       updatedAt: new Date().toISOString(),
     };
@@ -129,31 +162,9 @@ export class OfflineTaskRepository {
     id: string,
     currentTask?: GraphQLTask,
   ): Promise<GraphQLTask> {
-    if (this.network.isOnline()) {
-      try {
-        const result = await this.repository.toggleTaskCompleted(
-          id,
-          currentTask,
-        );
-        return result;
-      } catch (error) {
-        console.warn(
-          `Network request failed for toggleTaskCompleted ${id}, switching to offline queue:`,
-          error,
-        );
-      }
-    }
-
     const task = currentTask || this.getTaskFromCache(id);
     const nextCompleted = !(task?.completed ?? false);
-    const updatedInput: TaskInput = {
-      title: task?.title || '',
-      category: task?.category,
-      priority: task?.priority,
-      completed: nextCompleted,
-    };
-
-    return this.updateTask(id, updatedInput, task || undefined);
+    return this.updateTask(id, { completed: nextCompleted }, task || undefined);
   }
 
   /**
@@ -190,49 +201,109 @@ export class OfflineTaskRepository {
     successCount: number;
     failCount: number;
   }> {
-    if (this.isSyncing || !this.network.isOnline()) {
+    if (!this.network.isOnline()) {
       return { successCount: 0, failCount: 0 };
     }
 
-    this.isSyncing = true;
-    let successCount = 0;
-    let failCount = 0;
-
-    try {
-      const pendingItems = this.queue.getPendingItems();
-
-      for (const item of pendingItems) {
-        await this.queue.setItemProcessing(item.id);
-        try {
-          if (item.type === 'CREATE') {
-            const input = item.payload as TaskInput;
-            const created = await this.repository.createTask(input);
-            if (item.tempId && created.id) {
-              await this.queue.updateTempIdMapping(item.tempId, created.id);
-              this.replaceTempIdInCache(item.tempId, created);
-            }
-          } else if (item.type === 'UPDATE' || item.type === 'TOGGLE') {
-            const input = item.payload as TaskInput;
-            await this.repository.updateTask(item.taskId, input);
-          } else if (item.type === 'DELETE') {
-            await this.repository.deleteTask(item.taskId);
-          }
-
-          await this.queue.dequeue(item.id);
-          successCount += 1;
-        } catch (err: any) {
-          failCount += 1;
-          const msg = err.message || 'Sync failed';
-          await this.queue.setItemFailed(item.id, msg);
-        }
-      }
-
-      this.lastSyncedAt = new Date().toISOString();
-    } finally {
-      this.isSyncing = false;
+    const pendingItems = this.queue.getPendingItems();
+    if (pendingItems.length === 0) {
+      return { successCount: 0, failCount: 0 };
     }
 
-    return { successCount, failCount };
+    if (this.currentSyncPromise) {
+      return this.currentSyncPromise;
+    }
+
+    this.isSyncing = true;
+    this.currentSyncPromise = (async () => {
+      let successCount = 0;
+      let failCount = 0;
+
+      try {
+        const itemsToProcess = this.queue.getPendingItems();
+
+        for (const item of itemsToProcess) {
+          await this.queue.setItemProcessing(item.id);
+          try {
+            if (item.type === 'CREATE') {
+              const input = item.payload as TaskInput;
+              const created = await this.repository.createTask(input);
+              if (item.tempId && created.id) {
+                await this.queue.updateTempIdMapping(item.tempId, created.id);
+                this.replaceTempIdInCache(item.tempId, created);
+              }
+            } else if (item.type === 'UPDATE' || item.type === 'TOGGLE') {
+              let input = item.payload as Partial<TaskInput>;
+              let serverTask: GraphQLTask | null = null;
+              try {
+                serverTask = await this.repository.getTaskById(item.taskId);
+                if (
+                  serverTask &&
+                  conflictResolver.hasConflict(
+                    input,
+                    serverTask,
+                    item.createdAt,
+                  )
+                ) {
+                  const resolution = conflictResolver.resolveConflict(
+                    input,
+                    serverTask,
+                    conflictResolver.getStrategy(),
+                    item.createdAt,
+                  );
+                  input = resolution.resolvedInput;
+                  this.writeTaskToCache(resolution.resolvedTask);
+                }
+              } catch (fetchErr) {
+                console.warn(
+                  'Could not fetch server task for conflict check:',
+                  fetchErr,
+                );
+              }
+
+              const fullInput: TaskInput = {
+                title:
+                  input.title !== undefined
+                    ? input.title
+                    : serverTask?.title || 'Task',
+                category:
+                  input.category !== undefined
+                    ? input.category
+                    : serverTask?.category || 'General',
+                priority:
+                  input.priority !== undefined
+                    ? input.priority
+                    : serverTask?.priority || 'Normal',
+                completed:
+                  input.completed !== undefined
+                    ? input.completed
+                    : serverTask?.completed ?? false,
+              };
+
+              await this.repository.updateTask(item.taskId, fullInput);
+            } else if (item.type === 'DELETE') {
+              await this.repository.deleteTask(item.taskId);
+            }
+
+            await this.queue.dequeue(item.id);
+            successCount += 1;
+          } catch (err: any) {
+            failCount += 1;
+            const msg = err.message || 'Sync failed';
+            await this.queue.setItemFailed(item.id, msg);
+          }
+        }
+
+        this.lastSyncedAt = new Date().toISOString();
+      } finally {
+        this.isSyncing = false;
+        this.currentSyncPromise = null;
+      }
+
+      return { successCount, failCount };
+    })();
+
+    return this.currentSyncPromise;
   }
 
   private getTaskFromCache(id: string): GraphQLTask | null {

@@ -17,6 +17,8 @@ import {
   useGraphQLTasksConnection,
   useGraphQLAIInsights,
   useOfflineTaskMutations,
+  useConflictResolver,
+  ConflictStrategy,
   latestNativeHeaders,
   GraphQLTask,
 } from '../graphql';
@@ -64,6 +66,7 @@ export const GraphQLTasksScreen: React.FC<{ navigation?: any }> = ({
     updating,
     syncQueue,
   } = useOfflineTaskMutations();
+  const { strategy, setStrategy, resolvedCount } = useConflictResolver();
 
   // Load Native Headers & Native Module Cache
   const loadNativeModuleData = useCallback(async () => {
@@ -270,6 +273,55 @@ export const GraphQLTasksScreen: React.FC<{ navigation?: any }> = ({
                 <Text style={styles.syncQueueText}>Sync Queue</Text>
               )}
             </TouchableOpacity>
+          </View>
+        </View>
+
+        {/* Multi-Device Conflict Resolution Card */}
+        <View style={styles.conflictCard} testID="conflict-resolution-card">
+          <View style={styles.conflictHeaderRow}>
+            <Text style={styles.conflictTitle}>
+              🔀 Multi-Device Conflict Engine
+            </Text>
+            <View
+              style={styles.resolvedCountBadge}
+              testID="resolved-conflict-count"
+            >
+              <Text style={styles.resolvedCountText}>
+                Resolved: {resolvedCount}
+              </Text>
+            </View>
+          </View>
+          <Text style={styles.conflictSubtext}>
+            Strategy: <Text style={styles.activeStrategyText}>{strategy}</Text>
+          </Text>
+          <View style={styles.strategyPillRow}>
+            {(
+              [
+                { label: 'Merge', value: 'FIELD_LEVEL_MERGE' },
+                { label: 'LWW', value: 'LAST_WRITE_WINS' },
+                { label: 'Server', value: 'SERVER_WINS' },
+                { label: 'Client', value: 'CLIENT_WINS' },
+              ] as const
+            ).map(opt => (
+              <TouchableOpacity
+                key={opt.value}
+                testID={`strategy-pill-${opt.value}`}
+                style={[
+                  styles.strategyPillBtn,
+                  strategy === opt.value && styles.strategyPillBtnActive,
+                ]}
+                onPress={() => setStrategy(opt.value as ConflictStrategy)}
+              >
+                <Text
+                  style={[
+                    styles.strategyPillText,
+                    strategy === opt.value && styles.strategyPillTextActive,
+                  ]}
+                >
+                  {opt.label}
+                </Text>
+              </TouchableOpacity>
+            ))}
           </View>
         </View>
 
@@ -908,6 +960,67 @@ const styles = StyleSheet.create({
   offlineBadgeText: {
     color: '#C2410C',
     fontSize: 11,
+    fontWeight: '700',
+  },
+  conflictCard: {
+    backgroundColor: '#1E1B4B',
+    borderRadius: 16,
+    padding: 16,
+    marginBottom: 16,
+  },
+  conflictHeaderRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 6,
+  },
+  conflictTitle: {
+    color: '#EEF2FF',
+    fontSize: 15,
+    fontWeight: '700',
+  },
+  resolvedCountBadge: {
+    backgroundColor: '#3730A3',
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    borderRadius: 8,
+  },
+  resolvedCountText: {
+    color: '#C7D2FE',
+    fontSize: 11,
+    fontWeight: '700',
+  },
+  conflictSubtext: {
+    color: '#A5B4FC',
+    fontSize: 12,
+    marginBottom: 10,
+  },
+  activeStrategyText: {
+    color: '#818CF8',
+    fontWeight: '700',
+  },
+  strategyPillRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  strategyPillBtn: {
+    flex: 1,
+    backgroundColor: '#312E81',
+    paddingVertical: 6,
+    borderRadius: 8,
+    alignItems: 'center',
+    marginHorizontal: 2,
+  },
+  strategyPillBtnActive: {
+    backgroundColor: '#6366F1',
+  },
+  strategyPillText: {
+    color: '#C7D2FE',
+    fontSize: 11,
+    fontWeight: '600',
+  },
+  strategyPillTextActive: {
+    color: '#FFFFFF',
     fontWeight: '700',
   },
 });

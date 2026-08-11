@@ -6,3 +6,4 @@ export * from './useSyncDeviceTelemetry';
 export * from './useNetworkStatus';
 export * from './useOfflineSyncQueue';
 export * from './useOfflineTaskMutations';
+export * from './useConflictResolver';

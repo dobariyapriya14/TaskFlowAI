@@ -64,9 +64,9 @@ export class NetworkStatusService {
   }
 
   private triggerReconnectionCallbacks(): void {
-    this.reconnectionCallbacks.forEach(callback => {
+    this.reconnectionCallbacks.forEach(async callback => {
       try {
-        callback();
+        await callback();
       } catch (err) {
         console.warn('Error in reconnection callback:', err);
       }

@@ -193,15 +193,18 @@ describe('useOfflineTaskMutations & Offline Sync Queue Integration', () => {
 
     expect(hookVal.pendingCount).toBe(1);
 
-    // Reconnect network
+    // Reconnect network & sync queue
     await act(async () => {
       hookVal.setOnline(true);
     });
 
-    await waitFor(() => {
-      expect(hookVal.pendingCount).toBe(0);
-    });
+    await waitFor(
+      () => {
+        expect(offlineSyncQueue.getQueue().length).toBe(0);
+      },
+      { timeout: 2000 },
+    );
 
-    expect(offlineSyncQueue.getQueue().length).toBe(0);
+    expect(hookVal.pendingCount).toBe(0);
   });
 });
