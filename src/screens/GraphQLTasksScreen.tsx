@@ -18,6 +18,8 @@ import {
   useGraphQLAIInsights,
   useOfflineTaskMutations,
   useConflictResolver,
+  useDomainEvents,
+  useAsyncEventProcessor,
   ConflictStrategy,
   latestNativeHeaders,
   GraphQLTask,
@@ -67,6 +69,13 @@ export const GraphQLTasksScreen: React.FC<{ navigation?: any }> = ({
     syncQueue,
   } = useOfflineTaskMutations();
   const { strategy, setStrategy, resolvedCount } = useConflictResolver();
+  const {
+    events,
+    latestEvent,
+    clearHistory: clearEventHistory,
+  } = useDomainEvents();
+  const { processedCount, deadLetterQueue, clearDLQ } =
+    useAsyncEventProcessor();
 
   // Load Native Headers & Native Module Cache
   const loadNativeModuleData = useCallback(async () => {
@@ -323,6 +332,56 @@ export const GraphQLTasksScreen: React.FC<{ navigation?: any }> = ({
               </TouchableOpacity>
             ))}
           </View>
+        </View>
+
+        {/* Domain Events & Async Processing Engine Card */}
+        <View style={styles.eventsCard} testID="domain-events-card">
+          <View style={styles.eventsHeaderRow}>
+            <Text style={styles.eventsTitle}>
+              ⚡ Domain Events & Async Processor
+            </Text>
+            <View style={styles.eventsCountBadge} testID="domain-events-count">
+              <Text style={styles.eventsCountText}>
+                History: {events.length}
+              </Text>
+            </View>
+          </View>
+          <View style={styles.eventsStatsRow}>
+            <Text style={styles.eventsSubtext}>
+              Processed:{' '}
+              <Text style={styles.statHighlight}>{processedCount}</Text> | DLQ:{' '}
+              <Text style={styles.statHighlight}>{deadLetterQueue.length}</Text>
+            </Text>
+            <View style={styles.eventsActionsRow}>
+              {events.length > 0 && (
+                <TouchableOpacity
+                  testID="clear-domain-events-btn"
+                  style={styles.eventsActionBtn}
+                  onPress={clearEventHistory}
+                >
+                  <Text style={styles.eventsActionText}>Clear Events</Text>
+                </TouchableOpacity>
+              )}
+              {deadLetterQueue.length > 0 && (
+                <TouchableOpacity
+                  testID="clear-dlq-btn"
+                  style={styles.eventsActionBtnDanger}
+                  onPress={clearDLQ}
+                >
+                  <Text style={styles.eventsActionText}>Clear DLQ</Text>
+                </TouchableOpacity>
+              )}
+            </View>
+          </View>
+          {latestEvent && (
+            <View style={styles.latestEventBanner} testID="latest-domain-event">
+              <Text style={styles.latestEventText}>
+                Latest:{' '}
+                <Text style={styles.latestEventBadge}>{latestEvent.type}</Text>{' '}
+                ({latestEvent.aggregateId})
+              </Text>
+            </View>
+          )}
         </View>
 
         {/* Native Module Header Card */}
@@ -1021,6 +1080,87 @@ const styles = StyleSheet.create({
   },
   strategyPillTextActive: {
     color: '#FFFFFF',
+    fontWeight: '700',
+  },
+  eventsCard: {
+    backgroundColor: '#0F172A',
+    borderRadius: 14,
+    padding: 14,
+    marginHorizontal: 16,
+    marginBottom: 16,
+    borderWidth: 1,
+    borderColor: '#1E293B',
+  },
+  eventsHeaderRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 6,
+  },
+  eventsTitle: {
+    color: '#F8FAFC',
+    fontSize: 15,
+    fontWeight: '700',
+  },
+  eventsCountBadge: {
+    backgroundColor: '#1E293B',
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    borderRadius: 8,
+  },
+  eventsCountText: {
+    color: '#94A3B8',
+    fontSize: 11,
+    fontWeight: '700',
+  },
+  eventsStatsRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 6,
+  },
+  eventsSubtext: {
+    color: '#94A3B8',
+    fontSize: 12,
+  },
+  statHighlight: {
+    color: '#38BDF8',
+    fontWeight: '700',
+  },
+  eventsActionsRow: {
+    flexDirection: 'row',
+  },
+  eventsActionBtn: {
+    backgroundColor: '#334155',
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    borderRadius: 6,
+    marginLeft: 6,
+  },
+  eventsActionBtnDanger: {
+    backgroundColor: '#991B1B',
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    borderRadius: 6,
+    marginLeft: 6,
+  },
+  eventsActionText: {
+    color: '#FFFFFF',
+    fontSize: 11,
+    fontWeight: '600',
+  },
+  latestEventBanner: {
+    backgroundColor: '#1E293B',
+    padding: 8,
+    borderRadius: 8,
+    marginTop: 4,
+  },
+  latestEventText: {
+    color: '#CBD5E1',
+    fontSize: 11,
+  },
+  latestEventBadge: {
+    color: '#38BDF8',
     fontWeight: '700',
   },
 });

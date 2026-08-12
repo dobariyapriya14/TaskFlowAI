@@ -191,7 +191,10 @@ export class ConflictResolverManager {
         };
         resolvedTask = {
           ...serverTask,
-          ...resolvedInput,
+          title: resolvedInput.title,
+          category: resolvedInput.category ?? serverTask.category ?? 'General',
+          priority: resolvedInput.priority ?? serverTask.priority ?? 'Normal',
+          completed: resolvedInput.completed ?? serverTask.completed,
           updatedAt: nowIso,
         };
         break;
@@ -222,7 +225,10 @@ export class ConflictResolverManager {
 
         resolvedTask = {
           ...serverTask,
-          ...resolvedInput,
+          title: resolvedInput.title,
+          category: resolvedInput.category ?? serverTask.category ?? 'General',
+          priority: resolvedInput.priority ?? serverTask.priority ?? 'Normal',
+          completed: resolvedInput.completed ?? serverTask.completed,
           updatedAt: nowIso,
         };
         break;
@@ -231,27 +237,18 @@ export class ConflictResolverManager {
       case 'FIELD_LEVEL_MERGE':
       default: {
         resolvedInput = {
-          title:
-            localPayload.title !== undefined
-              ? localPayload.title
-              : serverTask.title,
-          category:
-            localPayload.category !== undefined
-              ? localPayload.category
-              : serverTask.category || 'General',
-          priority:
-            localPayload.priority !== undefined
-              ? localPayload.priority
-              : serverTask.priority || 'Normal',
-          completed:
-            localPayload.completed !== undefined
-              ? localPayload.completed
-              : serverTask.completed,
+          title: localPayload.title ?? serverTask.title,
+          category: localPayload.category ?? serverTask.category ?? 'General',
+          priority: localPayload.priority ?? serverTask.priority ?? 'Normal',
+          completed: localPayload.completed ?? serverTask.completed,
         };
 
         resolvedTask = {
           ...serverTask,
-          ...resolvedInput,
+          title: resolvedInput.title,
+          category: resolvedInput.category ?? serverTask.category ?? 'General',
+          priority: resolvedInput.priority ?? serverTask.priority ?? 'Normal',
+          completed: resolvedInput.completed ?? serverTask.completed,
           updatedAt: nowIso,
         };
         break;
@@ -273,6 +270,23 @@ export class ConflictResolverManager {
     this.auditLog.unshift(auditRecord);
     this.isLoaded = true;
     this.persistAuditLog();
+
+    try {
+      const {
+        eventBus,
+        createDomainEvent,
+        DomainEventType,
+      } = require('../../core/events');
+      eventBus.publish(
+        createDomainEvent(
+          DomainEventType.CONFLICT_RESOLVED,
+          serverTask.id,
+          auditRecord,
+        ),
+      );
+    } catch {
+      // Ignore if event bus not available
+    }
 
     return { resolvedTask, resolvedInput };
   }

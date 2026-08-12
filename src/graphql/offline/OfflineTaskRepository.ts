@@ -7,6 +7,11 @@ import {
   NetworkStatusService,
 } from './NetworkStatusService';
 import { conflictResolver } from './ConflictResolver';
+import {
+  eventBus,
+  createDomainEvent,
+  DomainEventType,
+} from '../../core/events';
 
 export class OfflineTaskRepository {
   private repository: GraphQLTaskRepository;
@@ -54,6 +59,9 @@ export class OfflineTaskRepository {
         const result = await this.repository.createTask(input, {
           optimistic: true,
         });
+        eventBus.publish(
+          createDomainEvent(DomainEventType.TASK_CREATED, result.id, result),
+        );
         return result;
       } catch (error) {
         console.warn(
@@ -80,6 +88,14 @@ export class OfflineTaskRepository {
 
     this.writeTaskToCache(optimisticTask);
     await this.queue.enqueue('CREATE', tempId, input, tempId);
+
+    eventBus.publish(
+      createDomainEvent(
+        DomainEventType.TASK_CREATED,
+        optimisticTask.id,
+        optimisticTask,
+      ),
+    );
 
     return optimisticTask;
   }
@@ -131,19 +147,10 @@ export class OfflineTaskRepository {
     const updatedTask: GraphQLTask = {
       __typename: 'GraphQLTask',
       id,
-      title: input.title !== undefined ? input.title : cachedTask?.title || '',
-      category:
-        input.category !== undefined
-          ? input.category
-          : cachedTask?.category || 'General',
-      priority:
-        input.priority !== undefined
-          ? input.priority
-          : cachedTask?.priority || 'Normal',
-      completed:
-        input.completed !== undefined
-          ? input.completed
-          : cachedTask?.completed ?? false,
+      title: input.title ?? cachedTask?.title ?? '',
+      category: input.category ?? cachedTask?.category ?? 'General',
+      priority: input.priority ?? cachedTask?.priority ?? 'Normal',
+      completed: input.completed ?? cachedTask?.completed ?? false,
       createdAt: cachedTask?.createdAt || new Date().toISOString(),
       updatedAt: new Date().toISOString(),
     };
@@ -151,6 +158,15 @@ export class OfflineTaskRepository {
     this.writeTaskToCache(updatedTask);
     const tempId = id.startsWith('temp-') ? id : undefined;
     await this.queue.enqueue('UPDATE', id, input, tempId);
+
+    eventBus.publish(
+      createDomainEvent(DomainEventType.TASK_UPDATED, id, updatedTask),
+    );
+    if (input.completed === true) {
+      eventBus.publish(
+        createDomainEvent(DomainEventType.TASK_COMPLETED, id, updatedTask),
+      );
+    }
 
     return updatedTask;
   }
@@ -174,12 +190,18 @@ export class OfflineTaskRepository {
     if (id.startsWith('temp-')) {
       await this.queue.cancelPendingForTempId(id);
       this.removeTaskFromCache(id);
+      eventBus.publish(
+        createDomainEvent(DomainEventType.TASK_DELETED, id, { id }),
+      );
       return true;
     }
 
     if (this.network.isOnline()) {
       try {
         const result = await this.repository.deleteTask(id);
+        eventBus.publish(
+          createDomainEvent(DomainEventType.TASK_DELETED, id, { id }),
+        );
         return result;
       } catch (error) {
         console.warn(
@@ -191,6 +213,9 @@ export class OfflineTaskRepository {
 
     this.removeTaskFromCache(id);
     await this.queue.enqueue('DELETE', id);
+    eventBus.publish(
+      createDomainEvent(DomainEventType.TASK_DELETED, id, { id }),
+    );
     return true;
   }
 
@@ -295,6 +320,12 @@ export class OfflineTaskRepository {
         }
 
         this.lastSyncedAt = new Date().toISOString();
+        eventBus.publish(
+          createDomainEvent(DomainEventType.SYNC_QUEUE_FLUSHED, 'queue', {
+            successCount,
+            failCount,
+          }),
+        );
       } finally {
         this.isSyncing = false;
         this.currentSyncPromise = null;

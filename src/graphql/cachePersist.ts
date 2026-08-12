@@ -25,7 +25,7 @@ export const initApolloCachePersist = async (
     debug = false,
   } = options;
 
-  const persistor = new CachePersistor({
+  const persistor = new CachePersistor<NormalizedCacheObject>({
     cache,
     storage: new AsyncStorageWrapper(AsyncStorage),
     key,

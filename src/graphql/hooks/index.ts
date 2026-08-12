@@ -7,3 +7,5 @@ export * from './useNetworkStatus';
 export * from './useOfflineSyncQueue';
 export * from './useOfflineTaskMutations';
 export * from './useConflictResolver';
+export * from './useDomainEvents';
+export * from './useAsyncEventProcessor';
